@@ -30,7 +30,7 @@ Met `chmod 400 nest-ja-banfield.pem` verander ik de permissions waardoor alleen 
 <img width="" alt="chmod 400 .pem file" src="https://github.com/techgrounds/techgrounds-JarBanf/blob/main/00_includes/01_Linux/w1_3_setting_up2.png?raw=true">
 <br/><br/><br/>
 
-Ik heb alsnog geen toegang tot de server omdat ik niet declareer welke port nummer ik nodig heb op de VM. Na deze te declareren is het mij gelukt om in te loggen met `ssh -i nest-ja-banfield.pem jared_@3.121.40.174 -p 52215`. Zie hieronder.
+Ik heb alsnog geen toegang tot de server omdat ik niet declareer welke port nummer ik nodig heb op de VM. Na deze te declareren is het mij gelukt om in te loggen met `ssh -i nest-ja-banfield.pem jared_@3.121.40.175 -p 52215`. Zie hieronder.
 
 <img width="" alt="ssh-en naar vm met portnummer" src="https://github.com/techgrounds/techgrounds-JarBanf/blob/main/00_includes/01_Linux/w1_3_setting_up3.png?raw=true">
 <br/>
