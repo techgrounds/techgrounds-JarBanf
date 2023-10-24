@@ -2,8 +2,8 @@
 The VM is Located in Frankfurt, so you will need to create a remote connection to your machine. Remote connections to a Linux machine are usually done using the Secure Shell (SSH) protocol.
 
 ## Key-terms
-1. **VM**: Virtual Machine
-2. **SSH**: Secure Shell protocol
+1. **VM**: Virtual Machine, is een computerprogramma dat een computer nabootst, waar andere programma's op kunnen worden uitgevoerd.
+2. **SSH**: Secure Shell, is een protocol uit de toepassing van de TCP/IP-protocolgroep. SSH maakt het mogelijk om op een versleutelde manier in te loggen op een andere computer, en op afstand commando's op de andere computer uit te voeren vie een shell.
 
 ## Opdracht
 ### Gebruikte bronnen
