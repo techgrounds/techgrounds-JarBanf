@@ -21,8 +21,11 @@ In dezelfde folder als dit document vind je mijn markdown opdracht md-document d
 
 Hieronder wat printscreens waar je kan zien hoe ik in VS Code een md-document heb gemaakt én hoe ik het ook heb gepushed naar mijn github-repo met behulp van de GitHub feature in VS Code.
 
-(https://github.com/techgrounds/techgrounds-JarBanf/blob/main/00_includes/01_Linux/w1md1.png)
+<img width="1000" alt="Markdown-document maken in VS Code" src="https://github.com/techgrounds/techgrounds-JarBanf/blob/main/00_includes/01_Linux/w1md1.png?raw=true">
+<br/>
 
-(https://github.com/techgrounds/techgrounds-JarBanf/blob/main/00_includes/01_Linux/w1md2.png)
+<img width="600" alt="Markdown-document maken in VS Code" src="https://github.com/techgrounds/techgrounds-JarBanf/blob/main/00_includes/01_Linux/w1md2.png?raw=true">
+<br/>
 
-(https://github.com/techgrounds/techgrounds-JarBanf/blob/main/00_includes/01_Linux/w1md3.png)
+<img width="800" alt="Markdown-document maken in VS Code" src="https://github.com/techgrounds/techgrounds-JarBanf/blob/main/00_includes/01_Linux/w1md3.png?raw=true">
+<br/>
