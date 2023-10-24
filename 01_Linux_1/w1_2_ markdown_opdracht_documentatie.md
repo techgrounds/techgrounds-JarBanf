@@ -7,9 +7,9 @@ Markdown: een What You See Is What You Mean (WYSIWYM) manier van werken met teks
 
 ## Opdracht
 ### Gebruikte bronnen
-[Quickstart for writing on GitHub](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/quickstart-for-writing-on-github) 
+1. [Quickstart for writing on GitHub](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/quickstart-for-writing-on-github) 
 
-[Basic writing and formatting syntax](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax)
+2. [Basic writing and formatting syntax](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax)
 
 ### Ervaren problemen
 Ik ben nu niet tegen problemen aangelopen omdat ik al wat ervaring had met Markdown op mijn persoonlijke GitHub pagina. 
