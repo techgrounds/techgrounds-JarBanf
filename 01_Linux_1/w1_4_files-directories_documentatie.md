@@ -20,3 +20,22 @@ Linux gebruikt files en folder zoals wij gewend zijn met andere OS. Folders word
 4. Hoe vind ik de absolute path van een bestand of directory?
 
 ### Resultaat
+Het is mij gelukt om met `mk dir` command een nieuw directory te maken. Met `touch` command een nieuwe lege tekst-bestand. En de `Nano` text editor te openen. Zie hieronder.
+
+<img width="" alt="directory en text bestand creëren" src="https://github.com/techgrounds/techgrounds-JarBanf/blob/main/00_includes/01_Linux/w1_4_files-directories1.png?raw=true">
+<br/><br/><br/>
+
+In de Nano text editor wat tekst ingevuld en met `CTRL-x` het bestand op te slaan en uit de editor te gaan terug naar de terminal. Zie hieronder.
+
+<img width="" alt="tekst toevoegen in bestand met nano text editor" src="https://github.com/techgrounds/techgrounds-JarBanf/blob/main/00_includes/01_Linux/w1_4_files-directories2.png?raw=true">
+<br/><br/><br/>
+
+Met de `cat` command kan ik de inhoud van de tekst-bestand tonen in de terminal.
+
+<img width="" alt="met cat commando inhoud tonen" src="https://github.com/techgrounds/techgrounds-JarBanf/blob/main/00_includes/01_Linux/w1_4_files-directories3.png?raw=true">
+<br/><br/><br/>
+
+Vanuit de `techgrounds`-directory kan ik door middel van relative path met de `cd ..` commando naar de parent-directory gaan. En ook door middel van absolute path met de `/home/jared_` commando naar de parent-directory gaan.
+
+<img width="" alt="relative path en absolute path" src="https://github.com/techgrounds/techgrounds-JarBanf/blob/main/00_includes/01_Linux/w1_4_files-directories4.png?raw=true">
+<br/><br/><br/>
