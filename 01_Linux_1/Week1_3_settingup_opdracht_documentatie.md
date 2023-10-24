@@ -19,6 +19,13 @@ SSH: Secure Shell protocol
 
 ### Resultaat
 
-<img width="1000" alt="Markdown-document maken in VS Code" src="https://github.com/techgrounds/techgrounds-JarBanf/blob/main/00_includes/01_Linux/w1md1.png?raw=true">
+<img width="1000" alt="Markdown-document maken in VS Code" src="https://github.com/techgrounds/techgrounds-JarBanf/blob/main/00_includes/01_Linux/w1_3_setting_up1.png?raw=true">
 <br/>
-00_includes/01_Linux/w1_3_setting_up1.png
+
+
+<img width="1000" alt="Markdown-document maken in VS Code" src="https://github.com/techgrounds/techgrounds-JarBanf/blob/main/00_includes/01_Linux/w1_3_setting_up2.png?raw=true">
+<br/>
+
+
+<img width="1000" alt="Markdown-document maken in VS Code" src="00_includes/01_Linux/w1_3_setting_up3.png?raw=true">
+<br/>
