@@ -19,13 +19,13 @@ SSH: Secure Shell protocol
 
 ### Resultaat
 
-<img width="1000" alt="Markdown-document maken in VS Code" src="https://github.com/techgrounds/techgrounds-JarBanf/blob/main/00_includes/01_Linux/w1_3_setting_up1.png?raw=true">
+<img width="1000" alt="bad permissions .pem file" src="https://github.com/techgrounds/techgrounds-JarBanf/blob/main/00_includes/01_Linux/w1_3_setting_up1.png?raw=true">
 <br/>
 
 
-<img width="1000" alt="Markdown-document maken in VS Code" src="https://github.com/techgrounds/techgrounds-JarBanf/blob/main/00_includes/01_Linux/w1_3_setting_up2.png?raw=true">
+<img width="1000" alt="chmod 400 .pem file" src="https://github.com/techgrounds/techgrounds-JarBanf/blob/main/00_includes/01_Linux/w1_3_setting_up2.png?raw=true">
 <br/>
 
 
-<img width="1000" alt="Markdown-document maken in VS Code" src="00_includes/01_Linux/w1_3_setting_up3.png?raw=true">
+<img width="1000" alt="ssh-en naar vm met portnummer" src="https://github.com/techgrounds/techgrounds-JarBanf/blob/main/00_includes/01_Linux/w1_3_setting_up3.png?raw=true">
 <br/>
