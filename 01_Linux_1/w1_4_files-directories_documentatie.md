@@ -1,4 +1,4 @@
-# [Files & Directories]
+# Files & Directories
 Linux gebruikt files en folder zoals wij gewend zijn met andere OS. Folders wordt in Linux directories genoemd. Wanneer ik een terminal opent, zal ik in de home-directory werken. Vanuit hier kan ik navigeren door het hele systeem met behulp van commando's.
 
 ## Key-terms

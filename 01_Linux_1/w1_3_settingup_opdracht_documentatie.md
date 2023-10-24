@@ -2,16 +2,13 @@
 The VM is Located in Frankfurt, so you will need to create a remote connection to your machine. Remote connections to a Linux machine are usually done using the Secure Shell (SSH) protocol.
 
 ## Key-terms
-VM: Virtual Machine
-
-SSH: Secure Shell protocol
+1. **VM**: Virtual Machine
+2. **SSH**: Secure Shell protocol
 
 ## Opdracht
 ### Gebruikte bronnen
 1. [File Permissions in Linux / Unix: How to Read, Write & Change?](https://www.guru99.com/file-permissions.html)
-
 2. [How to connect to an EC2 instance using SSH using Linux](https://www.clickittech.com/aws/connect-ec2-instance-using-ssh/)
-
 3. [How to run the SSH server on a port other than 22](https://askubuntu.com/questions/264046/how-to-run-the-ssh-server-on-a-port-other-than-22)
 
 ### Ervaren problemen

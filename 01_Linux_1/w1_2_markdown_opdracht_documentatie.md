@@ -2,13 +2,11 @@
 Om bekend te raken met Markdown moeten we een md-document maken in een teksteditor. En daarna pushen naar ons portfolio-repository.
 
 ## Key-terms
-Markdown: een What You See Is What You Mean (WYSIWYM) manier van werken met tekst. GitHub bepaalt uiteindelijk de opmaak van je tekst. Jij levert alleen de tekst aan en wat daarvan koppen, lijsten, en paragrafen zijn.
-
+1. **Markdown**: een What You See Is What You Mean (WYSIWYM) manier van werken met tekst. GitHub bepaalt uiteindelijk de opmaak van je tekst. Jij levert alleen de tekst aan en wat daarvan koppen, lijsten, en paragrafen zijn.
 
 ## Opdracht
 ### Gebruikte bronnen
-1. [Quickstart for writing on GitHub](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/quickstart-for-writing-on-github) 
-
+1. [Quickstart for writing on GitHub](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/quickstart-for-writing-on-github)
 2. [Basic writing and formatting syntax](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax)
 
 ### Ervaren problemen
