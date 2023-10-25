@@ -16,13 +16,18 @@ Beide input en output kunnen verwezen worden naar een bestand in plaats van de s
 2. Ook was ik in de war omdat je de `grep` commando met én zonder "`|`" kan gebruiken.
 
 ### Resultaat
-Gebruikte commando's:
-
+Creër nieuwe zin in een bestaand tekst-bestand.<br>
 `echo "Ik ben in opleiding bij Techgrounds." >> mytextfile.txt`.
 
-`cat mytextfile.txt | grep Techgrounds` óf `grep Techgrounds mytextfile.txt`.
+Filter alleen de zin met het woord "Techgrounds"<br>
+`cat mytextfile.txt | grep Techgrounds` (met pipes)<br>
+óf<br> 
+`grep Techgrounds mytextfile.txt` (zonder pipes).
 
-`cat mytextfile.txt | grep Techgrounds > newtextfile.txt` óf `grep Techgrounds mytextfile.txt > newtextfile.txt`.
+Redirect de output naar een nieuw bestand.<br>
+`cat mytextfile.txt | grep Techgrounds > newtextfile.txt` (met pipes)<br> 
+óf<br> 
+`grep Techgrounds mytextfile.txt > newtextfile.txt` (zonder pipes).
 
 <img width="" alt="filteren uit tekstbestand met grep-commando" src="https://github.com/techgrounds/techgrounds-JarBanf/blob/main/00_includes/01_Linux/w1_5_working-with-text1.png?raw=true">
 <br/><br/><br/>
