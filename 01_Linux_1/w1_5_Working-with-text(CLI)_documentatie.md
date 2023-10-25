@@ -1,5 +1,7 @@
 # Working with text (CLI)
+Alle commando's in Linux hebben een standaard input en output. De standaard input (stdin) is de keyboard. De standaard output (stdout).
 
+Beide input en output kunnen verwezen worden naar een bestand in plaats van de standaard. dit heet "input redirection" en "output redirection".
 
 ## Key-terms
 1. **|** (pipe): kan gebruikt worden om de output van een commando als input te gebruiken van een ander commando.
@@ -22,5 +24,5 @@ Gebruikte commando's:
 
 `cat mytextfile.txt | grep Techgrounds > newtextfile.txt` óf `grep Techgrounds mytextfile.txt > newtextfile.txt`.
 
-<img width="" alt="filteren uit tekstbestand met grep-commando" src="https://github.com/techgrounds/techgrounds-JarBanf/blob/main/00_includes/01_Linux/w1_4_files-directories4.png?raw=true">
+<img width="" alt="filteren uit tekstbestand met grep-commando" src="https://github.com/techgrounds/techgrounds-JarBanf/blob/main/00_includes/01_Linux/w1_5_working-with-text1.png?raw=true">
 <br/><br/><br/>
