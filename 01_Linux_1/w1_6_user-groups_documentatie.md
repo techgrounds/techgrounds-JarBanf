@@ -32,3 +32,12 @@ Users, passwords en groups zijn allemaal opgeslagen in verschillende bestanden i
 
 4. Bestand waar de users worden bewaard is `/etc/passwd`.<br> Bestand waar de passwords worden bewaard is `/etc/shadow`.<br>
 Bestand waar de groups worden bewaard is `/etc/group`.<br>
+
+<img width="" alt="/etc/passwd bestand" src="https://github.com/techgrounds/techgrounds-JarBanf/blob/main/00_includes/01_Linux/w1_6_user-groups3.png?raw=true">
+<br/><br/><br/>
+
+<img width="" alt="/etc/shadow bestand" src="https://github.com/techgrounds/techgrounds-JarBanf/blob/main/00_includes/01_Linux/w1_6_user-groups2.png?raw=true">
+<br/><br/><br/>
+
+<img width="" alt="/etc/group bestand" src="https://github.com/techgrounds/techgrounds-JarBanf/blob/main/00_includes/01_Linux/w1_6_user-groups1.png?raw=true">
+<br/><br/><br/>
