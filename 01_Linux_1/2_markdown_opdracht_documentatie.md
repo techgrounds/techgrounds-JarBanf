@@ -15,7 +15,7 @@ Ik ben nu niet tegen problemen aangelopen omdat ik al wat ervaring had met Markd
 Waar ik toen wel tegen aan liep is het toevoegen van foto's in je Markdown document. Uiteindelijk kwam ik wel eruit dat ik foto's moest toevoegen aan repository, en daarna naar die foto's linken binnen je Markdown document. Je zult hieronder bij resultaten zien dat het mij prima lukt om foto's toe te voegen aan dit Markdown document.
 
 ### Resultaat
-In dezelfde folder als dit document vind je mijn markdown opdracht md-document die ik heb gemaakt. [Dit is ook een link naar dit md-document](https://github.com/techgrounds/techgrounds-JarBanf/blob/main/01_Linux_1/w1_2_markdown_opdracht.md)
+In dezelfde folder als dit document vind je mijn markdown opdracht md-document die ik heb gemaakt. [Dit is ook een link naar dit md-document](https://github.com/techgrounds/techgrounds-JarBanf/blob/main/01_Linux_1/2_markdown_opdracht.md)
 
 Hieronder wat printscreens waar je kan zien hoe ik in VS Code een md-document heb gemaakt én hoe ik het ook heb gepushed naar mijn github-repo met behulp van de GitHub feature in VS Code.
 
