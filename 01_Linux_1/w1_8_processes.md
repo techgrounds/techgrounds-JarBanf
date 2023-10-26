@@ -37,8 +37,10 @@ En hoeveel memory het gebruikt, 1004.0K.
 <img width="" alt="check status telnet" src="https://github.com/techgrounds/techgrounds-JarBanf/blob/main/00_includes/01_Linux/w1_8_processes2.png?raw=true">
 <br/><br/>
 
-3. Stop telnet en check of telnet inderdaad gestopt is.<br> 
-`sudo systemctl stop inetd` of `sudo kill 7266`<br>  `systemctl status inetd`<br> 
+3. Stop telnet.<br> 
+`sudo systemctl stop inetd` of `sudo kill 7266`<br> 
+En check of telnet inderdaad gestopt is.<br> 
+`systemctl status inetd`<br> 
 `ps auxf`
 
 <img width="" alt="check status telnet" src="https://github.com/techgrounds/techgrounds-JarBanf/blob/main/00_includes/01_Linux/w1_8_processes3.png?raw=true">
