@@ -1,5 +1,5 @@
-# Hallo, Welkom!
-Hier komt nog wat tekst over mij.
+# Hallo :-)
+Welkom in mijn repository van mijn Cloud Engineer opleiding bij Techgrounds.  
+Hier plaats ik al mijn uitgewerkte opdrachten en opgedane kennis.
 
-## Waar vind je mijn projecten?
-De folders beginnend met 01_, 02_, etc. zijn de projecten die ik tijdens mijn opleiding Cloud Engineer bij Techgrounds heb gemaakt.
+Open gerust de folders hierboven om mijn documentaties te zien.
