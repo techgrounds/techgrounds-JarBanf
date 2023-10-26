@@ -31,7 +31,7 @@
 3. De `read` en `write` permissions verwijderen voor `group` en `others` doe ik met de `chmod 700 testpermission.txt` commando.<br> 
 De `user` kan nog wel het bestand lezen.
 
-<img width="" alt="change permissions" src="https://github.com/techgrounds/techgrounds-JarBanf/blob/main/00_includes/01_Linux/w1_7_file-permissions3.png?raw=true">
+<img width="" style="border:2px solid blue" alt="change permissions" src="https://github.com/techgrounds/techgrounds-JarBanf/blob/main/00_includes/01_Linux/w1_7_file-permissions3.png?raw=true">
 <br/><br/>
 
 4. De `owner` van het bestand te veranderen naar een ander `user` doe ik met de `sudo chown jared2_ testpermission.txt` commando.<br>
