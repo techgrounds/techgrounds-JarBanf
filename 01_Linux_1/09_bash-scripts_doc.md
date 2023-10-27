@@ -1,23 +1,25 @@
 # Bash Scripts
-[Geef een korte beschrijving van het onderwerp]
+Bash is een Unix-opdrachtregelinterface die verantwoordelijk is voor de interactie met het besturingssysteem van een computer. Net zoals filmscripts acteurs informeren over welke acties ze moeten ondernemen, vertelt een bash-script de bash-shell wat hij moet doen. Een bash-script is dus een handige manier om opdrachten te groeperen om een ​​programma te maken.
+
+Elke opdracht die u rechtstreeks vanaf de opdrachtregel kunt uitvoeren, kan in een bash-script worden geplaatst, en u kunt verwachten dat deze dezelfde acties uitvoert als vanaf de opdrachtregel. Als alternatief kan elke opdracht die u in uw bash-script invoert, rechtstreeks vanaf de opdrachtregel worden uitgevoerd, en het resultaat zou hetzelfde moeten zijn.
 
 ## Key-terms
-1. **PATH variable**: is een omgevingsvariabele die een geordende lijst met paden bevat waarnaar Linux zal zoeken naar uitvoerbare bestanden bij het uitvoeren van een opdracht. Het gebruik van deze paden betekent dat we geen absoluut pad hoeven op te geven bij het uitvoeren van een opdracht.<br> 
+- **PATH variable**: is een omgevingsvariabele die een geordende lijst met paden bevat waarnaar Linux zal zoeken naar uitvoerbare bestanden bij het uitvoeren van een opdracht. Het gebruik van deze paden betekent dat we geen absoluut pad hoeven op te geven bij het uitvoeren van een opdracht.<br> 
 Als we bijvoorbeeld Hallo, wereld! in Bash willen printen kan het commando `echo` worden gebruikt in plaats van `/bin/echo`, zolang /bin zich in PATH bevindt.
-2. **HTTPd**: Hypertext Transfer Protocol daemon. Het is een softwareprogramma dat gewoonlijk als proces op de achtergrond draait en de rol speelt van een server in een client-servermodel met behulp van de HTTP- en/of HTTPS-netwerkprotocol(len).
+- **HTTPd**: Hypertext Transfer Protocol daemon. Het is een softwareprogramma dat gewoonlijk als proces op de achtergrond draait en de rol speelt van een server in een client-servermodel met behulp van de HTTP- en/of HTTPS-netwerkprotocol(len).
 
 ## Opdracht
 ### Gebruikte bronnen
-1. [httpd](https://en.wikipedia.org/wiki/Httpd)
-2. [Adding a Path to the Linux PATH Variable](https://www.baeldung.com/linux/path-variable)
-3. [How to Write a Bash Script: A Simple Bash Scripting Tutorial](https://www.datacamp.com/tutorial/how-to-write-bash-script-tutorial)
-4. [How To Install the Apache Web Server on Ubuntu 20.04](https://www.digitalocean.com/community/tutorials/how-to-install-the-apache-web-server-on-ubuntu-20-04)
+- [httpd](https://en.wikipedia.org/wiki/Httpd)
+- [Adding a Path to the Linux PATH Variable](https://www.baeldung.com/linux/path-variable)
+- [How to Write a Bash Script: A Simple Bash Scripting Tutorial](https://www.datacamp.com/tutorial/how-to-write-bash-script-tutorial)
+- [How To Install the Apache Web Server on Ubuntu 20.04](https://www.digitalocean.com/community/tutorials/how-to-install-the-apache-web-server-on-ubuntu-20-04)
 
 ### Ervaren problemen
-1. Hoe voeg ik een nieuwe directory aan de PATH variable?
-2. Hoe schrijf ik een script?
-3. Welke script heb ik nodig om een lijn van tekst toe te voegen aan een bestand wanneer de script wordt ge-execute?
-4. Wat zijn de commando's om de httpd package te installeren, activeren, enable-en en de status van op te vragen?
+- Hoe voeg ik een nieuwe directory aan de PATH variable?
+- Hoe schrijf ik een script?
+- Welke script heb ik nodig om een lijn van tekst toe te voegen aan een bestand wanneer de script wordt ge-execute?
+- Wat zijn de commando's om de httpd package te installeren, activeren, enable-en en de status van op te vragen?
 
 ### Resultaat
 1. Met de export commando kan ik een nieuwe directory toevoegen in de PATH variable. Met deze commando voeg ik **tijdelijk** een nieuwe directory toe. Zodra ik een nieuwe shell open, ben ik deze toevoeging kwijt.<br> 
