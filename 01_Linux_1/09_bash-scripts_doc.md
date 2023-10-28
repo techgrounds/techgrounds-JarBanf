@@ -7,6 +7,7 @@ Elke opdracht die u rechtstreeks vanaf de opdrachtregel kunt uitvoeren, kan in e
 - **PATH variable**: is een omgevingsvariabele die een geordende lijst met paden bevat waarnaar Linux zal zoeken naar uitvoerbare bestanden bij het uitvoeren van een opdracht. Het gebruik van deze paden betekent dat we geen absoluut pad hoeven op te geven bij het uitvoeren van een opdracht.<br> 
 Als we bijvoorbeeld Hallo, wereld! in Bash willen printen kan het commando `echo` worden gebruikt in plaats van `/bin/echo`, zolang /bin zich in PATH bevindt.
 - **HTTPd**: Hypertext Transfer Protocol daemon. Het is een softwareprogramma dat gewoonlijk als proces op de achtergrond draait en de rol speelt van een server in een client-servermodel met behulp van de HTTP- en/of HTTPS-netwerkprotocol(len).
+- **BASH**: een Unix-opdrachtregelinterface die verantwoordelijk is voor de interactie met het besturingssysteem van een computer. 
 
 ## Opdracht
 ### Gebruikte bronnen
@@ -21,6 +22,8 @@ Als we bijvoorbeeld Hallo, wereld! in Bash willen printen kan het commando `echo
 - Hoe schrijf ik een script?
 - Welke script heb ik nodig om een lijn van tekst toe te voegen aan een bestand wanneer de script wordt ge-execute?
 - Wat zijn de commando's om de httpd package te installeren, activeren, enable-en en de status van op te vragen?
+- Hoe werk ik met variabelen in ene shell script?
+- Hoe genereer ik een random number in shell script?
 
 ### Resultaat
 1. Met de export commando kan ik een nieuwe directory toevoegen in de PATH variable. Met deze commando voeg ik **tijdelijk** een nieuwe directory toe. Zodra ik een nieuwe shell open, ben ik deze toevoeging kwijt en moet ik het opnieuw doen.<br> 
@@ -46,3 +49,6 @@ Als we bijvoorbeeld Hallo, wereld! in Bash willen printen kan het commando `echo
 ![execute setuphttpd.sh](images/09-1_bash-scripts4-3.png)<br><br>
 
 5. 
+
+![randomnumber.sh maken](images/09-2_bash-scripts5-1.png)<br><br>
+![execute randomnumber.sh](images/09-2_bash-scripts5-2.png)<br><br>
