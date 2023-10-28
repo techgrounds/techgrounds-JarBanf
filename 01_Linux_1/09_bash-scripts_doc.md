@@ -48,4 +48,7 @@ Als we bijvoorbeeld Hallo, wereld! in Bash willen printen kan het commando `echo
 ![execute setuphttpd.sh](images/09-1_bash-scripts4-2.png)
 ![execute setuphttpd.sh](images/09-1_bash-scripts4-3.png)<br><br>
 
+<img width="" alt="check status telnet" src="images/09-1_bash-scripts4-3.png?raw=true">
+<br/><br/>
+
 5. 
