@@ -23,8 +23,10 @@ Als we bijvoorbeeld Hallo, wereld! in Bash willen printen kan het commando `echo
 - Wat zijn de commando's om de httpd package te installeren, activeren, enable-en en de status van op te vragen?
 
 ### Resultaat
-1. Met de export commando kan ik een nieuwe directory toevoegen in de PATH variable. Met deze commando voeg ik **tijdelijk** een nieuwe directory toe. Zodra ik een nieuwe shell open, ben ik deze toevoeging kwijt.<br> 
+1. Met de export commando kan ik een nieuwe directory toevoegen in de PATH variable. Met deze commando voeg ik **tijdelijk** een nieuwe directory toe. Zodra ik een nieuwe shell open, ben ik deze toevoeging kwijt en moet ik het opnieuw doen.<br> 
 `export PATH=$PATH:/home/jared_/scripts`
+
+![Directory toevoegen in PATh](images/09-1_bash-scripts1.png)<br><br>
 
 2. In de scripts directory heb ik een `addline.sh` bestand gemaakt. Hierin staat een commando dat een lijn toevoegd in `addline.txt`.<br> 
 `echo "Wanneer addline.sh word ge-execute, wordt dit lijn aangemaakt in dit bestand" >> addline.txt`
