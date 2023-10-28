@@ -41,14 +41,8 @@ Als we bijvoorbeeld Hallo, wereld! in Bash willen printen kan het commando `echo
 `sudo apt install -y apache2` -> installeert, activeert en enabled de Apache web server. De `-y` zorgt ervoor dat er autmatisch "yes" wordt beantwoord op de vragen.<br> 
 `sudo systemctl status apache2` -> geeft de status van Apache web server aan in de terminal.
 
-<img width="" alt="check status telnet" src="images/09-1_bash-scripts4-1.png?raw=true">
-<br/><br/>
-
 ![setuphttpd.sh maken](images/09-1_bash-scripts4-1.png)<br><br>
 ![execute setuphttpd.sh](images/09-1_bash-scripts4-2.png)
 ![execute setuphttpd.sh](images/09-1_bash-scripts4-3.png)<br><br>
-
-<img width="" alt="check status telnet" src="images/09-1_bash-scripts4-3.png?raw=true">
-<br/><br/>
 
 5. 
