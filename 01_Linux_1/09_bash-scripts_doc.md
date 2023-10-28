@@ -14,6 +14,7 @@ Als we bijvoorbeeld Hallo, wereld! in Bash willen printen kan het commando `echo
 - [Adding a Path to the Linux PATH Variable](https://www.baeldung.com/linux/path-variable)
 - [How to Write a Bash Script: A Simple Bash Scripting Tutorial](https://www.datacamp.com/tutorial/how-to-write-bash-script-tutorial)
 - [How To Install the Apache Web Server on Ubuntu 20.04](https://www.digitalocean.com/community/tutorials/how-to-install-the-apache-web-server-on-ubuntu-20-04)
+- [Bash in 100 Seconds](https://www.youtube.com/watch?v=I4EWvMFj37g)
 
 ### Ervaren problemen
 - Hoe voeg ik een nieuwe directory aan de PATH variable?
