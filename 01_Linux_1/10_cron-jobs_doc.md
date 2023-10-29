@@ -13,7 +13,7 @@
 - [Linux Tee Command with Examples](https://linuxize.com/post/linux-tee-command/)
 
 ### Ervaren problemen
-- Waarom werkt de commando `/usr/bin/sudo /usr/bin/df -H > /var/logs/available_space.txt` niet werkt?  
+- Waarom werkt de commando `/usr/bin/sudo /usr/bin/df -H > /var/logs/available_space.txt` niet?  
 Alleen de `root` mag naar de `/var`-directory schrijven. De commando's "`>`" en "`>>`" voert de shell **altijd** uit als de huidige `user`, en niet als `root` waardoor ik deze commando's niet kan gebruiken.
 
 ### Resultaat
@@ -39,7 +39,7 @@ Met `date` haal ik de datum en tijd op.
 3. Script in crontab dat wekelijks de beschikbare disk space schrijft naar een bestand in /var/logs.   
 Met `@weekly` wordt de script elke zondag om 12:00 AM ge-execute.  
 Met `df -H` wordt de beschikbare ruimte opgevraagd.  
-Met `tee` schrijf ik de output van `df -H` naar `/var/logs/available_space.txt`.
+Met `tee` schrijf ik de output van `df -H` naar `/var/logs/available_space.txt`.  
 Met `> /dev/null` voorkom ik dat de output ook wordt geschreven naar de terminal.
 
 ```
