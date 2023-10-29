@@ -18,7 +18,7 @@ Voor de meeste cronjobs zijn er drie componenten aanwezig:
 # │ │ │ │ │                                   7 is also Sunday on some systems)
 # │ │ │ │ │                                   OR sun, mon, tue, wed, thu, fri, sat
 # │ │ │ │ │
-# * * * * *
+# * * * * * <command_here>
 ```
 
 ## Opdracht
@@ -57,16 +57,30 @@ Met `date` haal ik de datum en tijd op.
 ![script in crontab](images/10_cron-jobs2-1.png)<br><br>  
 ![execute script](images/10_cron-jobs2-2.png)<br><br>
 
-3. Script in crontab dat wekelijks de beschikbare disk space schrijft naar een bestand in /var/logs.   
-Met `@weekly` wordt de script elke zondag om 12:00 AM ge-execute.  
+3. Script dat de beschikbare disk space schrijft naar een bestand in /var/logs.  
+
+```
+#!/bin/bash
+
+/usr/bin/df -H |/usr/bin/sudo /usr/bin/tee /var/logs/available_space.txt > /dev/null
+```
 Met `df -H` wordt de beschikbare ruimte opgevraagd.  
 Met `tee` schrijf ik de output van `df -H` naar `/var/logs/available_space.txt`.  
 Met `> /dev/null` voorkom ik dat de output ook wordt geschreven naar de terminal.
 
+![execute script](images/10_cron-jobs3-1.png)<br><br>  
+
+Het available_space.sh bestand maak ik executable met de commando:
+```
+chmod 774 available-space.sh
+```
+![execute script](images/10_cron-jobs3-2.png)<br><br>  
+
+Crontab commando om de script wekelijks te execute-en.
 ```
 # m h  dom mon dow   command
-@weekly /usr/bin/df -H |/usr/bin/sudo /usr/bin/tee /var/logs/available_space.txt > /dev/null
+@weekly ~/scripts/available_space.sh
 ```
-
-![execute script](images/10_cron-jobs3-1.png)<br><br>  
-![execute script](images/10_cron-jobs3-2.png)<br><br>
+Met `@weekly` wordt de script elke zondag om 12:00 AM ge-execute.
+ 
+![execute script](images/10_cron-jobs3-3.png)<br><br>
