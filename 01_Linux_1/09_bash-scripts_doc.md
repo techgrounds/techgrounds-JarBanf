@@ -81,3 +81,5 @@ fi
 <img alt="test" width="" src="images/09-3_bash-scripts6-2.png"/><br><br>
 <img width="" alt="check status telnet" src="images/09-3_bash-scripts6-2.png?raw=true">
 <img width="" alt="check status telnet" src="images/09-3_bash-scripts6-2.png">
+<img width="" alt="check status telnet" src="https://github.com/techgrounds/techgrounds-JarBanf/blob/main/01_Linux_1/images/09-3_bash-scripts6-2.png?raw=true">
+<br/><br/>
