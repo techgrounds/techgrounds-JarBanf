@@ -30,7 +30,9 @@ Als we bijvoorbeeld Hallo, wereld! in Bash willen printen kan het commando `echo
 
 ### Resultaat
 1. Met de export commando kan ik een nieuwe directory toevoegen in de PATH variable. Met deze commando voeg ik **tijdelijk** een nieuwe directory toe. Zodra ik een nieuwe shell open, ben ik deze toevoeging kwijt en moet ik het opnieuw doen.<br> 
-`export PATH=$PATH:/home/jared_/scripts`
+```
+export PATH=$PATH:/home/jared_/scripts
+```
 
 ![Directory toevoegen in PATH](images/09-1_bash-scripts1.png)<br><br>
 
@@ -46,7 +48,7 @@ echo "Wanneer addline.sh word ge-execute, wordt dit lijn aangemaakt in dit besta
 ![execute addline.sh](images/09-1_bash-scripts3.png)<br><br>
 
 4. In de script directory heb ik een `setuphttpd.sh` bestand gemaakt. Hierin heb ik de commando's gezet die nodig zijn om Apache web server te installeren, activeren, enable-en en de status ervan uit te printen in de terminal.<br> 
-`sudo apt install -y apache2` -> installeert, activeert en enabled de Apache web server. De `-y` zorgt ervoor dat er autmatisch "yes" wordt beantwoord op de vragen.<br> 
+`sudo apt install -y apache2` -> installeert, activeert en enabled de Apache web server. De `-y` zorgt ervoor dat er automatisch "yes" wordt beantwoord op de vragen.<br> 
 `sudo systemctl status apache2` -> geeft de status van Apache web server aan in de terminal.
 
 ![setuphttpd.sh maken](images/09-1_bash-scripts4-1.png)<br><br>
