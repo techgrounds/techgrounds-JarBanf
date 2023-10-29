@@ -48,7 +48,7 @@ Met `date` haal ik de datum en tijd op.
 ![datetime.sh maken](images/10_cron-jobs1-1.png)<br><br>  
 ![execute datetime.sh](images/10_cron-jobs1-2.png)<br><br>
 
-2. Script in crontab zodat het elke minuut ge-execute wordt.
+2. Script in crontab zodat het elke minuut ge-execute wordt. Met de commando `crontad -e` bewerk ik de crontab bestand.
 ```
 # m h  dom mon dow   command
 * * * * * /usr/bin/date >> ~/datetime.txt
