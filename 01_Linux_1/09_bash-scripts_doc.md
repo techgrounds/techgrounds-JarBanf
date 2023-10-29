@@ -17,6 +17,7 @@ Als we bijvoorbeeld Hallo, wereld! in Bash willen printen kan het commando `echo
 - [How To Install the Apache Web Server on Ubuntu 20.04](https://www.digitalocean.com/community/tutorials/how-to-install-the-apache-web-server-on-ubuntu-20-04)
 - [Bash in 100 Seconds](https://www.youtube.com/watch?v=I4EWvMFj37g)
 - [Generation of Random Integers in a Range in Bash](https://www.baeldung.com/linux/bash-draw-random-ints)
+- [Bash if..else Statement](https://linuxize.com/post/bash-if-else-statement/)
 
 ### Ervaren problemen
 - Hoe voeg ik een nieuwe directory aan de PATH variable?
@@ -24,7 +25,8 @@ Als we bijvoorbeeld Hallo, wereld! in Bash willen printen kan het commando `echo
 - Welke script heb ik nodig om een lijn van tekst toe te voegen aan een bestand wanneer de script wordt ge-execute?
 - Wat zijn de commando's om de httpd package te installeren, activeren, enable-en en de status van op te vragen?
 - Hoe werk ik met variabelen in ene shell script?
-- Hoe genereer ik een random number in shell script?
+- Hoe genereer ik een random number in bash?
+- Hoe schrijf ik if-else statements in bash?
 
 ### Resultaat
 1. Met de export commando kan ik een nieuwe directory toevoegen in de PATH variable. Met deze commando voeg ik **tijdelijk** een nieuwe directory toe. Zodra ik een nieuwe shell open, ben ik deze toevoeging kwijt en moet ik het opnieuw doen.<br> 
@@ -49,7 +51,30 @@ Als we bijvoorbeeld Hallo, wereld! in Bash willen printen kan het commando `echo
 ![execute setuphttpd.sh](images/09-1_bash-scripts4-2.png)
 ![execute setuphttpd.sh](images/09-1_bash-scripts4-3.png)<br><br>
 
-5. 
+5. Script om een random number te genereren tussen 1 en 10. En deze in een tekstbestand te plaatsten.
+
+```
+#!/bin/bash
+X=$(shuf -i 1-10 -n 1)
+echo $X >> randomnumber.txt
+```
 
 ![randomnumber.sh maken](images/09-2_bash-scripts5-1.png)<br><br>
 ![execute randomnumber.sh](images/09-2_bash-scripts5-2.png)<br><br>
+
+6. 
+```
+#!/bin/bash
+
+VAR=$(shuf -i 1-10 -n 1)
+
+if [[ $VAR -gt 5 ]]
+then
+  echo $VAR >> randomnumber2.txt
+else
+  echo "the number is 5 or smaller." >> randomnumber2.txt
+fi
+```
+
+![randomnumber2.sh maken](images/09-3_bash-scripts6-1.png)<br><br>
+![execute randomnumber2.sh](images/09-3_bash-scripts6-2.png)<br><br>
