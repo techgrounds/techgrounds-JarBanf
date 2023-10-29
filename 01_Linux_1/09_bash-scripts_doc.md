@@ -78,4 +78,5 @@ fi
 
 ![randomnumber2.sh maken](images/09-3_bash-scripts6-1.png)<br><br>
 ![execute randomnumber2.sh](images/09-3_bash-scripts6-2.png)<br><br>
-<img alt="test" width="" src="images/09-3_bash-scripts6-2.png"/>
+<img alt="test" width="" src="images/09-3_bash-scripts6-2.png"/><br><br>
+<img width="" alt="check status telnet" src="images/09-3_bash-scripts6-2.png?raw=true">
