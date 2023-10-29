@@ -83,3 +83,5 @@ fi
 <img width="" alt="check status telnet" src="images/09-3_bash-scripts6-2.png">
 <img width="" alt="check status telnet" src="https://github.com/techgrounds/techgrounds-JarBanf/blob/main/01_Linux_1/images/09-3_bash-scripts6-2.png?raw=true">
 <br/><br/>
+<img width="" alt="check status telnet" src="https://github.com/techgrounds/techgrounds-JarBanf/blob/main/00_includes/01_Linux/w1_8_processes3.png?raw=true">
+<br/><br/>
