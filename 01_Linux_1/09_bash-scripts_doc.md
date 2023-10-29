@@ -62,7 +62,7 @@ echo $X >> randomnumber.txt
 ![randomnumber.sh maken](images/09-2_bash-scripts5-1.png)<br><br>
 ![execute randomnumber.sh](images/09-2_bash-scripts5-2.png)<br><br>
 
-6. 
+6. Script om een random number te genereren tussen 1 en 10. Als het getal groter is dan 5, moet dat getal geschreven worden naar een tekstbestand. Als het getal kleiner of gelijk is aan 5, moet een stuk tekst geschreven worden naar de tekstbestand.
 ```
 #!/bin/bash
 
