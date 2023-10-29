@@ -77,11 +77,4 @@ fi
 ```
 
 ![randomnumber2.sh maken](images/09-3_bash-scripts6-1.png)<br><br>
-1. ![execute randomnumber2.sh](images/09-3_bash-scripts6-2.png)<br><br>
-2. <img alt="test" width="" src="images/09-3_bash-scripts6-2.png"/><br><br>
-3. <img width=" " alt="check status telnet" src="images/test.png?raw=true">
-4. <img width="" alt="check status telnet" src="images/09-3_bash-scripts6-2.png">
-5. <img width="" alt="check status telnet" src="https://github.com/techgrounds/techgrounds-JarBanf/blob/main/01_Linux_1/images/09-3_bash-scripts6-2.png?raw=true">
-<br/><br/>
-6. <img width="" alt="check status telnet" src="https://github.com/techgrounds/techgrounds-JarBanf/blob/main/00_includes/01_Linux/w1_8_processes3.png?raw=true">
-<br/><br/>
+![execute randomnumber2.sh](images/09-3_bash-scripts6-2.png)<br><br>
