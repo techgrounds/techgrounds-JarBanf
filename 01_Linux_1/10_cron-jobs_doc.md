@@ -1,12 +1,33 @@
 # Cron Jobs
-[Geef een korte beschrijving van het onderwerp]
+Een cronjob is een Linux-opdracht die wordt gebruikt voor het plannen van taken die ergens in de toekomst moeten worden uitgevoerd. Dit wordt normaal gesproken gebruikt om een ​​taak te plannen die periodiek wordt uitgevoerd, bijvoorbeeld om elke ochtend een kennisgeving te verzenden.
+
+Voor de meeste cronjobs zijn er drie componenten aanwezig:
+
+1. Het script dat moet worden aangeroepen of uitgevoerd.
+2. De opdracht die het script herhaaldelijk uitvoert.
+3. De actie of uitvoer van het script, die afhangt van wat het aangeroepen script doet. Vaak wijzigen scripts die cronjobs worden genoemd bestanden of databases. Ze kunnen echter ook andere taken uitvoeren waarbij de gegevens op de server niet worden gewijzigd, zoals het verzenden van e-mailmeldingen.
 
 ## Key-terms
-[Schrijf hier een lijst met belangrijke termen met eventueel een korte uitleg.]
+- **Crontab**: staat voor cron table en is een configuratiebestand dat een overzicht van cronjobs bevat. Voor het uitvoeren van die cronjobs gebruikt crontab cron. 
+```
+# ┌───────────── minute (0 - 59)
+# │ ┌───────────── hour (0 - 23)
+# │ │ ┌───────────── day of the month (1 - 31)
+# │ │ │ ┌───────────── month (1 - 12)
+# │ │ │ │ ┌───────────── day of the week (0 - 6) (Sunday to Saturday;
+# │ │ │ │ │                                   7 is also Sunday on some systems)
+# │ │ │ │ │                                   OR sun, mon, tue, wed, thu, fri, sat
+# │ │ │ │ │
+# * * * * *
+```
 
 ## Opdracht
 ### Gebruikte bronnen
+- [What is Cron Job?](https://www.hivelocity.net/kb/what-is-cron-job/)
+- [CronJob](https://kubernetes.io/docs/concepts/workloads/controllers/cron-jobs/)
+- [What Is a Cron Job: Understanding Cron Syntax and How to Configure Cron Jobs](https://www.hostinger.com/tutorials/cron-job)
 - [Cron Jobs For Beginners | Linux Task Scheduling](https://www.youtube.com/watch?v=v952m13p-b4)
+- [Crontab Guru](https://crontab.guru/)
 - [How to Run a Crontab Job Every Week on Sunday](https://www.geeksforgeeks.org/how-to-run-a-crontab-job-every-week-on-sunday/)
 - [Classic SysAdmin: How to Check Disk Space on Linux from the Command Line](https://www.linuxfoundation.org/blog/blog/classic-sysadmin-how-to-check-disk-space-on-linux-from-the-command-line)
 - [sudo echo "something" >> /etc/privilegedFile doesn't work](https://stackoverflow.com/questions/84882/sudo-echo-something-etc-privilegedfile-doesnt-work)
