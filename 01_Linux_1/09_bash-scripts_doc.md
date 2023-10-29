@@ -35,7 +35,9 @@ Als we bijvoorbeeld Hallo, wereld! in Bash willen printen kan het commando `echo
 ![Directory toevoegen in PATH](images/09-1_bash-scripts1.png)<br><br>
 
 2. In de scripts directory heb ik een `addline.sh` bestand gemaakt. Hierin staat een commando dat een lijn toevoegd in `addline.txt`.<br> 
-`echo "Wanneer addline.sh word ge-execute, wordt dit lijn aangemaakt in dit bestand" >> addline.txt`
+```
+echo "Wanneer addline.sh word ge-execute, wordt dit lijn aangemaakt in dit bestand" >> addline.txt
+```
 
 ![addline.sh maken](images/09-1_bash-scripts2.png)<br><br>
 
