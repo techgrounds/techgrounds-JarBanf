@@ -37,7 +37,7 @@ TCP en IP zijn verschillende protocollen van computernetwerken. Het fundamentele
 
 ![verchil TCP/IP en OSI model](/02_Networking/images/01_osi-stack2-1.png)<br>
 
-<ins>Hoe werkt het TCP/IP-model?</ins> 
+<ins>Hoe werkt het TCP/IP-model?</ins>  
 Wanneer we iets via internet willen verzenden met behulp van het TCP/IP-model, verdeelt het TCP/IP-model de gegevens in pakketten aan de kant van de afzender en moeten dezelfde pakketten aan de kant van de ontvanger opnieuw worden gecombineerd om dezelfde gegevens te vormen. Dit zorgt ook ervoor dat de nauwkeurigheid van de gegevens behouden blijft. Het TCP/IP-model verdeelt de gegevens in een procedure met vier lagen, waarbij de gegevens eerst in één volgorde naar deze laag gaan en vervolgens weer in omgekeerde volgorde om op dezelfde manier te worden georganiseerd aan de kant van de ontvanger.
 
 <ins>Lagen van het TCP/IP-model</ins>  
