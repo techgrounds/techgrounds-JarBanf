@@ -5,7 +5,7 @@
 **OSI model en zijn functies**  
 OSI staat voor Open Systems Interconnection. Het is een architectuur met zeven lagen, waarbij elke laag een specifieke functionaliteit moet vervullen. Al deze zeven lagen werken samen om de gegevens van de ene persoon naar de andere over de hele wereld te verzenden.
 
-<u>Wat is het OSI-model?</u>  
+<ins>Wat is het OSI-model?</ins>  
 Het OSI-model, gecreëerd in 1984 door ISO, is een referentiekader dat het proces van gegevensoverdracht tussen computers uitlegt. Het is verdeeld in zeven lagen die samenwerken om gespecialiseerde netwerkfuncties uit te voeren, waardoor een meer systematische benadering van netwerken mogelijk is.
 
 ![OSI model](/02_Networking/images/01_osi-stack1-1.png)<br>
