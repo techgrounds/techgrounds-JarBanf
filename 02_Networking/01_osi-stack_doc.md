@@ -51,11 +51,10 @@ De schematische vergelijking van het TCP/IP- en OSI-model is als volgt:
 
 ![vergelijking TCP/IP](/02_Networking/images/01_osi-stack2-2.png)<br>
 
-
-
+<u>Meer informatie over de layers en wat hun functies zijn, lees je [hier](https://www.geeksforgeeks.org/tcp-ip-model/).</u><br><br>
 
 ## Key-terms
-[Schrijf hier een lijst met belangrijke termen met eventueel een korte uitleg.]
+
 
 ## Opdracht
 ### Gebruikte bronnen
@@ -63,7 +62,7 @@ De schematische vergelijking van het TCP/IP- en OSI-model is als volgt:
 - [TCP/IP Model](https://www.geeksforgeeks.org/tcp-ip-model/)
 
 ### Ervaren problemen
-[Geef een korte beschrijving van de problemen waar je tegenaan bent gelopen met je gevonden oplossing.]
+
 
 ### Resultaat
-[Omschrijf hoe je weet dat je opdracht gelukt is (gebruik screenshots waar nodig).]
+
