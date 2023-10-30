@@ -43,10 +43,10 @@ Er zijn verschillende soorten netwerkapparaten die in een computernetwerk worden
 3. **Waar staat je DHCP server op jouw netwerk? Wat zijn de configuraties hiervan?**
 
 DHCP zit in mijn router. De configuraties zijn:
-- LAN IP Address:         192.168.1.1
-- Subnet Mask:            255.255.255.0
-- Beginning IP Address:   192.168.1.2
-- Ending IP Address:      192.168.1.252
+- LAN IP Address: 192.168.1.1
+- Subnet Mask: 255.255.255.0
+- Beginning IP Address: 192.168.1.2
+- Ending IP Address: 192.168.1.252
 - DHCP Server Lease Time: 1 dag
 
 ![DHCP samenvatting](/02_Networking/images/02_networking-devices3-1.png)<br>
