@@ -13,6 +13,7 @@
 
 ### Resultaat
 1. Translate the following decimal numbers into binary:  
+
 | Decimal | Binary    |   |   |   |
 |---------|-----------|---|---|---|
 | 16      | 10000     |   |   |   |
