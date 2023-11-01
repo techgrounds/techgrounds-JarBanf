@@ -12,4 +12,9 @@
 [Geef een korte beschrijving van de problemen waar je tegenaan bent gelopen met je gevonden oplossing.]
 
 ### Resultaat
-[Omschrijf hoe je weet dat je opdracht gelukt is (gebruik screenshots waar nodig).]
+1. Translate the following decimal numbers into binary:  
+| Decimal | Binary    |   |   |   |
+|---------|-----------|---|---|---|
+| 16      | 10000     |   |   |   |
+| 128     | 10000000  |   |   |   |
+| 228     | 111001100 |   |   |   |
