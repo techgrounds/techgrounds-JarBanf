@@ -14,13 +14,13 @@
 ### Resultaat
 1. Translate the following decimal numbers into binary:  
 
-| Decimal | Binary    
-|---------|-----------
-| 16      | 00010000     
-| 128     | 10000000
-| 228     | 11100100
-| 112     | 01110000
-| 73      | 01001001
+| Decimal | Binary    |
+|---------|-----------|
+| 16      | 00010000  |  
+| 128     | 10000000  |
+| 228     | 11100100  |
+| 112     | 01110000  |
+| 73      | 01001001  |
 
 2. Translate the following binary numbers into decimal:
 
