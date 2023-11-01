@@ -6,17 +6,16 @@
 
 ## Opdracht
 ### Gebruikte bronnen
-[Plaats hier de bronnen die je hebt gebruikt.]
+[Introduction to Binary](https://www.cmu.edu/gelfand/lgc-educational-media/digital-education-modules/dem-documents/new-the-world-of-the-internet-handouts.pdf)
 
 ### Ervaren problemen
-[Geef een korte beschrijving van de problemen waar je tegenaan bent gelopen met je gevonden oplossing.]
 
 ### Resultaat
 1. Translate the following decimal numbers into binary:  
 
 | Decimal | Binary    |
 |---------|-----------|
-| 16      | 00010000  |  
+| 16      | 00010000  |
 | 128     | 10000000  |
 | 228     | 11100100  |
 | 112     | 01110000  |
@@ -31,3 +30,13 @@
 | 1101 1011 | 219     |
 | 1010 0000 | 160     |
 | 0011 1010 | 58      |
+
+3. Translate the following decimal numbers into hexadecimal:
+
+| Decimal | Hex |
+|---------|-----|
+| 15      | 0F  |
+| 37      | 25  |
+| 246     | F6  |
+| 125     | 7D  |
+| 209     | D1  |
