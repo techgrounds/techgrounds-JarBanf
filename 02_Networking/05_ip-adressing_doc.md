@@ -2,7 +2,7 @@
 **IP address**:  
 The internet needs a way to differentiate between different computers, routers, and websites. An IP (Internet Protocol) address is a unique address that identifies a device on the internet or a local network.
 
-**Two versions of IP addresses**
+**Two versions of IP addresses**  
 - IPv4
 - IPv6
 
@@ -36,6 +36,9 @@ Dynamic IP addresses change automatically and regularly. ISPs buy a large pool o
 <ins>Static IP addresses</ins>  
 In contrast to dynamic IP addresses, static addresses remain consistent. Once the network assigns an IP address, it remains the same. Most individuals and businesses do not need a static IP address, but for businesses that plan to host their own server, it is crucial to have one. This is because a static IP address ensures that websites and email addresses tied to it will have a consistent IP address. Vital if you want other devices to be able to find them consistently on the web.
 
+**NAT**  
+NAT stands for network address translation. The idea of NAT is to allow multiple devices to access the Internet through a single public address. To achieve this, the translation of a private IP address to a public IP address is required. NAT is a process in which one or more local IP address is translated into one or more Global IP address and vice versa in order to provide Internet access to the local hosts. Also, it does the translation of port numbers. It masks the port number of the host with another port number, in the packet that will be routed to the destination. It then makes the corresponding entries of IP address and port number in the NAT table. NAT generally operates on a router or firewall. 
+
 ## Key-terms
 
 
@@ -43,10 +46,21 @@ In contrast to dynamic IP addresses, static addresses remain consistent. Once th
 ### Gebruikte bronnen
 - [What is an IP Address – Definition and Explanation](https://www.kaspersky.com/resource-center/definitions/what-is-an-ip-address)
 - [IPv4 vs IPv6: What’s The Difference Between the Two Protocols?](https://kinsta.com/blog/ipv4-vs-ipv6/)
+- [Network Address Translation (NAT)](https://www.geeksforgeeks.org/network-address-translation-nat/)
 
 
 ### Ervaren problemen
-[Geef een korte beschrijving van de problemen waar je tegenaan bent gelopen met je gevonden oplossing.]
+Geen
 
 ### Resultaat
-[Omschrijf hoe je weet dat je opdracht gelukt is (gebruik screenshots waar nodig).]
+1. **Ontdek wat je publieke IP adres is van je laptop en mobiel op wifi. Zijn de adressen hetzelfde of niet? Leg uit waarom.**  
+De publieke IP adres van mijn laptop en mobiele telefoon zijn hetzelfde. Mijn laptop en mobiele zijn verbonden met de router via een privé/lokaal netwerk. De router op zijn beurt zet ons privé IP adressen om in één publieke IP adres. Dit adres wordt bepaald en aan ons gegeven door ons ISP.
+
+2. **Ontdek wat je privé IP adres is van je laptop en mobiel op wifi. Zijn de adressen hetzelfde of niet? Leg uit waarom.**  
+De privé IP adres van mijn laptop en mobiele telefoon zijn verschillend. Deze apparaten zijn onderdeel van mijn privé netwerk. Elke apparaat heeft een unieke IP adres zodat ze binnen deze privé netwerk elkaar kunnen identificeren en met elkaar communiceren.
+
+3. **Verander het privé IP adres van je mobiel naar dat van je laptop. Wat gebeurt er dan?**  
+Mijn verbinding verbreekt.
+
+4. **Probeer het privé IP adres van je mobiel te veranderen naar een adres buiten je netwerk. Wat gebeurt er dan?**  
+Mijn verbinding verbreekt.
