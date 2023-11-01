@@ -2,16 +2,18 @@
 **IP address**:  
 The internet needs a way to differentiate between different computers, routers, and websites. An IP (Internet Protocol) address is a unique address that identifies a device on the internet or a local network.
 
-**Two versions of IP**
+**Two versions of IP addresses**
 - IPv4
 - IPv6
 
 <ins>IPv4</ins>  
-IPv4 is actually the first version of IP to be used. It uses a 32-bit address that consist of a string of numbers separated by periods. This 32-bit address space provides almost 4.3 billion unique addresses, though some IP blocks are reserved for special uses. IPv4 addresses are expressed as a set of four numbers. Each number in the set can range from 0 to 255. So, the full IPv4 addressing range goes from 0.0.0.0 to 255.255.255.255.  
+IPv4 is actually the first version of IP to be used. It uses a 32-bit address that consist of a string of numbers separated by periods. This 32-bit address space provides almost 4.3 billion unique addresses, though some IP blocks are reserved for special uses.  
+IPv4 addresses are expressed as a set of four numbers. Each number in the set can range from 0 to 255. So, the full IPv4 addressing range goes from 0.0.0.0 to 255.255.255.255.  
 For example: 192.168.10.150
 
 <ins>IPv6</ins>  
-The IPv6 is a newer version of IP that uses a 128-bit address format that consist of a string of both numbers and letters seperated by periods. IPv6 addresses are expresses as a set of 8 hexadecimal values. Each hexadecimal value in the set can range from 0000 to FFFF. So the full IPv6 adressing range goes from 0000.0000.0000.0000.0000.0000.0000.0000 to FFFF:FFFF:FFFF:FFFF:FFFF:FFFF:FFFF:FFFF.  
+The IPv6 is a newer version of IP that uses a 128-bit address format that consist of a string of both numbers and letters seperated by periods. IPv6 supports 1,028 times more IP addresses than IPv4.  
+IPv6 addresses are expresses as a set of 8 hexadecimal values. Each hexadecimal value in the set can range from 0000 to FFFF. So the full IPv6 adressing range goes from 0000.0000.0000.0000.0000.0000.0000.0000 to FFFF:FFFF:FFFF:FFFF:FFFF:FFFF:FFFF:FFFF.  
 For example: 3002:0bd6:0000:0000:0000:ee00:0033:6778
 
 **Types of IP addresses**
@@ -40,6 +42,7 @@ In contrast to dynamic IP addresses, static addresses remain consistent. Once th
 ## Opdracht
 ### Gebruikte bronnen
 - [What is an IP Address – Definition and Explanation](https://www.kaspersky.com/resource-center/definitions/what-is-an-ip-address)
+- [IPv4 vs IPv6: What’s The Difference Between the Two Protocols?](https://kinsta.com/blog/ipv4-vs-ipv6/)
 
 
 ### Ervaren problemen
