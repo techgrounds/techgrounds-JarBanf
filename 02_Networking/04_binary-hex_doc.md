@@ -14,8 +14,8 @@
 ### Resultaat
 1. Translate the following decimal numbers into binary:  
 
-| Decimal | Binary    |   |   |   |
-|---------|-----------|---|---|---|
-| 16      | 10000     |   |   |   |
-| 128     | 10000000  |   |   |   |
-| 228     | 111001100 |   |   |   |
+| Decimal | Binary    
+|---------|-----------
+| 16      | 10000     
+| 128     | 10000000
+| 228     | 111001100
