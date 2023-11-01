@@ -10,8 +10,8 @@ Hexadecimal, also known as hex or base 16, is a system we can use to write and s
 Hex, like decimal, combines a set of digits to create large numbers. Hex uses the standard 0-9, but it also incorporates six digits you wouldn't usually expect to see creating numbers: A, B, C, D, E, and F.
 
 ## Key-terms
-- **Binary**: is a base-2 number that's made up of only two numbers or digits: 0 (zero) and 1 (one).
-- **Hex**: is a base-16 number that's made up of 16 digits. 0 (zer0), 1 (one), 2 (two), 3 (three), 4 (four), 5 (five), 6 (six), 7 (seven), 8 (eight), 9 (nine), A (ten), B (eleven), C (twelve), D (thirteen), E (fourteen), and F (fifteen).
+- **Binary**: is a base-2 system that's made up of only two numbers or digits: 0 (zero) and 1 (one).
+- **Hex**: is a base-16 system that's made up of 16 digits. 0 (zer0), 1 (one), 2 (two), 3 (three), 4 (four), 5 (five), 6 (six), 7 (seven), 8 (eight), 9 (nine), A (ten), B (eleven), C (twelve), D (thirteen), E (fourteen), and F (fifteen).
 
 ## Opdracht
 ### Gebruikte bronnen
