@@ -24,4 +24,8 @@ Hieronder zie je een visualisatie van mijn netwerkarchitectuur.
 - De private subnet 10.0.0.16 heeft internet toegang via een router met NAT-functionaliteit. Eis is minimaal 30 hosts. Met ruimte voor groei kan deze subnet max 62 hosts hebben.  
 - De public subnet 10.0.0.0 heeft internet toegang via een netwerk gateway. Eis is minimaal 5 hosts. Met ruimte voor groei kan deze subnet max 14 hosts hebben.
 
-![netwerkarchitectuur](/02_Networking/images/06_subnetting1.png)<br><br>
+![netwerkarchitectuur](/02_Networking/images/06_subnetting1-1.png)<br><br>
+
+Hieronder is te zien welk deel ik van 10.0.0.24 heb gebruikt, en welk deel nog beschikbaar is.
+
+![netwerkarchitectuur](/02_Networking/images/06_subnetting1-2.png)<br><br>
