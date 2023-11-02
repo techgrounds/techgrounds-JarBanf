@@ -20,8 +20,8 @@ Geen
 - **1 subnet met een network gateway naar het internet. Dit subnet moet minimaal 5 hosts kunnen plaatsen (de 5 hosts is exclusief de internet gateway).**
 
 Hieronder zie je een visualisatie van mijn netwerkarchitectuur.  
-De private subnet 10.0.0.80 is alleen bereikbaar van binnen het LAN. Eis is minimaal 15 hosts. Met ruimte voor groei kan deze subnet max 30 hosts hebben.  
-De private subnet 10.0.0.16 heeft internet toegang via een router met NAT-functionaliteit. Eis is minimaal 30 hosts. Met ruimte voor groei kan deze subnet max 62 hosts hebben.  
-De public subnet 10.0.0.0 heeft internet toegang via een netwerk gateway. Eis is minimaal 5 hosts. Met ruimte voor groei kan deze subnet max 14 hosts hebben.
+- De private subnet 10.0.0.80 is alleen bereikbaar van binnen het LAN. Eis is minimaal 15 hosts. Met ruimte voor groei kan deze subnet max 30 hosts hebben.  
+- De private subnet 10.0.0.16 heeft internet toegang via een router met NAT-functionaliteit. Eis is minimaal 30 hosts. Met ruimte voor groei kan deze subnet max 62 hosts hebben.  
+- De public subnet 10.0.0.0 heeft internet toegang via een netwerk gateway. Eis is minimaal 5 hosts. Met ruimte voor groei kan deze subnet max 14 hosts hebben.
 
 ![netwerkarchitectuur](/02_Networking/images/06_subnetting1.png)<br><br>
