@@ -11,7 +11,7 @@
 - [IP Subnet Calculator](https://www.calculator.net/ip-subnet-calculator.html)
 
 ### Ervaren problemen
-Geen
+- Niet per se een probleem. Maar ik had moeite met visualiseren van de architectuur en of het echt klopt met real world situaties. Uiteindelijk gaat het om het kunnen subnetten en de juiste subnet hanteren.
 
 ### Resultaat
 1. **Maak een netwerkarchitectuur die voldoet aan de volgende eisen:**
