@@ -26,6 +26,6 @@ Hieronder zie je een visualisatie van mijn netwerkarchitectuur.
 
 ![netwerkarchitectuur](/02_Networking/images/06_subnetting1-1.png)<br><br>
 
-Hieronder is te zien welk deel ik van 10.0.0.24 heb gebruikt, en welk deel nog beschikbaar is.
+Hieronder is te zien welk deel ik van 10.0.0.0 / 24 heb gebruikt, en welk deel nog beschikbaar is.
 
 ![netwerkarchitectuur](/02_Networking/images/06_subnetting1-2.png)<br><br>
