@@ -13,7 +13,7 @@ The office contains the following devices:
 
 ## Opdracht
 ### Gebruikte bronnen
-[Beer:30 - Network Architecture Review](https://www.youtube.com/watch?v=oopkClg1kxM)
+- [Beer:30 - Network Architecture Review](https://www.youtube.com/watch?v=oopkClg1kxM)
 
 ### Ervaren problemen
 
