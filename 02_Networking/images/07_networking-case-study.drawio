@@ -1,0 +1,322 @@
+<mxfile host="app.diagrams.net" modified="2023-11-04T15:56:47.257Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10.14; rv:109.0) Gecko/20100101 Firefox/115.0" etag="p8zn8yb3VApj3Sjs-Qmo" version="22.0.8" type="device">
+  <diagram name="Page-1" id="p9KwmgImsCznRqhp9Kt2">
+    <mxGraphModel dx="624" dy="491" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="Rzg_405HYLnvNSK_LGgp-108" value="Private subnet - alleen binnen LAN bereikbaar." style="points=[[0,0],[0.25,0],[0.5,0],[0.75,0],[1,0],[1,0.25],[1,0.5],[1,0.75],[1,1],[0.75,1],[0.5,1],[0.25,1],[0,1],[0,0.75],[0,0.5],[0,0.25]];outlineConnect=0;gradientColor=none;html=1;whiteSpace=wrap;fontSize=14;fontStyle=1;container=0;pointerEvents=0;collapsible=0;recursiveResize=0;shape=mxgraph.aws4.group;grIcon=mxgraph.aws4.group_security_group;grStroke=0;strokeColor=#147EBA;fillColor=#E6F2F8;verticalAlign=top;align=left;spacingLeft=30;fontColor=#147EBA;dashed=0;" vertex="1" parent="1">
+          <mxGeometry x="40" y="378" width="360" height="323" as="geometry" />
+        </mxCell>
+        <mxCell id="Rzg_405HYLnvNSK_LGgp-117" value="&lt;div&gt;Private subnet - toegang tot het internet,&lt;/div&gt;&lt;div&gt;maar niet vanuit het internet.&lt;br&gt;&lt;/div&gt;" style="points=[[0,0],[0.25,0],[0.5,0],[0.75,0],[1,0],[1,0.25],[1,0.5],[1,0.75],[1,1],[0.75,1],[0.5,1],[0.25,1],[0,1],[0,0.75],[0,0.5],[0,0.25]];outlineConnect=0;gradientColor=none;html=1;whiteSpace=wrap;fontSize=14;fontStyle=1;container=0;pointerEvents=0;collapsible=0;recursiveResize=0;shape=mxgraph.aws4.group;grIcon=mxgraph.aws4.group_security_group;grStroke=0;strokeColor=#147EBA;fillColor=#E6F2F8;verticalAlign=top;align=left;spacingLeft=30;fontColor=#147EBA;dashed=0;" vertex="1" parent="1">
+          <mxGeometry x="228" y="739" width="550" height="370" as="geometry" />
+        </mxCell>
+        <mxCell id="Rzg_405HYLnvNSK_LGgp-77" style="orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;endFill=0;" edge="1" parent="1" source="Rzg_405HYLnvNSK_LGgp-60" target="Rzg_405HYLnvNSK_LGgp-7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Rzg_405HYLnvNSK_LGgp-78" style="orthogonalLoop=1;jettySize=auto;html=1;exitX=0.033;exitY=0.967;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;endArrow=none;endFill=0;exitPerimeter=0;" edge="1" parent="1" source="Rzg_405HYLnvNSK_LGgp-61" target="Rzg_405HYLnvNSK_LGgp-25">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Rzg_405HYLnvNSK_LGgp-79" style="orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;endArrow=none;endFill=0;rounded=1;" edge="1" parent="1" source="Rzg_405HYLnvNSK_LGgp-60" target="Rzg_405HYLnvNSK_LGgp-36">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Rzg_405HYLnvNSK_LGgp-81" value="" style="orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;endFill=0;exitX=0.583;exitY=1.067;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="Rzg_405HYLnvNSK_LGgp-61" target="Rzg_405HYLnvNSK_LGgp-28">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="485" y="909" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Rzg_405HYLnvNSK_LGgp-82" style="orthogonalLoop=1;jettySize=auto;html=1;entryX=0.25;entryY=0;entryDx=0;entryDy=0;endArrow=none;endFill=0;exitX=1;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="Rzg_405HYLnvNSK_LGgp-60" target="Rzg_405HYLnvNSK_LGgp-31">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Rzg_405HYLnvNSK_LGgp-64" value="" style="group" vertex="1" connectable="0" parent="1">
+          <mxGeometry x="40" y="40" width="80" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="Rzg_405HYLnvNSK_LGgp-62" value="" style="image;aspect=fixed;perimeter=ellipsePerimeter;html=1;align=center;shadow=0;dashed=0;spacingTop=3;image=img/lib/active_directory/internet_globe.svg;" vertex="1" parent="Rzg_405HYLnvNSK_LGgp-64">
+          <mxGeometry width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="Rzg_405HYLnvNSK_LGgp-63" value="Internet" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="Rzg_405HYLnvNSK_LGgp-64">
+          <mxGeometry x="10" y="80" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Rzg_405HYLnvNSK_LGgp-71" style="orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;endArrow=none;endFill=0;startArrow=none;startFill=0;" edge="1" parent="1" source="Rzg_405HYLnvNSK_LGgp-67" target="Rzg_405HYLnvNSK_LGgp-69">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Rzg_405HYLnvNSK_LGgp-83" style="orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;endFill=0;exitX=0.54;exitY=1.067;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="Rzg_405HYLnvNSK_LGgp-68" target="Rzg_405HYLnvNSK_LGgp-60">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Rzg_405HYLnvNSK_LGgp-80" style="orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.75;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;endArrow=none;endFill=0;" edge="1" parent="1" source="Rzg_405HYLnvNSK_LGgp-60" target="Rzg_405HYLnvNSK_LGgp-34">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="635" y="919" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Rzg_405HYLnvNSK_LGgp-87" value="" style="group" vertex="1" connectable="0" parent="1">
+          <mxGeometry x="297" y="40" width="110" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="Rzg_405HYLnvNSK_LGgp-84" value="" style="image;html=1;image=img/lib/clip_art/networking/Modem_128x128.png" vertex="1" parent="Rzg_405HYLnvNSK_LGgp-87">
+          <mxGeometry x="5" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="Rzg_405HYLnvNSK_LGgp-86" value="&lt;div&gt;ISP Modem &amp;amp; &lt;br&gt;&lt;/div&gt;&lt;div&gt;Router&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="Rzg_405HYLnvNSK_LGgp-87">
+          <mxGeometry x="5" y="80" width="100" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="Rzg_405HYLnvNSK_LGgp-88" style="orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;endFill=0;" edge="1" parent="1" source="Rzg_405HYLnvNSK_LGgp-62" target="Rzg_405HYLnvNSK_LGgp-84">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Rzg_405HYLnvNSK_LGgp-89" style="orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;endArrow=none;endFill=0;exitX=0.42;exitY=1.05;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="Rzg_405HYLnvNSK_LGgp-86" target="Rzg_405HYLnvNSK_LGgp-65">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Rzg_405HYLnvNSK_LGgp-92" value="" style="group" vertex="1" connectable="0" parent="1">
+          <mxGeometry x="500" y="410" width="100" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="Rzg_405HYLnvNSK_LGgp-68" value="&lt;div&gt;Internal Router&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="Rzg_405HYLnvNSK_LGgp-92">
+          <mxGeometry y="80" width="100" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Rzg_405HYLnvNSK_LGgp-67" value="" style="image;html=1;image=img/lib/clip_art/networking/Router_128x128.png" vertex="1" parent="Rzg_405HYLnvNSK_LGgp-92">
+          <mxGeometry x="10" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="Rzg_405HYLnvNSK_LGgp-93" value="" style="group" vertex="1" connectable="0" parent="1">
+          <mxGeometry x="304" y="237" width="80" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="Rzg_405HYLnvNSK_LGgp-65" value="" style="image;html=1;image=img/lib/clip_art/networking/Firewall-page1_128x128.png" vertex="1" parent="Rzg_405HYLnvNSK_LGgp-93">
+          <mxGeometry width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="Rzg_405HYLnvNSK_LGgp-66" value="Firewall" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="Rzg_405HYLnvNSK_LGgp-93">
+          <mxGeometry x="10" y="80" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Rzg_405HYLnvNSK_LGgp-100" style="orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;endFill=0;exitX=1.017;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="Rzg_405HYLnvNSK_LGgp-66" target="Rzg_405HYLnvNSK_LGgp-67">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Rzg_405HYLnvNSK_LGgp-107" value="Public / DMZ subnet - toegang tot en vanuit het internet." style="points=[[0,0],[0.25,0],[0.5,0],[0.75,0],[1,0],[1,0.25],[1,0.5],[1,0.75],[1,1],[0.75,1],[0.5,1],[0.25,1],[0,1],[0,0.75],[0,0.5],[0,0.25]];outlineConnect=0;gradientColor=none;html=1;whiteSpace=wrap;fontSize=14;fontStyle=1;container=0;pointerEvents=0;collapsible=0;recursiveResize=0;shape=mxgraph.aws4.group;grIcon=mxgraph.aws4.group_security_group;grStroke=0;strokeColor=#248814;fillColor=#E9F3E6;verticalAlign=top;align=left;spacingLeft=30;fontColor=#248814;dashed=0;" vertex="1" parent="1">
+          <mxGeometry x="439" y="60" width="365" height="280" as="geometry" />
+        </mxCell>
+        <mxCell id="Rzg_405HYLnvNSK_LGgp-4" value="" style="image;aspect=fixed;perimeter=ellipsePerimeter;html=1;align=center;shadow=0;dashed=0;spacingTop=3;image=img/lib/active_directory/database_server.svg;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;container=0;" vertex="1" parent="1">
+          <mxGeometry x="703.2" y="210" width="65.6" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="Rzg_405HYLnvNSK_LGgp-5" value="&lt;div&gt;Database Server&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=1;points=[];autosize=1;strokeColor=none;fillColor=none;movable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;container=0;" vertex="1" parent="1">
+          <mxGeometry x="681" y="290" width="110" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Rzg_405HYLnvNSK_LGgp-98" value="" style="image;html=1;image=img/lib/clip_art/networking/Switch_128x128.png;container=0;" vertex="1" parent="1">
+          <mxGeometry x="570" y="237" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="Rzg_405HYLnvNSK_LGgp-103" style="orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;endFill=0;" edge="1" parent="1" source="Rzg_405HYLnvNSK_LGgp-98" target="Rzg_405HYLnvNSK_LGgp-4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Rzg_405HYLnvNSK_LGgp-99" value="Switch" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;container=0;" vertex="1" parent="1">
+          <mxGeometry x="580" y="307" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Rzg_405HYLnvNSK_LGgp-1" value="" style="image;aspect=fixed;perimeter=ellipsePerimeter;html=1;align=center;shadow=0;dashed=0;spacingTop=3;image=img/lib/active_directory/web_server.svg;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;container=0;" vertex="1" parent="1">
+          <mxGeometry x="704" y="80" width="64" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="Rzg_405HYLnvNSK_LGgp-102" style="orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;endFill=0;exitX=1;exitY=0.25;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="Rzg_405HYLnvNSK_LGgp-98" target="Rzg_405HYLnvNSK_LGgp-1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="670" y="346" as="sourcePoint" />
+            <mxPoint x="640" y="296" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Rzg_405HYLnvNSK_LGgp-3" value="&lt;div&gt;Web Server&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=1;points=[];autosize=1;strokeColor=none;fillColor=none;movable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;container=0;" vertex="1" parent="1">
+          <mxGeometry x="691" y="160" width="90" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Rzg_405HYLnvNSK_LGgp-40" value="" style="image;aspect=fixed;perimeter=ellipsePerimeter;html=1;align=center;shadow=0;dashed=0;spacingTop=3;image=img/lib/active_directory/generic_server.svg;container=0;" vertex="1" parent="1">
+          <mxGeometry x="117.10000000000002" y="576" width="44.8" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="Rzg_405HYLnvNSK_LGgp-43" value="&lt;div&gt;Active Directory&amp;nbsp;&lt;/div&gt;&lt;div&gt;Server&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=1;points=[];autosize=1;strokeColor=none;fillColor=none;movable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;container=0;" vertex="1" parent="1">
+          <mxGeometry x="92" y="656" width="110" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="Rzg_405HYLnvNSK_LGgp-45" value="" style="image;aspect=fixed;perimeter=ellipsePerimeter;html=1;align=center;shadow=0;dashed=0;spacingTop=3;image=img/lib/active_directory/generic_server.svg;container=0;" vertex="1" parent="1">
+          <mxGeometry x="294.6" y="416" width="44.8" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="Rzg_405HYLnvNSK_LGgp-46" value="File Server" style="text;html=1;align=center;verticalAlign=middle;resizable=1;points=[];autosize=1;strokeColor=none;fillColor=none;movable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;container=0;" vertex="1" parent="1">
+          <mxGeometry x="277" y="496" width="80" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Rzg_405HYLnvNSK_LGgp-69" value="" style="image;html=1;image=img/lib/clip_art/networking/Switch_128x128.png;container=0;" vertex="1" parent="1">
+          <mxGeometry x="281.5" y="576" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="Rzg_405HYLnvNSK_LGgp-70" value="Switch" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;container=0;" vertex="1" parent="1">
+          <mxGeometry x="291.5" y="646" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Rzg_405HYLnvNSK_LGgp-7" value="" style="image;html=1;image=img/lib/clip_art/computers/Workstation_128x128.png;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;container=0;" vertex="1" parent="1">
+          <mxGeometry x="319.5" y="969" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="Rzg_405HYLnvNSK_LGgp-8" value="&lt;div&gt;Workstation 1&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;container=0;" vertex="1" parent="1">
+          <mxGeometry x="309.5" y="1049" width="100" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Rzg_405HYLnvNSK_LGgp-25" value="" style="image;html=1;image=img/lib/clip_art/computers/Workstation_128x128.png;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;container=0;" vertex="1" parent="1">
+          <mxGeometry x="425" y="999" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="Rzg_405HYLnvNSK_LGgp-26" value="&lt;div&gt;Workstation 2&lt;br&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=1;points=[];autosize=1;strokeColor=none;fillColor=none;movable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;container=0;" vertex="1" parent="1">
+          <mxGeometry x="415" y="1079" width="100" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Rzg_405HYLnvNSK_LGgp-28" value="" style="image;html=1;image=img/lib/clip_art/computers/Workstation_128x128.png;container=0;" vertex="1" parent="1">
+          <mxGeometry x="525" y="999" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="Rzg_405HYLnvNSK_LGgp-29" value="&lt;div&gt;Workstation 3&lt;br&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;container=0;" vertex="1" parent="1">
+          <mxGeometry x="515" y="1079" width="100" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Rzg_405HYLnvNSK_LGgp-31" value="" style="image;html=1;image=img/lib/clip_art/computers/Workstation_128x128.png;container=0;" vertex="1" parent="1">
+          <mxGeometry x="624" y="979" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="Rzg_405HYLnvNSK_LGgp-32" value="&lt;div&gt;Workstation 4&lt;br&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;container=0;" vertex="1" parent="1">
+          <mxGeometry x="614" y="1059" width="100" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Rzg_405HYLnvNSK_LGgp-34" value="" style="image;html=1;image=img/lib/clip_art/computers/Workstation_128x128.png;container=0;" vertex="1" parent="1">
+          <mxGeometry x="685" y="869" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="Rzg_405HYLnvNSK_LGgp-35" value="&lt;div&gt;Workstation 5&lt;br&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;container=0;" vertex="1" parent="1">
+          <mxGeometry x="675" y="949" width="100" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Rzg_405HYLnvNSK_LGgp-60" value="" style="image;html=1;image=img/lib/clip_art/networking/Switch_128x128.png;container=0;" vertex="1" parent="1">
+          <mxGeometry x="514" y="819" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="Rzg_405HYLnvNSK_LGgp-61" value="Switch" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;container=0;" vertex="1" parent="1">
+          <mxGeometry x="524" y="889" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Rzg_405HYLnvNSK_LGgp-36" value="" style="image;html=1;image=img/lib/clip_art/computers/Printer_128x128.png" vertex="1" parent="1">
+          <mxGeometry x="685" y="749" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="Rzg_405HYLnvNSK_LGgp-37" value="Printer" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="695" y="829" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Rzg_405HYLnvNSK_LGgp-121" value="Network ID:" style="text;html=1;align=right;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="438" y="96" width="90" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Rzg_405HYLnvNSK_LGgp-122" value="Broadcast IP:" style="text;html=1;align=right;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="428" y="118" width="100" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Rzg_405HYLnvNSK_LGgp-123" value="First Host IP:" style="text;html=1;align=right;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="438" y="138" width="90" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Rzg_405HYLnvNSK_LGgp-124" value="Last Host IP:" style="text;html=1;align=right;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="438" y="158" width="90" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Rzg_405HYLnvNSK_LGgp-125" value="&lt;div&gt;Next Network:&lt;/div&gt;" style="text;html=1;align=right;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="428" y="178" width="100" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Rzg_405HYLnvNSK_LGgp-126" value="&lt;div&gt;# IP Adresses:&lt;/div&gt;" style="text;html=1;align=right;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="428" y="198" width="100" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Rzg_405HYLnvNSK_LGgp-127" value="Subnet:" style="text;html=1;align=right;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="468" y="218" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Rzg_405HYLnvNSK_LGgp-128" value="10.0.0.0 /29" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="530" y="96" width="90" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Rzg_405HYLnvNSK_LGgp-129" value="8 (6 usable)" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="530" y="198" width="90" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Rzg_405HYLnvNSK_LGgp-130" value="10.0.0.8" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="530" y="178" width="70" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Rzg_405HYLnvNSK_LGgp-133" value="10.0.0.7" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="530" y="118" width="70" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Rzg_405HYLnvNSK_LGgp-134" value="10.0.0.6" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="530" y="158" width="70" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Rzg_405HYLnvNSK_LGgp-135" value="10.0.0.1" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="530" y="138" width="70" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Rzg_405HYLnvNSK_LGgp-137" value="255.255.255.248" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="530" y="218" width="110" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Rzg_405HYLnvNSK_LGgp-101" style="orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;endArrow=none;endFill=0;startArrow=none;startFill=0;rounded=0;" edge="1" parent="1" source="Rzg_405HYLnvNSK_LGgp-65" target="Rzg_405HYLnvNSK_LGgp-98">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Rzg_405HYLnvNSK_LGgp-138" value="Network ID:" style="text;html=1;align=right;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="40" y="404" width="90" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Rzg_405HYLnvNSK_LGgp-139" value="Broadcast IP:" style="text;html=1;align=right;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="30" y="426" width="100" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Rzg_405HYLnvNSK_LGgp-140" value="First Host IP:" style="text;html=1;align=right;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="40" y="446" width="90" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Rzg_405HYLnvNSK_LGgp-141" value="Last Host IP:" style="text;html=1;align=right;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="40" y="466" width="90" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Rzg_405HYLnvNSK_LGgp-142" value="&lt;div&gt;Next Network:&lt;/div&gt;" style="text;html=1;align=right;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="30" y="486" width="100" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Rzg_405HYLnvNSK_LGgp-143" value="&lt;div&gt;# IP Adresses:&lt;/div&gt;" style="text;html=1;align=right;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="30" y="506" width="100" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Rzg_405HYLnvNSK_LGgp-144" value="Subnet:" style="text;html=1;align=right;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="70" y="526" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Rzg_405HYLnvNSK_LGgp-145" value="10.0.0.8 /29" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="132" y="404" width="90" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Rzg_405HYLnvNSK_LGgp-146" value="8 (6 usable)" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="132" y="506" width="90" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Rzg_405HYLnvNSK_LGgp-147" value="10.0.0.16" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="132" y="486" width="70" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Rzg_405HYLnvNSK_LGgp-148" value="10.0.0.15" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="132" y="426" width="70" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Rzg_405HYLnvNSK_LGgp-149" value="10.0.0.14" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="132" y="466" width="70" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Rzg_405HYLnvNSK_LGgp-150" value="10.0.0.1" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="132" y="446" width="70" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Rzg_405HYLnvNSK_LGgp-151" value="255.255.255.248" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="132" y="526" width="110" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Rzg_405HYLnvNSK_LGgp-76" value="" style="orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;endFill=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="Rzg_405HYLnvNSK_LGgp-69" target="Rzg_405HYLnvNSK_LGgp-40">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="390" y="591" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Rzg_405HYLnvNSK_LGgp-152" value="Network ID:" style="text;html=1;align=right;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="228" y="775" width="90" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Rzg_405HYLnvNSK_LGgp-153" value="Broadcast IP:" style="text;html=1;align=right;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="218" y="797" width="100" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Rzg_405HYLnvNSK_LGgp-154" value="First Host IP:" style="text;html=1;align=right;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="228" y="817" width="90" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Rzg_405HYLnvNSK_LGgp-155" value="Last Host IP:" style="text;html=1;align=right;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="228" y="837" width="90" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Rzg_405HYLnvNSK_LGgp-156" value="&lt;div&gt;Next Network:&lt;/div&gt;" style="text;html=1;align=right;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="218" y="857" width="100" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Rzg_405HYLnvNSK_LGgp-157" value="&lt;div&gt;# IP Adresses:&lt;/div&gt;" style="text;html=1;align=right;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="218" y="877" width="100" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Rzg_405HYLnvNSK_LGgp-158" value="Subnet:" style="text;html=1;align=right;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="258" y="897" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Rzg_405HYLnvNSK_LGgp-159" value="10.0.0.16 /28" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="320" y="775" width="90" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Rzg_405HYLnvNSK_LGgp-160" value="16 (14 usable)" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="320" y="877" width="100" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Rzg_405HYLnvNSK_LGgp-161" value="10.0.0.32" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="320" y="857" width="70" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Rzg_405HYLnvNSK_LGgp-162" value="10.0.0.31" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="320" y="797" width="70" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Rzg_405HYLnvNSK_LGgp-163" value="10.0.0.30" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="320" y="837" width="70" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Rzg_405HYLnvNSK_LGgp-164" value="&lt;div&gt;10.0.0.17&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="320" y="817" width="70" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Rzg_405HYLnvNSK_LGgp-165" value="255.255.255.240" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="320" y="897" width="110" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Rzg_405HYLnvNSK_LGgp-72" style="orthogonalLoop=1;jettySize=auto;html=1;entryX=0.563;entryY=1.167;entryDx=0;entryDy=0;endArrow=none;endFill=0;strokeColor=default;entryPerimeter=0;" edge="1" parent="1" source="Rzg_405HYLnvNSK_LGgp-69" target="Rzg_405HYLnvNSK_LGgp-46">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Rzg_405HYLnvNSK_LGgp-166" value="Static Public IP: x.x.x.x" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="135" y="85" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Rzg_405HYLnvNSK_LGgp-167" value="Private IP: 10.0.0.0 /24" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="201.5" y="197" width="150" height="30" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
