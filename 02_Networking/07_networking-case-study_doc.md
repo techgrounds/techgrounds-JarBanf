@@ -17,6 +17,7 @@ The office contains the following devices:
 - [What is a DMZ network?](https://www.barracuda.com/support/glossary/dmz-network)
 
 ### Ervaren problemen
+Geen
 
 ### Resultaat
 - **Design a network architecture for the above use case.**
