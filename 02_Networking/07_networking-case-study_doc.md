@@ -35,7 +35,7 @@ Intern heb ik een router geplaatst die het verkeer beheert tussen de twee intern
 
 In één van de interne netwerk bevinden zich de file server en de active directory server. Deze servers met hoogwaardige data zijn alleen toegankelijk vanuit het interne netwerk. Ook hoeven ze niet toegankelijk te zijn voor iedereen binnen het netwerk. Ze zijn dus afgeschermd met hun eigen subnetwerk.
 
-In de andere interne netwerk bevinden zich de workstations en printer. De apparaten binnen dit netwerk hebben toegang tot het internet maar zijn niet toegankelijk vanuit het internet. 
+In de andere interne netwerk bevinden zich de workstations en printer. De apparaten binnen dit netwerk hebben toegang tot het internet maar zijn niet toegankelijk vanuit het internet.
 
 In alle 3 sub-netwerken heb ik rekening gehouden met het aantal hosts die geplaatst moeten worden maar ook met toekomstige groei.  
 Zo zijn er in de DMZ 6 bruikbare IP-adressen waarvan er nog 4 vrij zijn.
