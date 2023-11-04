@@ -23,7 +23,7 @@ Geen
 - **Design a network architecture for the above use case.**
 - **Explain your design decisions.**
 
-Hieronder zie je mijn ontwerk van de netwerk architectuur.
+Hieronder zie je mijn ontwerp van het netwerk architectuur.
 
 ![netwerkarchitectuur](/02_Networking/images/07_networking-case-study1-1.png)<br><br>
 
