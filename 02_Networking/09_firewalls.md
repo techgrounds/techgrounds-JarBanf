@@ -78,4 +78,6 @@ We zien dat de firewall alleen inkomende verkeer via SSH toestaat. Inkomende ver
 
 4. **Controleer of de firewall zijn werk doet.**
 
+Standaardpagina is niet meer binnen bereik.
+
 ![apache2 actief](/02_Networking/images/09_firewalls4.png)<br><br>
