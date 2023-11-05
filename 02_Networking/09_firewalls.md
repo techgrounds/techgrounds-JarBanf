@@ -1,5 +1,5 @@
 # Firewalls
-En firewall is een computernetwerk beveiligingssysteem dat internetverkeer naar, van, en binnen een privé netwerk beperkt.  
+Een firewall is een computernetwerk beveiligingssysteem dat internetverkeer naar, van, en binnen een privé netwerk beperkt.  
 Deze software of hardware-software eenheid functioneert door het selectief blokkeren of toestaan van datapakketten. In de praktijk worden er zowel software als hardware firewall opgenomen in een privé netwerk.
 
 <ins>Software firewall</ins>  
