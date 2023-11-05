@@ -6,7 +6,7 @@ Deze software of hardware-software eenheid functioneert door het selectief blokk
 Een software firewall is een soort computersoftware dat op een computer/server draait. Zijn hoofdfunctie is de computer/server beveiligen tegen pogingen van buitenaf om toegang of controle te krijgen van het systeem. Een software firewall kan ook ingesteld worden om te controleren op verdacht uitgaand verzoeken.
 
 <ins>Hardware firewall</ins>  
-Een hardware firewall is een fysiek apparaat dat firewall taken uitvoert. Het kan een computer zijn maar ook een toegewijd apparaat dat als een firewall dient. Hardware firewall bevindt zich in het netwerk tussen het internet en privé netwerk.<br><br>
+Een hardware firewall is een fysiek apparaat dat firewall taken uitvoert. Het kan een computer zijn maar ook een toegewijd apparaat dat als een firewall dient. Hardware firewall bevindt zich in het netwerk tussen het internet en privé netwerk.
 
 Firewalls kunnen ook verschillende karakter hebben, zoals stateless en statefull.
 
