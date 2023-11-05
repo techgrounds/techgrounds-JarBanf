@@ -6,7 +6,7 @@ Deze software of hardware-software eenheid functioneert door het selectief blokk
 Een software firewall is een soort computersoftware dat op een computer/server draait. Zijn hoofdfunctie is de computer/server beveiligen tegen pogingen van buitenaf om toegang of controle te krijgen van het systeem. Een software firewall kan ook ingesteld worden om te controleren op verdacht uitgaand verzoeken.
 
 <ins>Hardware firewall</ins>  
-Een hardware firewall is een fysiek apparaat dat firewall taken uitvoert. Het kan een computer zijn maar ook een toegewijd apparaat dat als een firewall dient. Hardware firewall bevindt zich in het netwerk tussen het internet en privé netwerk.
+Een hardware firewall is een fysiek apparaat dat firewall taken uitvoert. Het kan een computer zijn maar ook een toegewijd apparaat dat als een firewall dient. Hardware firewall bevindt zich in het netwerk tussen het internet en privé netwerk.<br><br>
 
 Firewalls kunnen ook verschillende karakter hebben, zoals stateless en statefull.
 
@@ -21,6 +21,11 @@ Een statefull firewall heeft wat meer intelligentie om te kunnen identificeren d
  
 
 ## Opdracht
+1. Installeer een webserver op je VM.
+2. Bekijk de standaardpagina die met de webserver geïnstalleerd is via je browser op je pc/laptop.
+3. Stel de firewall zo in dat je webverkeer blokkeert, maar wel ssh-verkeer toelaat.
+4. Controleer of de firewall zijn werk doet.
+
 ### Gebruikte bronnen
 - [What is a Firewall?](https://www.youtube.com/watch?v=kDEX1HXybrU)
 - [What is a firewall? Definition and explanation](https://www.kaspersky.com/resource-center/definitions/firewall)
@@ -31,4 +36,13 @@ Een statefull firewall heeft wat meer intelligentie om te kunnen identificeren d
 Geen
 
 ### Resultaat
-[Omschrijf hoe je weet dat je opdracht gelukt is (gebruik screenshots waar nodig).]
+1. **Installeer een webserver op je VM.**
+
+
+2. **Bekijk de standaardpagina die met de webserver geïnstalleerd is via je browser op je pc/laptop.**
+
+
+3. **Stel de firewall zo in dat je webverkeer blokkeert, maar wel ssh-verkeer toelaat.**
+
+
+4. **Controleer of de firewall zijn werk doet.**
