@@ -2,17 +2,18 @@
 Nmap is short for Network Mapper. It is an open-source Linux command-line tool that is used to scan IP addresses and ports in a network and to detect installed applications.
 
 ## Key-terms
-[Schrijf hier een lijst met belangrijke termen met eventueel een korte uitleg.]
 
 ## Opdracht
+1. Scan the network of your Linux machine using nmap. What do you find?
+2. Open Wireshark in Windows/MacOS Machine. Analyse what happens when you open an internet browser.
+
 ### Gebruikte bronnen
 - [Nmap Command in Linux with Examples](https://www.geeksforgeeks.org/nmap-command-in-linux-with-examples/)
 - [What is Nmap and How to Use it – A Tutorial for the Greatest Scanning Tool of All Time](https://www.freecodecamp.org/news/what-is-nmap-and-how-to-use-it-a-tutorial-for-the-greatest-scanning-tool-of-all-time/)
 - [How to check your network connections on Linux](https://www.networkworld.com/article/3262045/checking-your-network-connections-on-linux.html)
-- 
 
 ### Ervaren problemen
-
+Geen
 
 ### Resultaat
 1. **Scan the network of your Linux machine using nmap. What do you find?**  
@@ -50,3 +51,11 @@ sudo nmap -A 10.82.162.34
 ![nmap hele subnet](/02_Networking/images/08_network-detection1-5.png)<br><br>
 
 2. **Open Wireshark in Windows/MacOS Machine. Analyse what happens when you open an internet browser.**
+- Ik heb eerst een 10 seconde capture gedaan van mijn WiFi interface zonder een browser open. Er is geen http protocol actief.
+
+![capture zonder browser](/02_Networking/images/08_network-detection2-1.png)<br><br>
+
+- Daarna een 10 seconde capture van mijn WiFi interface terwijl ik mijn browser opende en naar 2 verschillende website ging.  
+Er is veel activiteit met tcp en http op port 80.
+
+![capture met browser](/02_Networking/images/08_network-detection2-2.png)<br><br>
