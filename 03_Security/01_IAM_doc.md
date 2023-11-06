@@ -49,3 +49,9 @@ The three authentication factors are:
 MFA acts as an additional layer of security to prevent unauthorized users from accessing an account, even when the password has been stolen.
 
 **3. What the principle of least privilege is and how it improves security.**
+
+The principle of least privilege (PoLP) is an information security concept which maintains that a user or entity should only have access to the specific data, resources and applications needed to complete a required task.
+
+It works by limiting the accessible data, resources and application functions to only that which a user or entity requires to execute their specific task or workflow.
+
+The less access a company allows to specific data, resources and applications, the smaller the odds that some malicious party will steal a legitimate user's credentials and use them to steal that specific data, resources and application.
