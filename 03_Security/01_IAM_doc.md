@@ -17,9 +17,10 @@ Study:
 - [Difference between Authentication and Authorization](https://www.geeksforgeeks.org/difference-between-authentication-and-authorization/)
 - [MFA](https://csrc.nist.gov/glossary/term/mfa)
 - [What is Multi-Factor Authentication (MFA)?](https://aws.amazon.com/what-is/mfa/)
+- [What is the Principle of Least Privilege (POLP)?](https://www.digitalguardian.com/blog/what-principle-least-privilege-polp-best-practice-information-security-and-compliance)
 
 ### Ervaren problemen
-
+Geen
 
 ### Resultaat
 **1. The difference between authentication and authorization.**
