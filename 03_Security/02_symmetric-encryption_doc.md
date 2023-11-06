@@ -15,7 +15,7 @@ The secret key that the sender and recipient both use could be a specific passwo
 - 
 
 ### Ervaren problemen
-Geen
+None
 
 ### Resultaat
 **1. Find one more historic cipher besides the Caesar cipher.**
