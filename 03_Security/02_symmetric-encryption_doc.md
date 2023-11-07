@@ -69,7 +69,7 @@ My message:
 ```
 Hey Francois, doe mijn koffie zonder melk en suiker aub. Alvast bedankt :).
 ```
-My <ins>symmetric</ins> encrypted message:  
+My generated <ins>symmetric</ins> encrypted message:  
 ```
 nzzRkzPU6oTnxi7wMmCvJzaNW6q5VjANEKe/hn27dsaPiTfqfNa1s5I8dTya7ODTg4DBL3V59UWpgGPcZ25fZciKMlQsTk2XQZOPCSqFBWE=
 ```
@@ -79,7 +79,8 @@ nzzRkzPU6oTnxi7wMmCvJzaNW6q5VjANEKe/hn27dsaPiTfqfNa1s5I8dTya7ODTg4DBL3V59UWpgGPc
 
 ![make symmetric key](/03_Security/images/02_symmetric-encryption3-6.png)<br><br>
 
-- Step 8: My peer uses the <ins>symmetric</ins> key to decrypt my <ins>symmetric</ins> encrypted message.
+- Step 8: My peer uses the <ins>symmetric</ins> key to decrypt my <ins>symmetric</ins> encrypted message.  
+(Screenshot from my peer)
 
 ![make symmetric key](/03_Security/images/02_symmetric-encryption3-7.png)<br><br>
 
