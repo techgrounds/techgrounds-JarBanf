@@ -1,14 +1,16 @@
 # Assymetric encryption
-[Geef een korte beschrijving van het onderwerp]
+Asymmetric encryption, also known as public-key cryptography, is a type of encryption that uses a pair of keys to encrypt and decrypt data. The pair of keys include a public key, which can be shared with anyone, and a private key, which is kept secret by the owner. In asymmetric encryption, the sender uses the recipient's public key to encrypt the data. The recipient then uses their private key to decrypt the data.  
+This approach allows for secure communication between two parties without the need for both parties to have the same secret key.
 
 ## Key-terms
-[Schrijf hier een lijst met belangrijke termen met eventueel een korte uitleg.]
+
 
 ## Opdracht
 1. Generate a key pair.
 2. Send an asymmetrically encrypted message to one of your peers via the public Slack channel. They should be able to decrypt the message using a key. The recipient should be able to read the message, but it should remain a secret to everyone else. You are not allowed to use any private messages or other communication channels besides the public Slack channel. Analyse the difference between this method and symmetric encryption.
 
 ### Gebruikte bronnen
+- [What is Asymmetric Encryption?](https://www.geeksforgeeks.org/what-is-asymmetric-encryption/)
 - [Online RSA Encryption, Decryption And Key Generator Tool(Free)](https://www.devglan.com/online-tools/rsa-encryption-decryption)
 
 ### Ervaren problemen
@@ -32,20 +34,22 @@ MIICdgIBADANBgkqhkiG9w0BAQEFAASCAmAwggJcAgEAAoGBAIGZjkMWC+4tpmgWEE9MuTwLaRDcQiAV
 
 **2. Send an asymmetrically encrypted message to one of your peers via the public Slack channel. They should be able to decrypt the message using a key. The recipient should be able to read the message, but it should remain a secret to everyone else. You are not allowed to use any private messages or other communication channels besides the public Slack channel. Analyse the difference between this method and symmetric encryption.**
 
-- One of my peers sent me his public key.
+- Step1: One of my peers sent me his public key.
 ```
 MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCm5nNGBGmwYdGcDEQ60laushTrOAKCM3lKAI1FAKUDgatWoffzRnmFxsfoFq2MIl87YvTVLTf8ijlwKNEJdl/p9oJcPXeocKYPiFScAeTJBSEhwDy4VK1UsQytXTSzQyNxttJJAPCEzOq64CDNHb9OTspfgnFKT1gR6jONTiitdQIDAQAB
 ```
 ![my peers public key](/03_Security/images/03_assymmetric-encryption2-1.png)<br><br> 
 
-- I typed a message for my peer and together with his public key I encrypted this message.
+- Step 2: I typed a message for my peer and together with his public key I encrypted this message.
 ```
 e7OciQNgvqsT8vBf6tENUPLCtRK9zbM169QQRChuKQdipMv3UrriINscNz66tWKPlBhmmW6euFD4aXl4+WnT92FKR4jH7PhTHDZXyvWFgCC7F83IeR3VnF51OSOgrxmJCj15a0DCL+8pkpcz7PE9XpZZNb4JQkaxdHUvjw1RaDM=
 ```
 ![encrypted message](/03_Security/images/03_assymmetric-encryption2-2.png)<br><br>
 
-- This encrypted message I sent back to my peer via Slack.
+- Step 3: This encrypted message I sent back to my peer via Slack.
 
 ![encrypted message](/03_Security/images/03_assymmetric-encryption2-3.png)<br><br>
 
-- He was able to decrypt the encrypted message using his private key.
+- Step 4: He was able to decrypt the encrypted message using his private key.
+
+- Step 5: Success!
