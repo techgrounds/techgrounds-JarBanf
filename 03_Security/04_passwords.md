@@ -4,7 +4,7 @@ Passwords are our first line of defense. In a manner of speaking, we are only as
 
 
 ## Key-terms
-[Schrijf hier een lijst met belangrijke termen met eventueel een korte uitleg.]
+
 
 ## Assignment
 1. Find out what hashing is and why it is preferred over symmetric encryption for storing passwords.
@@ -25,9 +25,11 @@ Passwords are our first line of defense. In a manner of speaking, we are only as
 - [What Is Hashing, and How Does It Work?](https://www.codecademy.com/resources/blog/what-is-hashing/)
 - [Safely Storing User Passwords: Hashing vs. Encrypting](https://www.darkreading.com/risk/safely-storing-user-passwords-hashing-vs-encrypting)
 - [Hashing vs. encryption: What’s the difference?](https://nordvpn.com/blog/hashing-vs-encryption/)
+- [Understanding Rainbow Table Attack](https://www.geeksforgeeks.org/understanding-rainbow-table-attack/)
+- [MD5 Center](https://md5.gromweb.com/)
 
 ### Encountered problems
-[Geef een korte beschrijving van de problemen waar je tegenaan bent gelopen met je gevonden oplossing.]
+None
 
 ### Result
 **1. Find out what hashing is and why it is preferred over symmetric encryption for storing passwords.**
@@ -43,15 +45,19 @@ When companies store user data (for example username and passwords), they can ap
 
 **2. Find out how a Rainbow Table can be used to crack hashed passwords.**
 
+The passwords in a computer system are not stored directly as plain texts but are hashed using encryption. Whenever a user enters a password, it is converted into a hash value and is compared with the already stored hash value. If the value match, the user is authenticated.
+
+A rainbow table is a database that is used to gain authentication by cracking the password hash. It is a precomputed dictionary of plaintext passwords and their corresponding hash values that can be used to find out what plaintext password produces a particular hash. Since more than one text can produce the same hash, it's not important to know what the original password really was, as long as it produces the same hash.
 
 **3. Below are two MD5 password hashes. One is a weak password, the other is a string of 16 randomly generated characters. Try to look up both hashes in a Rainbow Table.**
-```
-03F6D7D1D9AAE7160C05F71CE485AD31
-```
-```
-03D086C9B98F90D628F2D1BD84CFA6CA
-```
 
+- Using MD5 reverse lookup the MD5 hash `03F6D7D1D9AAE7160C05F71CE485AD31` was succesfully reversed into the string `welldone!`.
+
+![my peers public key](/03_Security/images/04_passwords3-1.png)<br><br>
+
+- Using MD5 reverse lookup the MD5 hash `03D086C9B98F90D628F2D1BD84CFA6CA` could not be reversed into a string: no reverse string was found.
+
+![my peers public key](/03_Security/images/04_passwords3-2.png)<br><br>
 
 **4. Create a new user in Linux with the password 12345. Look up the hash in a Rainbow Table.**
 
