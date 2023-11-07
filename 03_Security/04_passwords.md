@@ -1,5 +1,7 @@
 # Passwords
-[Geef een korte beschrijving van het onderwerp]
+A password is a secret word or phrase or code that you need to know in order to have access to a place or system. In technical terms, it is a series of letters or numbers that you must type into a computer or computer system in order to be able to use it.  
+Passwords are our first line of defense. In a manner of speaking, we are only as strong as our weakest password.
+
 
 ## Key-terms
 [Schrijf hier een lijst met belangrijke termen met eventueel een korte uitleg.]
@@ -18,7 +20,11 @@
 5. Despite the bad password, and the fact that Linux uses common hashing algorithms, you won’t get a match in the Rainbow Table. This is because the password is salted. To understand how salting works, find a peer who has the same password in /etc/shadow, and compare hashes.
 
 ### Used sources
-[Plaats hier de bronnen die je hebt gebruikt.]
+- [Password Management in Cyber Security](https://www.geeksforgeeks.org/password-management-in-cyber-security/)
+- [What’s in a Strong Password?](https://www.csum.edu/it/media/what-is-in-a-good-password.pdf)
+- [What Is Hashing, and How Does It Work?](https://www.codecademy.com/resources/blog/what-is-hashing/)
+- [Safely Storing User Passwords: Hashing vs. Encrypting](https://www.darkreading.com/risk/safely-storing-user-passwords-hashing-vs-encrypting)
+- [Hashing vs. encryption: What’s the difference?](https://nordvpn.com/blog/hashing-vs-encryption/)
 
 ### Encountered problems
 [Geef een korte beschrijving van de problemen waar je tegenaan bent gelopen met je gevonden oplossing.]
@@ -26,6 +32,14 @@
 ### Result
 **1. Find out what hashing is and why it is preferred over symmetric encryption for storing passwords.**
 
+Hashing is the process of converting data (text, numbers, files, or anything) into a fixed-length string of letters and numbers. Data is converted into these fixed-length strings, or hash values, by using a special algorithm called a hash function. 
+
+For example, a hash function that creates 32-character hash values will always turn text input into a unique 32-character code. Whether you want to generate a hash value for the word "Techgrounds" or for the entire works of Shakespeare, the hash value will always be 32 characters long.
+
+Hashing is a one-way process that can't be directly reversed to obtain the original input value (for example username and passwords).  
+Symmetric encryption is based on the use of an encryption key and is a reversible operation. Anyone possesing the key can decrypt an encrypted value to obtain the original value. 
+
+When companies store user data (for example username and passwords), they can apply hashing algorithms to ensure that the information stays private, even if they suffer a data breech.
 
 **2. Find out how a Rainbow Table can be used to crack hashed passwords.**
 
