@@ -14,6 +14,8 @@ The secret key that the sender and recipient both use could be a specific passwo
 - [Symmetric Key Encryption - why, where and how it’s used in banking](https://www.cryptomathic.com/news-events/blog/symmetric-key-encryption-why-where-and-how-its-used-in-banking)
 - [Symmetric Ciphers](https://brilliant.org/wiki/symmetric-ciphers/)
 - [One-time pad](https://en.wikipedia.org/wiki/One-time_pad)
+- [AES encryption](https://aesencryption.net/)
+- [Online RSA Encryption, Decryption And Key Generator Tool(Free)](https://www.devglan.com/online-tools/rsa-encryption-decryption)
 
 ### Ervaren problemen
 None
