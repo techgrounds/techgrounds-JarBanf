@@ -12,7 +12,8 @@ The secret key that the sender and recipient both use could be a specific passwo
 
 ### Gebruikte bronnen
 - [Symmetric Key Encryption - why, where and how it’s used in banking](https://www.cryptomathic.com/news-events/blog/symmetric-key-encryption-why-where-and-how-its-used-in-banking)
-- 
+- [Symmetric Ciphers](https://brilliant.org/wiki/symmetric-ciphers/)
+- [One-time pad](https://en.wikipedia.org/wiki/One-time_pad)
 
 ### Ervaren problemen
 None
@@ -21,8 +22,65 @@ None
 **1. Find one more historic cipher besides the Caesar cipher.**
 
 
-**2. Find two digital ciphers that are being used today.**
+<ins>Caeser Cipher</ins>  
+A cipher used by Julius Caeser to communicate in secret. This cipher took any message that Caeser might write to someone, and shifted each character in that message by a certain amount. For example, the message `hello` shifted by a value of 5 would result in `mjqqt`. This cypher is symmetric because the same key, in this case 5, is used to encrypt and decrypt the message.
 
+<ins>One-time pad</ins>  
+Another famous symmetric cipher for its reported use by KGB and American spies during the cold war. It is an encryption technique that requires the use of a single-use pre-shared key that is larger than or equal to the size of the message being sent. In this technique, a plaintext is paired with a random secret key (also referred to as a one-time pad). Then, each bit or character of the plaintext is encrypted by combining it with the corresponding bit or character from the pad using modular addition.
 
-**3. Send a symmetrically encrypted message to one of your peers via the public Slack channel. They should be able to decrypt the message using a key you share with them. Try to think of a way to share this encryption key without revealing it to everyone. You are not allowed to use any private messages or other communication channels besides the public Slack channel. Analyse the shortcomings of symmetric encryption for sending messages.**
+**2. Find two digital ciphers that are being used today.**  
+<ins>Block cipher</ins>  
+Converts the plaintext into cypher-text by taking plaintext's block at a time.
 
+<ins>Stream cipher</ins>  
+Converts the plaintext into cypher-text by taking 1 byte of plain text at a time
+
+**3. Send a symmetrically encrypted message to one of your peers via the public Slack channel. They should be able to decrypt the message using a key you share with them. Try to think of a way to share this encryption key without revealing it to everyone. You are not allowed to use any private messages or other communication channels besides the public Slack channel. Analyse the shortcomings of symmetric encryption for sending messages.**  
+
+To be able to share the <ins>symmetric</ins> encryption key with my peer without revealing it to anyone I will be using the RSA <ins>a-symmetric</ins> encryption.  
+
+- Step 1: Receive public RSA public key from my peer.
+```
+MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCCgbfy69Kv4BqDEMH0FkHI4hUZwnZ2hz6kKdeaz4Xv6gr4iWeckTHrzVRckOLPbhQYvt5IBweOeHXl6dSw2s7vAjnPc/DTrOD72UkhW6X685AeHCmozIf8DWU0GugH9FhGKOdY3AeYOty2IU9+XH1k3sUqwA8CBJXyxZQrcG9gKQIDAQAB
+```
+![my peer's public key](/03_Security/images/02_symmetric-encryption3-1.png)<br><br>
+
+- Step 2: Make / come up with a <ins>symmetric</ins> key.
+```
+qpwoeiruty
+```
+![make symmetric key](/03_Security/images/02_symmetric-encryption3-2.png)<br><br>
+
+- Step 3: By using my peer's public key I will create an RSA <ins>asymmetric</ins> encrypted message which contains my <ins>symmetric</ins> key.  
+Generated <ins>asymmetric</ins> encrypted message:
+```
+RKYtIXuQtwHGTJBIxco8LAG3uA4YT6XRAkrF7cFuzhYidgcCQx5cfO1tybnyF1PulS0leBIfNNzfBgWRWEYpyRg8qIAoi6NzwvV9EGAyv4CwzrE+UCED8utRfAFbKGeIcII5eK+XJ0cD8r/8qlaEBkasrO00NWp8Bn7WtwQJhuo=
+```
+![make symmetric key](/03_Security/images/02_symmetric-encryption3-3.png)<br><br>
+
+- Step 4: Share this <ins>asymmetric</ins> encrypted message which contains my <ins>symmetric</ins> key with my peer via the internet.
+
+![make symmetric key](/03_Security/images/02_symmetric-encryption3-4.png)<br><br>
+
+- Step 5: My peer will use RSA to decrypt my <ins>asymmetric</ins> encrypted message and get my <ins>symmetric</ins> key. Now only my peer and I know what the key is.
+
+- Step 6: I will now write a message which I will encrypt using my <ins>symmetric</ins> key.  
+My message:  
+```
+Hey Francois, doe mijn koffie zonder melk en suiker aub. Alvast bedankt :).
+```
+My <ins>symmetric</ins> encrypted message:  
+```
+nzzRkzPU6oTnxi7wMmCvJzaNW6q5VjANEKe/hn27dsaPiTfqfNa1s5I8dTya7ODTg4DBL3V59UWpgGPcZ25fZciKMlQsTk2XQZOPCSqFBWE=
+```
+![make symmetric key](/03_Security/images/02_symmetric-encryption3-5.png)<br><br>
+
+- Step 7: Share my <ins>symmetric</ins> encrypted message with my peer via internet.
+
+![make symmetric key](/03_Security/images/02_symmetric-encryption3-6.png)<br><br>
+
+- Step 8: My peer uses the <ins>symmetric</ins> key to decrypt my <ins>symmetric</ins> encrypted message.
+
+![make symmetric key](/03_Security/images/02_symmetric-encryption3-7.png)<br><br>
+
+- Step 9: Success!
