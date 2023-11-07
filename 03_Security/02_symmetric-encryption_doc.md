@@ -56,11 +56,11 @@ Generated <ins>asymmetric</ins> encrypted message:
 ```
 RKYtIXuQtwHGTJBIxco8LAG3uA4YT6XRAkrF7cFuzhYidgcCQx5cfO1tybnyF1PulS0leBIfNNzfBgWRWEYpyRg8qIAoi6NzwvV9EGAyv4CwzrE+UCED8utRfAFbKGeIcII5eK+XJ0cD8r/8qlaEBkasrO00NWp8Bn7WtwQJhuo=
 ```
-![make symmetric key](/03_Security/images/02_symmetric-encryption3-3.png)<br><br>
+![make asymmetric encrypted message](/03_Security/images/02_symmetric-encryption3-3.png)<br><br>
 
 - Step 4: Share this <ins>asymmetric</ins> encrypted message which contains my <ins>symmetric</ins> key with my peer via the internet.
 
-![make symmetric key](/03_Security/images/02_symmetric-encryption3-4.png)<br><br>
+![share asymmetric encrypted message with my peer](/03_Security/images/02_symmetric-encryption3-4.png)<br><br>
 
 - Step 5: My peer will use RSA to decrypt my <ins>asymmetric</ins> encrypted message and get my <ins>symmetric</ins> key. Now only my peer and I know what the key is.
 
@@ -73,15 +73,15 @@ My generated <ins>symmetric</ins> encrypted message:
 ```
 nzzRkzPU6oTnxi7wMmCvJzaNW6q5VjANEKe/hn27dsaPiTfqfNa1s5I8dTya7ODTg4DBL3V59UWpgGPcZ25fZciKMlQsTk2XQZOPCSqFBWE=
 ```
-![make symmetric key](/03_Security/images/02_symmetric-encryption3-5.png)<br><br>
+![write message and generate symmetric encrypted message](/03_Security/images/02_symmetric-encryption3-5.png)<br><br>
 
 - Step 7: Share my <ins>symmetric</ins> encrypted message with my peer via internet.
 
-![make symmetric key](/03_Security/images/02_symmetric-encryption3-6.png)<br><br>
+![symmetric encrypted message with my peer](/03_Security/images/02_symmetric-encryption3-6.png)<br><br>
 
 - Step 8: My peer uses the <ins>symmetric</ins> key to decrypt my <ins>symmetric</ins> encrypted message.  
 (Screenshot from my peer)
 
-![make symmetric key](/03_Security/images/02_symmetric-encryption3-7.png)<br><br>
+![my peer decrypts symmetric encrypted message](/03_Security/images/02_symmetric-encryption3-7.png)<br><br>
 
 - Step 9: Success!
