@@ -80,9 +80,6 @@ The most important line is the one that requests the `Common Name`. I need to en
 
 ![create tls cert](/03_Security/images/05_public-key-infrastructure1-6.png)<br><br>
 
-- Step 7: Update apache configuration.
-
-
 **2. Analyze some certification paths of known websites (ex. techgrounds.nl / google.com / ing.nl).**
 
 
