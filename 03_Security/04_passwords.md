@@ -27,6 +27,8 @@ Passwords are our first line of defense. In a manner of speaking, we are only as
 - [Hashing vs. encryption: What’s the difference?](https://nordvpn.com/blog/hashing-vs-encryption/)
 - [Understanding Rainbow Table Attack](https://www.geeksforgeeks.org/understanding-rainbow-table-attack/)
 - [MD5 Center](https://md5.gromweb.com/)
+- [Understanding /etc/shadow file format on Linux](https://www.cyberciti.biz/faq/understanding-etcshadow-file/)
+- [Free Password Hash Cracker](https://crackstation.net/)
 
 ### Encountered problems
 None
@@ -53,14 +55,33 @@ A rainbow table is a database that is used to gain authentication by cracking th
 
 - Using MD5 reverse lookup the MD5 hash `03F6D7D1D9AAE7160C05F71CE485AD31` was succesfully reversed into the string `welldone!`.
 
-![my peers public key](/03_Security/images/04_passwords3-1.png)<br><br>
+![md5 reverse lookup](/03_Security/images/04_passwords3-1.png)<br><br>
 
 - Using MD5 reverse lookup the MD5 hash `03D086C9B98F90D628F2D1BD84CFA6CA` could not be reversed into a string: no reverse string was found.
 
-![my peers public key](/03_Security/images/04_passwords3-2.png)<br><br>
+![md5 reverse lookup](/03_Security/images/04_passwords3-2.png)<br><br>
 
 **4. Create a new user in Linux with the password 12345. Look up the hash in a Rainbow Table.**
 
+- Created test_pass_user:
+```
+sudo useradd test_pass_user
+```
+- Created password for test_pass_user. Password is `12345`.:
+```
+sudo passwd test_pass_user
+```
+- The hash for password `12345` is:  
+`$6$em/RM4xaNeTtQYn5$mk3gEZ.pBx00CDywbmODTId010adKdUPwXi5/Xz/aQWw9Dp.WHM05k3g7rnGE6eXTLlrC3IfqCFJBI3Db3UCe0`
+
+![hash](/03_Security/images/04_passwords4-1.png)<br><br>
+
+- The `$6` at the beginning of the hash is the algorithm prefix used for this password. In this case, it is a SHA-512 hash (512 bits). SHA stands for Secure Hash Algorithm. Using Free password hash cracker I can't crack the hash because the hash is salted.
+
+![hash lookup](/03_Security/images/04_passwords4-2.png)<br><br>
 
 **5. Despite the bad password, and the fact that Linux uses common hashing algorithms, you won’t get a match in the Rainbow Table. This is because the password is salted. To understand how salting works, find a peer who has the same password in /etc/shadow, and compare hashes.**
 
+Salting a piece of data is done by adding additional random characters to the text in order to strengthen it. This is mostly done with passwords: adding random characters to the beginning or end of a password to prevent it from being easily guessed by a hacker.
+
+![salted hash comparison from same password 12345](/03_Security/images/04_passwords5.png)<br><br>
