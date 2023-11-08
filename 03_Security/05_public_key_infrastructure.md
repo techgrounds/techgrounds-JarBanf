@@ -78,9 +78,10 @@ What is happening in the command?
 After entering the command, I will be taken to a prompt where I can enter information about my website.  
 The most important line is the one that requests the `Common Name`. I need to enter either the hostname I will use to access the server by, or the public IP of the server. It’s important that this field matches whatever I will put into my browser’s address bar to access the site, as a mismatch will cause more security errors.
 
-![enable mod_ssl](/03_Security/images/05_public-key-infrastructure1-6.png)<br><br>
+![create tls cert](/03_Security/images/05_public-key-infrastructure1-6.png)<br><br>
 
-- Step 7: 
+- Step 7: Update apache configuration.
+
 
 **2. Analyze some certification paths of known websites (ex. techgrounds.nl / google.com / ing.nl).**
 
