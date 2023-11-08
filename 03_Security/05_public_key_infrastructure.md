@@ -9,7 +9,7 @@ Most public key infrastructure use a standardized machine-readable certificate f
 - Email signing and encryption
 
 ## Key-terms
-[Schrijf hier een lijst met belangrijke termen met eventueel een korte uitleg.]
+
 
 ## Assignment
 1. Create a self-signed certificate on your VM.
@@ -21,7 +21,7 @@ Most public key infrastructure use a standardized machine-readable certificate f
 - [How To Create a Self-Signed SSL Certificate for Apache in Ubuntu 22.04](https://www.digitalocean.com/community/tutorials/how-to-create-a-self-signed-ssl-certificate-for-apache-in-ubuntu-22-04)
 
 ### Encountered problems
-[Geef een korte beschrijving van de problemen waar je tegenaan bent gelopen met je gevonden oplossing.]
+None
 
 ### Result
 **1. Create a self-signed certificate on your VM.**
