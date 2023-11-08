@@ -39,7 +39,7 @@ sudo ufw status
 ```
 Not allowed yet.
 
-![check apache2 actief](/03_security/images/05_public-key-infrastructure1-2.png)<br><br>
+![check port 80 and 443 if open](/03_security/images/05_public-key-infrastructure1-2.png)<br><br>
 
 - Step 3: Allow incoming connections on port 80/http and port 443/https and check status again.
 ```
@@ -48,7 +48,7 @@ sudo ufw allow "Apache Full"
 ```
 sudo ufw status
 ```
-![check apache2 actief](/03_security/images/05_public-key-infrastructure1-3.png)<br><br>
+![open port 80 and 443 and check again](/03_security/images/05_public-key-infrastructure1-3.png)<br><br>
 
 **2. Analyze some certification paths of known websites (ex. techgrounds.nl / google.com / ing.nl).**
 
