@@ -81,7 +81,24 @@ The most important line is the one that requests the `Common Name`. I need to en
 ![create tls cert](/03_Security/images/05_public-key-infrastructure1-6.png)<br><br>
 
 **2. Analyze some certification paths of known websites (ex. techgrounds.nl / google.com / ing.nl).**
+- techgrounds.nl:
 
+![cert techgrounds](/03_Security/images/05_public-key-infrastructure2-1.png)<br><br>
+
+- google.com
+
+![cert google](/03_Security/images/05_public-key-infrastructure2-2.png)<br><br>
+
+- ing.nl
+
+![cert ing.nl](/03_Security/images/05_public-key-infrastructure2-3.png)<br><br>
 
 **3. Find the list of trusted certificate roots on your pc/laptop (bonus points if you also find it in your VM).**
 
+- My laptop: In the Keychain Access app.
+
+![cert ing.nl](/03_Security/images/05_public-key-infrastructure3-1.png)<br><br>
+
+- My VM: `/etc/ssl/certs`.
+
+![cert ing.nl](/03_Security/images/05_public-key-infrastructure3-2.png)<br><br>
