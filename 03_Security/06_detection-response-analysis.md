@@ -46,8 +46,19 @@ An IDS is more of an alerting system that lets an organization know if anomalous
 An IPS has the same functionality as IDS systems in terms of detection but also contains response capabilties.   
 An IPS takes the IDS a step forward and shuts down the network before access can be gained or to prevent further movement in a network.
 
-**- Hack response strategies**
+**- Hack response strategies**  
+Depending on the type of threat, threat response activities may include:  
+- patching vulnerable systems
+- eliminating malware
+- blocking malicious actors from accessing networks
+- contact law enforcements or other relevant authorities to investigate and prosecute cybercrimes.
+- implementing additional security controls, such as: 
+- --> IPS, intrusion prevention system
+- --> two-facor authentication
+- --> conducting vulnerability assessments
+- --> educating users on best security practices
 
+By taking proactive steps, organizations can minimize the risk of future attacks and improve their overall security posture.
 
 **- The concept of systems hardening**
 
