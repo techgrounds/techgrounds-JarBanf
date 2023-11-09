@@ -30,12 +30,14 @@ Threat investigation is the process of analyzing detected threats to understand 
 ### Used sources
 - [What is Threat Detection, Investigation, and Response?](https://www.anomali.com/resources/what-is-threat-detection-investigation-and-response)
 - [IDS vs. IPS: What Organizations Need to Know](https://www.varonis.com/blog/ids-vs-ips)
+- [What Is System Hardening?](https://blog.netwrix.com/2023/02/22/system-hardening/)
 
 ### Encountered problems
 [Geef een korte beschrijving van de problemen waar je tegenaan bent gelopen met je gevonden oplossing.]
 
 ### Result
-**- IDS and IPS**  
+**- IDS and IPS**
+
 Network administrators need to employ tools to protect their network and prevent malicious actors from gaining access. Intrusion detection systems (IDS) and intrusion prevention systems (IPS) are catogories of tools commonly used for this purpose.  
 
 <ins>IDS</ins>  
@@ -44,9 +46,11 @@ An IDS is more of an alerting system that lets an organization know if anomalous
 
 <ins>IPS</ins>  
 An IPS has the same functionality as IDS systems in terms of detection but also contains response capabilties.   
-An IPS takes the IDS a step forward and shuts down the network before access can be gained or to prevent further movement in a network.<br><br>
+An IPS takes the IDS a step forward and shuts down the network before access can be gained or to prevent further movement in a network.
+<br><br>
 
-**- Hack response strategies**  
+**- Hack response strategies**
+
 Depending on the type of threat, threat response activities may include:  
 - patching vulnerable systems
 - eliminating malware
@@ -54,14 +58,24 @@ Depending on the type of threat, threat response activities may include:
 - contact law enforcements or other relevant authorities to investigate and prosecute cybercrimes.
 - implementing additional security controls, such as: 
 - --> IPS, intrusion prevention system
-- --> two-facor authentication
+- --> two-factor authentication
 - --> conducting vulnerability assessments
 - --> educating users on best security practices
 
 By taking proactive steps, organizations can minimize the risk of future attacks and improve their overall security posture.
+<br><br>
 
 **- The concept of systems hardening**
 
+System hardening is also known as server hardening, security hardening and operation systems hardening. System hardening is a suite of techniques, tools, and methodologies for reducing vulnerability in servers and computers. System hardening aims to reduce network and IT security risks by eliminating unnecessary services and applications as well as activating build-in security features. The fewer attack vectors, the fewer opportunities attackers have for entering your IT ecosystem.
+
+We can split hardening activities on functional level:
+- **Operating system hardening**: reducing vulnerability in operating systems on servers and endpoints by removing unnecessary services, disabling unnecessary accounts, and adjusting security settings to meet industry standards.
+- **Network hardening**: fortifying network infrastructure by configuring firewalls (both hardware and software), implementing intrusion detection systems (IDS) and intrusion prevention systems (IPS), and conducting regular vulnerability assessments.
+- **Database hardening**: enhancing security of databases by emplementing access controls, encrypting sensitive data, and adjusting security settings.
+- **Application hardening**: adjusting the settings of applications like MS Exchange or MS Office for increased security against exploitation using macros or similar scripting attacks.
+- **Remote systems hardening**: protecting remote systems and devices by implementing secure access controls, and monitoring for vulnerabilities and threats.
+<br><br>
 
 **- Different types of disaster recovery options**
 
