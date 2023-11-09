@@ -14,7 +14,7 @@ Effective threat response requires rapid decision-making based on detailed analy
 Threat investigation is the process of analyzing detected threats to understand their impact on an organization and to develop an incident response plan. Once a threat is detected, security teams conduct analysis and triage to determine the nature and severity of the threat. This process may involve forensic analysis of network resources, systems, and applications.
 
 ## Key-terms
-[Schrijf hier een lijst met belangrijke termen met eventueel een korte uitleg.]
+
 
 ## Assignment
 <ins>Study:</ins>
@@ -31,9 +31,10 @@ Threat investigation is the process of analyzing detected threats to understand 
 - [What is Threat Detection, Investigation, and Response?](https://www.anomali.com/resources/what-is-threat-detection-investigation-and-response)
 - [IDS vs. IPS: What Organizations Need to Know](https://www.varonis.com/blog/ids-vs-ips)
 - [What Is System Hardening?](https://blog.netwrix.com/2023/02/22/system-hardening/)
+- [Understanding the Different Types of Disaster Recovery Plans](https://www.empowerit.com.au/blog/it-planning/different-types-disaster-recovery-plans/)
 
 ### Encountered problems
-[Geef een korte beschrijving van de problemen waar je tegenaan bent gelopen met je gevonden oplossing.]
+None
 
 ### Result
 **- IDS and IPS**
@@ -84,7 +85,12 @@ Businesses rely on documents, files, servers, and applications for their daily o
 A disaster is an unexpected problem that can slow, disrupt, or destroy IT systems. This could be an earthquake or other natural disaster, a technical malfunction or equipment failure, human error, or an attack by malicious parties, either inside or outside the organization.
 
 <ind>Different types of disaster recovery:</ins>
-- **Backup-only disaster recovery**: 
+- **Backup-only disaster recovery**: your files are copied to different locations. Onsite, on a removable drive, and/or secure data centers.  
+But as far as disaster recovery goes, back-up-only strategies are not enough because they're focused solely on securing files rather than the entire IT infrastructure. This isn't necessarily a bad thing since you need your data to work, but you also need your servers, computers, and apps to be operational too.
+- **Cold site disaster recovery**: involves renting out space in a secondary facility where you can set up a temporary office in the event of a disaster. These facilities have the basic infrastructure required to get servers and data online, including power, cooling, and network connecticity.  
+Because you will need to install the hardware, reinstall software, and reload data when disaster strikes, recovery ussually takes 3-5 days.
+- **Hot site disaster recovery**: where an identical facility is set up in a remote location, fully equipped with systems preloaded with apps, data, and security software. Hot sites are active and have up-to-date copies of data at all times, so if the primary site fails, employees can simply move to the hot site and work as if nothing happened.
+- **Virtual disaster recovery**: Managed service providers create a working replica of your entire computing environment, including servers, storage space, operating system, apps, and data. So in the event of a major disaster like a ransomware attack that locks down your user's computers, you can run a VM on those machines and it will be as if the incident never occured.
 <br><br>
 
 **1. A Company makes daily backups of their database. The database is automatically recovered when a failure happens using the most recent available backup. The recovery happens on a different physical machine than the original database, and the entire process takes about 15 minutes. What is the RPO of the database?**
