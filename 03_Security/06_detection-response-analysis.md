@@ -29,13 +29,22 @@ Threat investigation is the process of analyzing detected threats to understand 
 
 ### Used sources
 - [What is Threat Detection, Investigation, and Response?](https://www.anomali.com/resources/what-is-threat-detection-investigation-and-response)
+- [IDS vs. IPS: What Organizations Need to Know](https://www.varonis.com/blog/ids-vs-ips)
 
 ### Encountered problems
 [Geef een korte beschrijving van de problemen waar je tegenaan bent gelopen met je gevonden oplossing.]
 
 ### Result
-**- IDS and IPS**
+**- IDS and IPS**  
+Network administrators need to employ tools to protect their network and prevent malicious actors from gaining access. Intrusion detection systems (IDS) and intrusion prevention systems (IPS) are catogories of tools commonly used for this purpose.  
 
+<ins>IDS</ins>  
+An IDS monitors and detects behavior across a network and should be considered a diagnostic solution. The system, if it detects something problematic, it will alert the security team so they can investigate.  
+An IDS is more of an alerting system that lets an organization know if anomalous or malicious activity is detected. 
+
+<ins>IPS</ins>  
+An IPS has the same functionality as IDS systems in terms of detection but also contains response capabilties.   
+An IPS takes the IDS a step forward and shuts down the network before access can be gained or to prevent further movement in a network.
 
 **- Hack response strategies**
 
