@@ -44,7 +44,7 @@ An IDS is more of an alerting system that lets an organization know if anomalous
 
 <ins>IPS</ins>  
 An IPS has the same functionality as IDS systems in terms of detection but also contains response capabilties.   
-An IPS takes the IDS a step forward and shuts down the network before access can be gained or to prevent further movement in a network.
+An IPS takes the IDS a step forward and shuts down the network before access can be gained or to prevent further movement in a network.<br><br>
 
 **- Hack response strategies**  
 Depending on the type of threat, threat response activities may include:  
