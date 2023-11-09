@@ -32,6 +32,7 @@ Threat investigation is the process of analyzing detected threats to understand 
 - [IDS vs. IPS: What Organizations Need to Know](https://www.varonis.com/blog/ids-vs-ips)
 - [What Is System Hardening?](https://blog.netwrix.com/2023/02/22/system-hardening/)
 - [Understanding the Different Types of Disaster Recovery Plans](https://www.empowerit.com.au/blog/it-planning/different-types-disaster-recovery-plans/)
+- [What is the difference between RPO and RTO](https://www.acronis.com/en-eu/blog/posts/rto-rpo/)
 
 ### Encountered problems
 None
@@ -90,11 +91,18 @@ But as far as disaster recovery goes, back-up-only strategies are not enough bec
 - **Cold site disaster recovery**: involves renting out space in a secondary facility where you can set up a temporary office in the event of a disaster. These facilities have the basic infrastructure required to get servers and data online, including power, cooling, and network connecticity.  
 Because you will need to install the hardware, reinstall software, and reload data when disaster strikes, recovery ussually takes 3-5 days.
 - **Hot site disaster recovery**: where an identical facility is set up in a remote location, fully equipped with systems preloaded with apps, data, and security software. Hot sites are active and have up-to-date copies of data at all times, so if the primary site fails, employees can simply move to the hot site and work as if nothing happened.
-- **Virtual disaster recovery**: Managed service providers create a working replica of your entire computing environment, including servers, storage space, operating system, apps, and data. So in the event of a major disaster like a ransomware attack that locks down your user's computers, you can run a VM on those machines and it will be as if the incident never occured.
+- **Virtual disaster recovery**: managed service providers create a working replica of your entire computing environment, including servers, storage space, operating system, apps, and data. So in the event of a major disaster like a ransomware attack that locks down your user's computers, you can run a VM on those machines and it will be as if the incident never occured.
 <br><br>
 
 **1. A Company makes daily backups of their database. The database is automatically recovered when a failure happens using the most recent available backup. The recovery happens on a different physical machine than the original database, and the entire process takes about 15 minutes. What is the RPO of the database?**
 
+RPO, recovery point objective, generally refers to calculating how much data loss a company can experience within a period most relevant to its business before significant harm occurs, from the point of a disruptive event to the last data backup.
+RPO helps determine how much data a company can tolerate losing during an unforeseen event.
+
+Since the company makes daily backups (once per 24 hours), the database's RPO is counted for 24 hours of data loss.
 
 **2. An automatic failover to a backup web server has been configured for a website. Because the backup has to be powered on first and has to pull the newest version of the website from GitHub, the process takes about 8 minutes. What is the RTO of the website?**
 
+RTO, recovery time objective, often refers to the amount of time that an application, system and process can be down without causing significant damage to the business and the time spent restoring the application and it data to resume normal business operations after a significant incident.
+
+Since the recovery time takes about 8 minutes, the website's RTO is minimum 8 minutes.
