@@ -104,5 +104,5 @@ Since the company makes daily backups (once per 24 hours), the database's RPO is
 
 RTO, recovery time objective, is the goal your organization sets for the maximum length of time it should take to restore normal operations following an outage or data loss.
 
-Since the recovery time takes about 8 minutes, the website's RTO is minimum 8 minutes.  
+Since the recovery time takes about 8 minutes, the website's RTO is <ins>minimum</ins> 8 minutes.  
 As stated above, the RTO is the goal that is set for the <ins>maximum</ins> lenght of time it should take to restore normal operations following an outage or data loss. So theoretically the RTO could also be 20 minutes, and that the 8 minutes github recovery time is within this limit and ofcourse appreciated and valued.
