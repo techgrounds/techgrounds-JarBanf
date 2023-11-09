@@ -32,7 +32,7 @@ Threat investigation is the process of analyzing detected threats to understand 
 - [IDS vs. IPS: What Organizations Need to Know](https://www.varonis.com/blog/ids-vs-ips)
 - [What Is System Hardening?](https://blog.netwrix.com/2023/02/22/system-hardening/)
 - [Understanding the Different Types of Disaster Recovery Plans](https://www.empowerit.com.au/blog/it-planning/different-types-disaster-recovery-plans/)
-- [What is the difference between RPO and RTO](https://www.acronis.com/en-eu/blog/posts/rto-rpo/)
+- [What's the Difference Between RTO and RPO?](https://www.rubrik.com/insights/rto-rpo-whats-the-difference)
 
 ### Encountered problems
 None
@@ -96,13 +96,13 @@ Because you will need to install the hardware, reinstall software, and reload da
 
 **1. A Company makes daily backups of their database. The database is automatically recovered when a failure happens using the most recent available backup. The recovery happens on a different physical machine than the original database, and the entire process takes about 15 minutes. What is the RPO of the database?**
 
-RPO, recovery point objective, generally refers to calculating how much data loss a company can experience within a period most relevant to its business before significant harm occurs, from the point of a disruptive event to the last data backup.
-RPO helps determine how much data a company can tolerate losing during an unforeseen event.
+RPO, recovery point objective, is your goal for the maximum amount of data the organization can tolerate losing. This parameter is measured in time: from the moment a failure occurs to your last valid data backup.
 
 Since the company makes daily backups (once per 24 hours), the database's RPO is counted for 24 hours of data loss.
 
 **2. An automatic failover to a backup web server has been configured for a website. Because the backup has to be powered on first and has to pull the newest version of the website from GitHub, the process takes about 8 minutes. What is the RTO of the website?**
 
-RTO, recovery time objective, often refers to the amount of time that an application, system and process can be down without causing significant damage to the business and the time spent restoring the application and it data to resume normal business operations after a significant incident.
+RTO, recovery time objective, is the goal your organization sets for the maximum length of time it should take to restore normal operations following an outage or data loss.
 
-Since the recovery time takes about 8 minutes, the website's RTO is minimum 8 minutes.
+Since the recovery time takes about 8 minutes, the website's RTO is minimum 8 minutes.  
+As stated above, the RTO is the goal that is set for the <ins>maximum</ins> lenght of time it should take to restore normal operations following an outage or data loss. So theoretically the RTO could also be 20 minutes, and that the 8 minutes github recovery time is within this limit and ofcourse appreciated and valued.
