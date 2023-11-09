@@ -79,6 +79,14 @@ We can split hardening activities on functional level:
 
 **- Different types of disaster recovery options**
 
+Businesses rely on documents, files, servers, and applications for their daily operations. If sensitive data or a critical system is lost or goes offline, this can have major impact on an organization, leading to financiel losses, reputation loss, and even legal exposure. 
+
+A disaster is an unexpected problem that can slow, disrupt, or destroy IT systems. This could be an earthquake or other natural disaster, a technical malfunction or equipment failure, human error, or an attack by malicious parties, either inside or outside the organization.
+
+<ind>Different types of disaster recovery:</ins>
+- **Backup-only disaster recovery**: 
+<br><br>
+
 **1. A Company makes daily backups of their database. The database is automatically recovered when a failure happens using the most recent available backup. The recovery happens on a different physical machine than the original database, and the entire process takes about 15 minutes. What is the RPO of the database?**
 
 
