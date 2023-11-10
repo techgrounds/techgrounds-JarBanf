@@ -99,6 +99,7 @@ Because you will need to install the hardware, reinstall software, and reload da
 RPO, recovery point objective, is your goal for the maximum amount of data the organization can tolerate losing. This parameter is measured in time: from the moment a failure occurs to your last valid data backup.
 
 Since the company makes daily backups (once per 24 hours), the database's RPO is counted for 24 hours of data loss.
+<br><br>
 
 **2. An automatic failover to a backup web server has been configured for a website. Because the backup has to be powered on first and has to pull the newest version of the website from GitHub, the process takes about 8 minutes. What is the RTO of the website?**
 
