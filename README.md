@@ -1,5 +1,9 @@
-# Hallo :-)
-Welkom in mijn repository van mijn Cloud Engineer opleiding bij Techgrounds.  
-Hier plaats ik al mijn uitgewerkte opdrachten en opgedane kennis.
+### Hi there 👋, my name is Jared
 
-Open gerust de folders hierboven om mijn documentaties te zien.
+#### Welcome to my Cloud Engineer course repository. 
+
+Here I document my projects and assignment from the course.
+
+Check out the folders above to view what I have done and learned.
+
+In my ![GitHub homepage](https://github.com/JarBanf) you can find all my repositories.
