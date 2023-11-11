@@ -1,16 +1,21 @@
 # IAM
-[Geef een korte beschrijving van het onderwerp]
+An organization's IT department needs a way to control what users can and can't access so that sensitive data and functions are restricted to only the people and things that need to work with them. This is where identity and access management (IAM) comes in.  
+
+IAM gives secure access to company resources, like emails, databases, data, and applications, to verified entities. The goal is to manage access so that the right people can do their jobs and the wrong people, like hackers, are denied entry.
+
+With an IAM system, an organization can quickly and accurately verify a person's identity and that they have the necessary permissions to use the requested resource during each access attempt.
 
 ## Key-terms
-[Schrijf hier een lijst met belangrijke termen met eventueel een korte uitleg.]
 
-## Opdracht
+
+## Assignment
 Study:
 1. The difference between authentication and authorization.
 2. The three factors of authentication and how MFA improves security.
 3. What the principle of least privilege is and how it improves security.
 
-### Gebruikte bronnen
+### Used sources
+- [What is identity and access management (IAM)?](https://www.microsoft.com/en-us/security/business/security-101/what-is-identity-access-management-iam)
 - [Meaning of authentication in English](https://dictionary.cambridge.org/dictionary/english/authentication)
 - [Meaning of authorization in English
 ](https://dictionary.cambridge.org/dictionary/english/authorization)
@@ -19,10 +24,10 @@ Study:
 - [What is Multi-Factor Authentication (MFA)?](https://aws.amazon.com/what-is/mfa/)
 - [What is the Principle of Least Privilege (POLP)?](https://www.digitalguardian.com/blog/what-principle-least-privilege-polp-best-practice-information-security-and-compliance)
 
-### Ervaren problemen
-Geen
+### Encountered problems
+None
 
-### Resultaat
+### Result
 **1. The difference between authentication and authorization.**
 
 <ins>Cambridge dictionary</ins>  

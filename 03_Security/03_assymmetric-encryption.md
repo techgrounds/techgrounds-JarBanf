@@ -5,18 +5,18 @@ This approach allows for secure communication between two parties without the ne
 ## Key-terms
 
 
-## Opdracht
+## Assignment
 1. Generate a key pair.
 2. Send an asymmetrically encrypted message to one of your peers via the public Slack channel. They should be able to decrypt the message using a key. The recipient should be able to read the message, but it should remain a secret to everyone else. You are not allowed to use any private messages or other communication channels besides the public Slack channel. Analyse the difference between this method and symmetric encryption.
 
-### Gebruikte bronnen
+### Used sources
 - [What is Asymmetric Encryption?](https://www.geeksforgeeks.org/what-is-asymmetric-encryption/)
 - [Online RSA Encryption, Decryption And Key Generator Tool(Free)](https://www.devglan.com/online-tools/rsa-encryption-decryption)
 
-### Ervaren problemen
+### Encountered problems
 None
 
-### Resultaat
+### Result
 **1. Generate a key pair.**
 
 My Public Key:
