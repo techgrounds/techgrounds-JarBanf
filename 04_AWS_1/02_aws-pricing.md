@@ -31,15 +31,20 @@ None
 - **Save when you commit**: Savings Plans is a flexible pricing model that provides significant savings on your AWS usage. This pricing model offers lower prices on AWS Compute and AWS Machine Learning. Savings Plans offer savings over On-Demand in exchange for a commitment to use a specific amount (measured in $/hour) of an AWS service or a category of services, for one- or three-year period.
 - **Pay less by using more**: With AWS, you can get volume based discounts and realize important savings as your usage increases. For services such as S3 and data transfer OUT from EC2, pricing is tiered, meaning the more you use, the less you pay per GB. In addition, data transfer IN is always free of charge. <ins>4.) As a result, as your AWS usage needs increase, you benefit from the economics of scale that allow you to increase adoptation and keep costs under control.</ins>
 
-**2. Aws free tier for:**   
-- **S3**:
+**2. Aws free tier for:**  
 
+The AWS Free Tier enables you to gain free, hands-on experience with more than 60 products on AWS. AWS Free Tier includes the following free offer types:
+- Free trials: These offers are short-term free trials starting from date you activate a particular service. Once the trial period expires, you simply pay standard, pay-as-you-go service rates.
 
-- **EC2**:
+![cert ing.nl](/04_AWS_1/images/02_aws-pricing1-2-1.png)<br><br>
 
+- 12 Months Free: These tier offers include 12 months of free usage following your initial sign-up date to AWS. When your 12-month free usage term expires, or if your application use exceeds the tiers, you simply pay standard, pay-as-you-go service rates.
 
-- **Always free services**:
+![cert ing.nl](/04_AWS_1/images/02_aws-pricing1-2-2.png)<br><br>
 
+- Always Free: These free tier offers do not expire and are available to all AWS customers.
+
+![cert ing.nl](/04_AWS_1/images/02_aws-pricing1-2-3.png)<br><br>
 
 **3. Understand the differences between capex and opex**
 
