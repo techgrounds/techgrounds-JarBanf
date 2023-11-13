@@ -63,7 +63,7 @@ The 5 defining characteristics of CAPEX are:
 - enable growth and sustainability when done properly
 - negatively impact the business if unwisely invested and may be hard to reverse
 
-<ins>OPEX</ins>
+<ins>OPEX</ins>  
 OPEX are the recurring expenses that business must pay to keep the organization running, like employee wages, equipment rentals, and office supplies. While CAPEX is intended to increase the long-term value of the business, OPEX is about keeping the lights on and the business productive.  
 The 5 defining characteristics of OPEX are:
 - provide short-term benefits

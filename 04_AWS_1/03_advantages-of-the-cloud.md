@@ -2,14 +2,45 @@
 [Geef een korte beschrijving van het onderwerp]
 
 ## Key-terms
-[Schrijf hier een lijst met belangrijke termen met eventueel een korte uitleg.]
 
 ## Assignment
+<ins>Study:</ins>  
+
+The six advantages of cloud computing:
+- Trade Capital expense (CapEx) for variable expense (OpEx)
+- Benefit from massive economies of scale
+- Stop guessing capacity
+- Increase speed and agility
+- Stop spending money on running and maintaining data centers
+- Go global in minutes
+
+
 ### Used sources
-[Plaats hier de bronnen die je hebt gebruikt.]
+[Plaats hier de bronnen die je hebt gebruikt.]()
 
 ### Encountered problems
-[Geef een korte beschrijving van de problemen waar je tegenaan bent gelopen met je gevonden oplossing.]
+None
 
 ### Result
-[Omschrijf hoe je weet dat je opdracht gelukt is (gebruik screenshots waar nodig).]
+**<ins>Study:</ins>**
+
+**The six advantages of cloud computing:**  
+
+**- Trade Capital expense (CapEx) for variable expense (OpEx)**
+
+
+
+**- Benefit from massive economies of scale**
+
+
+
+**- Stop guessing capacity**
+
+
+**- Increase speed and agility**
+
+
+**- Stop spending money on running and maintaining data centers**
+
+
+**- Go global in minutes**
