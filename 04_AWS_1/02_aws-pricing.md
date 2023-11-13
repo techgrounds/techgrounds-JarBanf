@@ -20,6 +20,7 @@ AWS has the services to help you build sophisticted applications with increased 
 - [How AWS Pricing Works](https://docs.aws.amazon.com/pdfs/whitepapers/latest/how-aws-pricing-works/how-aws-pricing-works.pdf)
 - [AWS Pricing](https://aws.amazon.com/pricing/?nc2=h_ql_pr_ln&aws-products-pricing.sort-by=item.additionalFields.productNameLowercase&aws-products-pricing.sort-order=asc&awsf.Free%20Tier%20Type=*all&awsf.tech-category=*all)
 - [Capex Vs. Opex: What’s the Difference & Why It Matters](https://www.iqxbusiness.com/iqx-blog/capex-vs-opex-whats-the-difference-why-it-matters/)
+- [What is AWS Cost Management?](https://docs.aws.amazon.com/cost-management/latest/userguide/what-is-costmanagement.html)
 
 ### Encountered problems
 None
@@ -37,15 +38,15 @@ None
 The AWS Free Tier enables you to gain free, hands-on experience with more than 60 products on AWS. AWS Free Tier includes the following free offer types:
 - Free trials: These offers are short-term free trials starting from date you activate a particular service. Once the trial period expires, you simply pay standard, pay-as-you-go service rates.
 
-![cert ing.nl](/04_AWS_1/images/02_aws-pricing1-2-1.png)<br><br>
+![free trials](/04_AWS_1/images/02_aws-pricing1-2-1.png)<br><br>
 
 - 12 Months Free: These tier offers include 12 months of free usage following your initial sign-up date to AWS. When your 12-month free usage term expires, or if your application use exceeds the tiers, you simply pay standard, pay-as-you-go service rates.
 
-![cert ing.nl](/04_AWS_1/images/02_aws-pricing1-2-2.png)<br><br>
+![12 months free](/04_AWS_1/images/02_aws-pricing1-2-2.png)<br><br>
 
 - Always Free: These free tier offers do not expire and are available to all AWS customers.
 
-![cert ing.nl](/04_AWS_1/images/02_aws-pricing1-2-3.png)<br><br>
+![always free](/04_AWS_1/images/02_aws-pricing1-2-3.png)<br><br>
 
 **3. Understand the differences between capex and opex**
 
@@ -75,5 +76,9 @@ The 5 defining characteristics of OPEX are:
 
 **1. Create an alert that you can use to monitor your own cloud costs.**
 
+![cost alert](/04_AWS_1/images/02_aws-pricing2-1.png)<br><br>
 
 **2. Understand the options that AWS offers to get insights in your cloud costs.**
+- AWS Cost Management: has features that you can use for budgeting and forecasting costs and methods for you to optimize your pricing to reduce your overall AWS bill.
+
+![aws cost management](/04_AWS_1/images/02_aws-pricing2-2.png)<br><br>
