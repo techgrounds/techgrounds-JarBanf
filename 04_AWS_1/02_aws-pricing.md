@@ -19,6 +19,7 @@ AWS has the services to help you build sophisticted applications with increased 
 ### Used sources
 - [How AWS Pricing Works](https://docs.aws.amazon.com/pdfs/whitepapers/latest/how-aws-pricing-works/how-aws-pricing-works.pdf)
 - [AWS Pricing](https://aws.amazon.com/pricing/?nc2=h_ql_pr_ln&aws-products-pricing.sort-by=item.additionalFields.productNameLowercase&aws-products-pricing.sort-order=asc&awsf.Free%20Tier%20Type=*all&awsf.tech-category=*all)
+- [Capex Vs. Opex: What’s the Difference & Why It Matters](https://www.iqxbusiness.com/iqx-blog/capex-vs-opex-whats-the-difference-why-it-matters/)
 
 ### Encountered problems
 None
