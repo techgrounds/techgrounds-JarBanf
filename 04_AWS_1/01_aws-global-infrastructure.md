@@ -1,4 +1,4 @@
-# Global infrastructure
+# AWS Global Infrastructure
 The AWS Global Infrastructure is a cloud platform, offering over 200 fully featured services from data centers globally. The AWS Cloud spans 102 Availability Zones within 32 geographic regions around the world, with announced plans for 15 more Availabilty Zones and 5 more AWS Regions in Canada, Germany, Malaysia, New Zealand, and Thailand.
 
 ## Key-terms
