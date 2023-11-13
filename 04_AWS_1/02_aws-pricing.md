@@ -48,7 +48,27 @@ The AWS Free Tier enables you to gain free, hands-on experience with more than 6
 
 **3. Understand the differences between capex and opex**
 
+CAPEX, capital expenditure.  
+OPEX, operating expenditure.  
+Both expenditures involve spending money for the benefit of the business.
 
+<ins>CAPEX</ins>  
+CAPEX is money invested to purchase, maintain or upgrade both physical and intangible assets. For example, purchasing a new software platform or upgrading machinery on a factory floor would both be considered CAPEX.  
+The 5 defining characteristics of CAPEX are:
+- provide long-term benefits
+- substantial monetary investment
+- high value, impact and risk
+- enable growth and sustainability when done properly
+- negatively impact the business if unwisely invested and may be hard to reverse
+
+<ins>OPEX</ins>
+OPEX are the recurring expenses that business must pay to keep the organization running, like employee wages, equipment rentals, and office supplies. While CAPEX is intended to increase the long-term value of the business, OPEX is about keeping the lights on and the business productive.  
+The 5 defining characteristics of OPEX are:
+- provide short-term benefits
+- tend to be a lower up-front cost
+- recurring, predictable, and flexible expenses
+- part of day-to-day operating overhead
+- less impactfull to the business if inappropriate and can be more easily reversed
 
 **<ins>Exercise:</ins>**
 
