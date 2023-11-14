@@ -10,12 +10,15 @@ Passwords are our first line of defense. In a manner of speaking, we are only as
 1. Find out what hashing is and why it is preferred over symmetric encryption for storing passwords.
 2. Find out how a Rainbow Table can be used to crack hashed passwords.
 3. Below are two MD5 password hashes. One is a weak password, the other is a string of 16 randomly generated characters. Try to look up both hashes in a Rainbow Table.
-```
+
+```bash
 03F6D7D1D9AAE7160C05F71CE485AD31
 ```
-```
+
+```bash
 03D086C9B98F90D628F2D1BD84CFA6CA
 ```
+
 4. Create a new user in Linux with the password 12345. Look up the hash in a Rainbow Table.
 5. Despite the bad password, and the fact that Linux uses common hashing algorithms, you won’t get a match in the Rainbow Table. This is because the password is salted. To understand how salting works, find a peer who has the same password in /etc/shadow, and compare hashes.
 
@@ -64,13 +67,17 @@ A rainbow table is a database that is used to gain authentication by cracking th
 **4. Create a new user in Linux with the password 12345. Look up the hash in a Rainbow Table.**
 
 - Created test_pass_user:
-```
+
+```bash
 sudo useradd test_pass_user
 ```
+
 - Created password for test_pass_user. Password is `12345`.:
-```
+
+```bash
 sudo passwd test_pass_user
 ```
+
 - The hash for password `12345` is:  
 `$6$em/RM4xaNeTtQYn5$mk3gEZ.pBx00CDywbmODTId010adKdUPwXi5/Xz/aQWw9Dp.WHM05k3g7rnGE6eXTLlrC3IfqCFJBI3Db3UCe0`
 

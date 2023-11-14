@@ -30,14 +30,16 @@ Als we bijvoorbeeld Hallo, wereld! in Bash willen printen kan het commando `echo
 
 ### Resultaat
 1. Met de export commando kan ik een nieuwe directory toevoegen in de PATH variable. Met deze commando voeg ik **tijdelijk** een nieuwe directory toe. Zodra ik een nieuwe shell open, ben ik deze toevoeging kwijt en moet ik het opnieuw doen.<br> 
-```
+
+```bash
 export PATH=$PATH:/home/jared_/scripts
 ```
 
 ![Directory toevoegen in PATH](images/09-1_bash-scripts1.png)<br><br>
 
 2. In de scripts directory heb ik een `addline.sh` bestand gemaakt. Hierin staat een commando dat een lijn toevoegd in `addline.txt`.<br> 
-```
+
+```bash
 echo "Wanneer addline.sh word ge-execute, wordt dit lijn aangemaakt in dit bestand" >> addline.txt
 ```
 
@@ -57,7 +59,7 @@ echo "Wanneer addline.sh word ge-execute, wordt dit lijn aangemaakt in dit besta
 
 5. Script om een random number te genereren tussen 1 en 10. En deze in een tekstbestand te plaatsten.
 
-```
+```bash
 #!/bin/bash
 X=$(shuf -i 1-10 -n 1)
 echo $X >> randomnumber.txt
@@ -67,7 +69,8 @@ echo $X >> randomnumber.txt
 ![execute randomnumber.sh](images/09-2_bash-scripts5-2.png)<br><br>
 
 6. Script om een random number te genereren tussen 1 en 10. Als het getal groter is dan 5, moet dat getal geschreven worden naar een tekstbestand. Als het getal kleiner of gelijk is aan 5, moet een stuk tekst geschreven worden naar de tekstbestand.
-```
+
+```bash
 #!/bin/bash
 
 VAR=$(shuf -i 1-10 -n 1)

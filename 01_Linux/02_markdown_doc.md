@@ -16,7 +16,7 @@ Waar ik toen wel tegen aan liep is het toevoegen van foto's in je Markdown docum
 
 ### Resultaat
 In dezelfde folder als dit document vind je mijn markdown opdracht md-document die ik heb gemaakt.  
-![Dit is ook een link naar dit md-document](02_markdown.md)
+[Dit is ook een link naar dit md-document](02_markdown.md)
 
 Hieronder wat printscreens waar je kan zien hoe ik in VS Code een md-document heb gemaakt én hoe ik het ook heb gepushed naar mijn github-repo met behulp van de GitHub feature in VS Code.
 

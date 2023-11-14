@@ -45,6 +45,7 @@ Geïnstalleerd en geactiveerd.
 
 2. **Bekijk de standaardpagina die met de webserver geïnstalleerd is via je browser op je pc/laptop.**  
 De public IPv4 adddress van mijn webserver is `3.121.40.175` en de webport is `58015`.
+
 ```
 http://3.121.40.175:58015/
 ```
@@ -55,24 +56,32 @@ http://3.121.40.175:58015/
 
 Het gewenste gedrag van de firewall is om inkomende verbindingen toe te laten alleen op eerder geautoriseerde poorten, en alle andere porten blokkeren. Daarom is de standaard policy “deny incoming traffic” en “allow outgoing traffic”. Dus het system kan verzoeken sturen naar de buitenwereld en antwoorden ontvangen. Tegelijkertijd blokkeert de firewall alle ongevraagde inkomende verbindingen.  
 Dit doen we met 2 commando’s. 
-```
+
+```bash
 sudo ufw default deny incoming
 ```
-```
+
+```bash
 sudo ufw default allow outgoing
 ```
+
 Om ervoor te zorgen dat ik ten aller tijden in de VM kan ssh-en zal ik een regel toevoegen om dat toe te staan.
-```
+
+```bash
 sudo ufw allow "OpenSSH"
 ```
+
 Met de volgende commando activeer ik de firewall
-```
+
+```bash
 sudo ufw enable
 ```
 We checken de status met het volgende commando.
-```
+
+```bash
 sudo ufw status
 ```
+
 ![apache2 actief](/02_Networking/images/09_firewalls3.png)<br><br>
 We zien dat de firewall alleen inkomende verkeer via SSH toestaat. Inkomende verkeer via HTTP is niet toegestaan.
 

@@ -27,45 +27,57 @@ None
 **1. Create a self-signed certificate on your VM.**
 
 - Step 1: Check status Apache2.
-```
+
+```bash
 systemctl status apache2
 ```
+
 Apache is enabled and active.
 
 ![check apache2 actief](/03_Security/images/05_public-key-infrastructure1-1.png)<br><br>
 
 - Step 2: Check if firewall is set up to allow incoming connections on port 80/http and port 443/https. 
-```
+
+```bash
 sudo ufw status
 ```
+
 Not allowed yet.
 
 ![check port 80 and 443 if open](/03_Security/images/05_public-key-infrastructure1-2.png)<br><br>
 
 - Step 3: Allow incoming connections on port 80/http and port 443/https and check status again.
-```
+
+```bash
 sudo ufw allow "Apache Full"
 ```
-```
+
+```bash
 sudo ufw status
 ```
+
 ![open port 80 and 443 and check again](/03_Security/images/05_public-key-infrastructure1-3.png)<br><br>
 
 - Step 4: Enable mod_ssl, an apache module that provides support for SSL encryption.
-```
+
+```bash
 sudo a2enmod ssl
 ```
+
 ![enable mod_ssl](/03_Security/images/05_public-key-infrastructure1-4.png)<br><br>
 
 - Step 5: Restart apache to activate the module:
-```
+
+```bash
 sudo systemctl restart apache2
 ```
 
 - Step 6: Create the TLS Certificate.
-```
+
+```bash
 sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/ssl/private/apache-selfsigned.key -out /etc/ssl/certs/apache-selfsigned.crt
 ```
+
 What is happening in the command?
 - `openssl`: This is the command line tool for creating and managing OpenSSL certificates, keys, and other files.
 - `req -x509`: This specifies that we want to use X.509 certificate signing request (CSR) management. X.509 is a public key infrastructure standard that TLS adheres to for key and certificate management.

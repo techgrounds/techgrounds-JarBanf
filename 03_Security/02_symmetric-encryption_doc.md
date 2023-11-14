@@ -42,22 +42,28 @@ Converts the plaintext into cypher-text by taking 1 byte of plain text at a time
 To be able to share the <ins>symmetric</ins> encryption key with my peer without revealing it to anyone I will be using the RSA <ins>a-symmetric</ins> encryption.  
 
 - Step 1: Receive public RSA public key from my peer.
-```
+
+```bash
 MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCCgbfy69Kv4BqDEMH0FkHI4hUZwnZ2hz6kKdeaz4Xv6gr4iWeckTHrzVRckOLPbhQYvt5IBweOeHXl6dSw2s7vAjnPc/DTrOD72UkhW6X685AeHCmozIf8DWU0GugH9FhGKOdY3AeYOty2IU9+XH1k3sUqwA8CBJXyxZQrcG9gKQIDAQAB
 ```
+
 ![my peer's public key](/03_Security/images/02_symmetric-encryption3-1.png)<br><br>
 
 - Step 2: Make / come up with a <ins>symmetric</ins> key.
+
 ```
 qpwoeiruty
 ```
+
 ![make symmetric key](/03_Security/images/02_symmetric-encryption3-2.png)<br><br>
 
 - Step 3: By using my peer's public key I will create an RSA <ins>asymmetric</ins> encrypted message which contains my <ins>symmetric</ins> key.  
 Generated <ins>asymmetric</ins> encrypted message:
-```
+
+```bash
 RKYtIXuQtwHGTJBIxco8LAG3uA4YT6XRAkrF7cFuzhYidgcCQx5cfO1tybnyF1PulS0leBIfNNzfBgWRWEYpyRg8qIAoi6NzwvV9EGAyv4CwzrE+UCED8utRfAFbKGeIcII5eK+XJ0cD8r/8qlaEBkasrO00NWp8Bn7WtwQJhuo=
 ```
+
 ![make asymmetric encrypted message](/03_Security/images/02_symmetric-encryption3-3.png)<br><br>
 
 - Step 4: Share this <ins>asymmetric</ins> encrypted message which contains my <ins>symmetric</ins> key with my peer via the internet.
@@ -68,13 +74,17 @@ RKYtIXuQtwHGTJBIxco8LAG3uA4YT6XRAkrF7cFuzhYidgcCQx5cfO1tybnyF1PulS0leBIfNNzfBgWR
 
 - Step 6: I will now write a message which I will encrypt using my <ins>symmetric</ins> key.  
 My message:  
+
 ```
 Hey Francois, doe mijn koffie zonder melk en suiker aub. Alvast bedankt :).
 ```
+
 My generated <ins>symmetric</ins> encrypted message:  
-```
+
+```bash
 nzzRkzPU6oTnxi7wMmCvJzaNW6q5VjANEKe/hn27dsaPiTfqfNa1s5I8dTya7ODTg4DBL3V59UWpgGPcZ25fZciKMlQsTk2XQZOPCSqFBWE=
 ```
+
 ![write message and generate symmetric encrypted message](/03_Security/images/02_symmetric-encryption3-5.png)<br><br>
 
 - Step 7: Share my <ins>symmetric</ins> encrypted message with my peer via internet.

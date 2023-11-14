@@ -18,36 +18,46 @@ Geen
 ### Resultaat
 1. **Scan the network of your Linux machine using nmap. What do you find?**  
 - nmap installeren.
-```
+
+```bash
 sudo apt-get install nmap
 ```
+
 - Met de commando `ip a` vind ik mijn private IP adres. En dat is `10.82.162.177/24`.
 
 ![ip a](/02_Networking/images/08_network-detection1-1.png)<br><br> 
 
 - Met een basic scan van mijn private IP adres zie ik het volgende.
-```
+
+```bash
 nmap 10.82.162.177
 ```
+
 ![nmap](/02_Networking/images/08_network-detection1-2.png)<br><br>
 
 - Met een agresieve scan van mijn private IP adres zie ik het volgende.
-```
+
+```bash
 nmap -A 10.82.162.177
 ```
+
 ![nmap -A](/02_Networking/images/08_network-detection1-3.png)<br><br>
 
 - Met een basic scan van het hele 10.82.162.177 /24 subnet krijg informatie te zien van alle hosts binnen deze subnet. 
-```
+
+```bash
 nmap 10.82.162.177/24
 ```
+
 ![nmap hele subnet](/02_Networking/images/08_network-detection1-4-1.png)
 ![nmap hele subnet](/02_Networking/images/08_network-detection1-4-2.png)<br><br>
 
 - Nu dat ik kan zien welke hosts er allemaal actief zijn binnen de hele subnet kan ik kiezen om meer informatie te vinden van een bepaalde host. In dit geval een agresieve scan van `10.82.162.34`.
-```
+
+```bash
 sudo nmap -A 10.82.162.34
 ```
+
 ![nmap hele subnet](/02_Networking/images/08_network-detection1-5.png)<br><br>
 
 2. **Open Wireshark in Windows/MacOS Machine. Analyse what happens when you open an internet browser.**

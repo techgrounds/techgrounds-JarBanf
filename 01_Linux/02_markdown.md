@@ -2,7 +2,8 @@
 ## Dit is een level 2 header
 
 Hieronder is een voorbeeld van een codeblok
-```
+
+```html
 <!DOCTYPE html>
 <html>
 <head>

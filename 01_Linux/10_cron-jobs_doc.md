@@ -40,7 +40,8 @@ Alleen de `root` mag naar de `/var`-directory schrijven. De commando's "`>`" en 
 ### Resultaat
 1. Script om de huidige datum en tijd te schrijven naar een bestand in mijn home directory.  
 Met `date` haal ik de datum en tijd op.
-```
+
+```bash
 #!/bin/bash
 /usr/bin/date >> ~/datetime.txt
 ```
@@ -49,7 +50,8 @@ Met `date` haal ik de datum en tijd op.
 ![execute datetime.sh](images/10_cron-jobs1-2.png)<br><br>
 
 2. Script in crontab zodat het elke minuut ge-execute wordt. Met de commando `crontad -e` bewerk ik de crontab bestand.
-```
+
+```bash
 # m h  dom mon dow   command
 * * * * * /usr/bin/date >> ~/datetime.txt
 ```
@@ -59,11 +61,12 @@ Met `date` haal ik de datum en tijd op.
 
 3. Script dat de beschikbare disk space schrijft naar een bestand in /var/logs.  
 
-```
+```bash
 #!/bin/bash
 
 /usr/bin/df -H |/usr/bin/sudo /usr/bin/tee /var/logs/available_space.txt > /dev/null
 ```
+
 Met `df -H` wordt de beschikbare ruimte opgevraagd.  
 Met `tee` schrijf ik de output van `df -H` naar `/var/logs/available_space.txt`.  
 Met `> /dev/null` voorkom ik dat de output ook wordt geschreven naar de terminal.
@@ -71,16 +74,20 @@ Met `> /dev/null` voorkom ik dat de output ook wordt geschreven naar de terminal
 ![execute script](images/10_cron-jobs3-1.png)<br><br>  
 
 Het available_space.sh bestand maak ik executable met de commando:
-```
+
+```bash
 chmod 774 available-space.sh
 ```
+
 ![execute script](images/10_cron-jobs3-2.png)<br><br>  
 
 Crontab commando om de script wekelijks te execute-en.
-```
+
+```bash
 # m h  dom mon dow   command
 @weekly ~/scripts/available_space.sh
 ```
+
 Met `@weekly` wordt de script elke zondag om 12:00 AM ge-execute.
  
 ![execute script](images/10_cron-jobs3-3.png)<br><br>
