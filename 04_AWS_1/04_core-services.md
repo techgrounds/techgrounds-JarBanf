@@ -22,7 +22,7 @@ None
 
 | Service                            | Description |
 |------------------------------------|-------------|
-| Amazon EC2                         |             |
+| Amazon EC2                         | Amazon Elastic Compute Cloud, virtual servers in the cloud. A web service that provides resizable computing capacity, literally servers in Amazon's data centers, that you use to build and host your software systems. |
 | AWS Lambda                         |             |
 | AWS Elastic Beanstalk              |             |
 | Amazon VPC                         |             |
