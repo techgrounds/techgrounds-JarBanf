@@ -1,5 +1,5 @@
 # Core Services
-[Geef een korte beschrijving van het onderwerp]
+List of AWS key-services that are in scope for the exam.
 
 ## Key-terms
 
@@ -30,9 +30,9 @@ None
 | Amazon Route 53 | Scalable DNS and domain name registration | Amazon Route 53 is a highly available and scalable Domain Name System (DNS) web service. |
 | Amazon S3 | Scalable storage in the cloud | Amazon Simple Storage Service is storage for the internet. You can use Amazon S3 to store and retrieve any amount of data at anytime, from anywhere on the web. |
 | Amazon S3 Glacier | Archive storage in the cloud | Provides durable and extremely low-cost storage for infrequently used data with security features for data archiving and backup. |
-| Amazon CloudFront |  |  |
-| Amazon RDS |  |  |
-| Amazon DynamoDB |  |  |
-| Amazon CloudWatch |  |  |
-| Amazon CloudFormation |  |  |
-| AWS Identity and Access Management |  |  |
+| Amazon CloudFront | Global content delivery network | Amazon CloudFront speeds up distribution of your static and dynamic web content, such as .html, .css, .php, image, and media files. When users request your content, CloudFront delivers it through a worldwide network of edge locations that provide low latency and high performance. |
+| Amazon RDS | Managed relational database service | Amazon Relational Database Service makes it easier to set up, operate, and scale a relational database in the cloud. it provides cost-efficient, resizable capacity for an industry-standard relational database and manages common database administration tasks. |
+| Amazon DynamoDB | Managed NoSQL database service | Amazon DynamoDB is a fully managed NoSQL database service that provides fast and predictable performance with seamless scalability. You can use Amazon DynamoDB to create a database table that can store and retrieve any amount of data, and serve any level of request traffic. Amazon DynamoDB automatically spreads the data and traffic for the table over a sufficient number of serversto handle the request capacity specified by the customer and the amount of data stored, while maintaining consistent and fast performance. |
+| Amazon CloudWatch | Monitor resources and applications | Provides a reliable, scalable, and flexible monitoring solution that you can start using within minutes. You no longer need to set up, manage, and scale your own monitoring systems and infrastructure. |
+| Amazon CloudFormation | Create and manage resources with templates | Enables you to create and provision AWS infrastructure deployments predictably and repeatedly. It helps you leverage AWS products such as EC2, Elastic Block Store, SNS, Elastic Load Balancing, and Auto Scaling to build highly reliable, highly scalable, cos-effective applications in the cloud without worrying about creating and configuring the underlying AWS infrastructure. AWS CloudFormation enables you to use a template file to create and delete a collection of resources together as a single unit (a stack). |
+| AWS Identity and Access Management | Manage access to AWS resources | AWS Identity and Access Management is a web service for securely controlling access to AWS services. With IAM, you can centrally manage users, security credentials such as keys, and permissions that control which AWS resources users and applications can access. |
