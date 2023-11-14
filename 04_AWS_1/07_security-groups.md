@@ -2,14 +2,23 @@
 [Geef een korte beschrijving van het onderwerp]
 
 ## Key-terms
-[Schrijf hier een lijst met belangrijke termen met eventueel een korte uitleg.]
 
 ## Assignment
+
+<ins>Study:</ins>
+- Security Groups in AWS
+- Network Access Control Lists in AWS
+
 ### Used sources
-[Plaats hier de bronnen die je hebt gebruikt.]
+[Plaats hier de bronnen die je hebt gebruikt.]()
 
 ### Encountered problems
-[Geef een korte beschrijving van de problemen waar je tegenaan bent gelopen met je gevonden oplossing.]
+None
 
 ### Result
-[Omschrijf hoe je weet dat je opdracht gelukt is (gebruik screenshots waar nodig).]
+
+**<ins>Study:</ins>**
+
+**- Security Groups in AWS**
+
+**- Network Access Control Lists in AWS**
