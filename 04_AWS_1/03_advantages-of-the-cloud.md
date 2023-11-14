@@ -16,7 +16,7 @@ The six advantages of cloud computing:
 
 
 ### Used sources
-[Plaats hier de bronnen die je hebt gebruikt.]()
+- [Six advantages of cloud computing](https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html)
 
 ### Encountered problems
 None
@@ -26,9 +26,7 @@ None
 
 **The six advantages of cloud computing:**  
 
-**- Trade Capital expense (CapEx) for variable expense (OpEx)**
-
-
+**- Trade Capital expense (CapEx) for variable expense (OpEx)**: Instead of having to invest heavily in data centers and servers before you know how you're going to use them, you can pay only when you consume computing resources, and pay only for how much you consume.
 
 **- Benefit from massive economies of scale**
 
