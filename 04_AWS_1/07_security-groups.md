@@ -36,4 +36,9 @@ None
     - Reserved IP addresses used by the default VPC router
 - There are quotas on the number of security groups that you can create per VPC, the number of rules that you can add to each security group, and the number of security groups that you can associate with a network interface.
 
+<ins>Best practices:</ins>
+- Authorize only specific IAM principals to create and modify security grous.
+- Create the minimum number of security groups that you need, to decrease the risk of error. Use each security group to manage access to resources that have similar functions and security requirements.
+- 
+
 **- Network Access Control Lists in AWS**
