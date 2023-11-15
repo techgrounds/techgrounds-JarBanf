@@ -36,6 +36,7 @@ Amazon EBS is recommended for data that must be quickly accesible and requires l
 - [Attach an Amazon EBS volume to an instance](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-attaching-volume.html)
 - [Make an Amazon EBS volume available for use on Linux](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-using-volumes.html)
 - [Create Amazon EBS snapshots](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-creating-snapshot.html)
+- [Detach an Amazon EBS volume from a Linux instance](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-detaching-volume.html)
 
 ### Encountered problems
 
@@ -146,15 +147,55 @@ echo 'This is a test textfile' > /data/test.txt
 rm /data/test.txt
 ```
 
-![create snapshot](/04_AWS_1/images/08_ebs4-1.png)<br><br>
+![remove text file](/04_AWS_1/images/08_ebs3-2-1.png)<br><br>
 
 **- Create a new volume using your snapshot.**
 
+![create volume](/04_AWS_1/images/08_ebs3-3-1.png)<br>
+
+![create volume](/04_AWS_1/images/08_ebs3-3-2.png)<br><br>
 
 **- Detach your original EBS volume.**
 
+1. Unmount the `xvdf` volume.
+
+    ```bash
+    sudo umount -d /dev/xvdf
+    ```
+![unmount volume](/04_AWS_1/images/08_ebs3-4-1.png)<br><br>
+
+2. Detach the volume from the instance.
+
+![detach volume](/04_AWS_1/images/08_ebs3-4-2.png)<br>
+
+![detach volume](/04_AWS_1/images/08_ebs3-4-3.png)<br>
+
+![detach volume](/04_AWS_1/images/08_ebs3-4-4.png)<br><br>
 
 **- Attach the new volume to your EC2 and mount it.**
 
+1. Attach the `sdg` volume to the instance.
+
+![attach volume](/04_AWS_1/images/08_ebs3-5-1.png)<br>
+
+![attach volume](/04_AWS_1/images/08_ebs3-5-2.png)<br><br>
+
+2. Mount the `xvdg` volume to the `/data` mount point directory.
+
+    ```bash
+    sudo mount /dev/xvdg /data
+    ```
+
+![mount volume](/04_AWS_1/images/08_ebs3-5-3.png)<br><br>
 
 **- Find your text file on the new EBS volume.**
+
+```bash
+ls /data
+```
+
+```bash
+cat /data/test.txt
+```
+
+![mount volume](/04_AWS_1/images/08_ebs3-6-1.png)<br><br>
