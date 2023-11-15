@@ -39,6 +39,8 @@ None
 <ins>Best practices:</ins>
 - Authorize only specific IAM principals to create and modify security grous.
 - Create the minimum number of security groups that you need, to decrease the risk of error. Use each security group to manage access to resources that have similar functions and security requirements.
-- 
+- When you add inbound rules for port 22 (SSH) or 3389 (RDP) so that you can access your EC2 instancec, authorize only specific IP address ranges. If you specify 0.0.0.0/0 (IPv4) and ::/(IPv6), this enables anyone to access your instances from any IP address using the specified protocol.
+- Do not open large port ranges. Ensure that access through each port is restricted to the sources or destinations that require it.
+- Consider creating network ACLs with rules similar yo your security groups, to add an additional layer of security to your VPC.
 
 **- Network Access Control Lists in AWS**
