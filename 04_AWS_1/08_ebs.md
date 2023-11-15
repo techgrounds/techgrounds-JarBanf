@@ -35,6 +35,7 @@ Amazon EBS is recommended for data that must be quickly accesible and requires l
 - [Create an Amazon EBS volume](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-creating-volume.html)
 - [Attach an Amazon EBS volume to an instance](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-attaching-volume.html)
 - [Make an Amazon EBS volume available for use on Linux](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-using-volumes.html)
+- [Create Amazon EBS snapshots](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-creating-snapshot.html)
 
 ### Encountered problems
 
@@ -121,7 +122,7 @@ ssh -i /Users/Jared/Desktop/mytestkeypair.pem ec2-user@ec2-3-120-190-177.eu-cent
 
 ![review permission](/04_AWS_1/images/08_ebs2-3-6.png)<br><br>
 
-7. <ins>The mount point is not automatically preserved after rebooting your instance.</ins>
+7. *The mount point is not automatically preserved after rebooting your instance.*
 
 **- Create a text file and write it to the mounted EBS volume.**
 
@@ -129,6 +130,31 @@ ssh -i /Users/Jared/Desktop/mytestkeypair.pem ec2-user@ec2-3-120-190-177.eu-cent
 echo 'This is a test textfile' > /data/test.txt
 ```
 
-![review permission](/04_AWS_1/images/08_ebs2-4.png)<br><br>
+![create text file](/04_AWS_1/images/08_ebs2-4.png)<br><br>
 
 **<ins>Exercise 3:</ins>**
+
+**- Create a snapshot of your EBS volume.**
+
+![create snapshot](/04_AWS_1/images/08_ebs3-1-1.png)<br>
+
+![create snapshot](/04_AWS_1/images/08_ebs3-1-2.png)<br><br>
+
+**- Remove the text file from your original EBS volume.**
+
+```bash
+rm /data/test.txt
+```
+
+![create snapshot](/04_AWS_1/images/08_ebs4-1.png)<br><br>
+
+**- Create a new volume using your snapshot.**
+
+
+**- Detach your original EBS volume.**
+
+
+**- Attach the new volume to your EC2 and mount it.**
+
+
+**- Find your text file on the new EBS volume.**
