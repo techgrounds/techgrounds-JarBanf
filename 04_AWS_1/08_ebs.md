@@ -198,4 +198,4 @@ ls /data
 cat /data/test.txt
 ```
 
-![mount volume](/04_AWS_1/images/08_ebs3-6-1.png)<br><br>
+![find test.txt](/04_AWS_1/images/08_ebs3-6-1.png)<br><br>
