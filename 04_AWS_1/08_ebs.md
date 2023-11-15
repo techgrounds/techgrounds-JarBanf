@@ -82,7 +82,7 @@ ssh -i /Users/Jared/Desktop/mytestkeypair.pem ec2-user@ec2-3-120-190-177.eu-cent
     The device `xvda` has one partition named `xvda1` using the XFS file system and is mounted.  
     The device `xvdf` has no partitions, no file system, and is not yet mounted.
 
-![connect to instance](/04_AWS_1/images/08_ebs2-3-1.png)<br><br>
+![view available disks](/04_AWS_1/images/08_ebs2-3-1.png)<br><br>
 
 2. Use the `mkfs -t` command to create a file system on the `xvdf` volume.
 
@@ -90,7 +90,7 @@ ssh -i /Users/Jared/Desktop/mytestkeypair.pem ec2-user@ec2-3-120-190-177.eu-cent
     sudo mkfs -t xfs /dev/xvdf
     ```
 
-![connect to instance](/04_AWS_1/images/08_ebs2-3-2.png)<br><br>
+![create file system](/04_AWS_1/images/08_ebs2-3-2.png)<br><br>
 
 3. Use the `mkdir` command to create a mount point directory for the `/dev/xvdf` volume. The moint point is where the volume is located in the file system tree and where you read and write files to after you mount the volume. The following command creates a directory named `/data`.
 
@@ -102,12 +102,33 @@ ssh -i /Users/Jared/Desktop/mytestkeypair.pem ec2-user@ec2-3-120-190-177.eu-cent
     ```bash
     sudo mount /dev/xvdf /data
     ```
-5. Check if `/dev/xvdf` has a file system, and is mounted correctly.
+5. Check if `/dev/xvdf` volume has a file system, and is mounted correctly.
 
-    ```
-    lsblk
+    ```bash
     lsblk -f
-    
     ```
+![check volume](/04_AWS_1/images/08_ebs2-3-5.png)<br><br>
+
+6. Review the file permissions of the new volume mount to make sure that users and applications can write to the volume.
+
+    ```bash
+    sudo ls -l / | grep data
+    ```
+
+    ```bash
+    sudo chown ec2-user /data
+    ```
+
+![review permission](/04_AWS_1/images/08_ebs2-3-6.png)<br><br>
+
+7. <ins>The mount point is not automatically preserved after rebooting your instance.</ins>
+
+**- Create a text file and write it to the mounted EBS volume.**
+
+```bash
+echo 'This is a test textfile' > /data/test.txt
+```
+
+![review permission](/04_AWS_1/images/08_ebs2-4.png)<br><br>
 
 **<ins>Exercise 3:</ins>**
