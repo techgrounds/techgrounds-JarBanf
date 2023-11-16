@@ -149,3 +149,7 @@ To use an Elastic IP address, you first allocate it for use in your account. The
 **- Connect to your server using the public IPv4 DNS name.**
 
 ![connect to server](/04_AWS_1/images/10_vpc4-2-1.png)<br><br>
+
+The following infrastructure is what I just built in this assignment.
+
+![infrastructure](/04_AWS_1/images/10_vpc4-2-2.png)<br><br>
