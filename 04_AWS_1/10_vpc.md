@@ -78,7 +78,6 @@ With Amazon Virtual Private Cloud (Amazon VPC), you can launch AWS resources in 
 - [Associate Elastic IP addresses with resources in your VPC](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-eips.html)
 - [Create a VPC](https://docs.aws.amazon.com/vpc/latest/userguide/create-vpc.html)
 - [Create a subnet](https://docs.aws.amazon.com/vpc/latest/userguide/create-subnets.html)
-- 
 
 ### Encountered problems
 None
