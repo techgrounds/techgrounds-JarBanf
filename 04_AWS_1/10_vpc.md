@@ -77,6 +77,7 @@ With Amazon Virtual Private Cloud (Amazon VPC), you can launch AWS resources in 
 - [What is Amazon VPC?](https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html)
 - [Associate Elastic IP addresses with resources in your VPC](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-eips.html)
 - [Create a VPC](https://docs.aws.amazon.com/vpc/latest/userguide/create-vpc.html)
+- [Create a subnet](https://docs.aws.amazon.com/vpc/latest/userguide/create-subnets.html)
 - 
 
 ### Encountered problems
@@ -90,13 +91,61 @@ None
 
 To use an Elastic IP address, you first allocate it for use in your account. Then, you can associate it with an instance or network interface in your VPC. Your Elastic IP address remains allocated to your AWS account until you explicitly release it.
 
-![shared responsibility model](/04_AWS_1/images/10_vpc1-1-1.png)<br>
+![allocate elastic ip address](/04_AWS_1/images/10_vpc1-1-1.png)<br>
 
-![shared responsibility model](/04_AWS_1/images/10_vpc1-1-2.png)<br><br>
+![allocate elastic ip address](/04_AWS_1/images/10_vpc1-1-2.png)<br><br>
 
 **- Create a new VPC.**
 
-![shared responsibility model](/04_AWS_1/images/10_vpc1-2-1.png)<br>
+![create vpc](/04_AWS_1/images/10_vpc1-2-1.png)<br>
 
 ![infrastructure](/04_AWS_1/images/10_vpc.png)<br><br>
 
+**<ins>Exercise 2:</ins>**
+
+**- Create an additional public subnet.**
+
+![create additional public subnet](/04_AWS_1/images/10_vpc2-1-1.png)<br><br>
+
+**- Create an additional private subnet.**
+
+![create additional private subnet](/04_AWS_1/images/10_vpc2-2-1.png)<br><br>
+
+**- View the main route table for Lab VPC. It should have an entry for the NAT gateway. Rename this route table to Private Route Table.**
+
+![rename private route table](/04_AWS_1/images/10_vpc2-3-1.png)<br><br>
+
+**- Explicitly associate the private route table with your two private subnets.**
+
+![associate private route table with the private subnets](/04_AWS_1/images/10_vpc2-4-1.png)<br>
+
+![associate private route table with the private subnets](/04_AWS_1/images/10_vpc2-4-2.png)<br><br>
+
+**- View the other route table for Lab VPC. It should have an entry for the internet gateway. Rename this route table to Public Route Table.**
+
+![rename public route table](/04_AWS_1/images/10_vpc2-5-1.png)<br><br>
+
+**- Explicitly associate the public route table to your two public subnets.**
+
+![associate public route table with the public subnets](/04_AWS_1/images/10_vpc2-6-1.png)<br>
+
+![associate public route table with the public subnets](/04_AWS_1/images/10_vpc2-6-2.png)<br><br>
+
+**<ins>Exercise 3:</ins>**
+
+**- Create a Security Group**
+
+![create security group](/04_AWS_1/images/10_vpc3-1-1.png)<br><br>
+
+**<ins>Exercise 4:</ins>**
+
+**- Launch an EC2 instance**
+
+![launch instance](/04_AWS_1/images/10_vpc4-1-1.png)<br>
+![launch instance](/04_AWS_1/images/10_vpc4-1-2.png)<br>
+![launch instance](/04_AWS_1/images/10_vpc4-1-3.png)<br>
+![launch instance](/04_AWS_1/images/10_vpc4-1-4.png)<br><br>
+
+**- Connect to your server using the public IPv4 DNS name.**
+
+![connect to server](/04_AWS_1/images/10_vpc4-2-1.png)<br><br>
