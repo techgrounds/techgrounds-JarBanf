@@ -1,8 +1,7 @@
 # VPC
-[Geef een korte beschrijving van het onderwerp]
+With Amazon Virtual Private Cloud (Amazon VPC), you can launch AWS resources in a logically isolated virtual network that you've defined. This virtual network closely resembles a traditional network that you'd operate in your own data center, with the benefits of using the scalable infrastructure of AWS.
 
 ## Key-terms
-[Schrijf hier een lijst met belangrijke termen met eventueel een korte uitleg.]
 
 ## Assignment
 
@@ -23,7 +22,7 @@
     - AZ: eu-central-1a
 - Your network should now look like this:
 
-![shared responsibility model](/04_AWS_1/images/10_vpc.png)<br><br>
+![infrastructure](/04_AWS_1/images/10_vpc.png)<br><br>
 
 <ins>Exercise 2:</ins>
 - Create an additional public subnet with the following requirements:
@@ -75,10 +74,29 @@
 - Connect to your server using the public IPv4 DNS name.
 
 ### Used sources
-[Plaats hier de bronnen die je hebt gebruikt.]
+- [What is Amazon VPC?](https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html)
+- [Associate Elastic IP addresses with resources in your VPC](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-eips.html)
+- [Create a VPC](https://docs.aws.amazon.com/vpc/latest/userguide/create-vpc.html)
+- 
 
 ### Encountered problems
-[Geef een korte beschrijving van de problemen waar je tegenaan bent gelopen met je gevonden oplossing.]
+None
 
 ### Result
-[Omschrijf hoe je weet dat je opdracht gelukt is (gebruik screenshots waar nodig).]
+
+**<ins>Exercise 1:</ins>**
+
+**- Allocate an Elastic IP address to your account.**
+
+To use an Elastic IP address, you first allocate it for use in your account. Then, you can associate it with an instance or network interface in your VPC. Your Elastic IP address remains allocated to your AWS account until you explicitly release it.
+
+![shared responsibility model](/04_AWS_1/images/10_vpc1-1-1.png)<br>
+
+![shared responsibility model](/04_AWS_1/images/10_vpc1-1-2.png)<br><br>
+
+**- Create a new VPC.**
+
+![shared responsibility model](/04_AWS_1/images/10_vpc1-2-1.png)<br>
+
+![infrastructure](/04_AWS_1/images/10_vpc.png)<br><br>
+
