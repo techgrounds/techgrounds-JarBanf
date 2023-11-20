@@ -72,4 +72,12 @@
 [Geef een korte beschrijving van de problemen waar je tegenaan bent gelopen met je gevonden oplossing.]
 
 ### Result
-[Omschrijf hoe je weet dat je opdracht gelukt is (gebruik screenshots waar nodig).]
+
+**<ins>Exercise 1</ins>**
+
+**- Launch an EC2 instance and wait for the status checks to pass.**
+
+![launch ec2 instance](/05_AWS_2/includes/01_elb-auto-scaling1-1-1.png)<br>
+
+![launch ec2 instance](/05_AWS_2/includes/01_elb-auto-scaling1-1-2.png)<br><br>
+
