@@ -98,3 +98,13 @@ None
 - Step 2: Create security group.
 
 ![create security group](/05_AWS_2/includes/01_elb-auto-scaling2-2-1.png)<br><br>
+
+- Step 3: Create load balancer.
+
+![create load balancer](/05_AWS_2/includes/01_elb-auto-scaling2-3-1.png)<br>
+
+![create load balancer](/05_AWS_2/includes/01_elb-auto-scaling2-3-2.png)<br><br>
+
+- Step 4: Test load balancer.
+
+![test load balancer](/05_AWS_2/includes/01_elb-auto-scaling2-4-1.png)<br><br>
