@@ -14,7 +14,7 @@
     - Type: t3.micro
     - User data:
 
-    ```
+    ```bash
     #!/bin/bash
     # Install Apache Web Server and PHP
     yum install -y httpd mysql php unzip
