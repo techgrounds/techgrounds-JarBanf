@@ -67,6 +67,8 @@
 ### Used sources
 - [Create an Amazon EBS-backed Linux AMI](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/creating-an-ami-ebs.html)
 - [Getting started with Application Load Balancers](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/application-load-balancer-getting-started.html)
+- [Create a launch template for an Auto Scaling group](https://docs.aws.amazon.com/autoscaling/ec2/userguide/create-launch-template.html)
+- [Create an Auto Scaling group using a launch template](https://docs.aws.amazon.com/autoscaling/ec2/userguide/create-asg-launch-template.html)
 
 ### Encountered problems
 None
@@ -81,13 +83,13 @@ None
 
 ![launch ec2 instance](/05_AWS_2/includes/01_elb-auto-scaling1-1-2.png)<br><br>
 
-**- Create an AMI from your instance**
+**- Create an AMI from your instance.**
 
 ![create ami](/05_AWS_2/includes/01_elb-auto-scaling1-3-1.png)<br><br>
 
 **<ins>Exercise 2</ins>**
 
-**- Create an application load balancer**
+**- Create an application load balancer.**
 
 - Step 1: Create a target group.
 
@@ -108,3 +110,30 @@ None
 - Step 4: Test load balancer.
 
 ![test load balancer](/05_AWS_2/includes/01_elb-auto-scaling2-4-1.png)<br><br>
+
+**<ins>Exercise 3</ins>**
+
+**- Create a launch configuration for the Auto Scaling group. It has to be identical to the server that is currently running.  
+<ins>EDIT: launch configuration is not supported anymore, I have to choose Launch Template.</ins>**
+
+![create launch template](/05_AWS_2/includes/01_elb-auto-scaling3-1-1.png)<br>
+
+![create launch template](/05_AWS_2/includes/01_elb-auto-scaling3-1-2.png)<br><br>
+
+**- Create an auto scaling group.**
+
+![create auto scaling group](/05_AWS_2/includes/01_elb-auto-scaling3-2-1.png)<br>
+
+![create auto scaling group](/05_AWS_2/includes/01_elb-auto-scaling3-2-2.png)<br>
+
+![create auto scaling group](/05_AWS_2/includes/01_elb-auto-scaling3-2-3.png)<br><br>
+
+**<ins>Exercise 4</ins>**
+
+**- Verify that the EC2 instances are online and that they are part of the target group for the load balancer.**
+
+![verify 2 running ec2 instances](/05_AWS_2/includes/01_elb-auto-scaling4-1-1.png)<br>
+
+![verify 2 running ec2 instances](/05_AWS_2/includes/01_elb-auto-scaling4-1-2.png)<br>
+
+![verify 2 running ec2 instances](/05_AWS_2/includes/01_elb-auto-scaling4-1-3.png)<br><br>
