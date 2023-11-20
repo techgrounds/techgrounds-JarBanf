@@ -2,7 +2,6 @@
 [Geef een korte beschrijving van het onderwerp]
 
 ## Key-terms
-[Schrijf hier een lijst met belangrijke termen met eventueel een korte uitleg.]
 
 ## Assignment
 
@@ -66,10 +65,11 @@
 - Perform a load test on your server(s) using the website on your server to activate auto scaling. There might be a delay on the creation of new servers in your fleet, depending on the settings on your Auto Scaling Group.
 
 ### Used sources
-[Plaats hier de bronnen die je hebt gebruikt.]
+- [Create an Amazon EBS-backed Linux AMI](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/creating-an-ami-ebs.html)
+- [Getting started with Application Load Balancers](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/application-load-balancer-getting-started.html)
 
 ### Encountered problems
-[Geef een korte beschrijving van de problemen waar je tegenaan bent gelopen met je gevonden oplossing.]
+None
 
 ### Result
 
@@ -81,3 +81,20 @@
 
 ![launch ec2 instance](/05_AWS_2/includes/01_elb-auto-scaling1-1-2.png)<br><br>
 
+**- Create an AMI from your instance**
+
+![create ami](/05_AWS_2/includes/01_elb-auto-scaling1-3-1.png)<br><br>
+
+**<ins>Exercise 2</ins>**
+
+**- Create an application load balancer**
+
+- Step 1: Create a target group.
+
+![create target group](/05_AWS_2/includes/01_elb-auto-scaling2-1-1.png)<br>
+
+![create target group](/05_AWS_2/includes/01_elb-auto-scaling2-1-2.png)<br><br>
+
+- Step 2: Create security group.
+
+![create security group](/05_AWS_2/includes/01_elb-auto-scaling2-2-1.png)<br><br>
