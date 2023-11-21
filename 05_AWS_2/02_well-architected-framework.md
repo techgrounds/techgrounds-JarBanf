@@ -6,6 +6,8 @@ The AWS Well-Architected Framework includes domain-specific lenses, hands-on lab
 
 AWS also provides access to an ecosystem of hundreds of members in the AWS Well-Architected Partner Program. Engage a partner in your area to help analyze and review your applications.
 
+![elb](/05_AWS_2/includes/02_well-architected-framework0-1.png)<br><br>
+
 ## Key-terms
 
 ## Assignment
