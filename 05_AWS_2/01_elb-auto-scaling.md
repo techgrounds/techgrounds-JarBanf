@@ -1,5 +1,27 @@
 # ELB & Auto Scaling
-[Geef een korte beschrijving van het onderwerp]
+
+<ins>ELB</ins>  
+
+Elastic Load Balancing automatically distributes your incoming traffic across multiple targets,such as EC2 instances, containers, and IP addresses, in one or more Availability Zones. It monitors the health of its registerd targets, and routes traffic only to the healthy targets. ELB scales your load balancer capacity automatically in response to changes in incoming traffic.
+ELB supports the following load balancers:
+- Application Load Balancers 
+- Network Load Balancers
+- Gateway Load Balancers
+- Classic Load Balancers
+
+![elb](/05_AWS_2/includes/01_elb-auto-scaling0-1.png)<br><br>
+
+<ins>Auto Scaling</ins>
+
+EC2 Auto Scaling helps you ensure that you have the correct number of EC2 instances available to handle the load for your application. You create collections collections of EC2 instances, called Auto Scaling Groupes.  
+You can specify the minimum number of instances in each Auto Scaling Group, and EC2 Auto Scaling ensures that your group never goes below this size.  
+Also you can specify the maximum number of instances in each Auto Scaling group, and and EC2 Auto Scaling ensures that your group never goes above this size.  
+If you specify the desired capacity, either when you create the group or at any time thereafter, EC2 Auto Scaling ensures that your group has this many instances.  
+If you specify scaling policies, then EC2 Auto Scaling can launch or terminate instances as demand on your applications increases or decreases.
+
+![ec2 auto scaling](/05_AWS_2/includes/01_elb-auto-scaling0-2.png)<br>
+
+![ec2 auto scaling](/05_AWS_2/includes/01_elb-auto-scaling0-3.png)<br><br>
 
 ## Key-terms
 
@@ -65,6 +87,8 @@
 - Perform a load test on your server(s) using the website on your server to activate auto scaling. There might be a delay on the creation of new servers in your fleet, depending on the settings on your Auto Scaling Group.
 
 ### Used sources
+- [What is Elastic Load Balancing?](https://docs.aws.amazon.com/elasticloadbalancing/latest/userguide/what-is-load-balancing.html)
+- [What is Amazon EC2 Auto Scaling?](https://docs.aws.amazon.com/autoscaling/ec2/userguide/what-is-amazon-ec2-auto-scaling.html)
 - [Create an Amazon EBS-backed Linux AMI](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/creating-an-ami-ebs.html)
 - [Getting started with Application Load Balancers](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/application-load-balancer-getting-started.html)
 - [Create a launch template for an Auto Scaling group](https://docs.aws.amazon.com/autoscaling/ec2/userguide/create-launch-template.html)
