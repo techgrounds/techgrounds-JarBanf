@@ -137,3 +137,17 @@ None
 ![verify 2 running ec2 instances](/05_AWS_2/includes/01_elb-auto-scaling4-1-2.png)<br>
 
 ![verify 2 running ec2 instances](/05_AWS_2/includes/01_elb-auto-scaling4-1-3.png)<br><br>
+
+**- Access the server via the ELB by using the DNS name of the ELB.**
+
+![access server via elb](/05_AWS_2/includes/01_elb-auto-scaling4-2-1.png)<br>
+
+![access server via elb](/05_AWS_2/includes/01_elb-auto-scaling4-2-2.png)<br><br>
+
+**- Perform a load test on your server(s) using the website on your server to activate auto scaling. There might be a delay on the creation of new servers in your fleet, depending on the settings on your Auto Scaling Group.**
+
+![perform load test](/05_AWS_2/includes/01_elb-auto-scaling4-3-1.png)<br>
+
+![perform load test](/05_AWS_2/includes/01_elb-auto-scaling4-3-2.png)<br>
+
+![perform load test](/05_AWS_2/includes/01_elb-auto-scaling4-3-3.png)<br><br>
