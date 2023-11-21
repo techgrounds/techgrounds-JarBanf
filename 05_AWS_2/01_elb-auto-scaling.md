@@ -23,6 +23,13 @@ If you specify scaling policies, then EC2 Auto Scaling can launch or terminate i
 
 ![ec2 auto scaling](/05_AWS_2/includes/01_elb-auto-scaling0-3.png)<br><br>
 
+
+<ins>AMI</ins>
+
+An Amazon Machine Image (AMI) is a supported and maintained image provided by AWS that provides the information required to launch an instance. You must specify an AMI when you launch an instance. You can launch multiple instances from a single AMI when you require multiple instances with the same configuration.  
+
+![ec2 auto scaling](/05_AWS_2/includes/01_elb-auto-scaling0-4.png)<br><br>
+
 ## Key-terms
 
 ## Assignment
@@ -89,6 +96,7 @@ If you specify scaling policies, then EC2 Auto Scaling can launch or terminate i
 ### Used sources
 - [What is Elastic Load Balancing?](https://docs.aws.amazon.com/elasticloadbalancing/latest/userguide/what-is-load-balancing.html)
 - [What is Amazon EC2 Auto Scaling?](https://docs.aws.amazon.com/autoscaling/ec2/userguide/what-is-amazon-ec2-auto-scaling.html)
+- [Amazon Machine Images (AMI)](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AMIs.html)
 - [Create an Amazon EBS-backed Linux AMI](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/creating-an-ami-ebs.html)
 - [Getting started with Application Load Balancers](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/application-load-balancer-getting-started.html)
 - [Create a launch template for an Auto Scaling group](https://docs.aws.amazon.com/autoscaling/ec2/userguide/create-launch-template.html)
