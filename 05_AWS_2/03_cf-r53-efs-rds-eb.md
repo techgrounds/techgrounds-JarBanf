@@ -38,6 +38,8 @@ With Amazon Elastic Beanstalk, you can quickly deploy and manage applications in
 
 ### Used sources
 - [What is Amazon CloudFront?](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Introduction.html)
+- [What is an Edge Location in AWS? A Simple Explanation](https://www.lastweekinaws.com/blog/what-is-an-edge-location-in-aws-a-simple-explanation/)
+- [Understanding AWS Backbone: A Comprehensive Guide](https://manuabhijit.medium.com/understanding-aws-backbone-a-comprehensive-guide-8ac38e6d4179)
 - [What is Amazon Route 53?](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/Welcome.html)
 - [What is Amazon Elastic File System?](https://docs.aws.amazon.com/efs/latest/ug/whatisefs.html)
 - [What is Amazon Relational Database Service?](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Welcome.html)
@@ -60,8 +62,18 @@ Amazon CloudFront is a web service that speeds up distribution of your static an
     - <ins>Edge locations</ins>: data centers designed to deliver services with the lowest latency possile. Amazon has dozens of these data centers spread across the world. They're closer to users than Regions or Availability Zones, often in major cities, so responses can be fast and snappy.
     - AWS backbone network: a comprehensive global network infrastructure. This infrastructure consists of a vast interconnected web of fiber optic cables and network devices that span the globe, ensuring fast, efficient data transfer between Amazon's data centres and edge locations.
 - How does CloudFront fit-in/replace an on-premises setting?
+    - Before AWS CloudFront, companies would pay CDN operators to deliver their content to their end users. In turn, a cdn pays ISP's, carriers, and network operators for hosting its servers in their data centers. With CloudFront, this CDN is within AWS and eliminates the need to use outside CDN providers.
 - How can I combine CloudFront with other services?
-- What is the difference between CloudFront and other similar services? 
+    - If the content is not in the needed edge location, CloudFront retrieves it from an origin that you've defined, such as:
+        - AWS S3: used to store and retrieve any amount of object based data using highly scalable, reliable, fast, and inexpensive data storage. 
+        - AWS EC2 Web Server: Virtual server where websites and their contents are stored.
+        - AWS Elemental MediaPackage: a video delivery service that allows video providers to securily and reliably distribute streaming video at scale.
+        - AWS Lambda: 
+- What is the difference between CloudFront and other similar services?
+    - Integration with Other AWS Services.
+    - Features and Offerings.
+    - Pricing and Billing Models.
+    - Performance and Speed.
 
 **Route 53**
 
