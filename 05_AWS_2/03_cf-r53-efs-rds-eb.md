@@ -53,7 +53,6 @@ None
 **CloudFront**
 
 - What problem does CloudFront solve?
-    - 
 - Which key terms belong to CloudFront?
 - How does CloudFront fit-in/replace an on-premises setting?
 - How can I combine CloudFront with other services?
@@ -77,7 +76,6 @@ None
 - How does X fit-in/replace an on-premises setting?
 - How can I combine X with other services?
 - What is the difference between X and other similar services?
-
 - Where can I find this service in the console?
 - How do I enable this service?
 - How can I link this service to other resources?
@@ -89,7 +87,6 @@ None
 - How does X fit-in/replace an on-premises setting?
 - How can I combine X with other services?
 - What is the difference between X and other similar services?
-
 - Where can I find this service in the console?
 - How do I enable this service?
 - How can I link this service to other resources?
@@ -101,7 +98,6 @@ None
 - How does X fit-in/replace an on-premises setting?
 - How can I combine X with other services?
 - What is the difference between X and other similar services?
-
 - Where can I find this service in the console?
 - How do I enable this service?
 - How can I link this service to other resources?
