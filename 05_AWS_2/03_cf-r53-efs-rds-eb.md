@@ -60,15 +60,15 @@ Amazon CloudFront is a web service that speeds up distribution of your static an
     - It speeds up distribution of web contents to you users using edge locations. 
 - Which key terms belong to CloudFront?
     - <ins>Edge locations</ins>: data centers designed to deliver services with the lowest latency possile. Amazon has dozens of these data centers spread across the world. They're closer to users than Regions or Availability Zones, often in major cities, so responses can be fast and snappy.
-    - AWS backbone network: a comprehensive global network infrastructure. This infrastructure consists of a vast interconnected web of fiber optic cables and network devices that span the globe, ensuring fast, efficient data transfer between Amazon's data centres and edge locations.
+    - <ins>AWS backbone network</ins>: a comprehensive global network infrastructure. This infrastructure consists of a vast interconnected web of fiber optic cables and network devices that span the globe, ensuring fast, efficient data transfer between Amazon's data centres and edge locations.
 - How does CloudFront fit-in/replace an on-premises setting?
     - Before AWS CloudFront, companies would pay CDN operators to deliver their content to their end users. In turn, a cdn pays ISP's, carriers, and network operators for hosting its servers in their data centers. With CloudFront, this CDN is within AWS and eliminates the need to use outside CDN providers.
 - How can I combine CloudFront with other services?
     - If the content is not in the needed edge location, CloudFront retrieves it from an origin that you've defined, such as:
-        - AWS S3: used to store and retrieve any amount of object based data using highly scalable, reliable, fast, and inexpensive data storage. 
-        - AWS EC2 Web Server: Virtual server where websites and their contents are stored.
-        - AWS Elemental MediaPackage: a video delivery service that allows video providers to securily and reliably distribute streaming video at scale.
-        - AWS Lambda: 
+        - <ins>AWS S3</ins>: used to store and retrieve any amount of object based data using highly scalable, reliable, fast, and inexpensive data storage. 
+        - <ins>AWS EC2 Web Server</ins>: Virtual server where websites and their contents are stored.
+        - <ins>AWS Elemental MediaPackage</ins>: a video delivery service that allows video providers to securily and reliably distribute streaming video at scale.
+        - <ins>AWS Lambda</ins>: With Lambda you can run code without provisioning or managing servers.
 - What is the difference between CloudFront and other similar services?
     - Integration with Other AWS Services.
     - Features and Offerings.
