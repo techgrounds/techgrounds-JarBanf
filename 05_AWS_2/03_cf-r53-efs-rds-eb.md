@@ -66,9 +66,9 @@ Amazon CloudFront is a web service that speeds up distribution of your static an
 - How can I combine CloudFront with other services?
     - If the content is not in the needed edge location, CloudFront retrieves it from an origin that you've defined, such as:
         - <ins>AWS S3</ins>: used to store and retrieve any amount of object based data using highly scalable, reliable, fast, and inexpensive data storage. 
-        - <ins>AWS EC2 Web Server</ins>: Virtual server where websites and their contents are stored.
+        - <ins>AWS EC2 Web Server</ins>: virtual server where websites and their contents are stored.
         - <ins>AWS Elemental MediaPackage</ins>: a video delivery service that allows video providers to securily and reliably distribute streaming video at scale.
-        - <ins>AWS Lambda</ins>: With Lambda you can run code without provisioning or managing servers.
+        - <ins>AWS Lambda</ins>: with Lambda you can run code without provisioning or managing servers.
 - What is the difference between CloudFront and other similar services?
     - Integration with Other AWS Services.
     - Features and Offerings.
