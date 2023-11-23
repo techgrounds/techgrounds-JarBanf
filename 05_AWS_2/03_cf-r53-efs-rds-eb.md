@@ -52,8 +52,13 @@ None
 
 **CloudFront**
 
+Amazon CloudFront is a web service that speeds up distribution of your static and dynamic web content, such as .html, .css, .js, and image files, to your users. CloudFront delivers your content through a worldwide network of data centers called edge locations. When a user requests content that you're serving with CloudFront, the request is routed to the edge locations that provides the lowest latency (time delay), so that content is delivered with the best possible performance.
+
 - What problem does CloudFront solve?
+    - It speeds up distribution of web contents to you users using edge locations. 
 - Which key terms belong to CloudFront?
+    - <ins>Edge locations</ins>: data centers designed to deliver services with the lowest latency possile. Amazon has dozens of these data centers spread across the world. They're closer to users than Regions or Availability Zones, often in major cities, so responses can be fast and snappy.
+    - AWS backbone network: a comprehensive global network infrastructure. This infrastructure consists of a vast interconnected web of fiber optic cables and network devices that span the globe, ensuring fast, efficient data transfer between Amazon's data centres and edge locations.
 - How does CloudFront fit-in/replace an on-premises setting?
 - How can I combine CloudFront with other services?
 - What is the difference between CloudFront and other similar services? 
