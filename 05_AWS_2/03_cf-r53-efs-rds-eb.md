@@ -47,3 +47,61 @@ With Amazon Elastic Beanstalk, you can quickly deploy and manage applications in
 None
 
 ### Result
+
+**<ins>Gain theoretical knowledge of:</ins>**
+
+**CloudFront**
+
+- What problem does CloudFront solve?
+    - 
+- Which key terms belong to CloudFront?
+- How does CloudFront fit-in/replace an on-premises setting?
+- How can I combine CloudFront with other services?
+- What is the difference between CloudFront and other similar services? 
+
+**Route 53**
+
+- What problem does X solve?
+- Which key terms belong to X?
+- How does X fit-in/replace an on-premises setting?
+- How can I combine X with other services?
+- What is the difference between X and other similar services?
+
+
+**Gain practical experience with:**
+
+**Elastic File System**
+
+- What problem does X solve?
+- Which key terms belong to X?
+- How does X fit-in/replace an on-premises setting?
+- How can I combine X with other services?
+- What is the difference between X and other similar services?
+
+- Where can I find this service in the console?
+- How do I enable this service?
+- How can I link this service to other resources?
+
+**Relational Database Service**
+
+- What problem does X solve?
+- Which key terms belong to X?
+- How does X fit-in/replace an on-premises setting?
+- How can I combine X with other services?
+- What is the difference between X and other similar services?
+
+- Where can I find this service in the console?
+- How do I enable this service?
+- How can I link this service to other resources?
+
+**Elastic Beanstalk**
+
+- What problem does X solve?
+- Which key terms belong to X?
+- How does X fit-in/replace an on-premises setting?
+- How can I combine X with other services?
+- What is the difference between X and other similar services?
+
+- Where can I find this service in the console?
+- How do I enable this service?
+- How can I link this service to other resources?
