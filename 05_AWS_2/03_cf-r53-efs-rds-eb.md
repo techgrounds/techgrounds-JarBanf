@@ -70,18 +70,26 @@ Amazon CloudFront is a web service that speeds up distribution of your static an
         - <ins>AWS Elemental MediaPackage</ins>: a video delivery service that allows video providers to securily and reliably distribute streaming video at scale.
         - <ins>AWS Lambda</ins>: with Lambda you can run code without provisioning or managing servers.
 - What is the difference between CloudFront and other similar services?
-    - Integration with Other AWS Services.
+    - Integration with other AWS Services.
     - Features and Offerings.
     - Pricing and Billing Models.
     - Performance and Speed.
 
 **Route 53**
 
-- What problem does X solve?
-- Which key terms belong to X?
-- How does X fit-in/replace an on-premises setting?
-- How can I combine X with other services?
-- What is the difference between X and other similar services?
+Amazon Route 53 is a highly available and scalable Domain Name System (DNS) web service. Route 53 to perform three main functions in any combination:  
+
+<ins>Domain registration</ins>: Route 53 lets you register a name for your website or web application, known as a domain name.  
+
+<ins>DNS routing</ins>: When a user opens a web browser and enters your domain name or subdomain name in the address bar, Route 53 helps connect the browser with your website or web application.  
+
+<ins>Health checking</ins>: Route 53 sends automated requests over the internet to a resource, such as a web server, to verify that it's reachable, available, and functional.
+
+- What problem does Route 53 solve?
+- Which key terms belong to Route 53?
+- How does Route 53 fit-in/replace an on-premises setting?
+- How can I combine Route 53 with other services?
+- What is the difference between Route 53 and other similar services?
 
 
 **Gain practical experience with:**
