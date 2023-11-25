@@ -54,6 +54,8 @@ None
 
 **CloudFront**
 
+![cloudfront](/05_AWS_2/includes/03_cf-r53-efs-rds-eb1.jpg)<br><br>
+
 Amazon CloudFront is a web service that speeds up distribution of your static and dynamic web content, such as .html, .css, .js, and image files, to your users. CloudFront delivers your content through a worldwide network of data centers called edge locations. When a user requests content that you're serving with CloudFront, the request is routed to the edge locations that provides the lowest latency (time delay), so that content is delivered with the best possible performance.
 
 - What problem does CloudFront solve?
@@ -76,6 +78,8 @@ Amazon CloudFront is a web service that speeds up distribution of your static an
     - Performance and Speed.
 
 **Route 53**
+
+![route 53](/05_AWS_2/includes/03_cf-r53-efs-rds-eb2.png)<br><br>
 
 Amazon Route 53 is a highly available and scalable Domain Name System (DNS) web service. Route 53 to perform three main functions in any combination:  
 
@@ -113,6 +117,8 @@ Amazon Route 53 is a highly available and scalable Domain Name System (DNS) web 
 
 **Elastic File System**
 
+![elastic file system](/05_AWS_2/includes/03_cf-r53-efs-rds-eb3.png)<br><br>
+
 - What problem does X solve?
 - Which key terms belong to X?
 - How does X fit-in/replace an on-premises setting?
@@ -124,6 +130,8 @@ Amazon Route 53 is a highly available and scalable Domain Name System (DNS) web 
 
 **Relational Database Service**
 
+![relational database service](/05_AWS_2/includes/03_cf-r53-efs-rds-eb4.png)<br><br>
+
 - What problem does X solve?
 - Which key terms belong to X?
 - How does X fit-in/replace an on-premises setting?
@@ -134,6 +142,8 @@ Amazon Route 53 is a highly available and scalable Domain Name System (DNS) web 
 - How can I link this service to other resources?
 
 **Elastic Beanstalk**
+
+![elastic beanstalk](/05_AWS_2/includes/03_cf-r53-efs-rds-eb5.png)<br><br>
 
 - What problem does X solve?
 - Which key terms belong to X?
