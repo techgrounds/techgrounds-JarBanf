@@ -86,10 +86,27 @@ Amazon Route 53 is a highly available and scalable Domain Name System (DNS) web 
 <ins>Health checking</ins>: Route 53 sends automated requests over the internet to a resource, such as a web server, to verify that it's reachable, available, and functional.
 
 - What problem does Route 53 solve?
+    - <ins>Domain registration</ins>: lets you register a name for your website or web application, known as a domain name.
+    - <ins>DNS routing</ins>: when a user opens a web browser and enters your domain name or subdomain name in the address bar, Route 53 helps connect the browser with your website or web application.
+    - <ins>Health checking</ins>: sends automated requests over the internet to a resource, such as a web server, to verify that it's reachable, available, and functional.
 - Which key terms belong to Route 53?
+    - <ins>DNS</ins>: Domain Name System. Maps IP addresses to hosts connected to either the public or private internet via a process caled DNS resolution, making it an essential part of an orginization's infrastructure. 
 - How does Route 53 fit-in/replace an on-premises setting?
+    - <ins>Domain registration</ins>: replaces the use of 3rd party domain name registration.
+    - <ins>DNS routing</ins>: in an on-premises setting, DNS services are typically managed by local DNS servers within the organization's infrastructure. These servers handle domain name resolutions, mapping domain names to IP addresses, and routing traffic within the local network and to the internet.
 - How can I combine Route 53 with other services?
+    - Map domain names to AWS:
+        - Elastic Load Balancers
+        - EC2 instances
+        - S3 buckets
+        - CloudFront distributions
+        - and other AWS resources
+    - Non-AWS resources
 - What is the difference between Route 53 and other similar services?
+    - Integration with other AWS Services
+    - Scalability and Performance
+    - DNS Services Offered
+    - Pricing Structure
 
 
 **Gain practical experience with:**
