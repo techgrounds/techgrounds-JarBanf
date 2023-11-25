@@ -119,14 +119,29 @@ Amazon Route 53 is a highly available and scalable Domain Name System (DNS) web 
 
 ![elastic file system](/05_AWS_2/includes/03_cf-r53-efs-rds-eb3.png)<br><br>
 
-- What problem does X solve?
-- Which key terms belong to X?
-- How does X fit-in/replace an on-premises setting?
-- How can I combine X with other services?
-- What is the difference between X and other similar services?
+Amazon Elastic File System (Amazon EFS) provides serverless, fully elastic file storage so that you can share file data without provisioning or managing storage capacity and performance. Amazon EFS is built to scale on demand to petabytes without disrupting applications, growing and shrinking automatically as you add and remove files. Because Amazon EFS has a simple web services interface, you can create and configure file systems quickly and easily. The service manages all the file storage infrastructure for you, meaning that you can avoid the complexity of deploying, patching, and maintaining complex file system configurations. 
+
+- What problem does EFS solve?
+    - provides serverless, fully elastic file storage so that you can share file data without provisioning or managing storage capacity and performance.
+- Which key terms belong to EFS?
+    - <ins>File system</ins>: a method and data structure that is used to control how data is stores and retrieved.
+- How does EFS fit-in/replace an on-premises setting?
+    - replaces the file server and then local file system (mass storage)
+- How can I combine EFS with other services?
+    - AWS services that can access an Amazon EFS file system at the same time:
+        - EC2
+        - ECS
+        - Lambda
+- What is the difference between EFS and other similar services?
+    - Elasticity and Scalability
+    - Performance
+    - Cost
 - Where can I find this service in the console?
+    - Under the Storage categorie.
 - How do I enable this service?
+    - By choosing "Create file system" and following the steps.
 - How can I link this service to other resources?
+    - While creating the other resources, you can link them to this service.
 
 **Relational Database Service**
 
