@@ -14,7 +14,11 @@ Amazon Elastic File System provides serverless, fully elastic file storage so th
 
 <ins>Relational Database Service</ins>
 
-Amazon Relational Database Service is a web service that makes it easier to set up, operate, and scale a relational database in the cloud. Amazon Aurora is part of RDS.
+Amazon Relational Database Service is a web service that makes it easier to set up, operate, and scale a relational database in the cloud. 
+
+<ins>Aurora</ins>
+
+
 
 <ins>Elastic Beanstalk</ins>
 
@@ -137,7 +141,7 @@ Amazon Elastic File System (Amazon EFS) provides serverless, fully elastic file 
     - Performance
     - Cost
 - Where can I find this service in the console?
-    - Under the Storage categorie.
+    - Under the Storage category.
 - How do I enable this service?
     - By choosing "Create file system" and following the steps.
 - How can I link this service to other resources?
@@ -147,24 +151,40 @@ Amazon Elastic File System (Amazon EFS) provides serverless, fully elastic file 
 
 ![relational database service](/05_AWS_2/includes/03_cf-r53-efs-rds-eb4.png)<br><br>
 
-- What problem does X solve?
-- Which key terms belong to X?
-- How does X fit-in/replace an on-premises setting?
-- How can I combine X with other services?
-- What is the difference between X and other similar services?
+Amazon Relational Database Service (Amazon RDS) is a web service that makes it easier to set up, operate, and scale a relational database in the AWS Cloud. It provides cost-efficient, resizable capacity for an industry-standard relational database and manages common database administration tasks.
+
+- What problem does RDS solve?
+    - makes it easier to set up, operate, and scale a relational database in the AWS Cloud. It provides cost-efficient, resizable capacity for an industry-standard relational database and manages common database administration tasks.
+- Which key terms belong to RDS?
+    - Relational database: a relational database organizes data into rows and columns, which collectively form a table.
+- How does RDS fit-in/replace an on-premises setting?
+    - Managed Service
+    - Scalability
+    - High Availability
+    - Security
+- How can I combine RDS with other services?
+    - EC2
+    - Outpost
+- What is the difference between RDS and other similar services?
+    - RDS supports several popular relational database engines such as MySQL, PostgreSQL, MariaDB, Oracle, and Microsoft SQL Server.
+    - It offers managed services for these databases, handling routine database tasks like backups, patching, automatic failover, and scaling
+    - RDS provides features for read replicas to offload read traffic and Multi-AZ deployments for high availability
+    - It's suitable for transactional workloads and applications that require the capabilities of traditional relational databases
 - Where can I find this service in the console?
+    - under the Database category.
 - How do I enable this service?
+    - By choosing "Create database" and following the steps.
 - How can I link this service to other resources?
 
 **Elastic Beanstalk**
 
 ![elastic beanstalk](/05_AWS_2/includes/03_cf-r53-efs-rds-eb5.png)<br><br>
 
-- What problem does X solve?
-- Which key terms belong to X?
-- How does X fit-in/replace an on-premises setting?
-- How can I combine X with other services?
-- What is the difference between X and other similar services?
+- What problem does EB solve?
+- Which key terms belong to EB?
+- How does EB fit-in/replace an on-premises setting?
+- How can I combine EB with other services?
+- What is the difference between EB and other similar services?
 - Where can I find this service in the console?
 - How do I enable this service?
 - How can I link this service to other resources?
