@@ -42,6 +42,14 @@ AWS Identity and Access Management (IAM) is a web service that helps you securel
     - <ins>AWS CloudFormation</ins>: IAM permissions can be used to control who can create, update, or delete CloudFormation stacks and what resources can be provisioned within those stacks
     - <ins>AWS RDS</ins>: IAM authentication allows you to manage database acces using IAM users and roles. 
 - What is the difference between IAM and other similar services?
+    - ?
 - Where can I find this service in the console?
+    - Under the "Security, Identity, & Compliance" category.
 - How do I enable this service?
+    - When you create an AWS account, you begin with one sign-in identity that has complete access to all AWS services and resources in the account. This identity is called the AWS account root user and is accessed by signing in with the email address and password that you used to create the account.
+    - On the navigation pane bar under "Access management" you can select what you want to create and choose "create ...".
 - How can I link this service to other resources?
+    - In AWS, Identity and Access Management (IAM) is a critical service that enables secure control access to other AWS resources. IAM itself doesn't store data or host services but acts as a gatekeeper controlling who (identities) can do what (permissions) on which AWS resources.
+    - <ins>Granting Permissions</ins>: IAM allows you to create and manage identities (users, groups, roles) and grant them permissions to access specific AWS resources. You can assign permissions using IAM policies, which define what actions are allowed or denied on which resources.
+    - <ins>Resource Access Policies</ins>: Many AWS services have their own resource-level policies that work in conjunction with IAM. For example, Amazon S3 buckets, AWS Lambda functions, or Amazon RDS databases have their own resource policies that can be managed separately but integrated with IAM for user access control.
+    
