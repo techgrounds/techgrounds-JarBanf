@@ -12,7 +12,7 @@ AWS Identity and Access Management is a web service for securely controlling acc
 ### Used sources
 - [What is IAM?](https://docs.aws.amazon.com/IAM/latest/UserGuide/introduction.html)
 - [AWS IAM Overview in 7 minutes | Beginner Overview ](https://www.youtube.com/watch?v=y8cbKJAo3B4)
-- 
+- [IAM tutorial: Grant access to the billing console](https://docs.aws.amazon.com/IAM/latest/UserGuide/tutorial_billing.html)
 
 ### Encountered problems
 None
