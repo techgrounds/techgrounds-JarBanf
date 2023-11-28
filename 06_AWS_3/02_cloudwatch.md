@@ -39,13 +39,27 @@ Witch CloudWatch, you gain system-wide visibility into resources utilization, ap
         - <ins>Automation and Scaling</ins>: CloudWatch can be integrated with Auto Scaling to automate the scaling of your resources based on predefined conditions and tresholds. This enables you to automatically adjust resources to meet demand or optimize costs.
 
 - Which key terms belong to CloudWatch?
-    - .
+    - <ins>Metrics<ins>: These are the fundamental data points that CloudWatch collects and monitors. Metrics represents a time-ordered set of data points published to CloudWatch.
+    - <ins>Alarms</ins>: Alarms allows you to set tresholds on your CloudWatch metrics. You can define actions to be triggered when certain conditions are met, such as sending notifications or triggering automated responses.
+    - <ins>Dashboards</ins>: Dashboards provide customizable views of your metrics, allowing you to create visual representations to monitor the health and performance of your resources.
+    - <ins>Logs</ins>: Logs allows you to collect, monitor, and store log files from various AWS services and applications in a centralized location. It enables you to search, filter, and gain insights from log data.
+    - <ins>Events</ins>: Events enables you to respond to state changes in your AWS resources. You can create rules to match events and trigger automated actions in response, such as invoking AWS Lambda functions.
 
 - How does CloudWatch fit-in/replace an on-premises setting?
-    - .
+    - <ins>Scalability</ins>: CloudWatch easily scales to monitor thousands of resources across various AWS services, while on-premises solutions often have limited scalability.
+    - <ins>Pay-As-You-Go</ins>: CloudWatch follows a pay-as-you-go model, eliminating upfront costs associated with hardware and licensing in on-premises environments.
+    - <ins>Automation and Intgration</ins>: CloudWatch integrates seamlessly with AWS services, allowing automated actions based on predefined thresholds, which can be challenging in on-premises environments.
+    - <ins>Managed Service</ins>: CloudWatch is a fully managed service, removing the need for manual setup and maintenance as required in on-premises solutions.
+    - <ins>Global Monitoring</ins>: CloudWatch operates across AWS regions, providing centralized monitoring for resources deployed globally, unlike on-premises systems that might struggle with global reach.
 
 - How can I combine CloudWatch with other services?
-    - .
+    - <ins>EC2</ins>: Monitor and auto-scale instances based on metrics like CPU, disk, and network usage.
+    - <ins>RDS</ins>: Set alarms for database metrics like CPU, memory, and storage to ensure optimal performance.
+    - <ins>ELB</ins>: Track and optimize load balancer performance using metrics such as requests and latency.
+    - <ins>Lambda</ins>: Monitor and set alerts for errors or specific patterns in Lambda function logs.
+    - <ins>S3</ins>: Monitor buckets usage metrics and set alerts for unusual activity or errors.
+    - <ins>CloudTrail</ins>: Automate responses to AWS account changes for API activity using CloudWatch events.
+    - <ins>Elastic Beanstalk</ins>: Monitor application metrics and logs for Elastic Beanstalk environments.
 
 - What is the difference between CloudWatch and other similar services?
     - .
