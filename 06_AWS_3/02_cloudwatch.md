@@ -11,7 +11,7 @@ Amazon CloudWatch provides a reliable, scalable, and flexible monitoring solutio
 
 ### Used sources
 - [What is Amazon CloudWatch?](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/WhatIsCloudWatch.html)
-- 
+- [Scenario: Monitor your estimated charges using CloudWatch](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/gs_monitor_estimated_charges_with_cloudwatch.html)
 
 ### Encountered problems
 None
