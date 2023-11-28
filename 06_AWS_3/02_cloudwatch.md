@@ -62,12 +62,15 @@ Witch CloudWatch, you gain system-wide visibility into resources utilization, ap
     - <ins>Elastic Beanstalk</ins>: Monitor application metrics and logs for Elastic Beanstalk environments.
 
 - What is the difference between CloudWatch and other similar services?
-    - .
+    - ?
 
 - Where can I find this service in the console?
-    - Under the "..." category.
+    - Under the "Management & Governance" category.
 - How do I enable this service?
-    - .
+    - CloudWatch is automatically enabled for most AWS services, but you might need to configure certain services or resources to send metrics and logs to CloudWatch for monitoring and analysis.
 
 - How can I link this service to other resources?
-    - .
+    - To link CloudWatch to these resources, you'll generally need to:
+
+        - Enable monitoring or install CloudWatch agents (where applicable).
+        - Configure the specific metrics you want to monitor and set up alarms to receive notifications for any thresholds you define.
