@@ -41,6 +41,8 @@ DynamoDB allows you to delete expired items from tables automatically to help yo
         - <ins> High availability and reliability</ins>: Replicates data across multiple availability zones for resilience against failures and data loss.
         - <ins>Adaptable performance and cost optimization</ins>: Allows dynamic adjustment of throughput to match workload demands, enabling efficient resource utilization.
         - <ins>Integrated security</ins>: Offers fine-grained access control and encryption at rest for enhanced security.
+        - <ins>Read Capacity Units (RCUs)</ins>: Units representing the read capacity of a table. Each RCU allows one strongly consistent read per second (or two eventually consistent reads per second) of an item up to 4 KB in size.
+        - <ins>Write Capacity Units (WCUs)</ins>: Units representing the write capacity of a table. Each WCU allows one write per second of an item up to 1 KB in size.
 
 - Which key terms belong to DynamoDB?
     - <ins>Tables</ins>: The primary data storage structure, similar to a table in a relational database, containing items (rows) and attributes (columns).
@@ -49,6 +51,7 @@ DynamoDB allows you to delete expired items from tables automatically to help yo
     - <ins>Primary Key</ins>: A unique identifier for each item in a table. It can be either a single attribute (Simple Primary Key) or a composite of two attributes (Composite Primary Key).
     - <ins>Partition Key</ins>: In the context of a Simple Primary Key, this is the single attribute used to uniquely identify an item in a table. For composite keys, it's the first part of the composite key.
     - <ins>Sort Key (Range Key)</ins>: In a Composite Primary Key, it's the second attribute that, combined with the partition key, allows sorting of items with the same partition key value.
+    - <ins>Secondary Indexes</ins>: Additional indexes that allow querying on non-primary key attributes.
 
 
 - How does DynamoDB fit-in/replace an on-premises setting?
