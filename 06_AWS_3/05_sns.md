@@ -48,3 +48,22 @@ Amazon Simple Notification Service is a managed service that provides message de
 
 **<ins>Practice</ins>**
 
+- Create a topic.
+
+![lambda](/06_AWS_3/includes/05_SNS2-1.png)<br><br>
+
+- Create a subscription to the topic
+
+![lambda](/06_AWS_3/includes/05_SNS2-2.png)<br><br>
+
+- Confirm subscription
+
+![lambda](/06_AWS_3/includes/05_SNS2-3.png)<br>
+
+![lambda](/06_AWS_3/includes/05_SNS2-4.png)<br><br>
+
+- Publish a message to the topic
+
+![lambda](/06_AWS_3/includes/05_SNS2-5.png)<br>
+
+![lambda](/06_AWS_3/includes/05_SNS2-6.png)<br><br>
