@@ -11,7 +11,7 @@ With AWS Lambda, you can run code without provisioning or managing servers. You 
 
 ### Used sources
 - [What is AWS Lambda?](https://docs.aws.amazon.com/lambda/latest/dg/welcome.html)
-- 
+- [Getting started with Lambda](https://docs.aws.amazon.com/lambda/latest/dg/getting-started.html)
 
 ### Encountered problems
 None
@@ -55,3 +55,59 @@ You organize your code into Lambda functions. The Lambda service runs your funct
     - <ins>RDS/Aurora</ins>: Perform database operations by triggering Lambda functions in response to changes in Amazon RDS or Aurora databases.
 
 **<ins>Practice</ins>**
+
+<ins>Create a Lambda function with the console</ins>
+
+- Create function
+
+![lambda](/06_AWS_3/includes/04_lambda2-1.png)
+
+- Modify the code in console
+
+```json
+import json
+import logging
+
+logger = logging.getLogger()
+logger.setLevel(logging.INFO)
+
+def lambda_handler(event, context):
+    
+    # Get the length and width parameters from the event object. The 
+    # runtime converts the event object to a Python dictionary
+    length=event['length']
+    width=event['width']
+    
+    area = calculate_area(length, width)
+    print(f"The area is {area}")
+        
+    logger.info(f"CloudWatch logs group: {context.log_group_name}")
+    
+    # return the calculated area as a JSON string
+    data = {"area": area}
+    return json.dumps(data)
+    
+def calculate_area(length, width):
+    return length*width
+```
+
+![lambda](/06_AWS_3/includes/04_lambda2-2.png)
+
+- Create test event.
+
+```json
+{
+  "length": 6,
+  "width": 7
+}
+```
+
+![lambda](/06_AWS_3/includes/04_lambda2-3.png)
+
+- Test function.
+
+![lambda](/06_AWS_3/includes/04_lambda2-4.png)
+
+- View function's invocation records in CloudWatch Logs.
+
+![lambda](/06_AWS_3/includes/04_lambda2-5.png)
