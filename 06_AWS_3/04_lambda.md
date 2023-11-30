@@ -7,17 +7,18 @@ With AWS Lambda, you can run code without provisioning or managing servers. You 
 
 ## Assignment
 
-<ins>Gain practical knowledge of Lambda</ins>
+<ins>Gain theoretical and practical knowledge of Lambda</ins>
 
 ### Used sources
-- []()
+- [What is AWS Lambda?](https://docs.aws.amazon.com/lambda/latest/dg/welcome.html)
+- 
 
 ### Encountered problems
 None
 
 ### Result
 
-**<ins>Gain practical knowledge of Lambda</ins>**
+**<ins>Theory</ins>**
 
 ![lambda](/06_AWS_3/includes/04_lambda1.png)<br><br>
 
@@ -31,7 +32,7 @@ You organize your code into Lambda functions. The Lambda service runs your funct
     - AWS Lambda solves the problem of managing infrastructure by allowing developers to run code without provisioning or managing servers. It offers scalability, cost efficiency, and simplifies event-driven architecture, enabling faster development and higher availability.
 
 - Which key terms belong to Lambda?
-    - <ins>serverless computing</ins>: allows you to build and run applications and services without thinking about servers. With serverless computing, your application still runs on servers, but all the server management is done by AWS.
+    - <ins>Serverless Computing</ins>: allows you to build and run applications and services without thinking about servers. With serverless computing, your application still runs on servers, but all the server management is done by AWS.
     - <ins>Function</ins>: The code you upload and execute on Lambda is referred to as a function. It's a piece of code that performs a specific task and can be triggered by various events.
     - <ins>Event Sources</ins>: These are triggers that invoke your Lambda function. They can be from various sources such as AWS services like S3, DynamoDB, API Gateway, SNS, CloudWatch Events, etc., or custom events.
     - <ins>Runtime</ins>: Lambda supports multiple programming languages and the runtime is the execution environment for your function.
@@ -41,19 +42,16 @@ You organize your code into Lambda functions. The Lambda service runs your funct
     - <ins>Concurrency</ins>: The number of invocations of your function that can run simultaneously. Lambda manages concurrency to ensure that your function scales according to demand.
 
 - How does Lambda fit-in/replace an on-premises setting?
-    - .
+    - <ins>Eliminating Infrastructure Management</ins>: No need for physical/virtual servers.
+    - <ins>Cost Efficiency</ins>: Pay only for actual compute time, avoiding idle resource costs.
+    - <ins>Automatic Scalability</ins>: Scales seamlessly with incoming requests, unlike on-premises systems that may struggle with sudden spikes.
+    - <ins>Accelerated Development</ins>: Swift deployment without managing infrastructure, speeding up development cycles.
+    - <ins>Reliability and High Availability</ins>: Operates across multiple avialability zones, ensuring reliability without the need for extensive on-premises redundancy.
 
 - How can I combine Lambda with other services?
-    - .
+    - <ins>S3</ins>: Trigger Lambda functions whenever a file is uploaded, modified, or deleted in an S3 bucket. 
+    - <ins>DynamoDB</ins>: React to changes in a DynamoDB table.
+    - <ins> CloudWatch Events/Logs</ins>: Respond to event or log data in CloudWatch.
+    - <ins>RDS/Aurora</ins>: Perform database operations by triggering Lambda functions in response to changes in Amazon RDS or Aurora databases.
 
-- What is the difference between Lambda and other similar services?
-    - .
-
-- Where can I find this service in the console?
-    - Under the "Compute" category.
-
-- How do I enable this service?
-    - .
-
-- How can I link this service to other resources?
-    - .
+**<ins>Practice</ins>**
