@@ -43,7 +43,6 @@ Witch CloudWatch, you gain system-wide visibility into resources utilization, ap
     - <ins>Alarms</ins>: Alarms allows you to set tresholds on your CloudWatch metrics. You can define actions to be triggered when certain conditions are met, such as sending notifications or triggering automated responses.
     - <ins>Dashboards</ins>: Dashboards provide customizable views of your metrics, allowing you to create visual representations to monitor the health and performance of your resources.
     - <ins>Logs</ins>: Logs allows you to collect, monitor, and store log files from various AWS services and applications in a centralized location. It enables you to search, filter, and gain insights from log data.
-    - <ins>Events</ins>: Events enables you to respond to state changes in your AWS resources. You can create rules to match events and trigger automated actions in response, such as invoking AWS Lambda functions.
 
 - How does CloudWatch fit-in/replace an on-premises setting?
     - <ins>Scalability</ins>: CloudWatch easily scales to monitor thousands of resources across various AWS services, while on-premises solutions often have limited scalability.
