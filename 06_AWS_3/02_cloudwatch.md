@@ -7,7 +7,7 @@ Amazon CloudWatch provides a reliable, scalable, and flexible monitoring solutio
 
 ## Assignment
 
-<ins>Gain practical knowledge of Cloudwatch</ins>
+<ins>Gain theoretical and practical knowledge of Cloudwatch</ins>
 
 ### Used sources
 - [What is Amazon CloudWatch?](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/WhatIsCloudWatch.html)
@@ -18,7 +18,7 @@ None
 
 ### Result
 
-**<ins>Gain practical knowledge of CloudWatch</ins>**
+**<ins>Gain theoretical and practical knowledge of CloudWatch</ins>**
 
 ![cloudwatch](/06_AWS_3/includes/02_cloudwatch1.png)<br><br>
 

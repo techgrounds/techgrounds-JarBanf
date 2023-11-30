@@ -7,7 +7,7 @@ AWS Identity and Access Management is a web service for securely controlling acc
 
 ## Assignment
 
-<ins>Gain practical knowledge of IAM</ins>
+<ins>Gain theoretical and practical knowledge of IAM</ins>
 
 ### Used sources
 - [What is IAM?](https://docs.aws.amazon.com/IAM/latest/UserGuide/introduction.html)
@@ -19,7 +19,7 @@ None
 
 ### Result
 
-**<ins>Gain practical knowledge of IAM</ins>**
+**<ins>Gain theoretical and practical knowledge of IAM</ins>**
 
 ![cloudfront](/06_AWS_3/includes/01_iam1.png)<br><br>
 

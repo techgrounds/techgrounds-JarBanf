@@ -20,11 +20,11 @@ None
 
 **<ins>Theory</ins>**
 
-![lambda](/06_AWS_3/includes/05_SNS1.jpg)<br><br>
+![sns](/06_AWS_3/includes/05_SNS1.jpg)<br><br>
 
 Amazon Simple Notification Service is a managed service that provides message delivery from publishers to subscribe (also known as producers and consumers). Publishers communicate asynchronously with subscribers by sending messages to a topic, which is a logical access point and communication channel. Clients can subscribe to the SNS topic and receive published messages using a supported endpoint type, such as Amazon Kinesis Data Firehose, Amazon SQS, AWS Lambda, HTTP, email, mobile push notifications, and mobile text messages (SMS).
 
-![lambda](/06_AWS_3/includes/05_SNS1-2.png)<br><br>
+![snsa](/06_AWS_3/includes/05_SNS1-2.png)<br><br>
 
 - What problem does SNS solve?
     - It helps solve various communication challenges within applications and systems by allowing reliable, scalable, and secure message publication and delivery.
@@ -50,20 +50,20 @@ Amazon Simple Notification Service is a managed service that provides message de
 
 - Create a topic.
 
-![lambda](/06_AWS_3/includes/05_SNS2-1.png)<br><br>
+![sns](/06_AWS_3/includes/05_SNS2-1.png)<br><br>
 
 - Create a subscription to the topic
 
-![lambda](/06_AWS_3/includes/05_SNS2-2.png)<br><br>
+![sns](/06_AWS_3/includes/05_SNS2-2.png)<br><br>
 
 - Confirm subscription
 
-![lambda](/06_AWS_3/includes/05_SNS2-3.png)<br>
+![sns](/06_AWS_3/includes/05_SNS2-3.png)<br>
 
-![lambda](/06_AWS_3/includes/05_SNS2-4.png)<br><br>
+![sns](/06_AWS_3/includes/05_SNS2-4.png)<br><br>
 
 - Publish a message to the topic
 
-![lambda](/06_AWS_3/includes/05_SNS2-5.png)<br>
+![sns](/06_AWS_3/includes/05_SNS2-5.png)<br>
 
-![lambda](/06_AWS_3/includes/05_SNS2-6.png)<br><br>
+![sns](/06_AWS_3/includes/05_SNS2-6.png)<br><br>

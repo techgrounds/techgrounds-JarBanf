@@ -7,7 +7,7 @@ Amazon DynamoDB is a fully managed NoSQL database service that provides fast and
 
 ## Assignment
 
-<ins>Gain practical knowledge of DynamoDB</ins>
+<ins>Gain theoretical and practical knowledge of DynamoDB</ins>
 
 ### Used sources
 - [What is Amazon DynamoDB?](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Introduction.html)
@@ -18,7 +18,7 @@ None
 
 ### Result
 
-**<ins>Gain practical knowledge of DynamoDB</ins>**
+**<ins>Gain theoretical and practical knowledge of DynamoDB</ins>**
 
 ![dynamodb](/06_AWS_3/includes/03_DynamoDB1.png)<br><br>
 
