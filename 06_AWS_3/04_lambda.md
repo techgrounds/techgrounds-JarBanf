@@ -28,10 +28,17 @@ Lambda runs code on a high-availability compute infrastructure and performs all 
 You organize your code into Lambda functions. The Lambda service runs your function only when needed and scales automatically. You only pay for the compute time that you consume, there is no charge when your code is not running.
 
 - What problem does Lambda solve?
-    - .
+    - AWS Lambda solves the problem of managing infrastructure by allowing developers to run code without provisioning or managing servers. It offers scalability, cost efficiency, and simplifies event-driven architecture, enabling faster development and higher availability.
 
 - Which key terms belong to Lambda?
-    - .
+    - <ins>serverless computing</ins>: allows you to build and run applications and services without thinking about servers. With serverless computing, your application still runs on servers, but all the server management is done by AWS.
+    - <ins>Function</ins>: The code you upload and execute on Lambda is referred to as a function. It's a piece of code that performs a specific task and can be triggered by various events.
+    - <ins>Event Sources</ins>: These are triggers that invoke your Lambda function. They can be from various sources such as AWS services like S3, DynamoDB, API Gateway, SNS, CloudWatch Events, etc., or custom events.
+    - <ins>Runtime</ins>: Lambda supports multiple programming languages and the runtime is the execution environment for your function.
+    - <ins>Invocation</ins>: The process of triggering or calling a Lambda function is referred to as invocation. Invocations can be synchronous (using APIs) or asynchronous (triggered by events). 
+    - <ins>Execution Role</ins>: An AWS Identity and Access Management (IAM) role associated with Lambda function, defining the permissions it has to access other AWS resources.
+    - <ins>Triggers</ins>: These are events or conditions that cause a Lambda function to execute. Triggers can be AWS services, HTTP requests, schedule-based, or custom events.
+    - <ins>Concurrency</ins>: The number of invocations of your function that can run simultaneously. Lambda manages concurrency to ensure that your function scales according to demand.
 
 - How does Lambda fit-in/replace an on-premises setting?
     - .
