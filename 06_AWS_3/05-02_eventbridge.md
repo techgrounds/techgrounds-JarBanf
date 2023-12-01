@@ -11,6 +11,7 @@ Amazon EventBridge is a serverless event bus service that makes it easy to conne
 
 ### Used sources
 - [What Is Amazon EventBridge?](https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-what-is.html)
+- [Archive and replay Amazon EventBridge events](https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-tutorial-archive-replay.html)
 
 ### Encountered problems
 None
@@ -58,4 +59,7 @@ EventBridge includes two ways to process events: event buses and pipes.
 
 **<ins>Practice</ins>**
 
-- .
+In this tutorial, I'll create a function to use as the target for the EventBridge rule using the Lambda console. Then, I'll create an archive and a rule that will archive test events using the EventBridge console. Once there are events in that archive, I'll replay them.
+
+- Create a Lambda function
+
