@@ -61,5 +61,50 @@ EventBridge includes two ways to process events: event buses and pipes.
 
 In this tutorial, I'll create a function to use as the target for the EventBridge rule using the Lambda console. Then, I'll create an archive and a rule that will archive test events using the EventBridge console. Once there are events in that archive, I'll replay them.
 
-- Create a Lambda function
+- Create a Lambda function to log the events.
 
+![EventBridge](/06_AWS_3/includes/05-02_eventbridge2-1.png)<br>
+
+```js
+'use strict';
+
+exports.handler = (event, context, callback) => {
+    console.log('LogScheduledEvent');
+    console.log('Received event:', JSON.stringify(event, null, 2));
+    callback(null, 'Finished');
+};
+```
+
+![EventBridge](/06_AWS_3/includes/05-02_eventbridge2-2.png)<br><br>
+
+- Create archive that will hold all the test events.
+
+![EventBridge](/06_AWS_3/includes/05-02_eventbridge2-3.png)<br>
+
+![EventBridge](/06_AWS_3/includes/05-02_eventbridge2-4.png)<br><br>
+
+- Create rule to archive events that are sent to the event bus.
+
+![EventBridge](/06_AWS_3/includes/05-02_eventbridge2-5.png)<br>
+
+![EventBridge](/06_AWS_3/includes/05-02_eventbridge2-6.png)<br>
+
+![EventBridge](/06_AWS_3/includes/05-02_eventbridge2-7.png)<br>
+
+![EventBridge](/06_AWS_3/includes/05-02_eventbridge2-8.png)<br><br>
+
+- Send test events to make sure the archive is working correctly.
+
+![EventBridge](/06_AWS_3/includes/05-02_eventbridge2-9.png)<br>
+
+![EventBridge](/06_AWS_3/includes/05-02_eventbridge2-10.png)<br><br>
+
+- Replay events once the test events are in the archive
+
+![EventBridge](/06_AWS_3/includes/05-02_eventbridge2-11.png)<br>
+
+![EventBridge](/06_AWS_3/includes/05-02_eventbridge2-12.png)<br>
+
+![EventBridge](/06_AWS_3/includes/05-02_eventbridge2-13.png)<br>
+
+![EventBridge](/06_AWS_3/includes/05-02_eventbridge2-14.png)<br><br>
