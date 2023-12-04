@@ -11,6 +11,7 @@ AWS Support provides support for users of Amazon Web Services. All users have ac
 
 ### Used sources
 - [Getting started with AWS Support](https://docs.aws.amazon.com/awssupport/latest/user/getting-started.html)
+- [What is AWS Health?](https://docs.aws.amazon.com/health/latest/ug/what-is-aws-health.html)
 
 ### Encountered problems
 None
@@ -24,15 +25,9 @@ AWS Support offers a range of plans that provide access to tools and expertise t
 ![support plans](/06_AWS_3/includes/07_support-plans1.png)  
 ![support plans](/06_AWS_3/includes/07_support-plans2.png)<br><br>
 
-<ins>Trusted Advisor</ins>
-
-![trusted advisor](/06_AWS_3/includes/07_support-plans3.png)<br><br>
-
-Trusted Advisor draws upon best practices learned from serving hundreds of thousands of AWS customers. Trusted Advisor inspects your AWS environment, and then makes recommendations when opportunities exist to save money, improve system availability and performance, or help close security gaps.
-
 <ins>Health</ins>
 
-![health dashboard](/06_AWS_3/includes/07_support-plans4.png)<br><br>
+![health dashboard](/06_AWS_3/includes/07_support-plans3.png)<br><br>
 
 AWS Health provides ongoing visibility into your resource performance and the availability of your AWS services and accounts. You can use AWS Health events to learn how service and resource changes might affect your applications running on AWS. AWS Health provides relevant and timely information to help you manage events in progress. AWS Health also helps you be aware of and to prepare for planned activities. The service delivers alerts and notifications triggered by changes in the health of AWS resources, so that you get near-instant event visibility and guidance to help accelerate troubleshooting.
 
