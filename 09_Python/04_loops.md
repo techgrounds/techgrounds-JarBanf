@@ -40,7 +40,7 @@ With the for loop we can execute a set of statements, once for each item in a li
 - Create a new script.
 - Copy the array below into your script.
 
-    ```
+    ```py
     arr = ["Shikha", "Casper", "Bart", "Ruben", "Ulviye"]
     ```
 
@@ -84,7 +84,7 @@ for i in range(10):
     print(i)
 ```
 
-![exercise2-1.py](/09_Python/includes/04_loops2-1.png)<br><br>
+![exercise2-1.py](/09_Python/includes/04_loops2-1.png)<br>
  
 The `range()` function returns a sequence of numbers, starting from 0 by default, and increments by 1 (by default), and stops before a specified number.
 
@@ -109,3 +109,14 @@ for i in range(50):
 **<ins>Exercise 3</ins>**
 
 Script --> [exercise3.py](/09_Python/includes/04_exercise3.py)
+
+```py
+# define list
+arr = ["Shikha", "Casper", "Bart", "Ruben", "Ulviye"]
+
+#print every name in list arr
+for i in arr:
+    print(i)
+```
+
+![exercise3.py](/09_Python/includes/04_loops3.png)<br><br>
