@@ -52,6 +52,8 @@ Comments can be used to:
 
 ### Used sources
 - [Python Data Types](https://www.w3schools.com/python/python_datatypes.asp)
+- [Python Comments](https://www.w3schools.com/python/python_comments.asp)
+- [Python User Input](https://www.w3schools.com/python/python_user_input.asp)
 
 ### Encountered problems
 None
@@ -123,3 +125,23 @@ print("x =", x)
 **<ins>Exercise 2</ins>**
 
 Script --> [exercise2.py](/09_Python/includes/03_exercise2.py)
+
+```py
+#get user input and store them in variables
+name = input("Enter name: ")
+age = input("Enter age: ")
+cloud_practitioner = input("Are you a certified Cloud Practitioner: ")
+score_divided = input("Enter your score divided by 10: ")
+
+# print user input + data type
+print("Name:", name)
+print("Variabel type:", type(name))
+print("Age:", age)
+print("Variabel type:", type(age))
+print("Certified Cloud Practitioner:", cloud_practitioner)
+print("Variabel type:", type(cloud_practitioner))
+print("Score divided by 10:", score_divided)
+print("Variabel type:", type(score_divided))
+```
+
+![exercise2.py](/09_Python/includes/03_data-types_comments2-1.png)<br><br>
