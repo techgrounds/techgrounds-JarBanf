@@ -42,7 +42,7 @@ None
 
 **<ins>Exercise 1</ins>**
 
-My script --> [exercise1.py](/09_Python/includes/02_exercise1.py)
+Script --> [exercise1.py](/09_Python/includes/02_exercise1.py)
 
 ```py
 x = 3
@@ -58,7 +58,7 @@ print(z)
 
 **<ins>Exercise 2</ins>**
 
-My script --> [exercise2.py](/09_Python/includes/02_exercise2.py)
+Script --> [exercise2.py](/09_Python/includes/02_exercise2.py)
 
 ```py
 name = "Jared"
@@ -70,7 +70,7 @@ print("Hello, " + name + "!")
 
 **<ins>Exercise 3</ins>**
 
-My script --> [exercise3.py](/09_Python/includes/02_exercise3.py)
+Script --> [exercise3.py](/09_Python/includes/02_exercise3.py)
 
 ```py
 '''

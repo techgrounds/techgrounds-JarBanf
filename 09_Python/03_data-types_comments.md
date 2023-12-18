@@ -1,6 +1,6 @@
 # Data types and Comments
 
-**Data types**  
+<ins>Data types</ins>  
 In programming, data type is an important concept.
 
 Variables can store data of different types, and different types can do different things.
@@ -15,7 +15,7 @@ Python has the following data types built-in by default, in these categories:
 - Binary Types:     `bytes`, `bytearray`, `memoryview`
 - None Type: 	    `NoneType`
 
-**Comments**  
+<ins>Comments</ins>  
 Comments can be used to:
 
 - explain Python code.
@@ -60,5 +60,66 @@ None
 
 **<ins>Exercise 1</ins>**
 
+Script --> [exercise1.py](/09_Python/includes/03_exercise1.py)
+
+**- Determine the data types of all four variables ( a, b, c, d) using a built-in function.**
+
+```py
+a = 'int'
+b = 7
+c = False
+d = "18.5"
+
+print("a =", type(a))
+print("b =", type(b))
+print("c =", type(c))
+print("d =", type(d))
+```
+
+![exercise1.py](/09_Python/includes/03_data-types_comments1-1.png)<br><br>
+
+**- Make a new variable x and give it the value b + d. Print the value of x. This will raise an error. Fix it so that print(x) prints a float.**
+
+```py
+a = 'int'
+b = 7
+c = False
+d = 18.5
+
+print("a =", type(a))
+print("b =", type(b))
+print("c =", type(c))
+print("d =", type(d))
+
+x = b+d
+
+print("x =", x)
+```
+
+![exercise1.py](/09_Python/includes/03_data-types_comments1-2.png)<br><br>
+
+**- Write a comment above every line of code that tells the reader what is going on in your script.**
+
+```py
+# define variables
+a = 'int'
+b = 7
+c = False
+d = 18.5
+
+# print variable type
+print("a =", type(a))
+print("b =", type(b))
+print("c =", type(c))
+print("d =", type(d))
+
+# combine the sum of b and d in a new x variable
+x = b+d
+
+# print x
+print("x =", x)
+```
 
 **<ins>Exercise 2</ins>**
+
+Script --> [exercise2.py](/09_Python/includes/03_exercise2.py)
