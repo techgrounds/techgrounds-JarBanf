@@ -1,6 +1,6 @@
 # Data types and Comments
 
-<ins>Data types</ins>
+**Data types**
 
 In programming, data type is an important concept.
 
@@ -16,7 +16,7 @@ Python has the following data types built-in by default, in these categories:
 - Binary Types:     `bytes`, `bytearray`, `memoryview`
 - None Type: 	    `NoneType`
 
-<ins>Comments</ins>
+**Comments**
 
 Comments can be used to:
 
