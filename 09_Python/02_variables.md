@@ -33,6 +33,7 @@ Variables are containers for storing data values.
 
 ### Used sources
 - [Python Variables](https://www.w3schools.com/python/python_variables.asp)
+- [Python Variables 2](https://www.geeksforgeeks.org/python-variables/)
 
 ### Encountered problems
 None
