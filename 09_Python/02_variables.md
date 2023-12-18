@@ -57,5 +57,36 @@ print(z)
 
 **<ins>Exercise 2</ins>**
 
+My script --> [exercise2.py](/09_Python/includes/02_exercise2.py)
+
+```py
+name = "Jared"
+
+print("Hello, " + name + "!")
+```
+
+![exercise2.py](/09_Python/includes/02_variables2.png)<br><br>
 
 **<ins>Exercise 3</ins>**
+
+My script --> [exercise3.py](/09_Python/includes/02_exercise3.py)
+
+```py
+'''
+var = 18
+
+print("Value 1:", var)
+'''
+
+'''
+var = "december"
+
+print("Value 2:", var)
+'''
+
+var = 2023
+
+print("Value 3:", var)
+```
+
+![exercise3.py](/09_Python/includes/02_variables3.png)<br><br>
