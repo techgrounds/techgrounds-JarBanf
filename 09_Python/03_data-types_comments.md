@@ -1,7 +1,6 @@
 # Data types and Comments
 
-**Data types**
-
+**Data types**  
 In programming, data type is an important concept.
 
 Variables can store data of different types, and different types can do different things.
@@ -16,8 +15,7 @@ Python has the following data types built-in by default, in these categories:
 - Binary Types:     `bytes`, `bytearray`, `memoryview`
 - None Type: 	    `NoneType`
 
-**Comments**
-
+**Comments**  
 Comments can be used to:
 
 - explain Python code.
