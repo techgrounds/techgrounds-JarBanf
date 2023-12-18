@@ -53,6 +53,8 @@ print(y)
 print(z)
 ```
 
+![exercise1.py](/09_Python/includes/02_variables1.png)<br><br>
+
 **<ins>Exercise 2</ins>**
 
 
