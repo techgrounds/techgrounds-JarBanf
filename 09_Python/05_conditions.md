@@ -32,10 +32,10 @@ An "if statement" is written by using the if keyword.
 ### Used sources
 - [Python If ... Else](https://www.w3schools.com/python/python_conditions.asp)
 - [Read input as a float in Python](https://www.includehelp.com/python/read-input-as-a-float.aspx)
+- [Float limts 16 digits](https://stackoverflow.com/questions/455612/limiting-floats-to-two-decimal-points)
 
 ### Encountered problems
-- The floating point type in Python uses double precision to store the values. Double precision numbers have 53 bits (16 digits) of precision and regular floats have 24 bits (8 digits) of precision.  
-[Float limts 16 digits](https://stackoverflow.com/questions/455612/limiting-floats-to-two-decimal-points)
+- The floating point type in Python uses double precision to store the values. Double precision numbers have 53 bits (16 digits) of precision and regular floats have 24 bits (8 digits) of precision.
 
     16 digit input vs 17 digit input
 
