@@ -31,6 +31,7 @@ An "if statement" is written by using the if keyword.
 
 ### Used sources
 - [Python If ... Else](https://www.w3schools.com/python/python_conditions.asp)
+- [Read input as a float in Python](https://www.includehelp.com/python/read-input-as-a-float.aspx)
 
 ### Encountered problems
 None
