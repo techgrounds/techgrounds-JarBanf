@@ -41,6 +41,17 @@ None
 
 Script --> [exercise1.py](/09_Python/includes/05_exercise1.py)
 
+```py
+name = input("Enter name:")
+
+if name == "Jared" or name == "jared":
+    print("Welcome back Jared, I missed you!")
+else:
+    print("Hi " + name + ", I don't recognize you. I can not allow you to enter.")
+```
+
+![exercise1.py](/09_Python/includes/05_conditions1.png)<br><br>
+
 **<ins>Exercise 2</ins>**
 
 Script --> [exercise2.py](/09_Python/includes/05_exercise2.py)
