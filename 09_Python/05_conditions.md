@@ -42,11 +42,14 @@ None
 Script --> [exercise1.py](/09_Python/includes/05_exercise1.py)
 
 ```py
+# ask user to input name
 name = input("Enter name:")
 
 if name == "Jared" or name == "jared":
+    # if input name is "Jared" or "jared", do this
     print("Welcome back Jared, I missed you!")
 else:
+    # input name not correct, do this
     print("Hi " + name + ", I don't recognize you. I can not allow you to enter.")
 ```
 
@@ -55,3 +58,21 @@ else:
 **<ins>Exercise 2</ins>**
 
 Script --> [exercise2.py](/09_Python/includes/05_exercise2.py)
+
+```py
+# ask user to input number
+num = float(input("Enter a number: "))
+
+
+if num < 100:
+    # if input number is less then 100, do this
+    print("Number is lower than 100")
+elif num == 100:
+    # if input number is 100, do this
+    print("A perfect 100")
+else:
+    # if we are here, that means the number is more then 100, do this
+    print("Number is higher than 100")
+```
+
+![exercise2.py](/09_Python/includes/05_conditions2.png)<br><br>
