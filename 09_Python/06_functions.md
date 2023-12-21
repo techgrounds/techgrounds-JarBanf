@@ -50,6 +50,8 @@ None
 
 **<ins>Exercise 1</ins>**
 
+Script --> [exercise1.py](/09_Python/includes/06_exercise1.py)
+
 <ins>Python Modules</ins>  
 Consider a module to be the same as a code library. A file containing a set of functions you want to include in your application.
 
@@ -65,8 +67,6 @@ Default 0
 - `stop`: Required. An integer specifying at which position to end.
 - `step`: Optional. An integer specifying the incrementation.
 Default 1
-
-Script --> [exercise1.py](/09_Python/includes/06_exercise1.py)
 
 ```py
 # import the random module
@@ -87,9 +87,32 @@ while i < 5:
 
 Script --> [exercise2.py](/09_Python/includes/06_exercise2.py)
 
-```py
+**- Write a custom function myfunction() that prints “Hello, world!” to the terminal. Call myfunction.**
 
+```py
+# create function to print "Hello, world!"
+def myfunction():
+    print("Hello, world!")
+
+# call the function
+myfunction()
 ```
+
+![exercise2.py](/09_Python/includes/06_functions2-1.png)<br><br>
+
+**- Rewrite your function so that it takes a string as an argument. Then, it should print “Hello, NAME!”.**
+
+```py
+# create function that takes a string as an argument, then print a message"
+def myfunction():
+    name = input("Enter name: ")
+    print("Hello, " + name + "!")
+
+# call the function
+myfunction()
+```
+
+![exercise2.py](/09_Python/includes/06_functions2-2.png)<br><br>
 
 **<ins>Exercise 3</ins>**
 
