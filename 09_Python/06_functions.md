@@ -39,6 +39,9 @@ A function is a block of code which only runs when it is called. You can pass da
 
 ### Used sources
 - [Python Functions](https://www.w3schools.com/python/python_functions.asp)
+- [Python Modules](https://www.w3schools.com/python/python_modules.asp)
+- [Python Random Module](https://www.w3schools.com/python/module_random.asp)
+- [Python Random randrange() Method](https://www.w3schools.com/python/ref_random_randrange.asp)
 
 ### Encountered problems
 None
@@ -47,11 +50,38 @@ None
 
 **<ins>Exercise 1</ins>**
 
+<ins>Python Modules</ins>  
+Consider a module to be the same as a code library. A file containing a set of functions you want to include in your application.
+
+<ins>Random Module</ins>  
+Python has a built-in module that you can use to make random numbers.
+
+<ins>Python Random randrange() Method</ins>  
+The `randrange()` method returns a randomly selected element from the specified range.
+
+`random.randrange(start, stop, step)`
+- `start`: Optional. An integer specifying at which position to start.
+Default 0
+- `stop`: Required. An integer specifying at which position to end.
+- `step`: Optional. An integer specifying the incrementation.
+Default 1
+
 Script --> [exercise1.py](/09_Python/includes/06_exercise1.py)
 
 ```py
+# import the random module
+import random
 
+# define variabel
+i = 0
+
+# print 5 random integers between 0 and 100
+while i < 5:
+    print(random.randrange(1,100))
+    i += 1
 ```
+
+![exercise1.py](/09_Python/includes/06_functions1.png)<br><br>
 
 **<ins>Exercise 2</ins>**
 
