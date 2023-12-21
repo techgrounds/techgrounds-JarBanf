@@ -1,25 +1,3 @@
-# Number guessing
-It's time to build something.
-
-## Key-terms
-
-## Assignment
-
-- Generate a random number between 1 and 100 (or any other range).
-- The player guesses a number. For every wrong answer the player receives a clue.
-- When the player guesses the right number, display a score.
-
-### Used sources
-- []()
-
-### Encountered problems
-None
-
-### Result
-
-Script --> [number-guessing.py](/09_Python/includes/09_number-guessing.py)
-
-```py
 # import random module
 import random
 
@@ -54,10 +32,3 @@ else:
     print("Congratulations, you got it!")
     print("Winning number was " + str(randomNumber))
     print("Your score is " + str(playerScore))
-```
-
-![number-guessing.py](/09_Python/includes/09_number-guessing1.png)<br>
-
-![number-guessing.py](/09_Python/includes/09_number-guessing2.png)<br>
-
-![number-guessing.py](/09_Python/includes/09_number-guessing3.png)<br>
