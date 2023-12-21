@@ -10,14 +10,14 @@ It's time to build something.
 - When the player guesses the right number, display a score.
 
 ### Used sources
-- []()
+- [Python While Loops](https://www.w3schools.com/python/python_while_loops.asp)
 
 ### Encountered problems
 None
 
 ### Result
 
-Script --> [number-guessing.py](/09_Python/includes/09_number-guessing.py)
+Script --> [number-guessing.py](/09_Python/includes/09a_number-guessing.py)
 
 ```py
 # import random module
@@ -56,8 +56,8 @@ else:
     print("Your score is " + str(playerScore))
 ```
 
-![number-guessing.py](/09_Python/includes/09_number-guessing1.png)<br>
+![number guessing](/09_Python/includes/09a_number-guessing1.png)<br>
 
-![number-guessing.py](/09_Python/includes/09_number-guessing2.png)<br>
+![number guessing](/09_Python/includes/09a_number-guessing2.png)<br>
 
-![number-guessing.py](/09_Python/includes/09_number-guessing3.png)<br>
+![number guessing](/09_Python/includes/09a_number-guessing3.png)<br>
