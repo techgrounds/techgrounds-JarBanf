@@ -28,6 +28,9 @@ Dictionaries are used to store data values in key:value pairs. A dictionary is a
 - [Python Dictionaries](https://www.w3schools.com/python/python_dictionaries.asp)
 - [Python - Loop Dictionaries](https://www.w3schools.com/python/python_dictionaries_loop.asp)
 - [How to Add user input to a Dictionary in Python](https://bobbyhadz.com/blog/python-add-user-input-to-dictionary)
+- [Working with csv files in Python](https://www.geeksforgeeks.org/working-csv-files-python/)
+- [How to append a new row to an existing csv file?](https://www.geeksforgeeks.org/how-to-append-a-new-row-to-an-existing-csv-file/)
+- [How to Check if a File Exists in Python with isFile() and exists()](https://www.freecodecamp.org/news/how-to-check-if-a-file-exists-in-python/)
 
 ### Encountered problems
 None
