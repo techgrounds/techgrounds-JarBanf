@@ -98,7 +98,7 @@ def myfunction():
 myfunction()
 ```
 
-![exercise2.py](/09_Python/includes/06_functions2-1.png)<br><br>
+![exercise2-1.py](/09_Python/includes/06_functions2-1.png)<br><br>
 
 **- Rewrite your function so that it takes a string as an argument. Then, it should print “Hello, NAME!”.**
 
@@ -112,12 +112,22 @@ def myfunction():
 myfunction()
 ```
 
-![exercise2.py](/09_Python/includes/06_functions2-2.png)<br><br>
+![exercise2-2.py](/09_Python/includes/06_functions2-2.png)<br><br>
 
 **<ins>Exercise 3</ins>**
 
 Script --> [exercise3.py](/09_Python/includes/06_exercise3.py)
 
 ```py
+#this function takes in 2 number and returns the calculated average of these 2 numbers
+def avg(num1, num2):
+    return (num1+num2)/2
+    
+x = 128
+y = 255
+z = avg(x,y) #stores the return value of the avg() function in variable z
 
+print("The average of",x,"and",y,"is",z)
 ```
+
+![exercise3.py](/09_Python/includes/06_functions3.png)<br><br>
