@@ -1,60 +1,102 @@
 # import random module
 import random
 
-# function to generate computer hand
-def compHand():
-    ranNum = random.randrange(0,3)
-    if ranNum == 0:
-        return "rock"
-    elif ranNum == 1:
-        return "paper"
-    else:
-        return "scissors"
+# function to determine how many rounds to be played
+def detRounds():
+    rounds = int(input("How many rounds do you want to play? 3, 5 or 7? "))
+    print("Rounds to play: " + str(rounds))
+    return rounds
 
 # function to get player hand
 def playHand():
+    result = ""
     plH = input("Choose (R)ock, (P)aper or (S)cissors: ")
     if plH == "R" or plH == "r" or plH == "Rock" or plH == "rock":
-        return "rock"
+        result = "rock"
     elif plH == "P" or plH == "p" or plH == "Paper" or plH == "paper":
-        return "paper"
+        result = "paper"
     elif plH == "S" or plH == "s" or plH == "Scissors" or plH == "scissors":
-        return "scissors"
+        result = "scissors"
+    print("player chose: " + result)
+    return result
+
+# function to generate computer hand
+def compHand():
+    result = ""
+    ranNum = random.randrange(0,3)
+    if ranNum == 0:
+        result = "rock"
+    elif ranNum == 1:
+        result = "paper"
     else:
-        return "invalid move"
+        result = "scissors"
+    print("com chose: " + result)
+    return result
 
 # function to determine who wins
-def whoWins(coH, plH):
-    print("com chose: " + coH)
-    print("player chose: " + plH)
+def whoWinsRound(coH, plH):
+    roundWinner = ""
     if coH == "rock":
         if plH == "rock":
-            return "draw"
+            roundWinner = "draw"
         elif plH == "paper":
-            return "player"
-        else:
-            return "com"
+            roundWinner = "player"
+        elif plH == "scissors":
+            roundWinner = "com"
     elif coH == "paper":
         if plH == "rock":
-            return "com"
+            roundWinner = "com"
         elif plH == "paper":
-            return "draw"
-        else:
-            return "player"
+            roundWinner =  "draw"
+        elif plH == "scissors":
+            roundWinner = "player"
     elif coH == "scissors":
         if plH == "rock":
-            return "player"
+            roundWinner =  "player"
         elif plH == "paper":
-            return "com"
-        else:
-            return "draw"
-    else:
-        print("error")
+            roundWinner =  "com"
+        elif plH == "scissors":
+            roundWinner = "draw"
+    print("Round winner is: " + roundWinner)
+    return roundWinner
 
-def play():
-    coH = compHand()
+# function to play round
+def playRound():
     plH = playHand()
-    winner = whoWins(coH, plH)
-    print("Winner is: " + winner)
+    coH = compHand()
+    roundWinner = whoWinsRound(coH, plH)
+    print("Round played")
+    return roundWinner
 
-play()
+# function to keep score
+def keepScore(playScore, comScore, roundWinner):
+    scores = [playScore, comScore]
+    if roundWinner == "com":
+        comScore +=1
+    elif roundWinner == "player":
+        playScore += 1
+    elif roundWinner == "draw":
+        comScore += 0
+        playScore += 0
+    print("Score is: " + scores + "[player, com]")
+    return scores
+
+def whoWinsGame(rounds, scores):
+    return
+
+def announceWinner(gameWinner):
+    print("Game winner is: " + gameWinner)
+
+
+def playGame():
+    rounds = detRounds()
+    playScore = 0
+    comScore = 0
+    roundWinner = playRound()
+    scores = keepScore(playScore, comScore, roundWinner)
+
+    gameWinner = whoWinsGame(rounds, scores)
+    announceWinner(gameWinner)
+
+playRound()
+##playGame()

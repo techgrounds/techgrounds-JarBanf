@@ -23,7 +23,8 @@ None
 Script --> [rock-paper-scissors.py](/09_Python/includes/09b_rock-paper-scissors.py)
 
 ```py
-
+def in_the_making()
+    print("Game in the making..")
 ```
 
 ![rock paper scissors](/09_Python/includes/09b_rock-paper-scissors1.png)<br>
