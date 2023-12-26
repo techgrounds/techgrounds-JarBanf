@@ -3,7 +3,7 @@ import random
 
 # function to determine how many rounds to be played
 def detRounds():
-    rounds = int(input("How many rounds do you want to play? 3, 5 or 7? "))
+    rounds = int(input("How many rounds do you want to play? Choose uneven number."))
     print("Rounds to play: " + str(rounds))
     return rounds
 
@@ -33,7 +33,7 @@ def compHand():
     print("com chose: " + result)
     return result
 
-# function to determine who wins
+# function to determine who wins round
 def whoWinsRound(coH, plH):
     roundWinner = ""
     if coH == "rock":
@@ -57,46 +57,55 @@ def whoWinsRound(coH, plH):
             roundWinner =  "com"
         elif plH == "scissors":
             roundWinner = "draw"
-    print("Round winner is: " + roundWinner)
+    print("Round winner determined")
     return roundWinner
 
 # function to play round
-def playRound():
+def playRound(playRounds, curRound):
+    print("Round " + str(curRound + 1) + " out of " + str(playRounds))
+    print("FIGHT!")
     plH = playHand()
     coH = compHand()
     roundWinner = whoWinsRound(coH, plH)
-    print("Round played")
+    print("Winner round " + str(curRound + 1) + " is: " + roundWinner)
     return roundWinner
 
 # function to keep score
-def keepScore(playScore, comScore, roundWinner):
-    scores = [playScore, comScore]
+def keepScore(scores, roundWinner):
     if roundWinner == "com":
-        comScore +=1
+        print("comScore + 1")
+        scores[1] +=1
     elif roundWinner == "player":
-        playScore += 1
+        print("playScore + 1")
+        scores[0] += 1
     elif roundWinner == "draw":
-        comScore += 0
-        playScore += 0
-    print("Score is: " + scores + "[player, com]")
+        print("It's a draw, no point for anyone")
+    print("Player : " + str(scores[0]))
+    print("Computer : " + str(scores[1]))
     return scores
 
-def whoWinsGame(rounds, scores):
-    return
+def whoWinsGame(scores):
+    gameWinner = ""
+    if scores[0] < scores[1]:
+        gameWinner = "Computer wins the game!"
+    elif scores[0] > scores[1]:
+        gameWinner = "Player wins the game!"
+    else:
+        gameWinner = "The game ended in a draw!"
 
-def announceWinner(gameWinner):
-    print("Game winner is: " + gameWinner)
+    return gameWinner
 
-
+# function to initialise game    
 def playGame():
-    rounds = detRounds()
-    playScore = 0
-    comScore = 0
-    roundWinner = playRound()
-    scores = keepScore(playScore, comScore, roundWinner)
+    playRounds = detRounds()
+    scores = [0,0] # [player, computer]
+    curRound = 0
+    while playRounds != curRound:
+        roundWinner = playRound(playRounds, curRound)
+        scores = keepScore(scores, roundWinner)
+        curRound += 1
+        print("Round " + str(curRound) + " ended.")
+    gameWinner = whoWinsGame(scores)
+    print(gameWinner)
 
-    gameWinner = whoWinsGame(rounds, scores)
-    announceWinner(gameWinner)
-
-playRound()
-##playGame()
+playGame()
