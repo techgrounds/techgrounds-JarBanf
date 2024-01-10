@@ -6,6 +6,7 @@ Here I will be logging my daily progress and learnings throughout the project.
     - [Set up AWS Cloud Development Kit](#set-up-aws-cloud-development-kit)
 - [Tuesday 09 Jan '24](#tuesday-09-jan-24)
 - [Monday 08 Jan '24](#monday-08-jan-24)
+    - [Watched an introduction video about Jira.](#watched-an-introduction-video-about-jira)
 - [Template](#template)
 
 
@@ -102,12 +103,18 @@ I know now how to set up the AWS CDK on my workstation. That being said, this AW
 
 ## Monday 08 Jan '24
 ### Daily Report
+First day of the project. I read and tried to understand what the project is about and what is expected from me.
+
+We will be using Jira to track our progress throughout the project. I read and watched a video on what Jira is about. Also made an account.
 
 ### Obstacles
+No idea what Jira is about.
 
 ### Solutions
+- #### Watched an introduction [video](https://www.youtube.com/watch?v=GWxMTvRGIpc) about Jira.
 
 ### Learnings
+I have a better understanding why Jira is a handy tool to use during projects.
 
 *back to [top](#project-log)*  
 
