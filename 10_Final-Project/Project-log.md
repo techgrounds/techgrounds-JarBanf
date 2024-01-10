@@ -15,37 +15,51 @@ Here I will be logging my daily progress and learnings throughout the project.
 
     - Sources:
         - [Working with the AWS CDK in Python](https://docs.aws.amazon.com/cdk/v2/guide/work-with-cdk-python.html)
+        - [What is the AWS Command Line Interface?](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-welcome.html)
 
     - Create Access keys in IAM
-    - Install Node.js: [nodejs.org](https://nodejs.org/)
+    - Install [AWS Command Line Interface](https://aws.amazon.com/cli/):
+
+        ```bash
+        curl "https://awscli.amazonaws.com/AWSCLIV2.pkg" -o "AWSCLIV2.pkg"
+        sudo installer -pkg ./AWSCLIV2.pkg -target /
+        ```
+
+    - Verify that the shell can find and run the aws command in your `$PATH`
+
+        ```bash
+        which aws
+        aws --version
+        ```
+
+        Response:  
+        - `/usr/local/bin/aws`
+        - `aws-cli/2.15.9 Python/3.11.6 Darwin/21.6.0 exe/x86_64 prompt/off`
+
+    - Install [Node.js](https://nodejs.org/)
     - Install AWS CDK Toolkit:  
     
-        ```py
+        ```bash
         sudo npm install -g aws-cdk
         ```
     
     - Test CDK installation: 
     
-        ```py
+        ```bash
         cdk --version
         ```
         
-        Respone: 
+        Response: 
         - `2.118.0 (build a40f2ec)`
 
     - Install Package Installer for Python (`PIP`) and virtual environment manager (`virtualenv`)
 
-        ```py
+        ```bash
         python3 -m ensurepip --upgrade
         python3 -m pip install --upgrade pip
         python3 -m pip install --upgrade virtualenv
         ```
-
-        Respone:
-        - `Looking in links: /var/folders/t0/bnkd1f3506v63xgwnvm2pb_h0000gn/T/tmp4835memo Requirement already satisfied: pip in /Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages (23.2.1)`
-        - `Successfully installed pip-23.3.2`
-        - `Successfully installed distlib-0.3.8 filelock-3.13.1 platformdirs-4.1.0 virtualenv-20.25.0`
-
+    
     - 
 
 ### Learnings
