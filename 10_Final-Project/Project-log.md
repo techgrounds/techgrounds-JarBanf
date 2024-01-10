@@ -2,16 +2,16 @@
 Here I will be logging my daily progress and learnings throughout the project.
 
 ## Table of Contents
-- [Wednesday 10 Jan '24](#wednesday-10-jan-24)
+- [Wed 10 Jan '24](#wed-10-jan-24)
     - [Set up AWS Cloud Development Kit](#set-up-aws-cloud-development-kit)
-- [Tuesday 09 Jan '24](#tuesday-09-jan-24)
-- [Monday 08 Jan '24](#monday-08-jan-24)
+- [Tue 09 Jan '24](#tue-09-jan-24)
+- [Mon 08 Jan '24](#mon-08-jan-24)
     - [Watched an introduction video about Jira.](#watched-an-introduction-video-about-jira)
 - [Template](#template)
 
 
 
-## Wednesday 10 Jan '24
+## Wed 10 Jan '24
 ### Daily Report
 Together with my team we had a meeting with the product owner to discuss the requirements for the cloud infrastructure that we individually have to develop. I still have to process these requirements in a document.  
 
@@ -90,7 +90,7 @@ I know now how to set up the AWS CDK on my workstation. That being said, this AW
 
 *back to [top](#project-log)*  
 
-## Tuesday 09 Jan '24
+## Tue 09 Jan '24
 ### Daily Report
 
 ### Obstacles
@@ -101,7 +101,7 @@ I know now how to set up the AWS CDK on my workstation. That being said, this AW
 
 *back to [top](#project-log)* 
 
-## Monday 08 Jan '24
+## Mon 08 Jan '24
 ### Daily Report
 First day of the project. I read and tried to understand what the project is about and what is expected from me.
 
