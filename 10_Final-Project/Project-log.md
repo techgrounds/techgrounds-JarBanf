@@ -9,6 +9,7 @@ Here I will be logging my daily progress and learnings throughout the project.
 - [Template](#template)
 
 
+
 ## Wednesday 10 Jan '24
 ### Daily Report
 Together with my team we had a meeting with the product owner to discuss the requirements for the cloud infrastructure that we individually have to develop. I still have to process these requirements in a document.  
@@ -86,6 +87,8 @@ During the meeting with the product owner I got more information about the cloud
 
 I know now how to set up the AWS CDK on my workstation. That being said, this AWS CDK is still totally new for me. I may have successfully set up AWS CDK on my workstation, but I still do no not understand how it works, and how to interact with it.
 
+*back to [top](#project-log)*  
+
 ## Tuesday 09 Jan '24
 ### Daily Report
 
@@ -94,6 +97,8 @@ I know now how to set up the AWS CDK on my workstation. That being said, this AW
 ### Solutions
 
 ### Learnings
+
+*back to [top](#project-log)* 
 
 ## Monday 08 Jan '24
 ### Daily Report
@@ -104,6 +109,8 @@ I know now how to set up the AWS CDK on my workstation. That being said, this AW
 
 ### Learnings
 
+*back to [top](#project-log)*  
+
 ++++++++++++++++++++
 ## Template
 ## insert-date-here
@@ -111,4 +118,6 @@ I know now how to set up the AWS CDK on my workstation. That being said, this AW
 ### Obstacles
 ### Solutions
 ### Learnings
+
+*back to [top](#project-log)*  
 ++++++++++++++++++++
