@@ -25,7 +25,7 @@ Here I will be logging my daily progress and learnings throughout the project.
         sudo installer -pkg ./AWSCLIV2.pkg -target /
         ```
 
-    - Verify that the shell can find and run the aws command in your `$PATH`.
+    - Verify that the shell can find and run the aws command in my `$PATH`.
 
         ```bash
         which aws
@@ -36,7 +36,7 @@ Here I will be logging my daily progress and learnings throughout the project.
         - `/usr/local/bin/aws`
         - `aws-cli/2.15.9 Python/3.11.6 Darwin/21.6.0 exe/x86_64 prompt/off`
 
-    - Configure your workstation so the AWS CDK uses my credentials.
+    - Configure my workstation so the AWS CDK uses my credentials.
 
         ```bash
         aws configure
