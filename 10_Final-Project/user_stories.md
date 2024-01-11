@@ -5,11 +5,11 @@ If you and your team identify user stories that need to be split into smaller st
 
 The following epics apply to the project:
 
-| Epic | Description |
-| --- | ----------- |
-| Exploration | The exploration epic is intended to make choices about the project. Once you've finished this epic, make sure you don't have to come back to it. You don't have enough time to make major adjustments. |
-| v1.0 | Epic v1.0 is the delivery of the Infrastructure as Code and all required documentation to the requirements you discovered during the exploration. |
-| v1.1 | Version 1.1 is the delivery of the Infrastructure as Code and all required documentation according to the requirements that will become available later. |  
+| Epic | Description | Deadline |
+| --- | ----------- | - |
+| Exploration | The exploration epic is intended to make choices about the project. Once you've finished this epic, make sure you don't have to come back to it. You don't have enough time to make major adjustments. | 12 Jan '24 |
+| v1.0 | Epic v1.0 is the delivery of the Infrastructure as Code and all required documentation to the requirements you discovered during the exploration. | 26 Jan '24 |
+| v1.1 | Version 1.1 is the delivery of the Infrastructure as Code and all required documentation according to the requirements that will become available later. | 23 Feb '24 |
 <br>
 
 ## Exploration
