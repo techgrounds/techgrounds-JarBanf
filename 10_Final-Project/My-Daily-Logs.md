@@ -10,7 +10,7 @@ Here I will be logging my daily progress, solutions, and learnings throughout th
     - [Watched an introduction video about Jira.](#watched-an-introduction-video-about-jira)
 - [Log template](#log-template)
 
-
+ 
 
 ## Wed 10 Jan '24
 ### Daily Report
