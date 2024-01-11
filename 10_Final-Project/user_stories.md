@@ -17,10 +17,9 @@ Here are the user stories for the epic Exploration.
 
 ### 1. As a team, we want to be clear about the requirements of the application.
 
-| Epic | Exploration |
-| --- | ----------- |
-| Description | You have already received a lot of information. Some requirements are already mentioned in this document, but this list may be incomplete or unclear. It is important to sort out all the uncertainties before you start doing major work. |
-| Deliverable | A point-by-point description of all requirements. |
+- Description: You have already received a lot of information. Some requirements are already mentioned in this document, but this list may be incomplete or unclear. It is important to sort out all the uncertainties before you start doing major work.  
+
+- Deliverable: A point-by-point description of all requirements.
 
 | 1. As a team, we want to be clear about the requirements of the application. |  |
 | --- | ----------- |
