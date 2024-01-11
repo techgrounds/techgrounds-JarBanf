@@ -1,19 +1,20 @@
-# Project Log
-Here I will be logging my daily progress and learnings throughout the project.
+# <a id="top">My Daily Logs</a>
+Here I will be logging my daily progress, solutions, and learnings throughout the project.
 
 ## Table of Contents
 - [Wed 10 Jan '24](#wed-10-jan-24)
     - [Set up AWS Cloud Development Kit](#set-up-aws-cloud-development-kit)
 - [Tue 09 Jan '24](#tue-09-jan-24)
+    - [Created a clear and structured document for the infrastructure requirements and questions.](#created-a-clear-and-structured-document-for-the-infrastructure-requirements-and-questions)
 - [Mon 08 Jan '24](#mon-08-jan-24)
     - [Watched an introduction video about Jira.](#watched-an-introduction-video-about-jira)
-- [Template](#template)
+- [Log template](#log-template)
 
 
 
 ## Wed 10 Jan '24
 ### Daily Report
-Together with my team we had a meeting with the product owner to discuss the requirements for the cloud infrastructure that we individually have to develop. I still have to process these requirements in a document.  
+Together with my team we had a meeting with the product owner to discuss the requirements for the cloud infrastructure that we individually have to develop. I still have to process these requirements in a deliverable document.  
 
 Also, I started with the set-up of AWS CDK on my workstation.
 
@@ -88,18 +89,22 @@ During the meeting with the product owner I got more information about the cloud
 
 I know now how to set up the AWS CDK on my workstation. That being said, this AWS CDK is still totally new for me. I may have successfully set up AWS CDK on my workstation, but I still do no not understand how it works, and how to interact with it.
 
-*back to [top](#project-log)*  
+*back to [top](#top)*  
 
 ## Tue 09 Jan '24
 ### Daily Report
+I made a list of questions for our meeting with the product owner tomorrow at 9:15. I also created a clear and structured document where the requirements and questions were categorized.
 
 ### Obstacles
+Missing a clear and structured overview of the already known requirements in combination with the questions towards the other not yet known requirements. 
 
 ### Solutions
+- #### Created a clear and structured [document](https://docs.google.com/drawings/d/1Emfy-G-C1uBrazpZSeBZxsg9z3ydj0bhI2TDCuuZbHs/edit?usp=sharing) for the infrastructure requirements and questions.
 
 ### Learnings
+It helps and it is more efficient to create a clear overview for myself and my team of all that we need to go into a meeting prepared.
 
-*back to [top](#project-log)* 
+*back to [top](#top)* 
 
 ## Mon 08 Jan '24
 ### Daily Report
@@ -116,15 +121,16 @@ No idea what Jira is about.
 ### Learnings
 I have a better understanding why Jira is a handy tool to use during projects.
 
-*back to [top](#project-log)*  
+*back to [top](#top)*  
 
 ++++++++++++++++++++
-## Template
+## Log template
+Template for easy daily logging
 ## insert-date-here
 ### Daily Report
 ### Obstacles
 ### Solutions
 ### Learnings
 
-*back to [top](#project-log)*  
+*back to [top](#top)*  
 ++++++++++++++++++++
