@@ -106,7 +106,7 @@ I know now how to set up the AWS CDK on my workstation. That being said, this AW
 I made a list of questions for our meeting with the product owner tomorrow at 9:15. I also created a clear and structured document where the requirements and questions were categorized.
 
 ### Obstacles
-Missing a clear and structured overview of the already known requirements in combination with the questions towards the other not yet known requirements. 
+- Missing a clear and structured overview of the already known requirements in combination with the questions towards the other not yet known requirements. 
 
 ### Solutions
 - #### Created a clear and structured [document](https://docs.google.com/drawings/d/1Emfy-G-C1uBrazpZSeBZxsg9z3ydj0bhI2TDCuuZbHs/edit?usp=sharing) for the infrastructure requirements and questions.
@@ -123,7 +123,7 @@ First day of the project. I read and tried to understand what the project is abo
 We will be using Jira to track our progress throughout the project. I read and watched a video on what Jira is about. Also made an account.
 
 ### Obstacles
-No idea what Jira is about.
+- No idea what Jira is about.
 
 ### Solutions
 - #### Watched an introduction [video](https://www.youtube.com/watch?v=GWxMTvRGIpc) about Jira.
