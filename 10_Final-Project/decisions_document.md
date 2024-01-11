@@ -11,6 +11,8 @@ This serves as the basis for my design documentation.
 
 ## Customer Background Information
 ### 🏫 🏢 🏦 🏤
+**Background information about the customer that can be useful when designing the cloud infrastructure.**
+
 ### Organization
 - Based in NL
 - Small office, including administration department
@@ -43,7 +45,7 @@ This serves as the basis for my design documentation.
 
 ## Cloud Infrastructure Requirements
 ### ☁️ 📋 ✅
-A description of all requirements  
+<ins>A description of all requirements</ins>  
 
 🔵 = Initial requirements.  
 🟠 = Additional requirements following meeting with product owner on Wed 10 Jan ’24.
