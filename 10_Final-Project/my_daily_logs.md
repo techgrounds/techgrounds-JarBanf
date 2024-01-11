@@ -1,27 +1,34 @@
 # <a id="top">My Daily Logs</a> 📓 📅
 Here I will be logging my daily progress, solutions, and learnings throughout the project.  
+
+Sorted by latest to oldest.  
 <br>
 
 ## Table of Contents
-- [Thu 11 Jan '24](#thu-11-jan-24)
-- [Wed 10 Jan '24](#wed-10-jan-24)
-    - [Set up AWS Cloud Development Kit](#set-up-aws-cloud-development-kit)
-- [Tue 09 Jan '24](#tue-09-jan-24)
-    - [Created a clear and structured document for the infrastructure requirements and questions.](#created-a-clear-and-structured-document-for-the-infrastructure-requirements-and-questions)
-- [Mon 08 Jan '24](#mon-08-jan-24)
-    - [Watched an introduction video about Jira.](#watched-an-introduction-video-about-jira)
+- Week 1
+    - [Thu 11 Jan '24](#thu-11-jan-24)
+    - [Wed 10 Jan '24](#wed-10-jan-24)
+        - [Set up AWS Cloud Development Kit](#set-up-aws-cloud-development-kit)
+    - [Tue 09 Jan '24](#tue-09-jan-24)
+        - [Created a clear and structured document for the infrastructure requirements and questions.](#created-a-clear-and-structured-document-for-the-infrastructure-requirements-and-questions)
+    - [Mon 08 Jan '24](#mon-08-jan-24)
+        - [Watched an introduction video about Jira.](#watched-an-introduction-video-about-jira)
 - [Log template](#log-template)  
 <br>
 
 ## Thu 11 Jan '24
 ### ✏️ 📄 
 ### Daily Report
+- ...
 
 ### Obstacles
+- ...
 
 ### Solutions
+- ...
 
 ### Learnings
+- ...
 
 *back to [top](#top)*  
 <br>
@@ -29,9 +36,9 @@ Here I will be logging my daily progress, solutions, and learnings throughout th
 ## Wed 10 Jan '24
 ### ✏️ 📄 
 ### Daily Report
-Together with my team we had a meeting with the product owner to discuss the requirements for the cloud infrastructure that we individually have to develop. I still have to process these requirements in a deliverable document.  
+- Together with my team we had a meeting with the product owner to discuss the requirements for the cloud infrastructure that we individually have to develop. I still have to process these requirements in a deliverable document.  
 
-Also, I started with the set-up of AWS CDK on my workstation.
+- Also, I started with the set-up of AWS CDK on my workstation.
 
 ### Obstacles
 - Set up AWS Cloud Development Kit.
@@ -100,9 +107,9 @@ Also, I started with the set-up of AWS CDK on my workstation.
         ```
 
 ### Learnings
-During the meeting with the product owner I got more information about the cloud infrastructure requirements that I will need to adhere to when developing the cloud infrastructure.
+- During the meeting with the product owner I got more information about the cloud infrastructure requirements that I will need to adhere to when developing the cloud infrastructure.
 
-I know now how to set up the AWS CDK on my workstation. That being said, this AWS CDK is still totally new for me. I may have successfully set up AWS CDK on my workstation, but I still do no not understand how it works, and how to interact with it.
+- I know now how to set up the AWS CDK on my workstation. That being said, this AWS CDK is still totally new for me. I may have successfully set up AWS CDK on my workstation, but I still do no not understand how it works, and how to interact with it.
 
 *back to [top](#top)*  
 <br>
@@ -110,7 +117,7 @@ I know now how to set up the AWS CDK on my workstation. That being said, this AW
 ## Tue 09 Jan '24
 ### ✏️ 📄 
 ### Daily Report
-I made a list of questions for our meeting with the product owner tomorrow at 9:15. I also created a clear and structured document where the requirements and questions were categorized.
+- I made a list of questions for our meeting with the product owner tomorrow at 9:15. I also created a clear and structured document where the requirements and questions were categorized.
 
 ### Obstacles
 - Missing a clear and structured overview of the already known requirements in combination with the questions towards the other not yet known requirements. 
@@ -119,7 +126,7 @@ I made a list of questions for our meeting with the product owner tomorrow at 9:
 - #### Created a clear and structured [document](https://docs.google.com/drawings/d/1Emfy-G-C1uBrazpZSeBZxsg9z3ydj0bhI2TDCuuZbHs/edit?usp=sharing) for the infrastructure requirements and questions.
 
 ### Learnings
-It helps and it is more efficient to create a clear overview for myself and my team of all that we need to go into a meeting prepared.
+- It helps and it is more efficient to create a clear overview for myself and my team of all that we need to go into a meeting prepared.
 
 *back to [top](#top)*  
 <br>
@@ -127,9 +134,9 @@ It helps and it is more efficient to create a clear overview for myself and my t
 ## Mon 08 Jan '24
 ### ✏️ 📄 
 ### Daily Report
-First day of the project. I read and tried to understand what the project is about and what is expected from me.
+- First day of the project. I read and tried to understand what the project is about and what is expected from me.
 
-We will be using Jira to track our progress throughout the project. I read and watched a video on what Jira is about. Also made an account.
+- We will be using Jira to track our progress throughout the project. I read and watched a video on what Jira is about. Also made an account.
 
 ### Obstacles
 - No idea what Jira is about.
@@ -138,7 +145,7 @@ We will be using Jira to track our progress throughout the project. I read and w
 - #### Watched an introduction [video](https://www.youtube.com/watch?v=GWxMTvRGIpc) about Jira.
 
 ### Learnings
-I have a better understanding why Jira is a handy tool to use during projects.
+- I have a better understanding why Jira is a handy tool to use during projects.
 
 *back to [top](#top)*  
 <br>
@@ -150,16 +157,16 @@ Template for easy daily logging
 ## insert-date-here
 ### ✏️ 📄 
 ### Daily Report
-...
+- ...
 
 ### Obstacles
-...
+- ...
 
 ### Solutions
-...
+- ...
 
 ### Learnings
-...
+- ...
 
 *back to [top](#top)*  
 <br>
