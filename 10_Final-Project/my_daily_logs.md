@@ -11,7 +11,7 @@ Here I will be logging my daily progress, solutions, and learnings throughout th
     - [Watched an introduction video about Jira.](#watched-an-introduction-video-about-jira)
 - [Log template](#log-template)
 
-## 📄 Thu 11 Jan '24
+## ✏️ 📄 Thu 11 Jan '24
 ### Daily Report
 
 ### Obstacles
@@ -22,7 +22,7 @@ Here I will be logging my daily progress, solutions, and learnings throughout th
 
 *back to [top](#top)*  
 
-## 📄 Wed 10 Jan '24
+## ✏️ 📄 Wed 10 Jan '24
 ### Daily Report
 Together with my team we had a meeting with the product owner to discuss the requirements for the cloud infrastructure that we individually have to develop. I still have to process these requirements in a deliverable document.  
 
@@ -101,7 +101,7 @@ I know now how to set up the AWS CDK on my workstation. That being said, this AW
 
 *back to [top](#top)*  
 
-## 📄 Tue 09 Jan '24
+## ✏️ 📄 Tue 09 Jan '24
 ### Daily Report
 I made a list of questions for our meeting with the product owner tomorrow at 9:15. I also created a clear and structured document where the requirements and questions were categorized.
 
@@ -116,7 +116,7 @@ It helps and it is more efficient to create a clear overview for myself and my t
 
 *back to [top](#top)* 
 
-## 📄 Mon 08 Jan '24
+## ✏️ 📄 Mon 08 Jan '24
 ### Daily Report
 First day of the project. I read and tried to understand what the project is about and what is expected from me.
 
@@ -137,7 +137,7 @@ I have a better understanding why Jira is a handy tool to use during projects.
 ## Log template
 Template for easy daily logging  
 
-## 📄 insert-date-here
+## ✏️ 📄 insert-date-here
 ### Daily Report
 ### Obstacles
 ### Solutions
