@@ -51,6 +51,8 @@ This serves as the basis for my design documentation.
 🔵 = Initial requirements.  
 🟠 = Additional requirements following meeting with product owner on Wed 10 Jan ’24.
 
+:large_blue_circle:  
+:small_blue_circle:  
 :small_blue_diamond:  
 :small_orange_diamond:  
 :small_red_diamond:  
