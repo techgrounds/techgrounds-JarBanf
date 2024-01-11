@@ -25,17 +25,24 @@ Here are the user stories for the epic Exploration.
 ## V1.0
 Here are the user stories for the epic V1.0.
 
-| User Story | Description | Deliverable |
-| - | - | - |
-| 1. | - | - |
-| 2. | - | - |
-| 3. | - | - |
-| 4. | - | - |
-| 5. | - | - |
-| 6. | - | - |
-| 7. | - | - |
-| 8. | - | - |
+|  | User Story | Description | Deliverable |
+| - | - | - | - |
+| 1 | - | - | - |
+| 2 | - | - | - |
+| 3 | - | - | - |
+| 4 | - | - | - |
+| 5 | - | - | - |
+| 6 | - | - | - |
+| 7 | - | - | - |
+| 8 | - | - | - |
 <br>
 
 ## V1.1
 Here are the user stories for the epic V1.1.
+
+|  | User Story | Description | Deliverable |
+| - | - | - | - |
+| 1 | - | - | - |
+| 2 | - | - | - |
+| 3 | - | - | - |
+<br>
