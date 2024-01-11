@@ -47,7 +47,13 @@ This serves as the basis for my design documentation.
 
 ## Cloud Infrastructure Requirements
 ### ☁️
-🟡 this is a yellow circle
-- 🔵 
+
+🔵 = Initial requirements.  
+🟠 = Additional requirements following meeting with product owner on Wed 10 Jan ’24.
+
+:small_blue_diamond:  
+:small_orange_diamond:  
+:small_red_diamond:  
+:small_purple_diamond:  
 
 *back to [top](#top)* 
