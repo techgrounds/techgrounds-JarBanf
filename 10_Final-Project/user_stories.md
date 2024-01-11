@@ -15,42 +15,6 @@ The following epics apply to the project:
 ## Exploration
 Here are the user stories for the epic Exploration.
 
-### 1.1 As a team, we want to be clear about the requirements of the application.
-
-- Description: You have already received a lot of information. Some requirements are already mentioned in this document, but this list may be incomplete or unclear. It is important to sort out all the uncertainties before you start doing major work.  
-
-- Deliverable: A point-by-point description of all requirements.
-
-### 1.2 As a team, we want to be clear about the requirements of the application.
-
-| Description | You have already received a lot of information. Some requirements are already mentioned in this document, but this list may be incomplete or unclear. It is important to sort out all the uncertainties before you start doing major work. |
-| --- | ----------- |
-| Deliverable | A point-by-point description of all requirements. |
-
-### 1.3 As a team, we want to be clear about the requirements of the application.
-
-| Description | Deliverable |
-| --- | ----------- |
-| You have already received a lot of information. Some requirements are already mentioned in this document, but this list may be incomplete or unclear. It is important to sort out all the uncertainties before you start doing major work. | A point-by-point description of all requirements. |
-
-| 1.4 As a team, we want to be clear about the requirements of the application. |  |
-| --- | ----------- |
-| Epic | Exploration |
-| Description | You have already received a lot of information. Some requirements are already mentioned in this document, but this list may be incomplete or unclear. It is important to sort out all the uncertainties before you start doing major work. |
-| Deliverable | A point-by-point description of all requirements. |
-
-| 2. As a team, we want a clear overview of the assumptions we have made. |  |
-| --- | ----------- |
-| Epic | Exploration |
-| Description | You have already received a lot of information. There may be questions that none of the stakeholders have been able to answer. Your team should be able to produce an overview of the assumptions you are making as a result. |
-| Deliverable | A point-by-point overview of all assumptions. |
-
-| 3. As a team, we want to have a clear overview of the Cloud Infrastructure that the application needs. |  |
-| --- | ----------- |
-| Epic | Exploration |
-| Description | You have already received a lot of information. And already a design. Only aspects such as IAM/AD are still missing from the design. Identify these additional services you will need and make an overview of all services. |
-| Deliverable | An overview of all services that will be used. |  
-
 | User Story | Description | Deliverable |
 | - | - | - |
 | 1. As a team, we want to be clear about the requirements of the application. | You have already received a lot of information. Some requirements are already mentioned in this document, but this list may be incomplete or unclear. It is important to sort out all the uncertainties before you start doing major work. | A point-by-point description of all requirements. |
