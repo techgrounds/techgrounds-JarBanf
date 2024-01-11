@@ -48,11 +48,11 @@ Background information about the customer that can be useful when designing the 
 
 ## Cloud Infrastructure Requirements
 ### ☁️ 📋 ✅  
-A description of all requirements.  
+A description of all necessary requirements.  
 <br>
 
-🔵 = *Initial requirements.*  
-🟠 = *Additional requirements following meeting with product owner on Wed 10 Jan ’24.*
+🔵 = *Initial necessary requirements.*  
+🟠 = *Additional necessary requirements following meeting with product owner on Wed 10 Jan ’24.*
 
 ### Network
 - 🔵 The following IP ranges are used: 10.10.10.0/24 & 10.20.20.0/24.
@@ -114,31 +114,31 @@ An overview of all assumptions
 <br>
 
 ## Services
-### 🟥 🟧 🟩 🟦 🟪 
+### 🟧 🟩 🟥
 An overview of all services that will be used.
 
 ### Cloud Financial Management
-- Billing and Cost Management: View and pay bills, analyze and govern your spending, and optimize your costs.
+- 🟩 Billing and Cost Management: View and pay bills, analyze and govern your spending, and optimize your costs.
 
 ### Compute
-- EC2: Virtual servers in the cloud.
+- 🟧 EC2: Virtual servers in the cloud.
 
 ### Database
-- RDS: Managed Relational Database Service.
+- 🟦 RDS: Managed Relational Database Service.
 
 ### Management & Governance
-- *CloudTrail: Track User Activity and API Usage.*
+- *🟥 CloudTrail: Track User Activity and API Usage.*
 
 ### Networking & Content Delivery
-- VPC: Isolated Cloud Resources.
+- 🟪 VPC: Isolated Cloud Resources.
 
 ### Security, Identity, & Compliance
-- Certificate Manager: Provision, Manage, and Deploy SSL/TLS Certificates.
-- IAM: Manage access to AWS resources.
-- Key Management Service: Securely Generate and Manage AWS Encryption Keys
+- *🟥 Certificate Manager: Provision, Manage, and Deploy SSL/TLS Certificates.*
+- 🟥 IAM: Manage access to AWS resources.
+- 🟥 Key Management Service: Securely Generate and Manage AWS Encryption Keys
 
 ### Storage
-- S3: Scalable Storage in the Cloud
+- 🟩 S3: Scalable Storage in the Cloud
 
 *back to [top](#top)*  
 <br>
