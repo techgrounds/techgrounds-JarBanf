@@ -51,8 +51,8 @@ Background information about the customer that can be useful when designing the 
 A description of all requirements.  
 <br>
 
-🔵 = Initial requirements.  
-🟠 = Additional requirements following meeting with product owner on Wed 10 Jan ’24.
+🔵 = *Initial requirements.*  
+🟠 = *Additional requirements following meeting with product owner on Wed 10 Jan ’24.*
 
 ### Network
 - 🔵 The following IP ranges are used: 10.10.10.0/24 & 10.20.20.0/24.
