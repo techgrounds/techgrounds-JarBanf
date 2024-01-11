@@ -1,4 +1,4 @@
-# <a id="top">Decisions Document</a>
+# <a id="top">Decisions Document</a> 📗 💭 💡 🔨
 While implementing the infrastructure design, I will make decisions about, among other things, the services I will use. In this document  
 I will write down my considerations and explain my decisions. This document will also contain my assumptions and improvements.  
 This serves as the basis for my design documentation. 
@@ -10,6 +10,7 @@ This serves as the basis for my design documentation.
 - 
 
 ## Customer Background Information
+### 🏫 🏢 🏦 🏤
 ### Organization
 -	Based in NL
 -	Small office, including administration department
@@ -45,7 +46,7 @@ This serves as the basis for my design documentation.
 *back to [top](#top)* 
 
 ## Cloud Infrastructure Requirements
-
+### ☁️
 🟡 this is a yellow circle
 - 🔵 
 
