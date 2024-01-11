@@ -15,6 +15,13 @@ The following epics apply to the project:
 ## Exploration
 Here are the user stories for the epic Exploration.
 
+### 1. As a team, we want to be clear about the requirements of the application.
+
+| Epic | Exploration |
+| --- | ----------- |
+| Description | You have already received a lot of information. Some requirements are already mentioned in this document, but this list may be incomplete or unclear. It is important to sort out all the uncertainties before you start doing major work. |
+| Deliverable | A point-by-point description of all requirements. |
+
 | 1. As a team, we want to be clear about the requirements of the application. |  |
 | --- | ----------- |
 | Epic | Exploration |
@@ -31,7 +38,13 @@ Here are the user stories for the epic Exploration.
 | --- | ----------- |
 | Epic | Exploration |
 | Description | You have already received a lot of information. And already a design. Only aspects such as IAM/AD are still missing from the design. Identify these additional services you will need and make an overview of all services. |
-| Deliverable | An overview of all services that will be used. |
+| Deliverable | An overview of all services that will be used. |  
+<br>
 
 ## V1.0
 Here are the user stories for the epic V1.0.
+
+<br>
+
+## V1.1
+Here are the user stories for the epic V1.1.
