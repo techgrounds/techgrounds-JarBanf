@@ -6,8 +6,8 @@ This serves as the basis for my design documentation.
 ## Table of Contents
 - [Customer Background Information](#customer-background-information)
 - [Cloud Infrastructure Requirements](#cloud-infrastructure-requirements)
-- 
-- 
+- [Assumptions](#assumptions)
+- [Services](#services)
 
 ## Customer Background Information
 ### 🏫 🏢 🏦 🏤
@@ -42,7 +42,8 @@ This serves as the basis for my design documentation.
 *back to [top](#top)* 
 
 ## Cloud Infrastructure Requirements
-### ☁️
+### ☁️ 📋 ✅
+A description of all requirements  
 
 🔵 = Initial requirements.  
 🟠 = Additional requirements following meeting with product owner on Wed 10 Jan ’24.
@@ -95,5 +96,15 @@ This serves as the basis for my design documentation.
 
 ### Global
 - 🔵 Don’t be afraid to propose or implement improvements in the architecture, but make hard choices so you can meet the deadline.
+
+*back to [top](#top)* 
+
+## Assumptions
+An overview of all assumptions
+
+*back to [top](#top)* 
+
+## Services
+An overview of all services that will be used.
 
 *back to [top](#top)* 
