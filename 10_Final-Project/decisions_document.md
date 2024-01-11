@@ -1,17 +1,19 @@
 # <a id="top">Decisions Document</a> 📗 💭 💡 🔨
 While implementing the infrastructure design, I will make decisions about, among other things, the services I will use.   
 In this document I will write down my considerations and explain my decisions. This document will also contain my assumptions and improvements.  
-This serves as the basis for my design documentation. 
+This serves as the basis for my design documentation.  
+<br>
 
 ## Table of Contents
 - [Customer Background Information](#customer-background-information)
 - [Cloud Infrastructure Requirements](#cloud-infrastructure-requirements)
 - [Assumptions](#assumptions)
-- [Services](#services)
+- [Services](#services)  
+<br>
 
 ## Customer Background Information
-### 🏫 🏢 🏦 🏤
-<ins>Background information about the customer that can be useful when designing the cloud infrastructure.</ins>
+### 🏫 🏢 🏦 🏤  
+Background information about the customer that can be useful when designing the cloud infrastructure.  
 
 ### Organization
 - Based in NL
@@ -41,11 +43,13 @@ This serves as the basis for my design documentation.
 ### Security
 - Protection against attacks and hacking will be done in-house
 
-*back to [top](#top)* 
+*back to [top](#top)*  
+<br>
 
 ## Cloud Infrastructure Requirements
-### ☁️ 📋 ✅
-<ins>A description of all requirements</ins>  
+### ☁️ 📋 ✅  
+A description of all requirements.  
+<br>
 
 🔵 = Initial requirements.  
 🟠 = Additional requirements following meeting with product owner on Wed 10 Jan ’24.
@@ -99,14 +103,17 @@ This serves as the basis for my design documentation.
 ### Global
 - 🔵 Don’t be afraid to propose or implement improvements in the architecture, but make hard choices so you can meet the deadline.
 
-*back to [top](#top)* 
+*back to [top](#top)*  
+<br>
 
 ## Assumptions
 An overview of all assumptions
 
-*back to [top](#top)* 
+*back to [top](#top)*  
+<br>
 
 ## Services
 An overview of all services that will be used.
 
-*back to [top](#top)* 
+*back to [top](#top)*  
+<br>

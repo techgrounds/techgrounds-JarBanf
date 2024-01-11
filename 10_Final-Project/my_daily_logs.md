@@ -1,5 +1,6 @@
 # <a id="top">My Daily Logs</a> 📓 📅
-Here I will be logging my daily progress, solutions, and learnings throughout the project.
+Here I will be logging my daily progress, solutions, and learnings throughout the project.  
+<br>
 
 ## Table of Contents
 - [Thu 11 Jan '24](#thu-11-jan-24)
@@ -9,7 +10,8 @@ Here I will be logging my daily progress, solutions, and learnings throughout th
     - [Created a clear and structured document for the infrastructure requirements and questions.](#created-a-clear-and-structured-document-for-the-infrastructure-requirements-and-questions)
 - [Mon 08 Jan '24](#mon-08-jan-24)
     - [Watched an introduction video about Jira.](#watched-an-introduction-video-about-jira)
-- [Log template](#log-template)
+- [Log template](#log-template)  
+<br>
 
 ## Thu 11 Jan '24
 ### ✏️ 📄 
@@ -22,6 +24,7 @@ Here I will be logging my daily progress, solutions, and learnings throughout th
 ### Learnings
 
 *back to [top](#top)*  
+<br>
 
 ## Wed 10 Jan '24
 ### ✏️ 📄 
@@ -102,7 +105,7 @@ During the meeting with the product owner I got more information about the cloud
 I know now how to set up the AWS CDK on my workstation. That being said, this AWS CDK is still totally new for me. I may have successfully set up AWS CDK on my workstation, but I still do no not understand how it works, and how to interact with it.
 
 *back to [top](#top)*  
-
+<br>
 
 ## Tue 09 Jan '24
 ### ✏️ 📄 
@@ -118,7 +121,8 @@ I made a list of questions for our meeting with the product owner tomorrow at 9:
 ### Learnings
 It helps and it is more efficient to create a clear overview for myself and my team of all that we need to go into a meeting prepared.
 
-*back to [top](#top)* 
+*back to [top](#top)*  
+<br>
 
 ## Mon 08 Jan '24
 ### ✏️ 📄 
@@ -137,6 +141,7 @@ We will be using Jira to track our progress throughout the project. I read and w
 I have a better understanding why Jira is a handy tool to use during projects.
 
 *back to [top](#top)*  
+<br>
 
 ++++++++++++++++++++
 ## Log template
@@ -145,9 +150,17 @@ Template for easy daily logging
 ## insert-date-here
 ### ✏️ 📄 
 ### Daily Report
+...
+
 ### Obstacles
+...
+
 ### Solutions
+...
+
 ### Learnings
+...
 
 *back to [top](#top)*  
+<br>
 ++++++++++++++++++++
