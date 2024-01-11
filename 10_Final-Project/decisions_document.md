@@ -1,4 +1,4 @@
-# <a id="top">Decisions Document</a> 📗 💭 💡 🔨
+# <a id="top">Decisions Document</a> 📗 💭 💡 
 While implementing the infrastructure design, I will make decisions about, among other things, the services I will use.   
 In this document I will write down my considerations and explain my decisions. This document will also contain my assumptions and improvements.  
 This serves as the basis for my design documentation.  
@@ -12,7 +12,7 @@ This serves as the basis for my design documentation.
 <br>
 
 ## Customer Background Information
-### 🏫 🏢 🏦 🏤  
+### 🏢 👔 ℹ️
 Background information about the customer that can be useful when designing the cloud infrastructure.  
 
 ### Organization
@@ -101,19 +101,44 @@ A description of all requirements.
 - 🟠 Production: maximum €150.
 
 ### Global
-- 🔵 Don’t be afraid to propose or implement improvements in the architecture, but make hard choices so you can meet the deadline.
+- 🔵 Don’t be afraid to propose or implement improvements in the architecture, but make hard choices so you can meet the deadline.  
 
 *back to [top](#top)*  
 <br>
 
 ## Assumptions
+### 🚦 🔀 ❓
 An overview of all assumptions
 
 *back to [top](#top)*  
 <br>
 
 ## Services
+### 🟥 🟧 🟩 🟦 🟪 
 An overview of all services that will be used.
+
+### Cloud Financial Management
+- Billing and Cost Management: View and pay bills, analyze and govern your spending, and optimize your costs.
+
+### Compute
+- EC2: Virtual servers in the cloud.
+
+### Database
+- RDS: Managed Relational Database Service.
+
+### Management & Governance
+- *CloudTrail: Track User Activity and API Usage.*
+
+### Networking & Content Delivery
+- VPC: Isolated Cloud Resources.
+
+### Security, Identity, & Compliance
+- Certificate Manager: Provision, Manage, and Deploy SSL/TLS Certificates.
+- IAM: Manage access to AWS resources.
+- Key Management Service: Securely Generate and Manage AWS Encryption Keys
+
+### Storage
+- S3: Scalable Storage in the Cloud
 
 *back to [top](#top)*  
 <br>
