@@ -89,9 +89,9 @@ This serves as the basis for my design documentation.
 - 🔵 SSH or RDP connections to the web server may only be established from the admin server.
 
 ### Budget
-- As cheaply as possible within the necessary requirements.
-- Development: maximum €10.
-- Production: maximum €150.
+- 🟠 As cheaply as possible within the necessary requirements.
+- 🟠 Development: maximum €10.
+- 🟠 Production: maximum €150.
 
 ### Global
 - 🔵 Don’t be afraid to propose or implement improvements in the architecture, but make hard choices so you can meet the deadline.
