@@ -1,16 +1,10 @@
-# Decisions Document
+# <a id="top">Decisions Document</a>
 While implementing the infrastructure design, I will make decisions about, among other things, the services I will use. In this document  
 I will write down my considerations and explain my decisions. This document will also contain my assumptions and improvements.  
 This serves as the basis for my design documentation. 
 
 ## Table of Contents
 - [Customer Background Information](#customer-background-information)
-    - [Organization](#organization)
-    - [Customer Goals](#customer-goals)
-    - [Webserver](#webserver)
-    - [Administrator server](#administrator-server)
-    - [Security](#security)
-    - [Budget](#budget)
 - [Cloud Infrastructure Requirements](#cloud-infrastructure-requirements)
 - 
 - 
@@ -48,7 +42,11 @@ This serves as the basis for my design documentation.
 -	Development: maximum €10
 -	Production: maximum €150 / month
 
+*back to [top](#top)* 
+
 ## Cloud Infrastructure Requirements
 
 🟡 this is a yellow circle
 - 🔵 
+
+*back to [top](#top)* 
