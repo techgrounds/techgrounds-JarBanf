@@ -103,7 +103,7 @@ I know now how to set up the AWS CDK on my workstation. That being said, this AW
 
 
 ## Tue 09 Jan '24
-✏️ 📄 
+### ✏️ 📄 
 ### Daily Report
 I made a list of questions for our meeting with the product owner tomorrow at 9:15. I also created a clear and structured document where the requirements and questions were categorized.
 
@@ -118,7 +118,9 @@ It helps and it is more efficient to create a clear overview for myself and my t
 
 *back to [top](#top)* 
 
-## ✏️ 📄 Mon 08 Jan '24
+## Mon 08 Jan '24
+✏️ 📄
+
 ### Daily Report
 First day of the project. I read and tried to understand what the project is about and what is expected from me.
 
@@ -145,5 +147,5 @@ Template for easy daily logging
 ### Solutions
 ### Learnings
 
-*back to [top ⬆](#top)* ⬆  
+*back to [top](#top)*  
 ++++++++++++++++++++
