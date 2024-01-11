@@ -2,12 +2,12 @@
 Here I will be logging my daily progress, solutions, and learnings throughout the project.
 
 ## Table of Contents
-- [Thu 11 Jan '24](#thu-11-jan-24)
-- [Wed 10 Jan '24](#wed-10-jan-24)
+- [Thu 11 Jan '24](#✏️-📄-thu-11-jan-24)
+- [Wed 10 Jan '24](#✏️-📄-wed-10-jan-24)
     - [Set up AWS Cloud Development Kit](#set-up-aws-cloud-development-kit)
-- [Tue 09 Jan '24](#tue-09-jan-24)
+- [Tue 09 Jan '24](#✏️-📄-tue-09-jan-24
     - [Created a clear and structured document for the infrastructure requirements and questions.](#created-a-clear-and-structured-document-for-the-infrastructure-requirements-and-questions)
-- [Mon 08 Jan '24](#mon-08-jan-24)
+- [Mon 08 Jan '24](#✏️-📄-mon-08-jan-24)
     - [Watched an introduction video about Jira.](#watched-an-introduction-video-about-jira)
 - [Log template](#log-template)
 
