@@ -11,7 +11,7 @@ This serves as the basis for my design documentation.
 
 ## Customer Background Information
 ### 🏫 🏢 🏦 🏤
-**Background information about the customer that can be useful when designing the cloud infrastructure.**
+<ins>Background information about the customer that can be useful when designing the cloud infrastructure.</ins>
 
 ### Organization
 - Based in NL
