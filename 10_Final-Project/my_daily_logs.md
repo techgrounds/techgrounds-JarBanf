@@ -1,4 +1,4 @@
-# <a id="top">My Daily Logs</a>
+# <a id="top">My Daily Logs</a> 📓 📅
 Here I will be logging my daily progress, solutions, and learnings throughout the project.
 
 ## Table of Contents
@@ -11,7 +11,7 @@ Here I will be logging my daily progress, solutions, and learnings throughout th
     - [Watched an introduction video about Jira.](#watched-an-introduction-video-about-jira)
 - [Log template](#log-template)
 
-## Thu 11 Jan '24
+## 🌀 Thu 11 Jan '24
 ### Daily Report
 
 ### Obstacles
@@ -22,7 +22,7 @@ Here I will be logging my daily progress, solutions, and learnings throughout th
 
 *back to [top](#top)*  
 
-## Wed 10 Jan '24
+## 📄 Wed 10 Jan '24
 ### Daily Report
 Together with my team we had a meeting with the product owner to discuss the requirements for the cloud infrastructure that we individually have to develop. I still have to process these requirements in a deliverable document.  
 
