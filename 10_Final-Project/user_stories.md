@@ -9,10 +9,11 @@ The following epics apply to the project:
 | --- | ----------- |
 | Exploration | The exploration epic is intended to make choices about the project. Once you've finished this epic, make sure you don't have to come back to it. You don't have enough time to make major adjustments. |
 | v1.0 | Epic v1.0 is the delivery of the Infrastructure as Code and all required documentation to the requirements you discovered during the exploration. |
-| v1.1 | Version 1.1 is the delivery of the Infrastructure as Code and all required documentation according to the requirements that will become available later. |
+| v1.1 | Version 1.1 is the delivery of the Infrastructure as Code and all required documentation according to the requirements that will become available later. |  
+<br>
 
 ## Exploration
-Here are the user stories for the epic Exploration:
+Here are the user stories for the epic Exploration.
 
 | 1. As a team, we want to be clear about the requirements of the application. |  |
 | --- | ----------- |
@@ -31,3 +32,6 @@ Here are the user stories for the epic Exploration:
 | Epic | Exploration |
 | Description | You have already received a lot of information. And already a design. Only aspects such as IAM/AD are still missing from the design. Identify these additional services you will need and make an overview of all services. |
 | Deliverable | An overview of all services that will be used. |
+
+## V1.0
+Here are the user stories for the epic V1.0.
