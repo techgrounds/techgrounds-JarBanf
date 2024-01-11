@@ -12,36 +12,32 @@ This serves as the basis for my design documentation.
 ## Customer Background Information
 ### 🏫 🏢 🏦 🏤
 ### Organization
--	Based in NL
--	Small office, including administration department
--	One IT administrator who has yet to join the team
--	The IT administrator is a senior with good knowledge of the cloud services and will be updating and patching the infrastructure and services him/her-self after deployment.
+- Based in NL
+- Small office, including administration department
+- One IT administrator who has yet to join the team
+- The IT administrator is a senior with good knowledge of the cloud services and will be updating and patching the infrastructure and services him/her-self after deployment.
 
 ### Customer Goals
--	Working website with database which can be accessed from the internet
--	Administrator server
--	Only the cloud infrastructure is needed, migration of data will be done in-house.
--	No support plans wanted.
--	In the future: 30+ virtual windows workstations. (at the moment 30 on-premise workstations)
+- A working website which can be accessed from the internet
+- An admin / management server
+- Only the cloud infrastructure is needed, migration of data will be done in-house.
+- No support plans wanted.
+- In the future: 30+ virtual windows workstations. (at the moment 30 on-premise workstations)
 
 ### Webserver
--	Simple website, nothing fancy
--	99% of traffic from NL
--	During office hours more traffic to the website
--	Expecting a bit of traffic growth but nothing relevant
--	Current on-premise webserver way too big for their usage
+- Simple website, nothing fancy
+- Attached to a database
+- 99% of traffic from NL
+- During office hours more traffic to the website
+- Expecting a bit of traffic growth but nothing relevant
+- Current on-premise webserver way too big for their usage
 
-### Administrator server
--	Only the one IT administrator will be accessing the server.
--	From this server will the future 30+ virtual workstations be administered.
+### Admin / Management server
+- Only the one IT administrator will be accessing the server.
+- From this server will the future 30+ virtual workstations be administered.
 
 ### Security
--	Protection against attacks and hacking will be done in-house
-
-### Budget
--	As cheap as possible while meeting the necessary requirements
--	Development: maximum €10
--	Production: maximum €150 / month
+- Protection against attacks and hacking will be done in-house
 
 *back to [top](#top)* 
 
@@ -51,11 +47,53 @@ This serves as the basis for my design documentation.
 🔵 = Initial requirements.  
 🟠 = Additional requirements following meeting with product owner on Wed 10 Jan ’24.
 
-:large_blue_circle:  
-:small_blue_circle:  
-:small_blue_diamond:  
-:small_orange_diamond:  
-:small_red_diamond:  
-:small_purple_diamond:  
+### Network
+- 🔵 The following IP ranges are used: 10.10.10.0/24 & 10.20.20.0/24.
+- 🟠 Subnet where future workstations will be located must have at least 30 usable IP addresses, excluding room for possible growth. Large growth is not expected in the short term.
+
+### Web server & Database
+- 🟠 Website 24/7 online.
+- 🔵 The web server must be installed in an automated manner.
+- 🟠 SQL database needed for the website; post script deployment must be able to run.
+- 🟠 We do not need to connect the database to the website, but we do need to ensure that connection can be made.
+- 🟠 Scalability of the webserver; is not clear whether the customer wants this, but it does sound interesting according to the product owner.
+
+### Admin / management server
+- 🔵 The admin / management server must be reachable with a public IP.
+- 🔵 The admin / management server must only be accessible from trusted locations (office/admin’s home).
+- 🟠 Admin / management server must run on windows
+- 🟠 Admin server may not go down together with the workstations in the event of a malfunction.
+- 🟠 Access to admin / management server: use my own IP address during development. In production this will be the IP address of the admin’s trusted location.
+
+### Storage
+- 🔵 There must be a location available where bootstrap scripts become available. This script should not be publicly accessible.	
+- 🟠 Scripts:
+    - Installation scripts
+    - Configuration scripts
+    - Post deployment scripts
+    - No expiration date for the stored scripts
+    - Access to the scripts: admin & machines/processes that call the scripts
+
+### Backup
+- 🔵 The web server must be backed up daily. The backups must be retained for 7 days.
+- 🔵 Backup available should it be necessary to restore the servers to a previous state.
+- 🟠 Recovery Point Objective (RPO): 24 hours.
+- 🟠 Recovery Time Objective (RTO): 1 hour.
+- 🟠 Back-up should preferably take place at a time that it is not busy. 4 AM for example.
+
+### Security
+- 🔵 Much value is attached to the security of data at rest and in motion. All data must be encrypted.
+- 🔵 All VM disks must be encrypted.
+- 🟠 VM encryption: industry standard.
+- 🔵 All subnets must be protected by a firewall at subnet level.
+- 🔵 SSH or RDP connections to the web server may only be established from the admin server.
+
+### Budget
+- As cheaply as possible within the necessary requirements.
+- Development: maximum €10.
+- Production: maximum €150.
+
+### Global
+- 🔵 Don’t be afraid to propose or implement improvements in the architecture, but make hard choices so you can meet the deadline.
 
 *back to [top](#top)* 
