@@ -6,6 +6,7 @@ Sorted by latest to oldest.
 
 ## Table of Contents
 - Week 1
+    - [Fri 12 Jan '24](#fri-12-jan-24)
     - [Thu 11 Jan '24](#thu-11-jan-24)
     - [Wed 10 Jan '24](#wed-10-jan-24)
         - [Set up AWS Cloud Development Kit](#set-up-aws-cloud-development-kit)
@@ -14,6 +15,23 @@ Sorted by latest to oldest.
     - [Mon 08 Jan '24](#mon-08-jan-24)
         - [Watched an introduction video about Jira.](#watched-an-introduction-video-about-jira)
 - [Log template](#log-template)  
+<br>
+
+## Fri 12 Jan '24
+### ✏️ 📄 
+### Daily Report
+- ...
+
+### Obstacles
+- ...
+
+### Solutions
+- ...
+
+### Learnings
+- ...
+
+*back to [top](#top)*  
 <br>
 
 ## Thu 11 Jan '24
