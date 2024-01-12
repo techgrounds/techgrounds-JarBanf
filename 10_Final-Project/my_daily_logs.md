@@ -74,6 +74,8 @@ Sorted by latest to oldest.
         cdk deploy
         ```
 
+        If presented with `Do you wish to deploy these changes (y/n)?`, enter `y` to deploy the stack and create the resources.
+
         Response:
         - ```bash
             ✅  CdkWorkshopStack
