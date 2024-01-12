@@ -8,6 +8,7 @@ Sorted by latest to oldest.
 - Week 1
     - [Fri 12 Jan '24](#fri-12-jan-24)
         - [Create my first CDK project with AWS CDK Workshop tutorial](#create-my-first-cdk-project-with-aws-cdk-workshop-tutorial)
+        - [[SOLVED] Auto-complete for `aws`-commands is not working in VSCode, causing import failure.](#auto-complete-for-aws-commands-is-not-working-in-vscode-causing-import-failure)
     - [Thu 11 Jan '24](#thu-11-jan-24)
     - [Wed 10 Jan '24](#wed-10-jan-24)
         - [Set up AWS Cloud Development Kit](#set-up-aws-cloud-development-kit)
@@ -21,10 +22,11 @@ Sorted by latest to oldest.
 ## Fri 12 Jan '24
 ### ✏️ 📄 
 ### Daily Report
-- ...
+- I created my first CDK project and tried to understand the process and component.
 
 ### Obstacles
 - Create my first CDK project with AWS CDK Workshop tutorial
+- Auto-complete for `aws`-commands is not working in VSCode, causing import failure.
 
 ### Solutions
 - #### Create my first CDK project with AWS CDK Workshop tutorial
@@ -60,7 +62,7 @@ Sorted by latest to oldest.
         Response:
         - `Successfully installed attrs-23.2.0 aws-cdk-lib-2.119.0 aws-cdk.asset-awscli-v1-2.2.201 aws-cdk.asset-kubectl-v20-2.1.2 aws-cdk.asset-node-proxy-agent-v6-2.0.1 cattrs-23.2.3 constructs-10.3.0 importlib-resources-6.1.1 jsii-1.94.0 publication-0.0.3 python-dateutil-2.8.2 six-1.16.0 typeguard-2.13.3 typing-extensions-4.9.0`
 
-    - Install the “bootstrap stack” into my AWS environment.
+    - The first time I deploy an AWS CDK app into an environment (account/region), I’ll need to install a “bootstrap stack”.
 
         ```bash
         cdk bootstrap
@@ -68,13 +70,22 @@ Sorted by latest to oldest.
         Response:
         - `✅  Environment aws://908959576754/eu-central-1 bootstrapped.`
 
+    - Before deploying a CDK app, I can synthesize it first to preview the CDK app output CloudFormation file. The output CloudFormation file is the actual thing that gets uploaded into the AWS cloud.  
+    To synthesize a CDK app, use the `cdk synth` command.
+
+        ```bash
+        cdk synth
+        ```
+        Response:
+        - A CloudFormation template file including the resources.
+    
     - Use `cdk deploy` to deploy the CDK app.
 
         ```bash
         cdk deploy
         ```
 
-        If presented with `Do you wish to deploy these changes (y/n)?`, enter `y` to deploy the stack and create the resources.
+        If presented with `Do you wish to deploy these changes (y/n)?`, enter `y`.
 
         Response:
         - ```bash
@@ -88,8 +99,34 @@ Sorted by latest to oldest.
             ✨  Total time: 31.47s
             ```
 
+    - CDK apps are deployed through AWS CloudFormation. This means that I can use the AWS CloudFormation console in order to manage my stacks.
+
+    - To clean up the stack, I can either delete the stack through the AWS CloudFormation console or use `cdk destroy`.
+
+        ```bash
+        cdk destroy
+        ```
+
+        When asked `Are you sure you want to delete: CdkWorkshopStack (y/n)?`, enter `y`,
+
+        Response:
+        - `✅  CdkWorkshopStack: destroyed`
+- #### Auto-complete for `aws`-commands is not working in VSCode, causing import failure.
+    Install the required python modules BEFORE activating the virtualenv.
+    - First:
+
+        ```bash
+        pip install -r requirements.txt
+        ```
+    
+    - And then:
+
+        ```bash
+        source .venv/bin/activate
+        ```
+
 ### Learnings
-- ...
+- I know how to create, deploy, and destroy a sample-app project. I have a tiny bit of a understanding how it works.
 
 *back to [top](#top)*  
 <br>
@@ -97,7 +134,7 @@ Sorted by latest to oldest.
 ## Thu 11 Jan '24
 ### ✏️ 📄 
 ### Daily Report
-- ...
+- I completed User Stories ```1: As a team, we want to be clear about the requirements of the application.``` & `3: As a team, we want to have a clear overview of the Cloud Infrastructure that the application needs.` from the `Exploration` Epic
 
 ### Obstacles
 - ...
