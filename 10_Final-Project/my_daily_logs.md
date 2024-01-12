@@ -7,6 +7,7 @@ Sorted by latest to oldest.
 ## Table of Contents
 - Week 1
     - [Fri 12 Jan '24](#fri-12-jan-24)
+        - [Create my first CDK project with AWS CDK Workshop tutorial](#create-my-first-cdk-project-with-aws-cdk-workshop-tutorial)
     - [Thu 11 Jan '24](#thu-11-jan-24)
     - [Wed 10 Jan '24](#wed-10-jan-24)
         - [Set up AWS Cloud Development Kit](#set-up-aws-cloud-development-kit)
@@ -23,10 +24,67 @@ Sorted by latest to oldest.
 - ...
 
 ### Obstacles
-- ...
+- Create my first CDK project with AWS CDK Workshop tutorial
 
 ### Solutions
-- ...
+- #### Create my first CDK project with AWS CDK Workshop tutorial
+    - Sources:
+        - [AWS CDK Workshop](https://cdkworkshop.com/)
+    - Create project directory and go to it.
+        
+        ```bash
+        mkdir cdk_workshop && cd cdk_workshop
+        ```
+
+    - Use `cdk init` to create a new Pyhton CDK project.
+
+        ```bash
+        cdk init sample-app --language python
+        ```
+
+        Response:
+        - `✅ All done!`
+
+    - Activate the virtualenv.
+
+        ```bash
+        source .venv/bin/activate
+        ```
+
+    - Once the virtualenv is activated, install the required dependencies
+
+        ```bash
+        pip install -r requirements.txt
+        ```
+
+        Response:
+        - `Successfully installed attrs-23.2.0 aws-cdk-lib-2.119.0 aws-cdk.asset-awscli-v1-2.2.201 aws-cdk.asset-kubectl-v20-2.1.2 aws-cdk.asset-node-proxy-agent-v6-2.0.1 cattrs-23.2.3 constructs-10.3.0 importlib-resources-6.1.1 jsii-1.94.0 publication-0.0.3 python-dateutil-2.8.2 six-1.16.0 typeguard-2.13.3 typing-extensions-4.9.0`
+
+    - Install the “bootstrap stack” into my AWS environment.
+
+        ```bash
+        cdk bootstrap
+        ```
+        Response:
+        - `✅  Environment aws://908959576754/eu-central-1 bootstrapped.`
+
+    - Use `cdk deploy` to deploy the CDK app.
+
+        ```bash
+        cdk deploy
+        ```
+
+        Response:
+        - ```bash
+            ✅  CdkWorkshopStack
+
+            ✨  Deployment time: 22.37s
+
+            Stack ARN:
+            arn:aws:cloudformation:eu-central-1:908959576754:stack/CdkWorkshopStack/0a311dd0-b15d-11ee-abb8-06f21afcb2df
+
+            ✨  Total time: 31.47s
+            ```
 
 ### Learnings
 - ...
