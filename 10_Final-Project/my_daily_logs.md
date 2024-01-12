@@ -62,7 +62,7 @@ Sorted by latest to oldest.
         Response:
         - `Successfully installed attrs-23.2.0 aws-cdk-lib-2.119.0 aws-cdk.asset-awscli-v1-2.2.201 aws-cdk.asset-kubectl-v20-2.1.2 aws-cdk.asset-node-proxy-agent-v6-2.0.1 cattrs-23.2.3 constructs-10.3.0 importlib-resources-6.1.1 jsii-1.94.0 publication-0.0.3 python-dateutil-2.8.2 six-1.16.0 typeguard-2.13.3 typing-extensions-4.9.0`
 
-    - The first time I deploy an AWS CDK app into an environment (account/region), I’ll need to install a “bootstrap stack”.
+    - The first time I deploy an AWS CDK app into my environment (account/region), I’ll need to install a “bootstrap stack”.
 
         ```bash
         cdk bootstrap
@@ -79,7 +79,7 @@ Sorted by latest to oldest.
         Response:
         - A CloudFormation template file including the resources.
     
-    - Use `cdk deploy` to deploy the CDK app.
+    - Use `cdk deploy` to deploy the CDK app to my default AWS account/region.
 
         ```bash
         cdk deploy
@@ -138,6 +138,7 @@ Sorted by latest to oldest.
 `1: As a team, we want to be clear about the requirements of the application.`  
 &   
 `3: As a team, we want to have a clear overview of the Cloud Infrastructure that the application needs.`
+- Started to arrange my Jira. Trying out both the Kanban and the Scrum template.
 
 ### Obstacles
 - ...
