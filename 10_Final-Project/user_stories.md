@@ -27,14 +27,14 @@ Here are the user stories for the epic V1.0.
 
 |  | User Story | Description | Deliverable |
 | - | - | - | - |
-| 1 | - | - | - |
-| 2 | - | - | - |
-| 3 | - | - | - |
-| 4 | - | - | - |
-| 5 | - | - | - |
-| 6 | - | - | - |
-| 7 | - | - | - |
-| 8 | - | - | - |
+| 1 | As a customer, I want a working application with which I can deploy a secure network | The application must build a network that meets all requirements. An example of a stated requirement is that only traffic from trusted sources may access the management server. | IaC code for the network and all components |
+| 2 | As a customer I want a working application with which I can deploy a working web server | The application must start a web server and make it available to the general public. | IaC code for a web server and all supplies |
+| 3 | As a customer, I want a working application with which I can deploy a working management server | The application must start a management server and make it available to a limited audience. | IaC code for a management server with all the necessities |
+| 4 | As a customer I want a storage solution in which bootstrap/post-deployment script can be stored | There must be a location available where bootstrap scripts become available. This script should not be publicly accessible. | IaC code for a script storage solution |
+| 5 | As a customer, I want all my data in the infrastructure to be encrypted | Much value is attached to the security of data at rest and in motion. All data must be encrypted. | IaC code for encryption facilities |
+| 6 | As a customer, I want to have a backup every day that is retained for 7 days | The customer would like to have a backup available should it be necessary to restore the servers to a previous state. (Make sure the Backup actually works) | IaC code for backup facilities |
+| 7 | As a customer I want to know how I can use the application | Make sure the customer can understand how to use the application. Make sure it is clear what the customer must configure before the deployment can start and which arguments the program needs. | Documentation for using the application |
+| 8 | As a customer, I want to be able to deploy an MVP for testing | The customer wants to test your architecture internally before using the code in production. Ensure that configuration is available that allows the customer to deploy an MVP. | Configuration for an MVP deployment |
 <br>
 
 ## V1.1
