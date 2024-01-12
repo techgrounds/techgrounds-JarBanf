@@ -134,7 +134,10 @@ Sorted by latest to oldest.
 ## Thu 11 Jan '24
 ### ✏️ 📄 
 ### Daily Report
-- I completed User Stories ```1: As a team, we want to be clear about the requirements of the application.``` & `3: As a team, we want to have a clear overview of the Cloud Infrastructure that the application needs.` from the `Exploration` Epic
+- I completed from the `Exploration` Epic, User Stories  
+`1: As a team, we want to be clear about the requirements of the application.`  
+&   
+`3: As a team, we want to have a clear overview of the Cloud Infrastructure that the application needs.`
 
 ### Obstacles
 - ...
