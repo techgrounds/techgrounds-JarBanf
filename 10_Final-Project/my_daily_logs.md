@@ -1,5 +1,5 @@
 # <a id="top">My Daily Logs</a> 📓 📅
-Here I will be logging my daily progress, solutions, and learnings throughout the project.  
+Here I log my daily progress, solutions, and learnings throughout the project.  
 
 Sorted by latest to oldest.  
 <br>
