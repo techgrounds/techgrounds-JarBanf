@@ -6,6 +6,7 @@ Project description will be added here..........
 - [My Daily Logs](#mdl)
 - [Decisions Document](#decisiondoc)
 - [Design Document](#designdoc)
+- [Test Lab](#testlab)
 - [MVP v1.0](#mvp10)
 - [MVP v1.1](#mvp11)  
 <br>
@@ -29,6 +30,12 @@ This document contains technical and practical information about my application.
 Diagrams, (N)SG rules, deployment visualization, and more, are listed here.  
 
 To view the Design Document, [click here](/10_Final-Project/design_doc.md).  
+<br>
+
+## <a id="testlab">Testing Lab</a>  
+Here I will be testing out my design and IaC before releasing a MVP.
+
+To go to my Testing Lab, [click here](/10_Final-Project/Test_Lab/).  
 <br>
 
 ## <a id="mvp10">MVP v1.0</a>
