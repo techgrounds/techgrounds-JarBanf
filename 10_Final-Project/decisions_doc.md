@@ -5,14 +5,13 @@ This serves as the basis for my design documentation.
 <br>
 
 ## Table of Contents
-- [Customer Background Information](#customer-background-information)
+- [Customer Background Information](#CBI)
 - [Cloud Infrastructure Requirements](#cloud-infrastructure-requirements)
 - [Assumptions](#assumptions)
 - [Services](#services)  
 <br>
 
-## Customer Background Information
-### 🏢 👔 ℹ️
+## <a id="CBI">Customer Background Information</a> 🏢 👔 ℹ️
 Background information about the customer that can be useful when designing the cloud infrastructure.  
 
 ### Organization
