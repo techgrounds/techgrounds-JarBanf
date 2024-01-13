@@ -6,23 +6,41 @@ Project description will be added here..........
 - [My Daily Logs](#mdl)
 - [Decisions Document](#decisiondoc)
 - [Design Document](#designdoc)
-- []()
-- []()  
+- [MVP v1.0](#mvp10)
+- [MVP v1.1](#mvp11)  
 <br>
 
 ## <a id="mdl">My Daily Logs</a> 📓 📅
 Here I log my daily progress, solutions, and learnings throughout the project.  
+
+To view My Daily Logs, [click here](/10_Final-Project/my_daily_logs.md).  
 <br>
 
 ## <a id="decisiondoc">Decisions Document</a> 📗 💭 💡
 While implementing the infrastructure design, I will make decisions about, among other things, the services I will use.   
 In this document I write down my considerations and explain my decisions. This document also contain my assumptions and improvements.  
 This serves as the basis for my design documentation.  
+
+To view the Decisions Document, [click here](/10_Final-Project/decisions_doc.md).  
 <br>
 
 ## <a id="designdoc">Design Document</a> 📘 👷 🔨
 This document contains technical and practical information about my application.  
 Diagrams, (N)SG rules, deployment visualization, and more, are listed here.  
+
+To view the Design Document, [click here](/10_Final-Project/design_doc.md).  
+<br>
+
+## <a id="mvp10">MVP v1.0</a>
+Minimum Viable Product version 1.0  
+
+To view MVP v1.0, [click here](/10_Final-Project/MVP_v1.0/).  
+<br>
+
+## <a id="mvp11">MVP v1.1</a>
+Minimum Viable Product version 1.1  
+
+To view MVP v1.1, [click here](/10_Final-Project/MVP_v1.1/).  
 <br>
 
 *back to [top](#top)*  
