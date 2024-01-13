@@ -6,9 +6,9 @@ This serves as the basis for my design documentation.
 
 ## Table of Contents
 - [Customer Background Information](#cbi)
-- [Cloud Infrastructure Requirements](#cloud-infrastructure-requirements)
-- [Assumptions](#assumptions)
-- [Services](#services)  
+- [Cloud Infrastructure Requirements](#cir)
+- [Assumptions](#ass)
+- [Services](#ser)  
 <br>
 
 ## <a id="cbi">Customer Background Information</a> 🏢 👔 ℹ️
@@ -45,8 +45,7 @@ Background information about the customer that can be useful when designing the 
 *back to [top](#top)*  
 <br>
 
-## Cloud Infrastructure Requirements
-### ☁️ 📋 ✅  
+## <a id="cir">Cloud Infrastructure Requirements</a> ☁️ 📋 ✅  
 A description of all necessary requirements.  
 <br>
 
@@ -105,15 +104,13 @@ A description of all necessary requirements.
 *back to [top](#top)*  
 <br>
 
-## Assumptions
-### 🚦 🔀 ❓
+## <a id="ass">Assumptions</a> 🚦 🔀 ❓
 An overview of all assumptions
 
 *back to [top](#top)*  
 <br>
 
-## Services
-### 🟧 🟩 🟥
+## <a id="ser">Services</a> 🟧 🟩 🟥
 An overview of all services that will be used.
 
 ### Cloud Financial Management
