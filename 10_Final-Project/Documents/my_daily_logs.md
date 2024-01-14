@@ -20,7 +20,7 @@ Sorted by latest to oldest.
 - [Log template](#log-template)  
 <br>
 
-## <a id="sat13jan">Sat 13 Jan '24</a>  ✏️ 📄
+## ✏️ 📄 <a id="sat13jan">Sat 13 Jan '24</a>  ✏️ 📄
 ### ✏️ 📄 
 ### Daily Report
 - I finished setting up my Jira SCRUM board for this project.
@@ -38,7 +38,7 @@ Sorted by latest to oldest.
 *back to [top](#top)*  
 <br>
 
-## ✏️ 📄 Fri 12 Jan '24
+## Fri 12 Jan '24
 ### ✏️ 📄 
 ### Daily Report
 - I created my first CDK project and tried to understand the process and component.
