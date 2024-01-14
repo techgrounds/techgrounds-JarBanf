@@ -7,6 +7,7 @@ Sorted by latest to oldest.
 ## Table of Contents
 - Week 2
 - Week 1
+    - [Sun 14 Jan '24](#sun14jan)
     - [Sat 13 Jan '24](#sat13jan)
     - [Fri 12 Jan '24](#fri12jan)
         - [Create my first CDK project with AWS CDK Workshop tutorial](#create-my-first-cdk-project-with-aws-cdk-workshop-tutorial)
@@ -24,19 +25,19 @@ Sorted by latest to oldest.
 *back to [top](#top)*  
 <br>
 
+## ✏️ 📄 <a id="sun14jan">Sun 14 Jan '24</a>
+### Daily Report
+- I completed from the Exploration Epic, User Stories
+    - 2: As a team, we want a clear overview of the assumptions we have made.  
+<br>
+
+*back to [top](#top)* 
+<br>
+
 ## ✏️ 📄 <a id="sat13jan">Sat 13 Jan '24</a>
 ### Daily Report
 - I finished setting up my Jira SCRUM board for this project.
-- Also I started structuring the project folder so it is more organized and easier to explore the process of my project.
-
-### Obstacles
-- ...
-
-### Solutions
-- ...
-
-### Learnings
-- ...  
+- Also I started structuring the project folder so it is more organized and easier to explore the process of my project.  
 <br>
 
 *back to [top](#top)*  
@@ -156,20 +157,10 @@ Sorted by latest to oldest.
 
 ## ✏️ 📄 <a id="thu11jan">Thu 11 Jan '24</a>
 ### Daily Report
-- I completed from the `Exploration` Epic, User Stories  
-`1: As a team, we want to be clear about the requirements of the application.`  
-&   
-`3: As a team, we want to have a clear overview of the Cloud Infrastructure that the application needs.`
-- Started to arrange my Jira. Trying out both the Kanban and the Scrum template.
-
-### Obstacles
-- ...
-
-### Solutions
-- ...
-
-### Learnings
-- ...  
+- I completed from the Exploration Epic, User Stories  
+    - 1: As a team, we want to be clear about the requirements of the application.  
+    - 3: As a team, we want to have a clear overview of the Cloud Infrastructure that the application needs.
+- Started to arrange my Jira. Trying out both the Kanban and the Scrum template.  
 <br>
 
 *back to [top](#top)*  
