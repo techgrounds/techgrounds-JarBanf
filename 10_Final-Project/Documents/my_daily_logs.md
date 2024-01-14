@@ -6,6 +6,7 @@ Sorted by latest to oldest.
 
 ## Table of Contents
 - Week 1
+    - [Sat 13 Jan '24](#sat13jan)
     - [Fri 12 Jan '24](#fri-12-jan-24)
         - [Create my first CDK project with AWS CDK Workshop tutorial](#create-my-first-cdk-project-with-aws-cdk-workshop-tutorial)
         - [[SOLVED] Auto-complete for `aws`-commands is not working in VSCode, causing import failure.](#auto-complete-for-aws-commands-is-not-working-in-vscode-causing-import-failure)
@@ -17,6 +18,24 @@ Sorted by latest to oldest.
     - [Mon 08 Jan '24](#mon-08-jan-24)
         - [Watched an introduction video about Jira.](#watched-an-introduction-video-about-jira)
 - [Log template](#log-template)  
+<br>
+
+## <a id="sat13jan">Sat 13 Jan '24</a>  ✏️ 📄
+### ✏️ 📄 
+### Daily Report
+- I finished setting up my Jira SCRUM board for this project.
+- Also I started structuring the project folder so it is more organized and easier to explore the process of my project.
+
+### Obstacles
+- ...
+
+### Solutions
+- ...
+
+### Learnings
+- ...
+
+*back to [top](#top)*  
 <br>
 
 ## Fri 12 Jan '24
