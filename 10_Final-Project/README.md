@@ -1,15 +1,22 @@
 # <a id="top">Final Project</a>
-Project description will be added here..........  
+Description under construction...    
 <br>
 
 ## Table of Contents
 - Documents
+    - [Checklist, Deadlines, and Epics & User Stories](#cde)
     - [My Daily Logs](#mdl)
     - [Decisions Document](#decisiondoc)
     - [Design Document](#designdoc)
 - [Test Lab](#testlab)
 - [MVP v1.0](#mvp10)
 - [MVP v1.1](#mvp11)  
+<br>
+
+## <a id="cde">Checklist, Deadlines, and Epics & User Stories</a> ✅ 📌 📄
+Description under construction...
+
+To view this document, [click here](/10_Final-Project/Documents/checklist_deadlines_user-stories.md).  
 <br>
 
 ## <a id="mdl">My Daily Logs</a> 📓 📅

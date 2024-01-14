@@ -1,11 +1,20 @@
-# <a id="top">My To-Do's, Epics & User Stories</a>
+# <a id="top">Checklist, Deadlines, and Epics & User Stories</a> ✅ 📌 📄
 ## Table of Contents
-- My To-Do's
-- Epics & User Stories  
+- [Checklist](#checklist)
+    - [Exploration, deadline --> 12 Jan '24](#exploration-deadline----12-jan-24)
+    - [Presentation V1.0 progress --> 26 Jan '24](#presentation-v10-progress----26-jan-24)
+    - [V1.0, deadline --> 02 Feb '24](#v10-deadline----02-feb-24)
+    - [Presentation V1.1 progress --> 09 Feb '24](#presentation-v11-progress----09-feb-24)
+    - [V1.1, deadline --> 23 Feb '24](#v11-deadline----23-feb-24)
+    - [Final Presentation --> 23 Feb '24](#final-presentation----23-feb-24)
+- [Epics & User Stories](#epics--user-stories)
+    - [Exploration](#exploration) 
+    - [V1.0](#v10) 
+    - [V1.1](#v11) 
 <br>
 
-## My To-Do's
-My to-do list is based on the Deliverables in the chapter [Epics & User Stories](#epics--user-stories) below.
+## Checklist
+This checklist is based on the Deliverables in the chapter [Epics & User Stories](#epics--user-stories) below.
 
 🍔 *= (well-)DONE*
 
