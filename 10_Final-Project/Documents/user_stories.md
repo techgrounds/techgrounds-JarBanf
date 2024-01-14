@@ -72,5 +72,5 @@ Here are the user stories for the epic V1.1.
 - ✅ 4.
 - 🍔 5.
 - 🍔 6.
-- 🔲 7.
-- 🔲 8.
+- _ 7.
+- _ 8.
