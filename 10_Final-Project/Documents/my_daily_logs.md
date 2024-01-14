@@ -20,8 +20,7 @@ Sorted by latest to oldest.
 - [Log template](#log-template)  
 <br>
 
-## ✏️ 📄 <a id="sat13jan">Sat 13 Jan '24</a>  ✏️ 📄
-### ✏️ 📄 
+## ✏️ 📄 <a id="sat13jan">Sat 13 Jan '24</a>
 ### Daily Report
 - I finished setting up my Jira SCRUM board for this project.
 - Also I started structuring the project folder so it is more organized and easier to explore the process of my project.
