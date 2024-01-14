@@ -47,5 +47,17 @@ Here are the user stories for the epic V1.1.
 | 3 | - | - | - |
 <br>
 
-- [x] list 1
-- [ ] list 2
+Exploration
+- [x] A point-by-point description of all requirements.
+- [✅] A point-by-point overview of all assumptions.
+- [ ] An overview of all services that will be used.
+
+v1.0
+- [ ]
+- [ ]
+- [ ]
+- [ ]
+- [ ]
+- [ ]
+- [ ]
+- [ ]
