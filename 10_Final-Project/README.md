@@ -33,7 +33,7 @@ Diagrams, (N)SG rules, deployment visualization, and more, are listed here.
 To view the Design Document, [click here](/10_Final-Project/Documents/design_doc.md).  
 <br>
 
-## <a id="testlab">Test Lab</a>  
+## <a id="testlab">Test Lab</a> 🚧 ⚠️ 💥
 Here I will be testing out my design and IaC before releasing a MVP.
 
 To go to my Test Lab, [click here](/10_Final-Project/Test_Lab/).  

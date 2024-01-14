@@ -40,7 +40,8 @@ Background information about the customer that can be useful when designing the 
 - From this server will the future 30+ virtual workstations be administered.
 
 ### Security
-- Protection against attacks and hacking will be done in-house
+- Protection against attacks and hacking will be done in-house.  
+<br>
 
 *back to [top](#top)*  
 <br>
@@ -100,12 +101,20 @@ A description of all necessary requirements.
 
 ### Global
 - 🔵 Don’t be afraid to propose or implement improvements in the architecture, but make hard choices so you can meet the deadline.  
+<br>
 
 *back to [top](#top)*  
 <br>
 
 ## <a id="ass">Assumptions</a> 🚦 🔀 ❓
-An overview of all assumptions
+An overview of all my assumptions.  
+<br>
+
+- **Only 1 region**: In the provided architecture design, the solutions architect chose to implement 2 regions. I can’t find a reason why this is necessary. I will adjust the design and use only 1 region.
+- **No VPC Peering**: Because I will use only one region, I will be deploying the resources in only 1 VPC as well. This eliminates the need for VPC Peering.
+- **Private subnets**: In the provided architecture design, there is no private subnet. I will be creating private subnets where the future workstation will be placed & where private servers (AD, and the like) can be placed.
+- **NAT gateway**: A NAT gateway will be needed to provide internet access to the workstation-private-subnet and the server-private-subnet via the admin-public-subnet. The admin-public-subnet is where the admin server will pe placed.  
+<br>
 
 *back to [top](#top)*  
 <br>
@@ -134,7 +143,8 @@ An overview of all services that will be used.
 - 🟥 Key Management Service: Securely Generate and Manage AWS Encryption Keys
 
 ### Storage
-- 🟩 S3: Scalable Storage in the Cloud
+- 🟩 S3: Scalable Storage in the Cloud  
+<br>
 
 *back to [top](#top)*  
 <br>

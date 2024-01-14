@@ -5,6 +5,7 @@ Sorted by latest to oldest.
 <br>
 
 ## Table of Contents
+- Week 2
 - Week 1
     - [Sat 13 Jan '24](#sat13jan)
     - [Fri 12 Jan '24](#fri12jan)
@@ -20,6 +21,9 @@ Sorted by latest to oldest.
 - [Log template](#log-template)  
 <br>
 
+*back to [top](#top)*  
+<br>
+
 ## ✏️ 📄 <a id="sat13jan">Sat 13 Jan '24</a>
 ### Daily Report
 - I finished setting up my Jira SCRUM board for this project.
@@ -32,7 +36,8 @@ Sorted by latest to oldest.
 - ...
 
 ### Learnings
-- ...
+- ...  
+<br>
 
 *back to [top](#top)*  
 <br>
@@ -143,7 +148,8 @@ Sorted by latest to oldest.
         ```
 
 ### Learnings
-- I know how to create, deploy, and destroy a sample-app project. I have a tiny bit of a understanding how it works.
+- I know how to create, deploy, and destroy a sample-app project. I have a tiny bit of a understanding how it works.  
+<br>
 
 *back to [top](#top)*  
 <br>
@@ -163,7 +169,8 @@ Sorted by latest to oldest.
 - ...
 
 ### Learnings
-- ...
+- ...  
+<br>
 
 *back to [top](#top)*  
 <br>
@@ -243,7 +250,8 @@ Sorted by latest to oldest.
 ### Learnings
 - During the meeting with the product owner I got more information about the cloud infrastructure requirements that I will need to adhere to when developing the cloud infrastructure.
 
-- I know now how to set up the AWS CDK on my workstation. That being said, this AWS CDK is still totally new for me. I may have successfully set up AWS CDK on my workstation, but I still do no not understand how it works, and how to interact with it.
+- I know now how to set up the AWS CDK on my workstation. That being said, this AWS CDK is still totally new for me. I may have successfully set up AWS CDK on my workstation, but I still do no not understand how it works, and how to interact with it.  
+<br>
 
 *back to [top](#top)*  
 <br>
@@ -259,7 +267,8 @@ Sorted by latest to oldest.
 - #### Created a clear and structured [document](https://docs.google.com/drawings/d/1Emfy-G-C1uBrazpZSeBZxsg9z3ydj0bhI2TDCuuZbHs/edit?usp=sharing) for the infrastructure requirements and questions.
 
 ### Learnings
-- It helps and it is more efficient to create a clear overview for myself and my team of all that we need to go into a meeting prepared.
+- It helps and it is more efficient to create a clear overview for myself and my team of all that we need to go into a meeting prepared.  
+<br>
 
 *back to [top](#top)*  
 <br>
@@ -277,7 +286,8 @@ Sorted by latest to oldest.
 - #### Watched an introduction [video](https://www.youtube.com/watch?v=GWxMTvRGIpc) about Jira.
 
 ### Learnings
-- I have a better understanding why Jira is a handy tool to use during projects.
+- I have a better understanding why Jira is a handy tool to use during projects.  
+<br>
 
 *back to [top](#top)*  
 <br>
@@ -286,7 +296,7 @@ Sorted by latest to oldest.
 ## Log template
 Template for easy daily logging  
 
-## ✏️ 📄 <a id="indert-date-here">insert-date-here
+## ✏️ 📄 <a id="indert-date-here">insert-date-here</a>
 ### Daily Report
 - ...
 
@@ -297,7 +307,8 @@ Template for easy daily logging
 - ...
 
 ### Learnings
-- ...
+- ...  
+<br>
 
 *back to [top](#top)* 
 <br>
