@@ -1,4 +1,5 @@
 # <a id="top">Checklist, Deadlines, and Epics & User Stories</a> ✅ 📌 📄
+Description under construction...
 ## Table of Contents
 - [Checklist](#checklist)
     - [Exploration, deadline --> 12 Jan '24](#exploration-deadline----12-jan-24)
@@ -16,7 +17,7 @@
 ## Checklist
 This checklist is based on the Deliverables in the chapter [Epics & User Stories](#epics--user-stories) below.
 
-🍔 *= (well-)DONE*
+🍔 *= (well-)DONE!*
 
 ### Exploration, deadline --> 12 Jan '24
 - 🍔 1. A point-by-point description of all requirements.  
@@ -24,7 +25,7 @@ This checklist is based on the Deliverables in the chapter [Epics & User Stories
 - 🍔 3. An overview of all services that will be used.  
 
 ### Presentation V1.0 progress --> 26 Jan '24
-- ➖ A 10-minute presentation / demonstration of my progress on app V1.0
+- ➖ A 10-minute presentation / demonstration of my progress on app V1.0.
 
 ### V1.0, deadline --> 02 Feb '24
 - ➖ 1. IaC code for the network and all components.
@@ -37,7 +38,7 @@ This checklist is based on the Deliverables in the chapter [Epics & User Stories
 - ➖ 8. Configuration for an MVP deployment.
 
 ### Presentation V1.1 progress --> 09 Feb '24
-- ➖ A 10-minute presentation / demonstration of my progress on app V1.1
+- ➖ A 10-minute presentation / demonstration of my progress on app V1.1.
 
 ### V1.1, deadline --> 23 Feb '24
 - ➖ 1. TBA
@@ -45,7 +46,7 @@ This checklist is based on the Deliverables in the chapter [Epics & User Stories
 - ➖ 3. TBA
 
 ### Final Presentation --> 23 Feb '24
-- ➖ More info TBA  
+- ➖ More info TBA.  
 <br>
 
 *back to [top](#top)*  
