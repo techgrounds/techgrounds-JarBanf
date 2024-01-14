@@ -1,4 +1,48 @@
-# User Stories
+# <a id="top">My To-Do's, Epics & User Stories</a>
+## Table of Contents
+- My To-Do's
+- Epics & User Stories  
+<br>
+
+## My To-Do's
+My to-do list is based on the Deliverables in the chapter [Epics & User Stories](#epics--user-stories) below.
+
+🍔 *= (well-)DONE*
+
+### Exploration, deadline --> 12 Jan '24
+- 🍔 1. A point-by-point description of all requirements.  
+- 🍔 2. A point-by-point overview of all assumptions.
+- 🍔 3. An overview of all services that will be used.  
+
+### Presentation V1.0 progress --> 26 Jan '24
+- ➖ A 10-minute presentation / demonstration of my progress on app V1.0
+
+### V1.0, deadline --> 02 Feb '24
+- ➖ 1. IaC code for the network and all components.
+- ➖ 2. IaC code for a web server and all supplies.
+- ➖ 3. IaC code for a management server with all the necessities.
+- ➖ 4. IaC code for a script storage solution.
+- ➖ 5. IaC code for encryption facilities.
+- ➖ 6. IaC code for backup facilities.
+- ➖ 7. Documentation for using the application.
+- ➖ 8. Configuration for an MVP deployment.
+
+### Presentation V1.1 progress --> 09 Feb '24
+- ➖ A 10-minute presentation / demonstration of my progress on app V1.1
+
+### V1.1, deadline --> 23 Feb '24
+- ➖ 1. TBA
+- ➖ 2. TBA
+- ➖ 3. TBA
+
+### Final Presentation --> 23 Feb '24
+- ➖ More info TBA  
+<br>
+
+*back to [top](#top)*  
+<br>
+
+## Epics & User Stories
 The Product Owners have already had a meeting and have drawn up the following epics and backlog. You will work on these epics and user stories as a team.
 
 If you and your team identify user stories that need to be split into smaller stories, your team is free to do so.
@@ -12,7 +56,7 @@ The following epics apply to the project:
 | v1.1 | Version 1.1 is the delivery of the Infrastructure as Code and all required documentation according to the requirements that will become available later. | 23 Feb '24 |
 <br>
 
-## Exploration
+### Exploration
 Here are the user stories for the epic Exploration.
 
 |  | User Story | Description | Deliverable |
@@ -22,7 +66,7 @@ Here are the user stories for the epic Exploration.
 | 3 | As a team, we want to have a clear overview of the Cloud Infrastructure that the application needs. | You have already received a lot of information. And already a design. Only aspects such as IAM/AD are still missing from the design. Identify these additional services you will need and make an overview of all services. | An overview of all services that will be used. |
 <br>
 
-## V1.0
+### V1.0
 Here are the user stories for the epic V1.0.
 
 |  | User Story | Description | Deliverable |
@@ -37,40 +81,15 @@ Here are the user stories for the epic V1.0.
 | 8 | As a customer, I want to be able to deploy an MVP for testing. | The customer wants to test your architecture internally before using the code in production. Ensure that configuration is available that allows the customer to deploy an MVP. | Configuration for an MVP deployment. |
 <br>
 
-## V1.1
+### V1.1
 Here are the user stories for the epic V1.1.
 
 |  | User Story | Description | Deliverable |
 | - | - | - | - |
-| 1 | - | - | - |
-| 2 | - | - | - |
-| 3 | - | - | - |
+| 1 | TBA | - | - |
+| 2 | TBA | - | - |
+| 3 | TBA | - | - |
 <br>
 
-## Checklist
-### Exploration, deadline 12 jan '24
-- [x] 1. A point-by-point description of all requirements.
-- [ ] 2. A point-by-point overview of all assumptions.
-- [ ] 3. An overview of all services that will be used.
-
-### Exploration, deadline 12 jan '24
-- ✅ 1. A point-by-point description of all requirements.  
-- 🔥 2. A point-by-point overview of all assumptions.
-- 🔲 3. An overview of all services that will be used.
-
-### Exploration --> deadline 12 jan '24
-| Done? | Deliverable |
-| :-: | - |
-| 🔥 | 1. A point-by-point description of all requirements. |
-| - | 2. A point-by-point overview of all assumptions. |
-| - | 3. An overview of all services that will be used. |
-
-### v1.0
-- 🔥 1.
-- 🔥 2.
-- ✅ 3.
-- ✅ 4.
-- 🍔 5.
-- 🍔 6.
-- ➖ 7.
-- ➖ 8.
+*back to [top](#top)*  
+<br>
