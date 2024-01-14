@@ -56,14 +56,14 @@ Here are the user stories for the epic V1.1.
 ### Exploration, deadline 12 jan '24
 - ✅ 1. A point-by-point description of all requirements.
 - 🔲 2. A point-by-point overview of all assumptions.
-- 🔲 3. An overview of all services that will be used.
+- [ ] 3. An overview of all services that will be used.
 
 ### Exploration, deadline 12 jan '24
 | Done? | Deliverable |
 | :-: | - |
 | ✅ | 1. A point-by-point description of all requirements. |
-| 🔲 | 2. A point-by-point overview of all assumptions. |
-| 🔲 | 3. An overview of all services that will be used. |
+| - | 2. A point-by-point overview of all assumptions. |
+| - | 3. An overview of all services that will be used. |
 
 ### v1.0
 - [ ]
