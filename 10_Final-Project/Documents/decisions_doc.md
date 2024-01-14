@@ -9,7 +9,8 @@ This serves as the basis for my design documentation.
 - [Cloud Infrastructure Requirements](#cir)
 - [Assumptions](#ass)
 - [Services](#ser)
-- [Appendix 1: Provided non-definite Architecture Design](#appendix-1-provided-architecture-design)  
+- Appendix
+    - [1: Provided non-definite Architecture Design](#1-provided-non-definite-architecture-design)  
 <br>
 
 ## <a id="cbi">Customer Background Information</a> 🏢 👔 ℹ️
@@ -156,7 +157,8 @@ An overview of all services that will be used.
 *back to [top](#top)*  
 <br>
 
-## Appendix 1: Provided non-definite Architecture Design
+## Appendix 📎
+### 1: Provided non-definite Architecture Design
 This is the provided non-definite architecture that the Solutions Architecture designed.  
 I have been told that the Solutions Architect did not deliver a solid solution and is also no longer employed.  
 
