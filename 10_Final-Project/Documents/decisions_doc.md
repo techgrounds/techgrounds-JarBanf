@@ -8,7 +8,8 @@ This serves as the basis for my design documentation.
 - [Customer Background Information](#cbi)
 - [Cloud Infrastructure Requirements](#cir)
 - [Assumptions](#ass)
-- [Services](#ser)  
+- [Services](#ser)
+- [Appendix 1: Provided non-definite Architecture Design](#appendix-1-provided-architecture-design)  
 <br>
 
 ## <a id="cbi">Customer Background Information</a> 🏢 👔 ℹ️
@@ -107,7 +108,9 @@ A description of all necessary requirements.
 <br>
 
 ## <a id="ass">Assumptions</a> 🚦 🔀 ❓
-An overview of all my assumptions.  
+An overview of all my assumptions.
+
+I will be referring to [Appendix 1: Provided non-definite Architecture Design](#appendix-1-provided-non-definite-architecture-design) in this document.  
 <br>
 
 - **Only 1 region**: In the provided architecture design, the solutions architect chose to implement 2 regions. I can’t find a reason why this is necessary. I will adjust the design and use only 1 region.
@@ -144,6 +147,19 @@ An overview of all services that will be used.
 
 ### Storage
 - 🟩 S3: Scalable Storage in the Cloud  
+<br>
+
+*back to [top](#top)*  
+<br>
+
+## Appendix 1: Provided non-definite Architecture Design
+This is the provided non-definite architecture that the Solutions Architecture designed.  
+I have been told that the Solutions Architect did not deliver a solid solution and is also no longer employed.  
+
+I am free to make changes and implement improvements as I see fit.
+
+![provided architecture design](/10_Final-Project/includes/provided%20architecture%20design%20AWS.png) 
+*Provided non-definite architecture designed by the Solutions Architect*  
 <br>
 
 *back to [top](#top)*  
