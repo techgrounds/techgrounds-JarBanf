@@ -38,7 +38,7 @@ Sorted by latest to oldest.
 *back to [top](#top)*  
 <br>
 
-## Fri 12 Jan '24
+## ✏️ 📄 Fri 12 Jan '24
 ### ✏️ 📄 
 ### Daily Report
 - I created my first CDK project and tried to understand the process and component.
