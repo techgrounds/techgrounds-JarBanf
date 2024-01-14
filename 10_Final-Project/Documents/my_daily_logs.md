@@ -7,15 +7,15 @@ Sorted by latest to oldest.
 ## Table of Contents
 - Week 1
     - [Sat 13 Jan '24](#sat13jan)
-    - [Fri 12 Jan '24](#fri-12-jan-24)
+    - [Fri 12 Jan '24](#fri12jan)
         - [Create my first CDK project with AWS CDK Workshop tutorial](#create-my-first-cdk-project-with-aws-cdk-workshop-tutorial)
         - [[SOLVED] Auto-complete for `aws`-commands is not working in VSCode, causing import failure.](#auto-complete-for-aws-commands-is-not-working-in-vscode-causing-import-failure)
-    - [Thu 11 Jan '24](#thu-11-jan-24)
-    - [Wed 10 Jan '24](#wed-10-jan-24)
+    - [Thu 11 Jan '24](#thu11jan)
+    - [Wed 10 Jan '24](#wed10jan)
         - [Set up AWS Cloud Development Kit](#set-up-aws-cloud-development-kit)
-    - [Tue 09 Jan '24](#tue-09-jan-24)
+    - [Tue 09 Jan '24](#tue09jan)
         - [Created a clear and structured document for the infrastructure requirements and questions.](#created-a-clear-and-structured-document-for-the-infrastructure-requirements-and-questions)
-    - [Mon 08 Jan '24](#mon-08-jan-24)
+    - [Mon 08 Jan '24](#mon08jan)
         - [Watched an introduction video about Jira.](#watched-an-introduction-video-about-jira)
 - [Log template](#log-template)  
 <br>
@@ -37,8 +37,7 @@ Sorted by latest to oldest.
 *back to [top](#top)*  
 <br>
 
-## Fri 12 Jan '24
-### ✏️ 📄 
+## ✏️ 📄 <a id="fri12jan">Fri 12 Jan '24</a>
 ### Daily Report
 - I created my first CDK project and tried to understand the process and component.
 
@@ -149,8 +148,7 @@ Sorted by latest to oldest.
 *back to [top](#top)*  
 <br>
 
-## Thu 11 Jan '24
-### ✏️ 📄 
+## ✏️ 📄 <a id="thu11jan">Thu 11 Jan '24</a>
 ### Daily Report
 - I completed from the `Exploration` Epic, User Stories  
 `1: As a team, we want to be clear about the requirements of the application.`  
@@ -170,8 +168,7 @@ Sorted by latest to oldest.
 *back to [top](#top)*  
 <br>
 
-## Wed 10 Jan '24
-### ✏️ 📄 
+## ✏️ 📄 <a id="wed10jan">Wed 10 Jan '24</a>
 ### Daily Report
 - Together with my team we had a meeting with the product owner to discuss the requirements for the cloud infrastructure that we individually have to develop. I still have to process these requirements in a deliverable document.  
 
@@ -251,8 +248,7 @@ Sorted by latest to oldest.
 *back to [top](#top)*  
 <br>
 
-## Tue 09 Jan '24
-### ✏️ 📄 
+## ✏️ 📄 <a id="tue09jan">Tue 09 Jan '24</a>
 ### Daily Report
 - I made a list of questions for our meeting with the product owner tomorrow at 9:15. I also created a clear and structured document where the requirements and questions were categorized.
 
@@ -268,8 +264,7 @@ Sorted by latest to oldest.
 *back to [top](#top)*  
 <br>
 
-## Mon 08 Jan '24
-### ✏️ 📄 
+## ✏️ 📄 <a id="mon08jan">Mon 08 Jan '24</a>
 ### Daily Report
 - First day of the project. I read and tried to understand what the project is about and what is expected from me.
 
@@ -291,8 +286,7 @@ Sorted by latest to oldest.
 ## Log template
 Template for easy daily logging  
 
-## insert-date-here
-### ✏️ 📄 
+## ✏️ 📄 <a id="indert-date-here">insert-date-here
 ### Daily Report
 - ...
 
@@ -305,6 +299,6 @@ Template for easy daily logging
 ### Learnings
 - ...
 
-*back to [top](#top)*  
+*back to [top](#top)* 
 <br>
 ++++++++++++++++++++
