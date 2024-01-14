@@ -135,13 +135,17 @@ An overview of all services that will be used.
 - 🟦 RDS: Managed Relational Database Service.
 
 ### Management & Governance
-- *🟥 CloudTrail: Track User Activity and API Usage.*
+- *🟥 CloudTrail: Track User Activity and API Usage.*  
+    - I will NOT be implementing this service in to the infrastructure (yet).  
+    It is best practice to use this service, but seen that it is not defined in the necessary requirements, I will not dedicate time and energy on it (yet). It is not a priority right now.
 
 ### Networking & Content Delivery
 - 🟪 VPC: Isolated Cloud Resources.
 
 ### Security, Identity, & Compliance
-- *🟥 Certificate Manager: Provision, Manage, and Deploy SSL/TLS Certificates.*
+- *🟥 Certificate Manager: Provision, Manage, and Deploy SSL/TLS Certificates.*  
+    - I will NOT be implementing this service in to the infrastructure (yet).  
+    Ideally, I will need to apply for an official SSL certificate to be able to provide encrypted connection to the website. Seen that this is not in the necessary requirements, I will not dedicate time and energy on it (yet). It is not a priority right now.
 - 🟥 IAM: Manage access to AWS resources.
 - 🟥 Key Management Service: Securely Generate and Manage AWS Encryption Keys
 
