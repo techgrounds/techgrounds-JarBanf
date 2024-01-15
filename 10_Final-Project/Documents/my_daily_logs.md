@@ -31,10 +31,86 @@ Sorted by latest to oldest.
 - ...
 
 ### Obstacles
-- ...
+- Write some practice CDK code using cdkworkshop.com.
 
 ### Solutions
-- ...
+- Write some practice CDK code using cdkworkshop.com.
+    - Sources:
+        - [Hello, CDK!](https://cdkworkshop.com/30-python/30-hello-cdk.html)
+
+    - Make sure the sample-app is deployed in my AWS cloud. See [Create my first CDK project with AWS CDK Workshop tutorial](#create-my-first-cdk-project-with-aws-cdk-workshop-tutorial) from [Fri 12 Jan '24](#fri12jan).
+
+    - Delete the sample code from my stack. After deletion, my stack looks like this. 
+        
+        ```py
+        from constructs import Construct
+        from aws_cdk import (
+        Stack
+        )
+
+
+        class CdkWorkshopStack(Stack):
+
+            def __init__(self, scope: Construct, construct_id: str, **kwargs) -> None:
+                super().__init__(scope, construct_id, **kwargs)
+        ```
+    - Ask toolkit to show us the difference between our CDK app and what's currently deployed.
+        
+        ```bash
+        cdk diff
+        ```
+        Output:
+        
+        ```bash
+        Stack CdkWorkshopStack
+        Creating a change set, this may take a while...
+        IAM Statement Changes
+        ┌───┬─────────────────────────┬────────┬─────────────────┬───────────────────────────┬─────────────────────────────────────────────────────────┐
+        │   │ Resource                │ Effect │ Action          │ Principal                 │ Condition                                               │
+        ├───┼─────────────────────────┼────────┼─────────────────┼───────────────────────────┼─────────────────────────────────────────────────────────┤
+        │ - │ ${CdkWorkshopQueue.Arn} │ Allow  │ sqs:SendMessage │ Service:sns.amazonaws.com │ "ArnEquals": {                                          │
+        │   │                         │        │                 │                           │   "aws:SourceArn": "${CdkWorkshopTopic}"                │
+        │   │                         │        │                 │                           │ }                                                       │
+        └───┴─────────────────────────┴────────┴─────────────────┴───────────────────────────┴─────────────────────────────────────────────────────────┘
+        (NOTE: There may be security-related changes not in this list. See https://github.com/aws/aws-cdk/issues/1299)
+
+        Resources
+        [-] AWS::SQS::Queue CdkWorkshopQueue CdkWorkshopQueue50D9D426 destroy
+        [-] AWS::SQS::QueuePolicy CdkWorkshopQueue/Policy CdkWorkshopQueuePolicyAF2494A5 destroy
+        [-] AWS::SNS::Subscription CdkWorkshopQueue/CdkWorkshopStackCdkWorkshopTopicD7BE9643 CdkWorkshopQueueCdkWorkshopStackCdkWorkshopTopicD7BE96438B5AD106 destroy
+        [-] AWS::SNS::Topic CdkWorkshopTopic CdkWorkshopTopicD368A42F destroy
+
+
+        ✨  Number of stacks with differences: 1
+        ```
+    - Deploy CDK
+
+        ```bash
+        cdk deploy
+        ```
+    
+        Output:
+
+        ```bash
+        ✨  Synthesis time: 10.87s
+
+        CdkWorkshopStack:  start: Building e2e301c815e2e96080a1c52841ba3eca59257bb55f200a4c2bcedab40469944b:current_account-current_region
+        CdkWorkshopStack:  success: Built e2e301c815e2e96080a1c52841ba3eca59257bb55f200a4c2bcedab40469944b:current_account-current_region
+        CdkWorkshopStack:  start: Publishing e2e301c815e2e96080a1c52841ba3eca59257bb55f200a4c2bcedab40469944b:current_account-current_region
+        CdkWorkshopStack:  success: Published e2e301c815e2e96080a1c52841ba3eca59257bb55f200a4c2bcedab40469944b:current_account-current_region
+        CdkWorkshopStack: deploying... [1/1]
+        CdkWorkshopStack: creating CloudFormation changeset...
+
+        ✅  CdkWorkshopStack
+
+        ✨  Deployment time: 79.16s
+
+        Stack ARN:
+        arn:aws:cloudformation:eu-central-1:908959576754:stack/CdkWorkshopStack/70149150-b391-11ee-a9b0-0addcb7edc13
+
+        ✨  Total time: 90.03s
+        ```
+    - 
 
 ### Learnings
 - ...  
