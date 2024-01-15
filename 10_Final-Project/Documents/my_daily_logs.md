@@ -6,6 +6,7 @@ Sorted by latest to oldest.
 
 ## Table of Contents
 - Week 2
+    - [Mon 15 Jan '24](#mon15jan)
 - Week 1
     - [Sun 14 Jan '24](#sun14jan)
     - [Sat 13 Jan '24](#sat13jan)
@@ -23,6 +24,23 @@ Sorted by latest to oldest.
 <br>
 
 *back to [top](#top)*  
+<br>
+
+## ✏️ 📄 <a id="mon15jan">Mon 15 Jan '24</a>
+### Daily Report
+- ...
+
+### Obstacles
+- ...
+
+### Solutions
+- ...
+
+### Learnings
+- ...  
+<br>
+
+*back to [top](#top)* 
 <br>
 
 ## ✏️ 📄 <a id="sun14jan">Sun 14 Jan '24</a>
