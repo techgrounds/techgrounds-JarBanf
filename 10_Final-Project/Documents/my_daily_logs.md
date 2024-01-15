@@ -7,6 +7,7 @@ Sorted by latest to oldest.
 ## Table of Contents
 - Week 2
     - [Mon 15 Jan '24](#mon15jan)
+        - [Write some practice CDK code using cdkworkshop.com. Lambda function & API gateway.](#write-some-practice-cdk-code-using-cdkworkshopcom-lambda-function--api-gateway)
 - Week 1
     - [Sun 14 Jan '24](#sun14jan)
     - [Sat 13 Jan '24](#sat13jan)
@@ -28,15 +29,16 @@ Sorted by latest to oldest.
 
 ## ✏️ 📄 <a id="mon15jan">Mon 15 Jan '24</a>
 ### Daily Report
-- ...
+- I practiced CDK deployment using a tutorial.
+- Also, my team and I discussed our assumptions and list of services that are important to implement in our infrastructure design. I found this meeting to be very insightful moving forward. 
 
 ### Obstacles
 - Write some practice CDK code using cdkworkshop.com.
 
 ### Solutions
-- #### Write some practice CDK code using cdkworkshop.com.  
+- #### Write some practice CDK code using cdkworkshop.com. Lambda function & API gateway.  
     Instead of the SNS/SQS code that I have in my app now, I’ll add a Lambda function with an API Gateway endpoint in front of it.  
-    
+
     Users will be able to hit any URL in the endpoint and they’ll receive a heartwarming greeting from our function.  
 
     - Sources:
@@ -114,10 +116,317 @@ Sorted by latest to oldest.
 
         ✨  Total time: 90.03s
         ```
-    - 
+    - Create a directory `lambda` in the root of my project tree (next to the `cdk_workshop`).
+    - Add a file called `lambda/hello.py` eith the following contents:
+
+        ```py
+        import json
+
+        def handler(event, context):
+            print('request: {}'.format(json.dumps(event)))
+            return {
+                'statusCode': 200,
+                'headers': {
+                    'Content-Type': 'text/plain'
+                },
+                'body': 'Hello, CDK! You have hit {}\n'.format(event['path'])
+            }
+        ```
+        This is a simple Lambda function which returns the text "Hello, CDK! You've hit [url path]". The function's output also includes HTTP status code and HTTP headers. These are used by API Gateway to formulate the HTTP response to the user.
+    - Add an `import` statement at the beginning of `cdk_workshop/cdk_workshop_stack.py`, and a `lambda.Function` to my stack.
+
+        ```py
+        from constructs import Construct
+        from aws_cdk import (
+            Stack,
+            aws_lambda as _lambda,
+        )
+
+
+        class CdkWorkshopStack(Stack):
+
+            def __init__(self, scope: Construct, construct_id: str, **kwargs) -> None:
+                super().__init__(scope, construct_id, **kwargs)
+
+                # Defines an AWS Lambda resource
+                my_lambda = _lambda.Function(
+                    self, 'HelloHandler' ,
+                    runtime=_lambda.Runtime.PYTHON_3_12 ,
+                    code=_lambda.Code.from_asset('lambda'),
+                    handler='hello.handler' ,
+                )
+        ```
+    
+    - Save my code, and take a quick look at the diff before I deploy.
+
+        ```bash
+        cdk diff
+        ```
+
+        Output:
+
+        ```bash
+        Stack CdkWorkshopStack
+        Creating a change set, this may take a while...
+        IAM Statement Changes
+        ┌───┬─────────────────────────────────┬────────┬────────────────┬──────────────────────────────┬───────────┐
+        │   │ Resource                        │ Effect │ Action         │ Principal                    │ Condition │
+        ├───┼─────────────────────────────────┼────────┼────────────────┼──────────────────────────────┼───────────┤
+        │ + │ ${HelloHandler/ServiceRole.Arn} │ Allow  │ sts:AssumeRole │ Service:lambda.amazonaws.com │           │
+        └───┴─────────────────────────────────┴────────┴────────────────┴──────────────────────────────┴───────────┘
+        IAM Policy Changes
+        ┌───┬─────────────────────────────┬────────────────────────────────────────────────────────────────────────────────┐
+        │   │ Resource                    │ Managed Policy ARN                                                             │
+        ├───┼─────────────────────────────┼────────────────────────────────────────────────────────────────────────────────┤
+        │ + │ ${HelloHandler/ServiceRole} │ arn:${AWS::Partition}:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole │
+        └───┴─────────────────────────────┴────────────────────────────────────────────────────────────────────────────────┘
+        (NOTE: There may be security-related changes not in this list. See https://github.com/aws/aws-cdk/issues/1299)
+
+        Resources
+        [+] AWS::IAM::Role HelloHandler/ServiceRole HelloHandlerServiceRole11EF7C63 
+        [+] AWS::Lambda::Function HelloHandler HelloHandler2E4FBA4D 
+
+
+        ✨  Number of stacks with differences: 1
+        ```
+
+    - Deploy CDK.
+
+        ```bash
+        cdk deploy
+        ```
+
+        Output:
+        
+        ```bash
+        ✨  Synthesis time: 9.47s
+
+        CdkWorkshopStack:  start: Building 5f83e2a8bc7ca79afcc300d45df613dd32db40aa141b1ab5d88b910f3dbd995e:current_account-current_region
+        CdkWorkshopStack:  success: Built 5f83e2a8bc7ca79afcc300d45df613dd32db40aa141b1ab5d88b910f3dbd995e:current_account-current_region
+        CdkWorkshopStack:  start: Building 8e681d924af319446955d3bdfb9e36e8da860119419f1055a1e1447a5729f9d6:current_account-current_region
+        CdkWorkshopStack:  success: Built 8e681d924af319446955d3bdfb9e36e8da860119419f1055a1e1447a5729f9d6:current_account-current_region
+        CdkWorkshopStack:  start: Publishing 5f83e2a8bc7ca79afcc300d45df613dd32db40aa141b1ab5d88b910f3dbd995e:current_account-current_region
+        CdkWorkshopStack:  start: Publishing 8e681d924af319446955d3bdfb9e36e8da860119419f1055a1e1447a5729f9d6:current_account-current_region
+        CdkWorkshopStack:  success: Published 8e681d924af319446955d3bdfb9e36e8da860119419f1055a1e1447a5729f9d6:current_account-current_region
+        CdkWorkshopStack:  success: Published 5f83e2a8bc7ca79afcc300d45df613dd32db40aa141b1ab5d88b910f3dbd995e:current_account-current_region
+        This deployment will make potentially sensitive changes according to your current security approval level (--require-approval broadening).
+        Please confirm you intend to make the following modifications:
+
+        IAM Statement Changes
+        ┌───┬─────────────────────────────────┬────────┬────────────────┬──────────────────────────────┬───────────┐
+        │   │ Resource                        │ Effect │ Action         │ Principal                    │ Condition │
+        ├───┼─────────────────────────────────┼────────┼────────────────┼──────────────────────────────┼───────────┤
+        │ + │ ${HelloHandler/ServiceRole.Arn} │ Allow  │ sts:AssumeRole │ Service:lambda.amazonaws.com │           │
+        └───┴─────────────────────────────────┴────────┴────────────────┴──────────────────────────────┴───────────┘
+        IAM Policy Changes
+        ┌───┬─────────────────────────────┬────────────────────────────────────────────────────────────────────────────────┐
+        │   │ Resource                    │ Managed Policy ARN                                                             │
+        ├───┼─────────────────────────────┼────────────────────────────────────────────────────────────────────────────────┤
+        │ + │ ${HelloHandler/ServiceRole} │ arn:${AWS::Partition}:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole │
+        └───┴─────────────────────────────┴────────────────────────────────────────────────────────────────────────────────┘
+        (NOTE: There may be security-related changes not in this list. See https://github.com/aws/aws-cdk/issues/1299)
+
+        Do you wish to deploy these changes (y/n)? y
+        CdkWorkshopStack: deploying... [1/1]
+        CdkWorkshopStack: creating CloudFormation changeset...
+
+        ✅  CdkWorkshopStack
+
+        ✨  Deployment time: 42.98s
+
+        Stack ARN:
+        arn:aws:cloudformation:eu-central-1:908959576754:stack/CdkWorkshopStack/70149150-b391-11ee-a9b0-0addcb7edc13
+
+        ✨  Total time: 52.45s
+        ```
+
+    - In AWS Console I can see the `CdkWorkshoStack`-resources has status `CREATE_COMPLETE`.
+
+        ![update_complete](/10_Final-Project/includes/15jan24_dl_cdk01.png)
+        <br>
+        <br>
+
+    - Test my function
+        - In the AWS Lambda Console, choose `HelloHandler` function. Configure test event and save.
+            
+            ![configure test](/10_Final-Project/includes/15jan24_dl_cdk02.png)
+            <br>
+            <br>
+    
+        - Click Test again and wait for the execution to complete.
+
+            ![test result](/10_Final-Project/includes/15jan24_dl_cdk03.png)
+            <br>
+        Status: Succeeded
+
+    - Add a LambdaRestAPI construct to my stack.
+
+        ```py
+        from constructs import Construct
+        from aws_cdk import (
+            Stack,
+            aws_lambda as _lambda,
+            aws_apigateway as apigw,
+        )
+
+
+        class CdkWorkshopStack(Stack):
+
+            def __init__(self, scope: Construct, construct_id: str, **kwargs) -> None:
+                super().__init__(scope, construct_id, **kwargs)
+
+                # Defines an AWS Lambda resource
+                my_lambda = _lambda.Function(
+                    self, 'HelloHandler' ,
+                    runtime=_lambda.Runtime.PYTHON_3_12 ,
+                    code=_lambda.Code.from_asset('lambda'),
+                    handler='hello.handler' ,
+                )
+
+                apigw.LambdaRestApi(
+                    self, 'Endpoint' ,
+                    handler=my_lambda,
+                )
+        ```
+
+    - Save my code, and take a quick look at the diff before I deploy.
+    
+        ```bash
+        cdk diff
+        ```
+
+        Output:
+
+        ```bash
+        Stack CdkWorkshopStack
+        Creating a change set, this may take a while...
+        IAM Statement Changes
+        ┌───┬─────────────────────┬────────┬───────────────────────┬────────────────────────────────────────────────┬────────────────────────────────────────────────┐
+        │   │ Resource            │ Effect │ Action                │ Principal                                      │ Condition                                      │
+        ├───┼─────────────────────┼────────┼───────────────────────┼────────────────────────────────────────────────┼────────────────────────────────────────────────┤
+        │ + │ ${HelloHandler.Arn} │ Allow  │ lambda:InvokeFunction │ Service:apigateway.amazonaws.com               │ "ArnLike": {                                   │
+        │   │                     │        │                       │                                                │   "AWS:SourceArn": "arn:${AWS::Partition}:exec │
+        │   │                     │        │                       │                                                │ ute-api:${AWS::Region}:${AWS::AccountId}:${End │
+        │   │                     │        │                       │                                                │ pointEEF1FD8F}/${Endpoint/DeploymentStage.prod │
+        │   │                     │        │                       │                                                │ }/*/*"                                         │
+        │   │                     │        │                       │                                                │ }                                              │
+        │ + │ ${HelloHandler.Arn} │ Allow  │ lambda:InvokeFunction │ Service:apigateway.amazonaws.com               │ "ArnLike": {                                   │
+        │   │                     │        │                       │                                                │   "AWS:SourceArn": "arn:${AWS::Partition}:exec │
+        │   │                     │        │                       │                                                │ ute-api:${AWS::Region}:${AWS::AccountId}:${End │
+        │   │                     │        │                       │                                                │ pointEEF1FD8F}/test-invoke-stage/*/*"          │
+        │   │                     │        │                       │                                                │ }                                              │
+        │ + │ ${HelloHandler.Arn} │ Allow  │ lambda:InvokeFunction │ Service:apigateway.amazonaws.com               │ "ArnLike": {                                   │
+        │   │                     │        │                       │                                                │   "AWS:SourceArn": "arn:${AWS::Partition}:exec │
+        │   │                     │        │                       │                                                │ ute-api:${AWS::Region}:${AWS::AccountId}:${End │
+        │   │                     │        │                       │                                                │ pointEEF1FD8F}/${Endpoint/DeploymentStage.prod │
+        │   │                     │        │                       │                                                │ }/*/"                                          │
+        │   │                     │        │                       │                                                │ }                                              │
+        │ + │ ${HelloHandler.Arn} │ Allow  │ lambda:InvokeFunction │ Service:apigateway.amazonaws.com               │ "ArnLike": {                                   │
+        │   │                     │        │                       │                                                │   "AWS:SourceArn": "arn:${AWS::Partition}:exec │
+        │   │                     │        │                       │                                                │ ute-api:${AWS::Region}:${AWS::AccountId}:${End │
+        │   │                     │        │                       │                                                │ pointEEF1FD8F}/test-invoke-stage/*/"           │
+        │   │                     │        │                       │                                                │ }                                              │
+        └───┴─────────────────────┴────────┴───────────────────────┴────────────────────────────────────────────────┴────────────────────────────────────────────────┘
+        (NOTE: There may be security-related changes not in this list. See https://github.com/aws/aws-cdk/issues/1299)
+
+        Resources
+        [+] AWS::ApiGateway::RestApi Endpoint EndpointEEF1FD8F 
+        [+] AWS::ApiGateway::Deployment Endpoint/Deployment EndpointDeployment318525DA5f8cdfe532107839d82cbce31f859259 
+        [+] AWS::ApiGateway::Stage Endpoint/DeploymentStage.prod EndpointDeploymentStageprodB78BEEA0 
+        [+] AWS::ApiGateway::Resource Endpoint/Default/{proxy+} Endpointproxy39E2174E 
+        [+] AWS::Lambda::Permission Endpoint/Default/{proxy+}/ANY/ApiPermission.CdkWorkshopStackEndpoint018E8349.ANY..{proxy+} EndpointproxyANYApiPermissionCdkWorkshopStackEndpoint018E8349ANYproxy747DCA52 
+        [+] AWS::Lambda::Permission Endpoint/Default/{proxy+}/ANY/ApiPermission.Test.CdkWorkshopStackEndpoint018E8349.ANY..{proxy+} EndpointproxyANYApiPermissionTestCdkWorkshopStackEndpoint018E8349ANYproxy41939001 
+        [+] AWS::ApiGateway::Method Endpoint/Default/{proxy+}/ANY EndpointproxyANYC09721C5 
+        [+] AWS::Lambda::Permission Endpoint/Default/ANY/ApiPermission.CdkWorkshopStackEndpoint018E8349.ANY.. EndpointANYApiPermissionCdkWorkshopStackEndpoint018E8349ANYE84BEB04 
+        [+] AWS::Lambda::Permission Endpoint/Default/ANY/ApiPermission.Test.CdkWorkshopStackEndpoint018E8349.ANY.. EndpointANYApiPermissionTestCdkWorkshopStackEndpoint018E8349ANYB6CC1B64 
+        [+] AWS::ApiGateway::Method Endpoint/Default/ANY EndpointANY485C938B 
+
+        Outputs
+        [+] Output Endpoint/Endpoint Endpoint8024A810: {"Value":{"Fn::Join":["",["https://",{"Ref":"EndpointEEF1FD8F"},".execute-api.",{"Ref":"AWS::Region"},".",{"Ref":"AWS::URLSuffix"},"/",{"Ref":"EndpointDeploymentStageprodB78BEEA0"},"/"]]}}
+
+
+        ✨  Number of stacks with differences: 1
+        ```
+
+    - Deploy CDK.
+
+        ```bash
+        cdk deploy
+        ```
+
+        Output:
+        
+        ```bash
+        ✨  Synthesis time: 11.55s
+
+        CdkWorkshopStack:  start: Building 1db71cd140606ea1a187b8db5a974ea8818f2957daaec5188b866c73f0322b45:current_account-current_region
+        CdkWorkshopStack:  success: Built 1db71cd140606ea1a187b8db5a974ea8818f2957daaec5188b866c73f0322b45:current_account-current_region
+        CdkWorkshopStack:  start: Publishing 1db71cd140606ea1a187b8db5a974ea8818f2957daaec5188b866c73f0322b45:current_account-current_region
+        CdkWorkshopStack:  success: Published 1db71cd140606ea1a187b8db5a974ea8818f2957daaec5188b866c73f0322b45:current_account-current_region
+        This deployment will make potentially sensitive changes according to your current security approval level (--require-approval broadening).
+        Please confirm you intend to make the following modifications:
+
+        IAM Statement Changes
+        ┌───┬─────────────────────┬────────┬───────────────────────┬────────────────────────────────────────────────┬────────────────────────────────────────────────┐
+        │   │ Resource            │ Effect │ Action                │ Principal                                      │ Condition                                      │
+        ├───┼─────────────────────┼────────┼───────────────────────┼────────────────────────────────────────────────┼────────────────────────────────────────────────┤
+        │ + │ ${HelloHandler.Arn} │ Allow  │ lambda:InvokeFunction │ Service:apigateway.amazonaws.com               │ "ArnLike": {                                   │
+        │   │                     │        │                       │                                                │   "AWS:SourceArn": "arn:${AWS::Partition}:exec │
+        │   │                     │        │                       │                                                │ ute-api:${AWS::Region}:${AWS::AccountId}:${End │
+        │   │                     │        │                       │                                                │ pointEEF1FD8F}/${Endpoint/DeploymentStage.prod │
+        │   │                     │        │                       │                                                │ }/*/*"                                         │
+        │   │                     │        │                       │                                                │ }                                              │
+        │ + │ ${HelloHandler.Arn} │ Allow  │ lambda:InvokeFunction │ Service:apigateway.amazonaws.com               │ "ArnLike": {                                   │
+        │   │                     │        │                       │                                                │   "AWS:SourceArn": "arn:${AWS::Partition}:exec │
+        │   │                     │        │                       │                                                │ ute-api:${AWS::Region}:${AWS::AccountId}:${End │
+        │   │                     │        │                       │                                                │ pointEEF1FD8F}/test-invoke-stage/*/*"          │
+        │   │                     │        │                       │                                                │ }                                              │
+        │ + │ ${HelloHandler.Arn} │ Allow  │ lambda:InvokeFunction │ Service:apigateway.amazonaws.com               │ "ArnLike": {                                   │
+        │   │                     │        │                       │                                                │   "AWS:SourceArn": "arn:${AWS::Partition}:exec │
+        │   │                     │        │                       │                                                │ ute-api:${AWS::Region}:${AWS::AccountId}:${End │
+        │   │                     │        │                       │                                                │ pointEEF1FD8F}/${Endpoint/DeploymentStage.prod │
+        │   │                     │        │                       │                                                │ }/*/"                                          │
+        │   │                     │        │                       │                                                │ }                                              │
+        │ + │ ${HelloHandler.Arn} │ Allow  │ lambda:InvokeFunction │ Service:apigateway.amazonaws.com               │ "ArnLike": {                                   │
+        │   │                     │        │                       │                                                │   "AWS:SourceArn": "arn:${AWS::Partition}:exec │
+        │   │                     │        │                       │                                                │ ute-api:${AWS::Region}:${AWS::AccountId}:${End │
+        │   │                     │        │                       │                                                │ pointEEF1FD8F}/test-invoke-stage/*/"           │
+        │   │                     │        │                       │                                                │ }                                              │
+        └───┴─────────────────────┴────────┴───────────────────────┴────────────────────────────────────────────────┴────────────────────────────────────────────────┘
+        (NOTE: There may be security-related changes not in this list. See https://github.com/aws/aws-cdk/issues/1299)
+
+        Do you wish to deploy these changes (y/n)? y
+        CdkWorkshopStack: deploying... [1/1]
+        CdkWorkshopStack: creating CloudFormation changeset...
+
+        ✅  CdkWorkshopStack
+
+        ✨  Deployment time: 38.34s
+
+        Outputs:
+        CdkWorkshopStack.Endpoint8024A810 = https://b6uougqw64.execute-api.eu-central-1.amazonaws.com/prod/
+        Stack ARN:
+        arn:aws:cloudformation:eu-central-1:908959576754:stack/CdkWorkshopStack/70149150-b391-11ee-a9b0-0addcb7edc13
+
+        ✨  Total time: 49.89s
+        ```
+
+    - Testing my app
+        - Copy the URL and execute.
+
+        ![](/10_Final-Project/includes/15jan24_dl_cdk04.png)
+        <br>
+
+        - My app works.
+    - Because this is for learning purposes, I will be destroying the deployed CDK app.
+
+        ```bash
+        cdk destroy
+        ```
 
 ### Learnings
-- ...  
+- I got to experience a bit more how the process of CDK deployment works. A tiny bit more familiar with the CDK environment. The codes are still gibberish and intimidating to me.
+- Discussing our assumptions as a team was really insightful and informational moving forward.  
 <br>
 
 *back to [top](#top)* 
