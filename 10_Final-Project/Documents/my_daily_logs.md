@@ -34,7 +34,11 @@ Sorted by latest to oldest.
 - Write some practice CDK code using cdkworkshop.com.
 
 ### Solutions
-- Write some practice CDK code using cdkworkshop.com.
+- #### Write some practice CDK code using cdkworkshop.com.  
+    Instead of the SNS/SQS code that I have in my app now, I’ll add a Lambda function with an API Gateway endpoint in front of it.  
+    
+    Users will be able to hit any URL in the endpoint and they’ll receive a heartwarming greeting from our function.  
+
     - Sources:
         - [Hello, CDK!](https://cdkworkshop.com/30-python/30-hello-cdk.html)
 
