@@ -6,6 +6,8 @@ Sorted by latest to oldest.
 
 ## Table of Contents
 - Week 2
+    - [Tue 16 Jan '24](#tue16jan)
+        - [Finding and understanding the code I need to deploy a basic VPC.](#finding-and-understanding-the-code-i-need-to-deploy-a-basic-vpc)
     - [Mon 15 Jan '24](#mon15jan)
         - [Write some practice CDK code using cdkworkshop.com. Lambda function & API gateway.](#write-some-practice-cdk-code-using-cdkworkshopcom-lambda-function--api-gateway)
 - Week 1
@@ -25,6 +27,54 @@ Sorted by latest to oldest.
 <br>
 
 *back to [top](#top)*  
+<br>
+
+## ✏️ 📄 <a id="tue16jan">Tue 16 Jan '24</a>
+### Daily Report
+- I made a first version diagram of the network infrastructre. I will be using this diagram as a starting point to start building the network as IaC.
+- I started with:  
+    | Epic | User Story | Description | Deliverable |
+    | - | - | - | - |
+    | v1.0 | As a customer, I want a working application with which I can deploy a secure network. | The application must build a network that meets all requirements. An example of a stated requirement is that only traffic from trusted sources may access the management server. | 1. IaC code for the network and all components. |
+
+### Obstacles
+- Finding and understanding the code I need to deploy a basic VPC
+
+### Solutions
+- #### Finding and understanding the code I need to deploy a basic VPC.
+    - Sources
+        - [Vpc](https://docs.aws.amazon.com/cdk/api/v2/python/aws_cdk.aws_ec2/Vpc.html)
+        - [GitHub aws-cdk-examples](https://github.com/aws-samples/aws-cdk-examples/blob/master/python/ec2/instance/app.py)
+        - ChatGPT
+    - Working code to deploy VPC with only default parameters.
+
+        ```py
+        from constructs import Construct
+        from aws_cdk import (
+            Duration,
+            Stack,
+            aws_ec2 as ec2,
+        )
+
+
+        class CdkTestprojStack(Stack):
+
+            def __init__(self, scope: Construct, construct_id: str, **kwargs) -> None:
+                super().__init__(scope, construct_id, **kwargs)
+
+                #create a VPC
+                my_vpc = ec2.Vpc(self, 'MyTestVpc',
+                    #cidr = '10.0.0.0/16',
+                    #ip_addresses = ec2.IpAddresses.cidr('10.0.0.0/16'),
+                    #max_azs = 2
+                )
+        ```
+
+### Learnings
+- I know which construct I need to set up a VPC. I still need to find out about the available parameters I will need to build the network.
+<br>
+
+*back to [top](#top)* 
 <br>
 
 ## ✏️ 📄 <a id="mon15jan">Mon 15 Jan '24</a>
@@ -434,8 +484,11 @@ Sorted by latest to oldest.
 
 ## ✏️ 📄 <a id="sun14jan">Sun 14 Jan '24</a>
 ### Daily Report
-- I completed from the Exploration Epic, User Stories
-    - 2: As a team, we want a clear overview of the assumptions we have made.  
+- I completed: 
+
+    | Epic | User Story | Description | Deliverable |
+    | - | - | - | - |
+    | Exploration | 2: As a team, we want a clear overview of the assumptions we have made. | You have already received a lot of information. There may be questions that none of the stakeholders have been able to answer. Your team should be able to produce an overview of the assumptions you are making as a result. | A point-by-point overview of all assumptions. |    
 <br>
 
 *back to [top](#top)* 
@@ -564,10 +617,12 @@ Sorted by latest to oldest.
 
 ## ✏️ 📄 <a id="thu11jan">Thu 11 Jan '24</a>
 ### Daily Report
-- I completed from the Exploration Epic, User Stories  
-    - 1: As a team, we want to be clear about the requirements of the application.  
-    - 3: As a team, we want to have a clear overview of the Cloud Infrastructure that the application needs.
-- Started to arrange my Jira. Trying out both the Kanban and the Scrum template.  
+- I completed:
+    
+    | Epic | User Story | Description | Deliverable |
+    | - | - | - | - |
+    | Exploration | 1: As a team, we want to be clear about the requirements of the application. | You have already received a lot of information. Some requirements are already mentioned in this document, but this list may be incomplete or unclear. It is important to sort out all the uncertainties before you start doing major work. | A point-by-point description of all requirements. |
+    | Exploration | 3: As a team, we want to have a clear overview of the Cloud Infrastructure that the application needs. | You have already received a lot of information. And already a design. Only aspects such as IAM/AD are still missing from the design. Identify these additional services you will need and make an overview of all services. | An overview of all services that will be used. |  
 <br>
 
 *back to [top](#top)*  

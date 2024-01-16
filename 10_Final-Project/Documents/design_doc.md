@@ -28,4 +28,4 @@ Diagrams, (N)SG rules, deployment visualization, and more, are listed here.
         - Public Subnet 1
         - Private Subnet 1
         - Private Subnet 2
-    - AZ A
+    - AZ B
