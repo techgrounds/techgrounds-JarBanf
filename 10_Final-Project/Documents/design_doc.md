@@ -19,3 +19,13 @@ Diagrams, (N)SG rules, deployment visualization, and more, are listed here.
                 - 30+ Workstations
         - Availability Zone B: 10.20.20.0 / 24
             - Used in the future for reliability.
+- Security Groups
+    - Webserver
+    - Web Database server
+    - Admin Server
+- Network ACL
+    - AZ A
+        - Public Subnet 1
+        - Private Subnet 1
+        - Private Subnet 2
+    - AZ A

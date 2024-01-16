@@ -133,10 +133,11 @@ An overview of all services that will be used.
 - 🟧 EC2: Virtual servers in the cloud.
 
 ### Database
-- 🟦 RDS: Managed Relational Database Service.
+- 🟦 ~~RDS: Managed Relational Database Service~~.
+    - I will not be implementing a RDS database in my design. The admin has knowledge on setting up and maintaining a database. So I will setup a EC2-instance as a database server.
 
 ### Management & Governance
-- 🟥 ~~CloudTrail: Track User Activity and API Usage.~~  
+- 🟥 ~~CloudTrail: Track User Activity and API Usage~~.  
     - I will NOT be implementing this service in to the infrastructure (yet).  
     It is best practice to use this service, but seen that it is not defined in the necessary requirements, I will not dedicate time and energy on it (yet). It is not a priority right now.
 
