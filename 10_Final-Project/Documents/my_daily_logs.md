@@ -6,6 +6,7 @@ Sorted by latest to oldest.
 
 ## Table of Contents
 - Week 2
+    - [Wed 17 Jan '24](#wed17jan)
     - [Tue 16 Jan '24](#tue16jan)
         - [Finding and understanding the code I need to deploy a basic VPC.](#finding-and-understanding-the-code-i-need-to-deploy-a-basic-vpc)
     - [Mon 15 Jan '24](#mon15jan)
@@ -27,6 +28,23 @@ Sorted by latest to oldest.
 <br>
 
 *back to [top](#top)*  
+<br>
+
+## ✏️ 📄 <a id="wed17jan">Wed 17 Jan '24</a>
+### Daily Report
+- ...
+
+### Obstacles
+- ...
+
+### Solutions
+- ...
+
+### Learnings
+- ...  
+<br>
+
+*back to [top](#top)* 
 <br>
 
 ## ✏️ 📄 <a id="tue16jan">Tue 16 Jan '24</a>

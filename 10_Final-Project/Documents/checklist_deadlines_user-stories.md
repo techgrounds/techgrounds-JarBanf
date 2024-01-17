@@ -27,10 +27,10 @@ This checklist is based on the Deliverables in the chapter [Epics & User Stories
 - 🍔 3. An overview of all services that will be used.  
 
 ### Presentation V1.0 progress --> 26 Jan '24
-- 🚧 A 10-minute presentation / demonstration of my progress on app V1.0.
+- ➖ A 10-minute presentation / demonstration of my progress on app V1.0.
 
 ### V1.0, deadline --> 02 Feb '24
-- ➖ 1. IaC code for the network and all components.
+- 🚧 1. IaC code for the network and all components.
 - ➖ 2. IaC code for a web server and all supplies.
 - ➖ 3. IaC code for a management server with all the necessities.
 - ➖ 4. IaC code for a script storage solution.
