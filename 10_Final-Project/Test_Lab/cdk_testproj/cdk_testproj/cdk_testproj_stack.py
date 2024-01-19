@@ -1,6 +1,5 @@
 from constructs import Construct
 from aws_cdk import (
-    Duration,
     Stack,
     aws_ec2 as ec2,
 )
@@ -15,7 +14,7 @@ class CdkTestprojStack(Stack):
 
         # create VPC with all default parameters.
         # when no parameters are assigned, it deploys only default values.
-        # """
+        """
         my_vpc = ec2.Vpc(self, 'MyTestVpc',
             ip_addresses = ec2.IpAddresses.cidr('10.0.0.0/16'), # desired CIDR range
             max_azs=0,
@@ -24,10 +23,16 @@ class CdkTestprojStack(Stack):
 
         subnet = ec2.CfnSubnet(self, 'AZa_Webserver',
             vpc_id=my_vpc.vpc_id,
-            cidr_block='10.0.10.0/24',
+            cidr_block='10.0.10.0/28',
             availability_zone='eu-central-1a',
         )
-        # """
+
+        subnet = ec2.CfnSubnet(self, 'AZb_Webserver',
+            vpc_id=my_vpc.vpc_id,
+            cidr_block='10.0.10.0/28',
+            availability_zone='eu-central-1a',
+        )
+        """
 
 ########################################################################################################
         
@@ -82,3 +87,4 @@ class CdkTestprojStack(Stack):
         """
 
 ########################################################################################################
+        
