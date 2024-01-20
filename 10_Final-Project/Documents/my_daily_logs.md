@@ -84,7 +84,7 @@ Sorted by latest to oldest.
 - Check if I have selected the right attribute. Use [AWS CDK Python Reference](https://docs.aws.amazon.com/cdk/api/v2/python/) frequently to check for the correct attributes I will be needing.   
 <br>
 
-*back to [top](#top)* 
+*back to [top](#top)*  
 <br>
 
 ## ✏️ 📄 <a id="fri19jan">Fri 19 Jan '24</a>
@@ -111,7 +111,7 @@ Sorted by latest to oldest.
 - When Python is used correctly, it can make your code efficient and less prone to user error. I still feel uncomforable using the `for`-loops the way the video does. So for now, I will not be using the `for`-loops (yet). Instead my code will be less efficient, but I will atleast be able to troubleshoot and explain my code.  
 <br>
 
-*back to [top](#top)* 
+*back to [top](#top)*  
 <br>
 
 ## ✏️ 📄 <a id="thu18jan">Thu 18 Jan '24</a>
@@ -126,7 +126,7 @@ Sorted by latest to oldest.
     - See [Wed 17 Jan '24](#wed17jan)  
 <br>
 
-*back to [top](#top)* 
+*back to [top](#top)*  
 <br>
 
 ## ✏️ 📄 <a id="wed17jan">Wed 17 Jan '24</a>
@@ -146,7 +146,7 @@ Sorted by latest to oldest.
     - Used ChatGPT and other CDK-pyhton examples to give me an idea how the codes are used. These examples I also compared to the AWS CDK Python Reference to get a better understanding of how the parameters explanation compares to the actual code.  
 <br>
 
-*back to [top](#top)* 
+*back to [top](#top)*  
 <br>
 
 ## ✏️ 📄 <a id="tue16jan">Tue 16 Jan '24</a>
@@ -194,7 +194,7 @@ Sorted by latest to oldest.
 - I know which construct I need to set up a VPC. I still need to find out about the available parameters I will need to build the network.
 <br>
 
-*back to [top](#top)* 
+*back to [top](#top)*  
 <br>
 
 ## ✏️ 📄 <a id="mon15jan">Mon 15 Jan '24</a>
@@ -599,7 +599,7 @@ Sorted by latest to oldest.
 - Discussing our assumptions as a team was really insightful and informational moving forward.  
 <br>
 
-*back to [top](#top)* 
+*back to [top](#top)*  
 <br>
 
 ## ✏️ 📄 <a id="sun14jan">Sun 14 Jan '24</a>
@@ -611,7 +611,7 @@ Sorted by latest to oldest.
     | Exploration | 2: As a team, we want a clear overview of the assumptions we have made. | You have already received a lot of information. There may be questions that none of the stakeholders have been able to answer. Your team should be able to produce an overview of the assumptions you are making as a result. | A point-by-point overview of all assumptions. |    
 <br>
 
-*back to [top](#top)* 
+*back to [top](#top)*  
 <br>
 
 ## ✏️ 📄 <a id="sat13jan">Sat 13 Jan '24</a>
@@ -883,6 +883,6 @@ Template for easy daily logging
 - ...  
 <br>
 
-*back to [top](#top)* 
+*back to [top](#top)*  
 <br>
 ++++++++++++++++++++
