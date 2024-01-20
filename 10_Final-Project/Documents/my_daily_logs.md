@@ -58,7 +58,7 @@ Sorted by latest to oldest.
     - Sources:
         - [AWS CDK Python Reference](https://docs.aws.amazon.com/cdk/api/v2/python/)
     - Used the wrong attribute to assign nat gateway.  
-    Wrong code:  
+        Wrong code:  
 
         ```py
         route_rt_workst_to_natgw = ec2.CfnRoute(self, 
@@ -69,7 +69,7 @@ Sorted by latest to oldest.
             )
         ```
     
-    Correct code:  
+        Correct code:  
 
         ```py
         route_rt_workst_to_natgw = ec2.CfnRoute(self, 
