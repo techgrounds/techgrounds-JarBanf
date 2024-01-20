@@ -83,15 +83,16 @@ class CdkTestprojStack(Stack):
         vpc = ec2.Vpc(self, VPC_ID,
                       ip_addresses=ec2.IpAddresses.cidr(VPC_CIDR),
                       nat_gateways=0, # no NAT gateway (yet)
-                      subnet_configuration=[] # no subnets (yet)
+                      subnet_configuration=[], # no subnets (yet)
+                      vpc_name=VPC_ID
                       )
         
 
         # CREATE ELASTIC IPs VPC
         # Create Elastic IP AZ-a
-        """
+        # """
         elastic_ip_a = ec2.CfnEIP(self, ELASTIC_IP_AZ_A)
-        """
+        # """
 
         # Create Elastic IP AZ-b
 
@@ -211,21 +212,24 @@ class CdkTestprojStack(Stack):
 
         # CREATE NAT GATEWAYS IN VPC
         # Create NAT Gateway AZ-a
-        """
+        # """
         nat_gateway_a = ec2.CfnNatGateway(self, NAT_GATEWAY_A,
                                           allocation_id=elastic_ip_a.attr_allocation_id,
-                                          subnet_id=subnet_pub_webserv_a.ref
+                                          subnet_id=subnet_pub_webserv_a.ref,
+                                          tags=[{'key': 'Name', 
+                                                'value': NAT_GATEWAY_A
+                                                }],
                                           )
         nat_gateway_a.add_dependency(elastic_ip_a)
-        """
+        # """
 
         # Create NAT Gateway AZ-b
 
         # Create NAT Gateway AZ-c
 
 
-        # CREATE ROUTES AZ A
-        # Create Route: Route Table Webserver to Internet Gateway AZ-a
+        # CONNECT ROUTE TABLES TO GATEWAYS
+        # Connect: Route Table Webserver to Internet Gateway AZ-a
         # """
         route_rt_webserv_to_igw = ec2.CfnRoute(self, 'route-rt-webserv-to-igw',
                              route_table_id=cfn_rt_pub_webserv_a.ref,
@@ -234,7 +238,7 @@ class CdkTestprojStack(Stack):
                              )
         # """
 
-        # Create Route: Route Table Adminserver to Internet Gateway AZ-a
+        # Connect: Route Table Adminserver to Internet Gateway AZ-a
         # """
         route_rt_admserv_to_igw = ec2.CfnRoute(self, 'route-rt-admserv-to-igw',
                              route_table_id=cfn_rt_pub_admserv_a.ref,
@@ -243,4 +247,11 @@ class CdkTestprojStack(Stack):
                              )
         #"""
 
-        # Create Route: Route Table Workstations to NAT Gateway AZ-a
+        # Connect: Route Table Workstations to NAT Gateway AZ-a
+        # """
+        route_rt_workst_to_natgw = ec2.CfnRoute(self, 'route-rt-workst-to-natgw',
+                             route_table_id=cfn_rt_priv_workst_a.ref,
+                             destination_cidr_block=PRIV_RT_WORKST_A_DEST_CIDR,
+                             nat_gateway_id=nat_gateway_a.ref,
+                             )
+        #"""
