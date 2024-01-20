@@ -6,6 +6,11 @@ Sorted by latest to oldest.
 
 ## Table of Contents
 - Week 2
+    - [Sat 20 Jan '24](#sat20jan)
+        - [ [SOLVED] Deploy process getting stuck when creating route between route table and nat gateway.](#deploy-process-getting-stuck-when-creating-route-between-route-table-and-nat-gateway
+        )
+    - [Fri 19 Jan '24](#fri19jan)
+    - [Thu 18 Jan '24](#thu18jan)
     - [Wed 17 Jan '24](#wed17jan)
     - [Tue 16 Jan '24](#tue16jan)
         - [Finding and understanding the code I need to deploy a basic VPC.](#finding-and-understanding-the-code-i-need-to-deploy-a-basic-vpc)
@@ -30,18 +35,115 @@ Sorted by latest to oldest.
 *back to [top](#top)*  
 <br>
 
-## ✏️ 📄 <a id="wed17jan">Wed 17 Jan '24</a>
+## ✏️ 📄 <a id="sat20jan">Sat 20 Jan '24</a>
 ### Daily Report
-- ...
+- Created: 
+    - route table: 
+        - for public subnet Admin server.
+        - for private subnet Workstations.
+    - subnet:
+        - public subnet for Admin server.
+        - private subnet Workstations.
+    - elastic IP.
+    - nat gateway in public subnet AZ a.
+    - routes:
+        - between public subnet Admin server and Internet gateway.
+        - between private subnet Workstations and Nat gateway.
 
 ### Obstacles
-- ...
+- Deploy process getting stuck when creating route between route table and nat gateway.
 
 ### Solutions
-- ...
+- #### Deploy process getting stuck when creating route between route table and nat gateway.
+    - Sources:
+        - [AWS CDK Python Reference](https://docs.aws.amazon.com/cdk/api/v2/python/)
+    - Used the wrong attribute to assign nat gateway.  
+    Wrong code:  
+
+        ```py
+        route_rt_workst_to_natgw = ec2.CfnRoute(self, 
+            'route-rt-workst-to-natgw',
+            route_table_id=cfn_rt_priv_workst_a.ref,
+            destination_cidr_block=PRIV_RT_WORKST_A_DEST_CIDR,
+            gateway_id=nat_gateway_a.ref,
+            )
+        ```
+    
+    Correct code:  
+
+        ```py
+        route_rt_workst_to_natgw = ec2.CfnRoute(self, 
+            'route-rt-workst-to-natgw',
+            route_table_id=cfn_rt_priv_workst_a.ref,
+            destination_cidr_block=PRIV_RT_WORKST_A_DEST_CIDR,
+            nat_gateway_id=nat_gateway_a.ref,
+            )
+        ```
 
 ### Learnings
-- ...  
+- Check if I have selected the right attribute. Use [AWS CDK Python Reference](https://docs.aws.amazon.com/cdk/api/v2/python/) frequently to check for the correct attributes I will be needing.   
+<br>
+
+*back to [top](#top)* 
+<br>
+
+## ✏️ 📄 <a id="fri19jan">Fri 19 Jan '24</a>
+### Daily Report
+- Watched a video shared by a co-student: ([ Create AWS VPC Infrastructure with AWS CDK & PYTHON | Subnets, Route Tables, Gateway, NAT with CDK ](https://www.youtube.com/watch?v=ZmbcgRpGmrs))
+- Created:
+    - vpc
+    - internet gateway & attachmenet to vpc
+    - route table:
+        - for public subnet Web server
+    - subnet:
+        - public subnet for Web server
+    - routes:
+        - between public subnet Web server and Internet Gateway.
+
+### Obstacles
+- Understanding the `for`-loops used in the video.
+
+### Solutions
+- Understanding the `for`-loops used in the video.
+    - I analyzed the code use and followed the code flow to understand what the purpose and the results were of the `for`-loops.
+
+### Learnings
+- When Python is used correctly, it can make your code efficient and less prone to user error. I still feel uncomforable using the `for`-loops the way the video does. So for now, I will not be using the `for`-loops (yet). Instead my code will be less efficient, but I will atleast be able to troubleshoot and explain my code.  
+<br>
+
+*back to [top](#top)* 
+<br>
+
+## ✏️ 📄 <a id="thu18jan">Thu 18 Jan '24</a>
+### Daily Report
+- Searching and testing out codes for creating VPC related resources.
+
+### Obstacles
+- Understanding CDK codes, their usage, their attributes.
+
+### Solutions
+- Understanding CDK codes, their usage, their attributes.
+    - See [Wed 17 Jan '24](#wed17jan)  
+<br>
+
+*back to [top](#top)* 
+<br>
+
+## ✏️ 📄 <a id="wed17jan">Wed 17 Jan '24</a>
+### Daily Report
+- Meeting with my talent coach
+- On LinkedIn, activated the feature that recruiters can see that I'm open for work.
+- Searching and testing out codes for creating VPC related resources.
+
+### Obstacles
+- Understanding CDK codes, their usage, their attributes.
+
+### Solutions
+- Understanding CDK codes, their usage, their attributes.
+    - Sources:
+        - ChatGPT
+        - [AWS CDK Python Reference](https://docs.aws.amazon.com/cdk/api/v2/python/)
+    - Used ChatGPT and other CDK-pyhton examples to give me an idea how the codes are used. These examples I also compared to the AWS CDK Python Reference to get a better understanding of how the parameters explanation compares to the actual code.  
 <br>
 
 *back to [top](#top)* 
