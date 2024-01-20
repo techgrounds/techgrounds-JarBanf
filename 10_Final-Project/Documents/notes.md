@@ -21,7 +21,3 @@
         - Enable DNS hostnames: default = on
         - Enable DNS resolution: default = on
 
-## VPC CDK choices and explanations
-### SubnetType
-source: [SubnetType](https://docs.aws.amazon.com/cdk/api/v2/python/aws_cdk.aws_ec2/SubnetType.html#subnettype)
-
