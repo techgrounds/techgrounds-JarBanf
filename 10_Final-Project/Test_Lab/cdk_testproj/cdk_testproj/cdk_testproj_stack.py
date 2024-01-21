@@ -20,18 +20,15 @@ class CdkTestprojStack(Stack):
         INTERNET_GATEWAY = 'internet-gateway'
         NAT_GATEWAY_A = 'nat-gateway-a'
         NAT_GATEWAY_B = 'nat-gateway-b'
-        NAT_GATEWAY_C = 'nat-gateway-c'
         
         REGION = 'eu-central-1'
         AZ_A = 'eu-central-1a'
         AZ_B = 'eu-central-1b'
-        AZ_C = 'eu-central-1c'
 
         
         #ELASTIC IPs VPC
         ELASTIC_IP_AZ_A = 'elastic-ip-az-a'
         ELASTIC_IP_AZ_B = 'elastic-ip-az-b'
-        ELASTIC_IP_AZ_C = 'elastic-ip-az-c'
 
 
         # ROUTE TABLES AZ A
@@ -108,7 +105,6 @@ class CdkTestprojStack(Stack):
 
         # Create Elastic IP AZ-b
 
-        # Create Elastic IP AZ-c
         
         # CREATE AND ATTACH INTERNET GATEWAY VPC
         # Create Internet Gateway
@@ -237,8 +233,6 @@ class CdkTestprojStack(Stack):
 
         # Create NAT Gateway AZ-b
 
-        # Create NAT Gateway AZ-c
-
 
         # CONNECT ROUTE TABLES TO GATEWAYS
         # Connect: Route Table Webserver to Internet Gateway AZ-a
@@ -311,11 +305,6 @@ class CdkTestprojStack(Stack):
             subnet_id=subnet_pub_admserv_a.ref
             )
 
-        # allow inbound traffic on port 80 (http)
-        
-        
-        # allow outbound traffic
-
         # NACL subnet workstations
         # create nacl
         nacl_sub_workst_a = ec2.NetworkAcl(self, NACL_SUB_WORKST_A_ID,
@@ -327,9 +316,3 @@ class CdkTestprojStack(Stack):
             network_acl_id=nacl_sub_workst_a.network_acl_id,
             subnet_id=subnet_priv_workst_a.ref
             )
-
-        # allow inbound traffic on port 80 (http)
-        
-        
-        # allow outbound traffic
-        
