@@ -6,6 +6,8 @@ Sorted by latest to oldest.
 
 ## Table of Contents
 - Week 2
+    - [Sun 21 Jan '24](#sun21jan)
+        - [ [SOLVED] I could not get a working code to associate NACL with subnet.](#i-could-not-get-a-working-code-to-associate-nacl-with-subnet)
     - [Sat 20 Jan '24](#sat20jan)
         - [ [SOLVED] Deploy process getting stuck when creating route between route table and nat gateway.](#deploy-process-getting-stuck-when-creating-route-between-route-table-and-nat-gateway
         )
@@ -34,6 +36,33 @@ Sorted by latest to oldest.
 
 *back to [top](#top)*  
 <br>
+
+## ✏️ 📄 <a id="sun21jan">Sun 21 Jan '24/a>
+### Daily Report
+- Created:
+    - NACLs for the 3 subnets in AZ a
+    - Association between NACLs and subnet
+
+### Obstacles
+- I could not get a working code to associate NACL with subnet.
+
+### Solutions
+- #### I could not get a working code to associate NACL with subnet.
+    - I was using the `.associate_with_subnet`-method to try and associate NACL with subnet. I could not get it to work. ChatGPT suggested I use `.CfnSubnetRouteTableAssociation`. This end up working.
+
+        Working code:
+
+        ```py
+        ec2.CfnSubnetNetworkAclAssociation(self, 'nacl-to-sub-webserv-a',
+            network_acl_id=nacl_sub_webserv_a.network_acl_id,
+            subnet_id=subnet_pub_webserv_a.ref
+            )
+        ```  
+<br>
+
+*back to [top](#top)*  
+<br>
+++++++++++
 
 ## ✏️ 📄 <a id="sat20jan">Sat 20 Jan '24</a>
 ### Daily Report
