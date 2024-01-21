@@ -55,26 +55,38 @@ class CdkTestprojStack(Stack):
 
 
         # SUBNETS AZ A
-        # subnet public webserver
+        # public subnet webserver
         PUB_SUB_WEBSERV_A_ID = 'public-subnet-webserver-a'
         PUB_SUB_WEBSERV_A_AZ = AZ_A
         PUB_SUB_WEBSERV_A_CIDR = '10.0.1.0/28'
         PUB_SUB_WEBSERV_A_IP_LAUNCH = True
         PUB_SUB_WEBSERV_A_RT_ID = PUB_RT_WEBSERV_A_ID
 
-        # subnet public adminserver
+        # public subnet adminserver
         PUB_SUB_ADMSERV_A_ID = 'public-subnet-adminserver-a'
         PUB_SUB_ADMSERV_A_AZ = AZ_A
         PUB_SUB_ADMSERV_A_CIDR = '10.0.1.16/28'
         PUB_SUB_ADMSERV_A_IP_LAUNCH = True
         PUB_SUB_ADMSERV_A_RT_ID  = PUB_RT_ADMSERV_A_ID
 
-        # subnet private workstations
+        # private subnet workstations
         PRIV_SUB_WORKST_A_ID = 'private-subnet-workstation-a'
         PRIV_SUB_WORKST_A_AZ = AZ_A
         PRIV_SUB_WORKST_A_CIDR = '10.0.1.64/26'
         PRIV_SUB_WORKST_A_IP_LAUNCH = False
         PRIV_SUB_WORKST_A_RT_ID  = PRIV_RT_WORKST_A_ID
+
+
+        # NACLs AZ A
+        # NACL subnet webserver
+        NACL_SUB_WEBSERV_A_ID = 'nacl-sub-webserv-a'
+
+        # NACL subnet adminbserver
+        NACL_SUB_ADMSERV_A_ID = 'nacl-sub-admserv-a'
+
+        # NACL subnet workstation
+        NACL_SUB_WORKST_A_ID = 'nacl-sub-workst-a'
+
 
         ##########################################
 
@@ -90,9 +102,9 @@ class CdkTestprojStack(Stack):
 
         # CREATE ELASTIC IPs VPC
         # Create Elastic IP AZ-a
-        # """
+        """
         elastic_ip_a = ec2.CfnEIP(self, ELASTIC_IP_AZ_A)
-        # """
+        """
 
         # Create Elastic IP AZ-b
 
@@ -212,7 +224,7 @@ class CdkTestprojStack(Stack):
 
         # CREATE NAT GATEWAYS IN VPC
         # Create NAT Gateway AZ-a
-        # """
+        """
         nat_gateway_a = ec2.CfnNatGateway(self, NAT_GATEWAY_A,
                                           allocation_id=elastic_ip_a.attr_allocation_id,
                                           subnet_id=subnet_pub_webserv_a.ref,
@@ -221,7 +233,7 @@ class CdkTestprojStack(Stack):
                                                 }],
                                           )
         nat_gateway_a.add_dependency(elastic_ip_a)
-        # """
+        """
 
         # Create NAT Gateway AZ-b
 
@@ -248,10 +260,76 @@ class CdkTestprojStack(Stack):
         #"""
 
         # Connect: Route Table Workstations to NAT Gateway AZ-a
-        # """
+        """
         route_rt_workst_to_natgw = ec2.CfnRoute(self, 'route-rt-workst-to-natgw',
                              route_table_id=cfn_rt_priv_workst_a.ref,
                              destination_cidr_block=PRIV_RT_WORKST_A_DEST_CIDR,
                              nat_gateway_id=nat_gateway_a.ref,
                              )
-        #"""
+        """
+
+
+        # CREATE, SET RULES & ASSOCIATE NACLs AZ-a
+        
+        # NACL subnet webserver
+        # create nacl
+        nacl_sub_webserv_a = ec2.NetworkAcl(self, NACL_SUB_WEBSERV_A_ID,
+            vpc=vpc
+            )
+
+        # associate NACL with subnet
+        ec2.CfnSubnetNetworkAclAssociation(self, 'nacl-to-sub-webserv-a',
+            network_acl_id=nacl_sub_webserv_a.network_acl_id,
+            subnet_id=subnet_pub_webserv_a.ref
+            )
+
+        # allow inbound traffic on port 80 (http)
+        nacl_sub_webserv_a.add_entry("InboundHTTP",
+            cidr=ec2.AclCidr.any_ipv4(),
+            rule_number=100,
+            traffic=ec2.AclTraffic.tcp_port(80),
+            direction=ec2.TrafficDirection.INGRESS
+            )
+        
+        # allow outbound traffic
+        nacl_sub_webserv_a.add_entry("OutboundAll",
+            cidr=ec2.AclCidr.any_ipv4(),
+            rule_number=100,
+            traffic=ec2.AclTraffic.all_traffic(),
+            direction=ec2.TrafficDirection.EGRESS
+            )
+        
+        # NACL subnet adminserver
+        # create nacl
+        nacl_sub_admserv_a = ec2.NetworkAcl(self, NACL_SUB_ADMSERV_A_ID,
+            vpc=vpc
+            )
+
+        # associate NACL with subnet
+        ec2.CfnSubnetNetworkAclAssociation(self, 'nacl-to-sub-admserv-a',
+            network_acl_id=nacl_sub_admserv_a.network_acl_id,
+            subnet_id=subnet_pub_admserv_a.ref
+            )
+
+        # allow inbound traffic on port 80 (http)
+        
+        
+        # allow outbound traffic
+
+        # NACL subnet workstations
+        # create nacl
+        nacl_sub_workst_a = ec2.NetworkAcl(self, NACL_SUB_WORKST_A_ID,
+            vpc=vpc
+            )
+
+        # associate NACL with subnet
+        ec2.CfnSubnetNetworkAclAssociation(self, 'nacl-to-sub-workst-a',
+            network_acl_id=nacl_sub_workst_a.network_acl_id,
+            subnet_id=subnet_priv_workst_a.ref
+            )
+
+        # allow inbound traffic on port 80 (http)
+        
+        
+        # allow outbound traffic
+        
