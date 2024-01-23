@@ -198,12 +198,21 @@ class CdkTestprojStack(Stack):
             return nacl
         
         # Code to allow NACL Inbound traffic
-        def allow_nacl_inbound(nacl, ):
-            nacl.add_entry("InboundHTTP",
-                cidr=ec2.AclCidr.any_ipv4(),
-                rule_number=100,
-                traffic=ec2.AclTraffic.tcp_port(80),
+        def allow_nacl_inbound(nacl, rule_name, cidr, rule_number, traffic):
+            nacl.add_entry(rule_name,
+                cidr=cidr,
+                rule_number=rule_number,
+                traffic=traffic,
                 direction=ec2.TrafficDirection.INGRESS
+                )
+            
+        # Code to allow NACL Outbound traffic
+        def allow_nacl_outbound(nacl, rule_name, cidr, rule_number, traffic):
+            nacl.add_entry(rule_name,
+                cidr=cidr,
+                rule_number=rule_number,
+                traffic=traffic,
+                direction=ec2.TrafficDirection.EGRESS
                 )
 
         ################################################################################################
@@ -214,7 +223,7 @@ class CdkTestprojStack(Stack):
         vpc_1 = create_vpc(VPC_1_ID, VPC_1_CIDR)
         
         # Create Elastic IP
-        eip_a = create_eip(ELASTIC_IP_AZ_A)
+        # eip_a = create_eip(ELASTIC_IP_AZ_A)
 
         # Create and attach Internet Gateway
         igw_1 = create_attach_igw(INTERNET_GATEWAY_1_ID, vpc_1.vpc_id)
@@ -235,15 +244,15 @@ class CdkTestprojStack(Stack):
         sub_priv_workst_a_w_rt = ass_sub_w_rt(sub_priv_workst_a.ref, rt_priv_workst_a.ref)
 
         # Create NAT Gateway
-        nat_gateway_a = create_nat_gateway(NAT_GATEWAY_A_ID, eip_a.attr_allocation_id, sub_pub_webserv_a.ref)
-        nat_gateway_a.add_dependency(eip_a)
+        # nat_gateway_a = create_nat_gateway(NAT_GATEWAY_A_ID, eip_a.attr_allocation_id, sub_pub_webserv_a.ref)
+        # nat_gateway_a.add_dependency(eip_a)
 
         # Associate Internet Gateway to Route Table
         igw_w_rt_pub_webserv_a = ass_igw_w_rt(rt_pub_webserv_a.ref, RT_PUB_WEBSERV_A_DEST_CIDR, igw_1.ref)
         igw_w_rt_pub_admserv_a = ass_igw_w_rt(rt_pub_admserv_a.ref, RT_PUB_ADMSERV_A_DEST_CIDR, igw_1.ref)
 
         # Associate NAT Gateway to Route Table
-        natgw_w_rt_priv_workst_a = ass_natgw_w_rt(rt_priv_workst_a.ref, RT_PRIV_WORKST_A_DEST_CIDR, nat_gateway_a.ref)
+        # natgw_w_rt_priv_workst_a = ass_natgw_w_rt(rt_priv_workst_a.ref, RT_PRIV_WORKST_A_DEST_CIDR, nat_gateway_a.ref)
 
         # Create & Associate NACL to Subnet
         nacl_pub_webserv_a = create_ass_nacl_w_sub(NACL_SUB_WEBSERV_A_ID, vpc_1, sub_pub_webserv_a.ref)
@@ -251,39 +260,7 @@ class CdkTestprojStack(Stack):
         nacl_priv_workst_a = create_ass_nacl_w_sub(NACL_SUB_WORKST_A_ID, vpc_1, sub_priv_workst_a.ref)
 
         # Allow NACL Inbound traffic
+        nacl_inb_webserv_a = allow_nacl_inbound(nacl_pub_webserv_a, "InboundHTTP", ec2.AclCidr.any_ipv4(), 100, ec2.AclTraffic.tcp_port(80))
 
-
-
-        ################################################################################################
-
-
-        # CREATE, SET RULES & ASSOCIATE NACLs AZ-a
-        
-        # NACL subnet webserver
-        # create nacl
-        # nacl_sub_webserv_a = ec2.NetworkAcl(self, NACL_SUB_WEBSERV_A_ID,
-        #     vpc=vpc
-        #     )
-
-        # associate NACL with subnet
-        # ec2.CfnSubnetNetworkAclAssociation(self, 'nacl-to-sub-webserv-a',
-        #     network_acl_id=nacl_sub_webserv_a.network_acl_id,
-        #     subnet_id=subnet_pub_webserv_a.ref
-        #     )
-
-        # allow inbound traffic on port 80 (http)
-        # nacl_sub_webserv_a.add_entry("InboundHTTP",
-        #     cidr=ec2.AclCidr.any_ipv4(),
-        #     rule_number=100,
-        #     traffic=ec2.AclTraffic.tcp_port(80),
-        #     direction=ec2.TrafficDirection.INGRESS
-        #     )
-        
-        # allow outbound traffic
-        # nacl_sub_webserv_a.add_entry("OutboundAll",
-        #     cidr=ec2.AclCidr.any_ipv4(),
-        #     rule_number=100,
-        #     traffic=ec2.AclTraffic.all_traffic(),
-        #     direction=ec2.TrafficDirection.EGRESS
-        #     )
-
+        # Allow NACL Outbound traffic
+        nacl_outb_webserv_a = allow_nacl_outbound(nacl_pub_webserv_a, "OutboundAll", ec2.AclCidr.any_ipv4(), 100, ec2.AclTraffic.all_traffic())
