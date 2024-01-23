@@ -68,7 +68,6 @@ NACL_SUB_ADMSERV_A_ID = 'nacl-sub-admserv-a'
 NACL_SUB_WORKST_A_ID = 'nacl-sub-workst-a'
 
 
-# class CdkTestprojStack(Stack):
 class CdkTestprojStackNetwork(Stack):
 
     def __init__(self, scope: Construct, construct_id: str, **kwargs) -> None:

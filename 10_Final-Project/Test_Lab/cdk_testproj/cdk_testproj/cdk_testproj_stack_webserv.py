@@ -17,8 +17,17 @@ class CdkTestprojStackWebserv(Stack):
         # STANDARD CODES
         
 
+
         ################################################################################################
 
 
         # INITIATE STANDARD CODES
+
+
+
+        # PER RESOURCE CODE
+
+        # instance_1 = ec2.Instance(self, "Instance-1",
+        #     vpc=
+        #     )
 
