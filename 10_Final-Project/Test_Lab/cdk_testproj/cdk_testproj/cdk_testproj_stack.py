@@ -27,20 +27,14 @@ ELASTIC_IP_AZ_A = 'elastic-ip-az-a'
 # public route table webserver
 RT_PUB_WEBSERV_A_ID = 'route-table-public-webserver-a'
 RT_PUB_WEBSERV_A_DEST_CIDR = '0.0.0.0/0'
-# RT_PUB_WEBSERV_A_GW = INTERNET_GATEWAY_1_ID
-# RT_PUB_WEBSERV_A_RT = ec2.RouterType.GATEWAY
 
 # public route table adminserver
 RT_PUB_ADMSERV_A_ID = 'route-table-public-adminserver-a'
 RT_PUB_ADMSERV_A_DEST_CIDR = '0.0.0.0/0'
-# RT_PUB_ADMSERV_A_GW = INTERNET_GATEWAY_1_ID
-# RT_PUB_ADMSERV_A_RT = ec2.RouterType.GATEWAY
 
 # private route table workstations
 RT_PRIV_WORKST_A_ID = 'route-table-private-workstations-a'
 RT_PRIV_WORKST_A_DEST_CIDR = '0.0.0.0/0'
-# RT_PRIV_WORKST_A_GW = NAT_GATEWAY_A
-# RT_PRIV_WORKST_A_RT = ec2.RouterType.NAT_GATEWAY
 
 
 # SUBNETS AZ A
@@ -49,21 +43,18 @@ SUB_PUB_WEBSERV_A_ID = 'subnet-public-webserver-a'
 SUB_PUB_WEBSERV_A_CIDR = '10.0.1.0/28'
 SUB_PUB_WEBSERV_A_AZ = AZ_A
 SUB_PUB_WEBSERV_A_IP_LAUNCH = True
-# SUB_PUB_WEBSERV_A_RT_ID = RT_PUB_WEBSERV_A_ID
 
 # public subnet adminserver
 SUB_PUB_ADMSERV_A_ID = 'subnet-public-adminserver-a'
 SUB_PUB_ADMSERV_A_CIDR = '10.0.1.16/28'
 SUB_PUB_ADMSERV_A_AZ = AZ_A
 SUB_PUB_ADMSERV_A_IP_LAUNCH = True
-# PUB_SUB_ADMSERV_A_RT_ID  = PUB_RT_ADMSERV_A_ID
 
 # private subnet workstations
 SUB_PRIV_WORKST_A_ID = 'subnet-private-workstation-a'
 SUB_PRIV_WORKST_A_CIDR = '10.0.1.64/26'
 SUB_PRIV_WORKST_A_AZ = AZ_A
 SUB_PRIV_WORKST_A_IP_LAUNCH = False
-# PRIV_SUB_WORKST_A_RT_ID  = PRIV_RT_WORKST_A_ID
 
 
 # NACLs AZ A
