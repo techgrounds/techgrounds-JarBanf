@@ -21,3 +21,16 @@
         - Enable DNS hostnames: default = on
         - Enable DNS resolution: default = on
 
+## Instance
+- Name
+- AMI
+- Instance Type
+- Key Pair name
+- Network Settings
+    - VPC
+    - Subnet
+    - Auto-assign public IP
+    - Firewall (security group)
+- Configure Storage
+    - Root volume
+    - EBS volume

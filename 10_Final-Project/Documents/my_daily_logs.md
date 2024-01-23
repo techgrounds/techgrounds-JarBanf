@@ -5,6 +5,9 @@ Sorted by latest to oldest.
 <br>
 
 ## Table of Contents
+- Week 3
+    - [Tue 23 Jan '24](#tue23jan)
+    - [Mon 22 Jan '24](#mon22jan)
 - Week 2
     - [Sun 21 Jan '24](#sun21jan)
         - [ [SOLVED] I could not get a working code to associate NACL with subnet.](#i-could-not-get-a-working-code-to-associate-nacl-with-subnet)
@@ -32,6 +35,40 @@ Sorted by latest to oldest.
     - [Mon 08 Jan '24](#mon08jan)
         - [Watched an introduction video about Jira.](#watched-an-introduction-video-about-jira)
 - [Log template](#log-template)  
+<br>
+
+*back to [top](#top)*  
+<br>
+
+## ✏️ 📄 <a id="tue23jan">Tue 23 Jan '24</a>
+### Daily Report
+- ...
+
+### Obstacles
+- ...
+
+### Solutions
+- ...
+
+### Learnings
+- ...  
+<br>
+
+*back to [top](#top)*  
+<br>
+
+## ✏️ 📄 <a id="mon22jan">Mon 22 Jan '24</a>
+### Daily Report
+- ...
+
+### Obstacles
+- ...
+
+### Solutions
+- ...
+
+### Learnings
+- ...  
 <br>
 
 *back to [top](#top)*  
