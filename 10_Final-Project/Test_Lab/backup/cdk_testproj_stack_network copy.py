@@ -2,7 +2,6 @@ from constructs import Construct
 from aws_cdk import (
     Stack,
     aws_ec2 as ec2,
-    CfnOutput,
 )
 
 
@@ -120,37 +119,6 @@ class CdkTestprojStackNetwork(Stack):
 
         # Allow NACL Outbound traffic
         self.nacl_outb_webserv_a = self.allow_nacl_outbound(self.nacl_pub_webserv_a, "OutboundAll", ec2.AclCidr.any_ipv4(), 100, ec2.AclTraffic.all_traffic())
-
-
-        # Output to Stack Main
-        CfnOutput(self, "OutputVPC1", value=self.vpc_1.vpc_id, export_name="OutputVPC1")
-
-
-        # Create Security Group for Webserver
-        self.sg_webserver = ec2.SecurityGroup(self, "sg-webserver",
-            vpc=self.vpc_1,
-            description="Security Group Webserver"
-            )
-        
-        # Allow SG inbound http traffic
-        self.sg_webserver.add_ingress_rule(
-            peer=ec2.Peer.ipv4("0.0.0.0/0"),
-            connection=ec2.Port.tcp(80),
-            description="Allow HTTP traffic",
-        )
-        
-        # Create Webserver Instance
-        # self.existing_sub_webserv_id = self.sub_pub_webserv_a.ref
-        # self.existing_sub_webserv = ec2.Subnet.from_subnet_attributes(self, SUB_PUB_WEBSERV_A_ID, subnet_id=self.existing_sub_webserv_id)
-        # self.instance_webserver = ec2.Instance(self, "instance-webserver",
-        #     vpc=self.vpc_1,
-        #     availability_zone=AZ_A,
-        #     instance_type=ec2.InstanceType.of(ec2.InstanceClass.T2, ec2.InstanceSize.MICRO),
-        #     machine_image=ec2.AmazonLinuxImage(generation=ec2.AmazonLinuxGeneration.AMAZON_LINUX_2023),
-        #     vpc_subnets=ec2.SubnetSelection(subnets=[self.existing_sub_webserv]),
-        #     security_group=self.sg_webserver,
-            # associate_public_ip_address=True
-            # )
 
 
     ################################################################################################

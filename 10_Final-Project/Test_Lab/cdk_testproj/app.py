@@ -2,15 +2,11 @@
 
 import aws_cdk as cdk
 
-from cdk_testproj.cdk_testproj_stack_network import CdkTestprojStackNetwork
-from cdk_testproj.cdk_testproj_stack_webserv import CdkTestprojStackWebserv
+from cdk_testproj.cdk_testproj_stack_main import CdkTestprojStackMain
 
 
 app = cdk.App()
 
-deploy_network = CdkTestprojStackNetwork(app, "CdkTestprojStackNetwork")
-
-deploy_webserv = CdkTestprojStackWebserv(app, "CdkTestprojStackWebserv")
-deploy_webserv.add_dependency(deploy_network)
+CdkTestprojStackMain(app, "stack-main")
 
 app.synth()
