@@ -6,6 +6,9 @@ Sorted by latest to oldest.
 
 ## Table of Contents
 - Week 3
+    - [Thu 25 Jan '24](#thu25jan)
+        - [ [SOLVED] My "create instance" code does not recognize my VPC and Subnets](#my-create-instance-code-does-not-recognize-my-vpc-and-subnets)
+        - [ [SOLVED] Using `from_lookup()` does not work](#using-from_lookup-does-not-work)
     - [Tue 23 Jan '24](#tue23jan)
     - [Mon 22 Jan '24](#mon22jan)
 - Week 2
@@ -38,6 +41,102 @@ Sorted by latest to oldest.
 <br>
 
 *back to [top](#top)*  
+<br>
+
+## ✏️ 📄 <a id="thu25jan">Thu 25 Jan '24</a>
+### Daily Report
+- ...
+
+### Obstacles
+- My "create instance" code does not recognize my VPC and Subnets.
+    - 
+
+- Using `from_lookup()` does not work.
+    - Error: `RuntimeError: Error: Cannot retrieve value from context provider vpc-provider since account/region are not specified at the stack level. Configure "env" with an account and region when you define your stack.See https://docs.aws.amazon.com/cdk/latest/guide/environments.html for more details.`
+
+### Solutions
+- #### My "create instance" code does not recognize my VPC and Subnets.
+    - sources:
+        - [VPC Static Methods from_lookup()](https://docs.aws.amazon.com/cdk/api/v2/python/aws_cdk.aws_ec2/Vpc.html#aws_cdk.aws_ec2.Vpc.from_lookup)
+    - I stopped reffering to the vpc directly in my code. Instead I used `from_lookup()` to look up the created/running VPC in my cloud environment. And use that information to pass it on to the "create instance" code.
+
+        My NOT-working code looked like this:
+
+        ```py
+
+        # Create VPC
+        self.vpc_1 = ...code to create a vpc without subnets...
+
+        # Create Subnet
+        self.subnet_webserver = ...code to create a public subnet...
+
+        # Create Webserver Instance
+        self.instance_webserver = ec2.Instance(self, "instance-webserver",
+            vpc=self.vpc_1, # referring to my vpc in my code
+            availability_zone=AZ_A,
+            instance_type=ec2.InstanceType.of(ec2.InstanceClass.T2, ec2.InstanceSize.MICRO),
+            machine_image=ec2.AmazonLinuxImage(generation=ec2.AmazonLinuxGeneration.AMAZON_LINUX_2023),
+            vpc_subnets=ec2.SubnetSelection(subnet_type=ec2.SubnetType.PUBLIC), # this code looks for a public subnet in my vpc
+            security_group=self.sg_webserver,
+            associate_public_ip_address=True
+            )
+        ```
+
+        My WORKING code is now this:
+
+        ```py
+        
+        ```
+        
+ - #### Using `from_lookup()` does not work.
+    - Error: `RuntimeError: Error: Cannot retrieve value from context provider vpc-provider since account/region are not specified at the stack level. Configure "env" with an account and region when you define your stack.See https://docs.aws.amazon.com/cdk/latest/guide/environments.html for more details.`
+    - Sources:
+        - [Environments](https://docs.aws.amazon.com/cdk/v2/guide/environments.html)
+        - [Vpc.fromLookup can't determine region](https://github.com/aws/aws-cdk/issues/4846)
+    - Needed to add `env={'region': 'my-region', 'account': 'my-account'}` to `stack_network = CdkTestprojStackNetwork(self, "stack-network",)` in my `StackMain`.
+
+        Now it works :).
+        ```py
+        from constructs import Construct
+        from aws_cdk import (
+            Stack,
+            aws_ec2 as ec2,
+        )
+
+        from cdk_testproj.cdk_testproj_stack_network import CdkTestprojStackNetwork
+        from cdk_testproj.cdk_testproj_stack_webserv import CdkTestprojStackWebserv
+
+
+        class CdkTestprojStackMain(Stack):
+
+            def __init__(self, scope: Construct, construct_id: str, **kwargs) -> None:
+                super().__init__(scope, construct_id, **kwargs)
+
+                stack_network = CdkTestprojStackNetwork(self, "stack-network", 
+                    env={'region': 'eu-central-1', 'account': '908959576754'} # Needed so .from_lookup() can work.
+                    )
+
+                stack_webserver = CdkTestprojStackWebserv(self, "stack-webserver")
+                
+                stack_webserver.add_dependency(stack_network)
+        ```
+
+### Learnings
+- ...  
+<br>
+
+## ✏️ 📄 <a id="wed24jan">Wed 24 Jan '24</a>
+### Daily Report
+- ...
+
+### Obstacles
+- My "create instance" code does not recognize my subnet in my VPC.
+
+### Solutions
+- ...
+
+### Learnings
+- ...  
 <br>
 
 ## ✏️ 📄 <a id="tue23jan">Tue 23 Jan '24</a>

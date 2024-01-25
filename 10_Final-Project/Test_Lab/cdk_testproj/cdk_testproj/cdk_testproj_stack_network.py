@@ -3,6 +3,7 @@ from aws_cdk import (
     Stack,
     aws_ec2 as ec2,
     CfnOutput,
+    Tag
 )
 
 
@@ -43,18 +44,21 @@ RT_PRIV_WORKST_A_DEST_CIDR = '0.0.0.0/0'
 SUB_PUB_WEBSERV_A_ID = 'subnet-public-webserver-a'
 SUB_PUB_WEBSERV_A_CIDR = '10.0.1.0/28'
 SUB_PUB_WEBSERV_A_AZ = AZ_A
+SUB_PUB_WEBSERV_A_TYPE = "Public"
 SUB_PUB_WEBSERV_A_IP_LAUNCH = True
 
 # public subnet adminserver
 SUB_PUB_ADMSERV_A_ID = 'subnet-public-adminserver-a'
 SUB_PUB_ADMSERV_A_CIDR = '10.0.1.16/28'
 SUB_PUB_ADMSERV_A_AZ = AZ_A
+SUB_PUB_ADMSERV_A_TYPE = "Public"
 SUB_PUB_ADMSERV_A_IP_LAUNCH = True
 
 # private subnet workstations
 SUB_PRIV_WORKST_A_ID = 'subnet-private-workstation-a'
 SUB_PRIV_WORKST_A_CIDR = '10.0.1.64/26'
 SUB_PRIV_WORKST_A_AZ = AZ_A
+SUB_PRIV_WORKST_A_TYPE = "Private"
 SUB_PRIV_WORKST_A_IP_LAUNCH = False
 
 
@@ -73,7 +77,7 @@ class CdkTestprojStackNetwork(Stack):
     
     def __init__(self, scope: Construct, construct_id: str, **kwargs) -> None:
         super().__init__(scope, construct_id, **kwargs)
-
+        
         # INITIATE STANDARD CODES
         # Create VPC
         self.vpc_1 = self.create_vpc(VPC_1_ID, VPC_1_CIDR)
@@ -90,9 +94,9 @@ class CdkTestprojStackNetwork(Stack):
         self.rt_priv_workst_a = self.create_route_table(RT_PRIV_WORKST_A_ID, self.vpc_1.vpc_id)
 
         # # Create Subnets
-        self.sub_pub_webserv_a = self.create_subnet(SUB_PUB_WEBSERV_A_ID, self.vpc_1.vpc_id, SUB_PUB_WEBSERV_A_CIDR, SUB_PUB_WEBSERV_A_AZ, SUB_PUB_WEBSERV_A_IP_LAUNCH)
-        self.sub_pub_admserv_a = self.create_subnet(SUB_PUB_ADMSERV_A_ID, self.vpc_1.vpc_id, SUB_PUB_ADMSERV_A_CIDR, SUB_PUB_ADMSERV_A_AZ, SUB_PUB_ADMSERV_A_IP_LAUNCH)
-        self.sub_priv_workst_a = self.create_subnet(SUB_PRIV_WORKST_A_ID, self.vpc_1.vpc_id, SUB_PRIV_WORKST_A_CIDR, SUB_PRIV_WORKST_A_AZ, SUB_PRIV_WORKST_A_IP_LAUNCH)
+        self.sub_pub_webserv_a = self.create_subnet(SUB_PUB_WEBSERV_A_ID, self.vpc_1.vpc_id, SUB_PUB_WEBSERV_A_CIDR, SUB_PUB_WEBSERV_A_AZ, SUB_PUB_WEBSERV_A_TYPE, SUB_PUB_WEBSERV_A_IP_LAUNCH)
+        self.sub_pub_admserv_a = self.create_subnet(SUB_PUB_ADMSERV_A_ID, self.vpc_1.vpc_id, SUB_PUB_ADMSERV_A_CIDR, SUB_PUB_ADMSERV_A_AZ, SUB_PUB_ADMSERV_A_TYPE, SUB_PUB_ADMSERV_A_IP_LAUNCH)
+        self.sub_priv_workst_a = self.create_subnet(SUB_PRIV_WORKST_A_ID, self.vpc_1.vpc_id, SUB_PRIV_WORKST_A_CIDR, SUB_PRIV_WORKST_A_AZ, SUB_PRIV_WORKST_A_TYPE, SUB_PRIV_WORKST_A_IP_LAUNCH)
 
         # # Associate Subnet with Route Table
         self.sub_pub_webserv_a_w_rt = self.ass_sub_w_rt(self.sub_pub_webserv_a.ref, self.rt_pub_webserv_a.ref)
@@ -105,15 +109,15 @@ class CdkTestprojStackNetwork(Stack):
 
         # # Associate Internet Gateway to Route Table
         self.igw_w_rt_pub_webserv_a = self.ass_igw_w_rt(self.rt_pub_webserv_a.ref, RT_PUB_WEBSERV_A_DEST_CIDR, self.igw_1.ref)
-        self.igw_w_rt_pub_admserv_a = self.ass_igw_w_rt(self.rt_pub_admserv_a.ref, RT_PUB_ADMSERV_A_DEST_CIDR, self.igw_1.ref)
+        # self.igw_w_rt_pub_admserv_a = self.ass_igw_w_rt(self.rt_pub_admserv_a.ref, RT_PUB_ADMSERV_A_DEST_CIDR, self.igw_1.ref)
 
         # Associate NAT Gateway to Route Table
         # self.natgw_w_rt_priv_workst_a = self.ass_natgw_w_rt(self.rt_priv_workst_a.ref, RT_PRIV_WORKST_A_DEST_CIDR, self.nat_gateway_a.ref)
 
         # Create & Associate NACL to Subnet
         self.nacl_pub_webserv_a = self.create_ass_nacl_w_sub(NACL_SUB_WEBSERV_A_ID, self.vpc_1, self.sub_pub_webserv_a.ref)
-        self.nacl_pub_admserv_a = self.create_ass_nacl_w_sub(NACL_SUB_ADMSERV_A_ID, self.vpc_1, self.sub_pub_admserv_a.ref)
-        self.nacl_priv_workst_a = self.create_ass_nacl_w_sub(NACL_SUB_WORKST_A_ID, self.vpc_1, self.sub_priv_workst_a.ref)
+        # self.nacl_pub_admserv_a = self.create_ass_nacl_w_sub(NACL_SUB_ADMSERV_A_ID, self.vpc_1, self.sub_pub_admserv_a.ref)
+        # self.nacl_priv_workst_a = self.create_ass_nacl_w_sub(NACL_SUB_WORKST_A_ID, self.vpc_1, self.sub_priv_workst_a.ref)
 
         # Allow NACL Inbound traffic
         self.nacl_inb_webserv_a = self.allow_nacl_inbound(self.nacl_pub_webserv_a, "InboundHTTP", ec2.AclCidr.any_ipv4(), 100, ec2.AclTraffic.tcp_port(80))
@@ -139,18 +143,34 @@ class CdkTestprojStackNetwork(Stack):
             description="Allow HTTP traffic",
         )
         
+        # Lookup existing VPC
+        self.existing_customer_vpc = ec2.Vpc.from_lookup(self, "existing-customer-vpc", vpc_name=VPC_1_ID)
+
+        # Lookup existing Subnet webserver
+        # self.existing_subnet_webserver = ec2.Subnet.from_subnet_id(self, 'existing-subnet-webserver', subnet_id=self.sub_pub_webserv_a.ref)
+        # self.existing_subnet_webserver = ec2.SubnetFilter.availability_zones([AZ_A])
+        self.existing_subnet_webserver = self.existing_customer_vpc.select_subnets(subnet_type=ec2.SubnetType.PUBLIC)
+
         # Create Webserver Instance
-        # self.existing_sub_webserv_id = self.sub_pub_webserv_a.ref
-        # self.existing_sub_webserv = ec2.Subnet.from_subnet_attributes(self, SUB_PUB_WEBSERV_A_ID, subnet_id=self.existing_sub_webserv_id)
+        self.instance_webserver = ec2.Instance(self, "instance-webserver",
+            vpc=self.existing_customer_vpc,
+            availability_zone=AZ_A,
+            instance_type=ec2.InstanceType.of(ec2.InstanceClass.T2, ec2.InstanceSize.MICRO),
+            machine_image=ec2.AmazonLinuxImage(generation=ec2.AmazonLinuxGeneration.AMAZON_LINUX_2023),
+            vpc_subnets=ec2.SubnetSelection(subnet_type=ec2.SubnetType.PUBLIC),
+            security_group=self.sg_webserver,
+            associate_public_ip_address=True
+            )
+        
         # self.instance_webserver = ec2.Instance(self, "instance-webserver",
-        #     vpc=self.vpc_1,
+        #     vpc=self.existing_customer_vpc,
         #     availability_zone=AZ_A,
         #     instance_type=ec2.InstanceType.of(ec2.InstanceClass.T2, ec2.InstanceSize.MICRO),
         #     machine_image=ec2.AmazonLinuxImage(generation=ec2.AmazonLinuxGeneration.AMAZON_LINUX_2023),
-        #     vpc_subnets=ec2.SubnetSelection(subnets=[self.existing_sub_webserv]),
+        #     vpc_subnets=ec2.SubnetSelection(subnets=([self.sub_pub_webserv_a])),
         #     security_group=self.sg_webserver,
-            # associate_public_ip_address=True
-            # )
+        #     # associate_public_ip_address=True
+        #     )
 
 
     ################################################################################################
@@ -202,14 +222,15 @@ class CdkTestprojStackNetwork(Stack):
         return route_table
         
     # Code to create Subnet
-    def create_subnet(self, subnet_id, vpc_id, subnet_cidr, subnet_az, subnet_ip_launch):
+    def create_subnet(self, subnet_id, vpc_id, subnet_cidr, subnet_az, subnet_type, subnet_ip_launch):
         subnet = ec2.CfnSubnet(self, subnet_id,
             vpc_id=vpc_id,
             cidr_block=subnet_cidr,
             availability_zone=subnet_az,
             tags=[{'key': 'Name', 
                 'value': subnet_id
-                }],
+                },{'key': 'aws-cdk:subnet-type', 
+                'value': subnet_type}],
             map_public_ip_on_launch=subnet_ip_launch
             )
         return subnet
@@ -288,4 +309,3 @@ class CdkTestprojStackNetwork(Stack):
             traffic=traffic,
             direction=ec2.TrafficDirection.EGRESS
             )
-        

@@ -13,7 +13,9 @@ class CdkTestprojStackMain(Stack):
     def __init__(self, scope: Construct, construct_id: str, **kwargs) -> None:
         super().__init__(scope, construct_id, **kwargs)
 
-        stack_network = CdkTestprojStackNetwork(self, "stack-network")
+        stack_network = CdkTestprojStackNetwork(self, "stack-network", 
+            env={'region': 'eu-central-1', 'account': '908959576754'} # Needed so .from_lookup() can work.
+            )
 
         stack_webserver = CdkTestprojStackWebserv(self, "stack-webserver")
         
