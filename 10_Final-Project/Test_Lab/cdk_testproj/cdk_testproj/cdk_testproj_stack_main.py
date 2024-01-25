@@ -18,5 +18,4 @@ class CdkTestprojStackMain(Stack):
             )
 
         stack_webserver = CdkTestprojStackWebserv(self, "stack-webserver")
-        
         stack_webserver.add_dependency(stack_network)

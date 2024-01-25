@@ -116,8 +116,8 @@ class CdkTestprojStackNetwork(Stack):
 
         # Create & Associate NACL to Subnet
         self.nacl_pub_webserv_a = self.create_ass_nacl_w_sub(NACL_SUB_WEBSERV_A_ID, self.vpc_1, self.sub_pub_webserv_a.ref)
-        # self.nacl_pub_admserv_a = self.create_ass_nacl_w_sub(NACL_SUB_ADMSERV_A_ID, self.vpc_1, self.sub_pub_admserv_a.ref)
-        # self.nacl_priv_workst_a = self.create_ass_nacl_w_sub(NACL_SUB_WORKST_A_ID, self.vpc_1, self.sub_priv_workst_a.ref)
+        self.nacl_pub_admserv_a = self.create_ass_nacl_w_sub(NACL_SUB_ADMSERV_A_ID, self.vpc_1, self.sub_pub_admserv_a.ref)
+        self.nacl_priv_workst_a = self.create_ass_nacl_w_sub(NACL_SUB_WORKST_A_ID, self.vpc_1, self.sub_priv_workst_a.ref)
 
         # Allow NACL Inbound traffic
         self.nacl_inb_webserv_a = self.allow_nacl_inbound(self.nacl_pub_webserv_a, "InboundHTTP", ec2.AclCidr.any_ipv4(), 100, ec2.AclTraffic.tcp_port(80))
@@ -145,6 +145,7 @@ class CdkTestprojStackNetwork(Stack):
         
         # Lookup existing VPC
         self.existing_customer_vpc = ec2.Vpc.from_lookup(self, "existing-customer-vpc", vpc_name=VPC_1_ID)
+ 
 
         # Lookup existing Subnet webserver
         # self.existing_subnet_webserver = ec2.Subnet.from_subnet_id(self, 'existing-subnet-webserver', subnet_id=self.sub_pub_webserv_a.ref)
@@ -161,7 +162,7 @@ class CdkTestprojStackNetwork(Stack):
             security_group=self.sg_webserver,
             associate_public_ip_address=True
             )
-        
+          
         # self.instance_webserver = ec2.Instance(self, "instance-webserver",
         #     vpc=self.existing_customer_vpc,
         #     availability_zone=AZ_A,
