@@ -83,7 +83,7 @@ class CdkTestprojStackNetwork(Stack):
         self.vpc_1 = self.create_vpc(VPC_1_ID, VPC_1_CIDR)
 
         # Create Elastic IP
-        # self.eip_a = self.create_eip(ELASTIC_IP_AZ_A)
+        self.eip_a = self.create_eip(ELASTIC_IP_AZ_A)
 
         # Create and attach Internet Gateway
         self.igw_1 = self.create_attach_igw(INTERNET_GATEWAY_1_ID, self.vpc_1.vpc_id)
@@ -104,15 +104,15 @@ class CdkTestprojStackNetwork(Stack):
         self.sub_priv_workst_a_w_rt = self.ass_sub_w_rt(self.sub_priv_workst_a.ref, self.rt_priv_workst_a.ref)
 
         # # Create NAT Gateway
-        # self.nat_gateway_a = self.create_nat_gateway(NAT_GATEWAY_A_ID, self.eip_a.attr_allocation_id, self.sub_pub_webserv_a.ref)
-        # self.nat_gateway_a.add_dependency(self.eip_a)
+        self.nat_gateway_a = self.create_nat_gateway(NAT_GATEWAY_A_ID, self.eip_a.attr_allocation_id, self.sub_pub_webserv_a.ref)
+        self.nat_gateway_a.add_dependency(self.eip_a)
 
         # # Associate Internet Gateway to Route Table
         self.igw_w_rt_pub_webserv_a = self.ass_igw_w_rt(self.rt_pub_webserv_a.ref, RT_PUB_WEBSERV_A_DEST_CIDR, self.igw_1.ref)
         # self.igw_w_rt_pub_admserv_a = self.ass_igw_w_rt(self.rt_pub_admserv_a.ref, RT_PUB_ADMSERV_A_DEST_CIDR, self.igw_1.ref)
 
         # Associate NAT Gateway to Route Table
-        # self.natgw_w_rt_priv_workst_a = self.ass_natgw_w_rt(self.rt_priv_workst_a.ref, RT_PRIV_WORKST_A_DEST_CIDR, self.nat_gateway_a.ref)
+        self.natgw_w_rt_priv_workst_a = self.ass_natgw_w_rt(self.rt_priv_workst_a.ref, RT_PRIV_WORKST_A_DEST_CIDR, self.nat_gateway_a.ref)
 
         # Create & Associate NACL to Subnet
         self.nacl_pub_webserv_a = self.create_ass_nacl_w_sub(NACL_SUB_WEBSERV_A_ID, self.vpc_1, self.sub_pub_webserv_a.ref)

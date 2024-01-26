@@ -27,7 +27,7 @@ This checklist is based on the Deliverables in the chapter [Epics & User Stories
 - 🚧 3. An overview of all services that will be used.  
 
 ### Presentation V1.0 progress --> 26 Jan '24
-- ➖ A 10-minute presentation / demonstration of my progress on app V1.0.
+- 🚧 A 10-minute presentation / demonstration of my progress on app V1.0.
 
 ### V1.0, deadline --> 02 Feb '24
 - 🚧 1. IaC code for the network and all components.
@@ -42,10 +42,10 @@ This checklist is based on the Deliverables in the chapter [Epics & User Stories
     - 🚧 NACL rules
 - 🚧 2. IaC code for a web server and all supplies.
     - ➖ Key Pair ?
-    - ➖ Security Group
-    - ➖ Instance
+    - 🍔 Security Group
+    - 🚧 Instance
     - ➖ EBS volume
-    - ➖ User data
+    - 🚧 User data
         - ➖ as a file??
     - ➖ Security Group rules update
     - ➖ NACL rules update
