@@ -116,7 +116,7 @@ I will be referring to [Appendix 1: Provided non-definite Architecture Design](#
 
 - **Only 1 region**: In the provided architecture design, the solutions architect chose to implement 2 regions. I can’t find a reason why this is necessary. I will adjust the design and use only 1 region.
 - **No VPC Peering**: Because I will use only one region, I will be deploying the resources in only 1 VPC as well. This eliminates the need for VPC Peering.
-- **Private subnets**: In the provided architecture design, there is no private subnet. I will be creating private subnets where the future workstation will be placed & where private servers (AD, and the like) can be placed.
+- **Private subnets**: In the provided architecture design, there is no private subnet. I will be creating private subnets where the future workstation can be placed.
 - **NAT gateway**: A NAT gateway will be needed to provide internet access to the workstation-private-subnet and the server-private-subnet via the admin-public-subnet. The admin-public-subnet is where the admin server will pe placed.  
 <br>
 
