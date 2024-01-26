@@ -125,12 +125,9 @@ class CdkTestprojStackNetwork(Stack):
         # Allow NACL Outbound traffic
         self.nacl_outb_webserv_a = self.allow_nacl_outbound(self.nacl_pub_webserv_a, "OutboundAll", ec2.AclCidr.any_ipv4(), 100, ec2.AclTraffic.all_traffic())
 
+
         # Output to Stack Main
         # self.output_vpc_1_id = CfnOutput(self, "OutputVPC1", value=self.vpc_1.vpc_id, export_name="OutputVPC1")
-
-
-        ################################################################################################
-
 
         # # Create Security Group for Webserver
         self.sg_webserver = ec2.SecurityGroup(self, "sg-webserver",
@@ -154,11 +151,7 @@ class CdkTestprojStackNetwork(Stack):
         # self.existing_subnet_webserver = ec2.SubnetFilter.availability_zones([AZ_A])
         # self.existing_subnet_webserver = self.existing_customer_vpc.select_subnets(subnet_type=ec2.SubnetType.PUBLIC)
 
-        # Import User Data for Webserver
-        with open("./user_data/user_data_webs.sh") as f:
-            self.user_data_webs = f.read()
-
-        # Create Webserver
+        # Create Webserver Instance
         self.instance_webserver = ec2.Instance(self, "instance-webserver",
             vpc=self.existing_customer_vpc,
             availability_zone=AZ_A,
@@ -166,11 +159,8 @@ class CdkTestprojStackNetwork(Stack):
             machine_image=ec2.AmazonLinuxImage(generation=ec2.AmazonLinuxGeneration.AMAZON_LINUX_2023),
             vpc_subnets=ec2.SubnetSelection(subnet_type=ec2.SubnetType.PUBLIC),
             security_group=self.sg_webserver,
-            associate_public_ip_address=True,
-            user_data=ec2.UserData.custom(self.user_data_webs)
+            associate_public_ip_address=True
             )
-        
-
 
 
     ################################################################################################
