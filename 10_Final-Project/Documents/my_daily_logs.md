@@ -9,8 +9,7 @@ Sorted by latest to oldest.
     - [Thu 25 Jan '24](#thu25jan)
         - [ [SOLVED] My "create instance" code does not recognize my VPC and Subnets](#my-create-instance-code-does-not-recognize-my-vpc-and-subnets)
         - [ [SOLVED] Using `from_lookup()` does not work](#using-from_lookup-does-not-work)
-    - [Tue 23 Jan '24](#tue23jan)
-    - [Mon 22 Jan '24](#mon22jan)
+    - [Wed 24 Jan '24](#wed24jan)
 - Week 2
     - [Sun 21 Jan '24](#sun21jan)
         - [ [SOLVED] I could not get a working code to associate NACL with subnet.](#i-could-not-get-a-working-code-to-associate-nacl-with-subnet)
@@ -43,13 +42,25 @@ Sorted by latest to oldest.
 *back to [top](#top)*  
 <br>
 
+## ✏️ 📄 <a id="fri26jan">Fri 26 Jan '24</a>
+### Daily Report
+- Gave my progression presentation
+- Working on the user data and making the webserver instance to install `httpd` automatically and display a simple html page.
+
+### Obstacles
+- Making the instance install `httpd` automatically and using the IPv4 address to display html page.
+  
+<br>
+
+*back to [top](#top)*  
+<br>
+
 ## ✏️ 📄 <a id="thu25jan">Thu 25 Jan '24</a>
 ### Daily Report
-- ...
+- I am able to create an instance
 
 ### Obstacles
 - My "create instance" code does not recognize my VPC and Subnets.
-    - 
 
 - Using `from_lookup()` does not work.
     - Error: `RuntimeError: Error: Cannot retrieve value from context provider vpc-provider since account/region are not specified at the stack level. Configure "env" with an account and region when you define your stack.See https://docs.aws.amazon.com/cdk/latest/guide/environments.html for more details.`
@@ -63,7 +74,6 @@ Sorted by latest to oldest.
         My NOT-working code looked like this:
 
         ```py
-
         # Create VPC
         self.vpc_1 = ...code to create a vpc without subnets...
 
@@ -85,7 +95,25 @@ Sorted by latest to oldest.
         My WORKING code is now this:
 
         ```py
+        # Create VPC
+        self.vpc_1 = ...code to create a vpc without subnets...
+
+        # Create Subnet
+        self.subnet_webserver = ...code to create a public subnet...
         
+        # Lookup existing VPC
+        self.existing_customer_vpc = ec2.Vpc.from_lookup(self, "existing-customer-vpc", vpc_name=VPC_1_ID)
+
+        # Create Webserver
+        self.instance_webserver = ec2.Instance(self, "instance-webserver",
+            vpc=self.existing_customer_vpc,
+            availability_zone=AZ_A,
+            instance_type=ec2.InstanceType.of(ec2.InstanceClass.T2, ec2.InstanceSize.MICRO),
+            machine_image=ec2.AmazonLinuxImage(generation=ec2.AmazonLinuxGeneration.AMAZON_LINUX_2023),
+            vpc_subnets=ec2.SubnetSelection(subnet_type=ec2.SubnetType.PUBLIC),
+            security_group=self.sg_webserver,
+            associate_public_ip_address=True,
+            )
         ```
         
  - #### Using `from_lookup()` does not work.
@@ -119,58 +147,15 @@ Sorted by latest to oldest.
                 stack_webserver = CdkTestprojStackWebserv(self, "stack-webserver")
                 
                 stack_webserver.add_dependency(stack_network)
-        ```
-
-### Learnings
-- ...  
+        ```   
 <br>
 
 ## ✏️ 📄 <a id="wed24jan">Wed 24 Jan '24</a>
 ### Daily Report
-- ...
+- Busy with the creation of an insance
 
 ### Obstacles
-- My "create instance" code does not recognize my subnet in my VPC.
-
-### Solutions
-- ...
-
-### Learnings
-- ...  
-<br>
-
-## ✏️ 📄 <a id="tue23jan">Tue 23 Jan '24</a>
-### Daily Report
-- ...
-
-### Obstacles
-- ...
-
-### Solutions
-- ...
-
-### Learnings
-- ...  
-<br>
-
-*back to [top](#top)*  
-<br>
-
-## ✏️ 📄 <a id="mon22jan">Mon 22 Jan '24</a>
-### Daily Report
-- ...
-
-### Obstacles
-- ...
-
-### Solutions
-- ...
-
-### Learnings
-- ...  
-<br>
-
-*back to [top](#top)*  
+- My "create instance" code does not recognize my subnet in my VPC.  
 <br>
 
 ## ✏️ 📄 <a id="sun21jan">Sun 21 Jan '24/a>
