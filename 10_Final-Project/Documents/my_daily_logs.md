@@ -50,6 +50,8 @@ Sorted by latest to oldest.
 ## ✏️ 📄 <a id="mon29jan">Mon 29 Jan '24</a>
 ### Daily Report
 - Webserver up and running with user data.
+- VPC Peering Connection active.
+- VPC Peering Connection connected to the route tables in different VPC.
 
 ### Obstacles
 - Making the instance install `httpd` automatically and using the IPv4 address to display html page.
@@ -79,7 +81,7 @@ Sorted by latest to oldest.
         ```
 
 ### Learnings
-- ...  
+- I have a bit more understanding how route tables work.   
 <br>
 
 *back to [top](#top)*  

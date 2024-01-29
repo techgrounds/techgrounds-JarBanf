@@ -27,33 +27,31 @@ This checklist is based on the Deliverables in the chapter [Epics & User Stories
 - 🚧 3. An overview of all services that will be used.  
 
 ### Presentation V1.0 progress --> 26 Jan '24
-- 🚧 A 10-minute presentation / demonstration of my progress on app V1.0.
+- 🍔 A 10-minute presentation / demonstration of my progress on app V1.0.
 
 ### V1.0, deadline --> 02 Feb '24
 - 🚧 1. IaC code for the network and all components.
-    - 🍔 VPC
-    - 🍔 EIP
-    - 🍔 Internet Gateway
-    - 🍔 Route Tables
-    - 🍔 Subnets
-    - 🍔 NAT Gateway
-    - 🍔 Associate Route Tables with "Network Devices"
+    - 🍔 VPC Webserver
+    - 🍔 VPC Adminserver
+    - 🚧 VPC Peering
     - 🍔 NACLs
-    - 🚧 NACL rules
 - 🚧 2. IaC code for a web server and all supplies.
     - ➖ Key Pair ?
     - 🍔 Security Group
-    - 🚧 Instance
-    - ➖ EBS volume
-    - 🚧 User data
-        - ➖ as a file??
-    - ➖ Security Group rules update
-    - ➖ NACL rules update
+    - 🍔 Security Group rules
+        - 🍔 Allow incoming "HTTP" traffic
+    - 🍔 User data as a file
+    - 🍔 Instance
+    - 🍔 NACL rules update
     - ➖ Database
-    - ➖ ...
-    - ➖ ...
-    - ➖ ...
 - ➖ 3. IaC code for a management server with all the necessities.
+    - ➖ Key Pair ?
+    - 🍔 Security Group
+    - ➖ Security Group rules
+        - ➖ Allow incomming "RDP" traffic
+    - 🍔 Instance
+    - ➖ NACL rules update
+    - ➖ Connection with Webserver
 - ➖ 4. IaC code for a script storage solution.
 - ➖ 5. IaC code for encryption facilities.
 - ➖ 6. IaC code for backup facilities.
