@@ -114,10 +114,7 @@ An overview of all my assumptions.
 I will be referring to [Appendix 1: Provided non-definite Architecture Design](#appendix-1-provided-non-definite-architecture-design) in this document.  
 <br>
 
-- **Only 1 region**: In the provided architecture design, the solutions architect chose to implement 2 regions. I can’t find a reason why this is necessary. I will adjust the design and use only 1 region.
-- **No VPC Peering**: Because I will use only one region, I will be deploying the resources in only 1 VPC as well. This eliminates the need for VPC Peering.
-- **Private subnets**: In the provided architecture design, there is no private subnet. I will be creating private subnets where the future workstation can be placed.
-- **NAT gateway**: A NAT gateway will be needed to provide internet access to the workstation-private-subnet and the server-private-subnet via the admin-public-subnet. The admin-public-subnet is where the admin server will pe placed.  
+- **Only 1 region**: In the provided architecture design, the solutions architect chose to implement 2 regions. I can’t find a reason why this is necessary. I will adjust the design and use only 1 region.  
 <br>
 
 *back to [top](#top)*  
@@ -165,8 +162,18 @@ I have been told that the Solutions Architect did not deliver a solid solution a
 
 I am free to make changes and implement improvements as I see fit.
 
-![provided architecture design](/10_Final-Project/includes/provided%20architecture%20design%20AWS.png) 
+![provided architecture design](/10_Final-Project/includes/provided%20architecture%20design%20AWS.png)  
 *Provided non-definite architecture designed by the Solutions Architect*  
+<br>
+
+*back to [top](#top)*  
+<br>
+
+### 2: My Architecture Design
+This is my architecture design based on the requirements.
+
+![my architecture design](/10_Final-Project/includes/my_design_v1.0.png)  
+*My architecture designed based on the requirements*  
 <br>
 
 *back to [top](#top)*  
