@@ -5,7 +5,12 @@ Sorted by latest to oldest.
 <br>
 
 ## Table of Contents
+- Week 4
+    - [Mon 29 Jan '24](#mon29jan)
+        - [ [SOLVED] Making the instance install `httpd` automatically and using the IPv4 address to display html page.](#making-the-instance-install-httpd-automatically-and-using-the-ipv4-address-to-display-html-page)
 - Week 3
+    - [Fri 26 Jan '24](#fri26jan)
+        - [ [SOLVED] `Vpc.fromLookup` not getting up-to-date situtaion from my existing VPC in the cloud.](#vpcfromlookup-not-getting-up-to-date-situtaion-from-my-existing-vpc-in-the-cloud)
     - [Thu 25 Jan '24](#thu25jan)
         - [ [SOLVED] My "create instance" code does not recognize my VPC and Subnets](#my-create-instance-code-does-not-recognize-my-vpc-and-subnets)
         - [ [SOLVED] Using `from_lookup()` does not work](#using-from_lookup-does-not-work)
@@ -42,6 +47,44 @@ Sorted by latest to oldest.
 *back to [top](#top)*  
 <br>
 
+## ✏️ 📄 <a id="mon29jan">Mon 29 Jan '24</a>
+### Daily Report
+- Webserver up and running with user data.
+
+### Obstacles
+- Making the instance install `httpd` automatically and using the IPv4 address to display html page.
+
+### Solutions
+- #### Making the instance install `httpd` automatically and using the IPv4 address to display html page.
+    - In my user data I was using a `!`-sign which the bash shell does not appreciate. this caused the instance not to properly display the indext.html page. Removed the `!` from the user data and voila!
+
+        NOT-working user data:
+        ```sh
+        #!/bin/bash
+        sudo yum install -y httpd
+        sudo systemctl start httpd
+        sudo systemctl enable httpd
+        sudo su
+        echo "<h1>Hello From Jared's CDK created Web Server!</h1>" > /var/www/html/index.html
+        ```
+
+        WORKING user data:
+        ```sh
+        #!/bin/bash
+        sudo yum install -y httpd
+        sudo systemctl start httpd
+        sudo systemctl enable httpd
+        sudo su
+        echo "<h1>Hello From Jared's CDK created Web Server :)</h1>" > /var/www/html/index.html
+        ```
+
+### Learnings
+- ...  
+<br>
+
+*back to [top](#top)*  
+<br>
+
 ## ✏️ 📄 <a id="fri26jan">Fri 26 Jan '24</a>
 ### Daily Report
 - Gave my progression presentation
@@ -49,7 +92,20 @@ Sorted by latest to oldest.
 
 ### Obstacles
 - Making the instance install `httpd` automatically and using the IPv4 address to display html page.
+- `Vpc.fromLookup` not getting up-to-date situtaion from my existing VPC in the cloud.
   
+### Solutions
+- #### `Vpc.fromLookup` not getting up-to-date situtaion from my existing VPC in the cloud.
+    - Sources
+        - [Runtime context](https://docs.aws.amazon.com/cdk/v2/guide/context.html)
+    - I needed to clear my `cdk.context.json` file.
+
+        ```py
+        cdk context --clear
+        ```
+
+        When I run `cdk synth` again, it will pick up my up-to-date situation from my existing VPC in the cloud.
+
 <br>
 
 *back to [top](#top)*  
