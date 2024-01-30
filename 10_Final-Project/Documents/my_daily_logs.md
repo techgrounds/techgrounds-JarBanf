@@ -6,6 +6,8 @@ Sorted by latest to oldest.
 
 ## Table of Contents
 - Week 4
+    - [Tue 30 Jan '24](#tue30jan)
+        - [ [Solved] `httpd` not installing when NACL is deployed first](#httpd-not-installing-when-nacl-is-deployed-first)
     - [Mon 29 Jan '24](#mon29jan)
         - [ [SOLVED] Making the instance install `httpd` automatically and using the IPv4 address to display html page.](#making-the-instance-install-httpd-automatically-and-using-the-ipv4-address-to-display-html-page)
 - Week 3
@@ -42,6 +44,37 @@ Sorted by latest to oldest.
     - [Mon 08 Jan '24](#mon08jan)
         - [Watched an introduction video about Jira.](#watched-an-introduction-video-about-jira)
 - [Log template](#log-template)  
+<br>
+
+*back to [top](#top)*  
+<br>
+
+## ✏️ 📄 <a id="tue30jan">Tue 30 Jan '24</a>
+### Daily Report
+- Figured out the NACL issue.
+
+### Obstacles
+- `httpd` not installing when NACL is deployed first.
+
+### Solutions
+- #### `httpd` not installing when NACL is deployed first.
+    - sources
+        - [Ephemeral port](https://en.wikipedia.org/wiki/Ephemeral_port)
+    - NACL did not allow incomming connections to install/download httpd. I needed to add a rule allowing incomming traffic for downloading httpd.
+
+        rule to allow:
+        ```py
+        # Allow NACL Inbound Ephemeral traffic. Needed to install httpd.
+        self.nacl_webserver.add_entry("Inbound-Ephemeral",
+            cidr=ec2.AclCidr.any_ipv4(),
+            rule_number=90,
+            traffic=ec2.AclTraffic.tcp_port_range(32768, 60999),
+            direction=ec2.TrafficDirection.INGRESS
+            )
+        ```
+
+### Learnings
+- Think about ephemeral ports when setting up firewall rules.  
 <br>
 
 *back to [top](#top)*  

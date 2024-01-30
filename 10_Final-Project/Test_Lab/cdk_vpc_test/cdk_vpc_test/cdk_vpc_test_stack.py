@@ -66,6 +66,7 @@ class CdkVpcTestStack(Stack):
             peer_vpc_id=self.vpc_webserv.vpc_id,
             vpc_id=self.vpc_adminserv.vpc_id
             )
+        
 
         # Connect VPC Peering service to Route Table from Webserver
         # Get Subnet Webserver
@@ -79,6 +80,7 @@ class CdkVpcTestStack(Stack):
             vpc_peering_connection_id=self.vpc_peering.ref
             )
         
+
         # Connect VPC Peering service to Route Table from Adminserver
         # Get Subnet Adminserver
         self.subnet_adminserver = self.vpc_adminserv.public_subnets[0]
@@ -105,23 +107,43 @@ class CdkVpcTestStack(Stack):
             subnet_selection=ec2.SubnetSelection(subnet_type=ec2.SubnetType.PUBLIC)
             )
         
-        # Allow NACL Inbound traffic
-        self.nacl_webserver.add_entry("InboundHTTP",
+
+            #    ||
+            #    ||
+            #   \\//
+            #    \/
+
+        # Allow NACL Inbound Ephemeral traffic. Needed to install httpd.
+        self.nacl_webserver.add_entry("Inbound-Ephemeral",
+            cidr=ec2.AclCidr.any_ipv4(),
+            rule_number=90,
+            traffic=ec2.AclTraffic.tcp_port_range(32768, 60999),
+            direction=ec2.TrafficDirection.INGRESS
+            )
+        
+        # Allow NACL Inbound HTTP traffic
+        self.nacl_webserver.add_entry("Inbound-HTTP",
             cidr=ec2.AclCidr.any_ipv4(),
             rule_number=100,
             traffic=ec2.AclTraffic.tcp_port(80),
             direction=ec2.TrafficDirection.INGRESS
             )
         
-        # Allow NACL Outbound traffic
-        self.nacl_webserver.add_entry("OutboundAll",
+
+            #    /\
+            #   //\\
+            #    ||
+            #    ||
+            
+        # Allow NACL Outbound all traffic
+        self.nacl_webserver.add_entry("Outbound-All",
             cidr=ec2.AclCidr.any_ipv4(),
             rule_number=100,
             traffic=ec2.AclTraffic.all_traffic(),
             direction=ec2.TrafficDirection.EGRESS
             )
         
-
+        
         # # # # # # # # # # # #
         #                     #
         #   NACL ADMINSERVER  #
@@ -129,19 +151,31 @@ class CdkVpcTestStack(Stack):
         # # # # # # # # # # # #
         
         # Create NACL
-        # self.nacl_webserver = ec2.NetworkAcl(self, 'nacl-adminserver', 
+        # self.nacl_adminserver = ec2.NetworkAcl(self, 'nacl-adminserver', 
         #     network_acl_name='nacl-adminserver',
         #     vpc=self.vpc_adminserv,
         #     subnet_selection=ec2.SubnetSelection(subnet_type=ec2.SubnetType.PUBLIC)
         #     )
         
+
+            #    ||
+            #    ||
+            #   \\//
+            #    \/
+            
         # Allow NACL Inbound traffic
+
+
         
-        
+            #    /\
+            #   //\\
+            #    ||
+            #    ||
+
         # Allow NACL Outbound traffic
+
+
         
-
-
         # # # # # # # # #
         #               #
         #   WEBSERVER   #
@@ -153,6 +187,12 @@ class CdkVpcTestStack(Stack):
             vpc=self.vpc_webserv,
             description="SG Webserver"
             )
+
+
+            #    ||
+            #    ||
+            #   \\//
+            #    \/
         
         # Allow SG inbound HTTP traffic from anywhere
         self.sg_webserver.add_ingress_rule(
@@ -160,6 +200,7 @@ class CdkVpcTestStack(Stack):
             connection=ec2.Port.tcp(80),
             description="Allow HTTP traffic",
         )
+
 
         # Import User Data for Webserver
         with open("./cdk_vpc_test/user_data_webs.sh") as f:
@@ -175,7 +216,7 @@ class CdkVpcTestStack(Stack):
             machine_image=ec2.AmazonLinuxImage(generation=ec2.AmazonLinuxGeneration.AMAZON_LINUX_2023),
             user_data=ec2.UserData.custom(self.user_data_webs),
             )
-        
+
 
         # # # # # # # # # #
         #                 #
@@ -184,24 +225,31 @@ class CdkVpcTestStack(Stack):
         # # # # # # # # # #
 
         # Create Security Group
-        # self.sg_adminserver = ec2.SecurityGroup(self, "sg-adminserver",
-        #     vpc=self.vpc_adminserv,
-        #     description="SG Adminserver"
-        #     )
+        self.sg_adminserver = ec2.SecurityGroup(self, "sg-adminserver",
+            vpc=self.vpc_adminserv,
+            description="SG Adminserver"
+            )
+        
+
+            #    ||
+            #    ||
+            #   \\//
+            #    \/
         
         # Allow SG inbound RDP traffic from anywhere
-        # self.sg_adminserver.add_ingress_rule(
-        #     peer=ec2.Peer.ipv4("0.0.0.0/0"),
-        #     connection=ec2.Port.tcp(3389),
-        #     description="Allow RDP from anywhere",
-        # )
+        self.sg_adminserver.add_ingress_rule(
+            peer=ec2.Peer.ipv4("0.0.0.0/0"),
+            connection=ec2.Port.tcp(3389),
+            description="Allow RDP from anywhere",
+        )
+
 
         # Create Adminserver instance
-        # self.instance_adminserver = ec2.Instance(self,"instance-adminserver",
-        #     instance_name="instance-adminserver",
-        #     vpc=self.vpc_adminserv,
-        #     vpc_subnets=ec2.SubnetSelection(subnet_type=ec2.SubnetType.PUBLIC),
-        #     security_group=self.sg_adminserver,
-        #     instance_type=ec2.InstanceType.of(ec2.InstanceClass.T2, ec2.InstanceSize.MICRO),
-        #     machine_image=ec2.WindowsImage(ec2.WindowsVersion.WINDOWS_SERVER_2022_ENGLISH_FULL_BASE)
-        #     )
+        self.instance_adminserver = ec2.Instance(self,"instance-adminserver",
+            instance_name="instance-adminserver",
+            vpc=self.vpc_adminserv,
+            vpc_subnets=ec2.SubnetSelection(subnet_type=ec2.SubnetType.PUBLIC),
+            security_group=self.sg_adminserver,
+            instance_type=ec2.InstanceType.of(ec2.InstanceClass.T2, ec2.InstanceSize.MICRO),
+            machine_image=ec2.WindowsImage(ec2.WindowsVersion.WINDOWS_SERVER_2022_ENGLISH_FULL_BASE)
+            )
