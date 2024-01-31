@@ -36,17 +36,17 @@ This checklist is based on the Deliverables in the chapter [Epics & User Stories
     - 🍔 VPC Peering
     - 🍔 NACLs
 - 🚧 2. IaC code for a web server and all supplies.
-    - ➖ Key Pair ?
+    - 🍔 Key Pair Manual
     - 🍔 Security Group
     - 🚧 Security Group rules
         - 🍔 Allow incoming "HTTP" traffic
-        - ➖ Allow connection from Admin server
+        - ➖ Allow incoming traffic from Admin server
     - 🍔 User data as a file
     - 🍔 Instance
     - 🚧 NACL rules update
         - 🍔 Allow incoming "HTTP" traffic
         - 🍔 Allow ephemeral traffic
-        - ➖ Allow connection from Admin server
+        - ➖ Allow incoming traffic from Admin server
     - ➖ Database
 - 🚧 3. IaC code for a management server with all the necessities.
     - 🍔 Key Pair Manual
@@ -58,8 +58,8 @@ This checklist is based on the Deliverables in the chapter [Epics & User Stories
         - 🍔 Allow incomming "RDP" trafficfrom my IP
         - 🍔 Allow ephemeral traffic
         - 🍔 Allow outbound
-    - ➖ Connection from private IP
     - ➖ Connection with Webserver
+    - ➖ EBS storage
 - ➖ 4. IaC code for a script storage solution.
 - ➖ 5. IaC code for encryption facilities.
 - ➖ 6. IaC code for backup facilities.

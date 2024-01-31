@@ -101,11 +101,11 @@ class CdkVpcTestStack(Stack):
         # # # # # # # # # # # 
         
         # Create NACL
-        self.nacl_webserver = ec2.NetworkAcl(self, 'nacl-webserver', 
-            network_acl_name='nacl-webserver',
-            vpc=self.vpc_webserv,
-            subnet_selection=ec2.SubnetSelection(subnet_type=ec2.SubnetType.PUBLIC)
-            )
+        # self.nacl_webserver = ec2.NetworkAcl(self, 'nacl-webserver', 
+        #     network_acl_name='nacl-webserver',
+        #     vpc=self.vpc_webserv,
+        #     subnet_selection=ec2.SubnetSelection(subnet_type=ec2.SubnetType.PUBLIC)
+        #     )
         
 
             #    ||
@@ -114,20 +114,28 @@ class CdkVpcTestStack(Stack):
             #    \/
 
         # Allow NACL Inbound Ephemeral traffic for Linux kernels. Needed to install httpd.
-        self.nacl_webserver.add_entry("Inbound-Ephemeral",
-            cidr=ec2.AclCidr.any_ipv4(),
-            rule_number=90,
-            traffic=ec2.AclTraffic.tcp_port_range(32768, 60999),
-            direction=ec2.TrafficDirection.INGRESS
-            )
+        # self.nacl_webserver.add_entry("Inbound-Ephemeral",
+        #     cidr=ec2.AclCidr.any_ipv4(),
+        #     rule_number=90,
+        #     traffic=ec2.AclTraffic.tcp_port_range(32768, 60999),
+        #     direction=ec2.TrafficDirection.INGRESS
+        #     )
         
-        # Allow NACL Inbound HTTP traffic
-        self.nacl_webserver.add_entry("Inbound-HTTP",
-            cidr=ec2.AclCidr.any_ipv4(),
-            rule_number=100,
-            traffic=ec2.AclTraffic.tcp_port(80),
-            direction=ec2.TrafficDirection.INGRESS
-            )
+        # Allow NACL Inbound HTTP traffic from anywhere
+        # self.nacl_webserver.add_entry("Inbound-HTTP",
+        #     cidr=ec2.AclCidr.any_ipv4(),
+        #     rule_number=100,
+        #     traffic=ec2.AclTraffic.tcp_port(80),
+        #     direction=ec2.TrafficDirection.INGRESS
+        #     )
+        
+        # Allow NACL Inbound SSH traffic from anywhere
+        # self.nacl_webserver.add_entry("Inbound-SSH",
+        #     cidr=ec2.AclCidr.any_ipv4(),
+        #     rule_number=110,
+        #     traffic=ec2.AclTraffic.tcp_port(22),
+        #     direction=ec2.TrafficDirection.INGRESS
+        #     )
         
 
             #    /\
@@ -136,12 +144,12 @@ class CdkVpcTestStack(Stack):
             #    ||
             
         # Allow NACL Outbound all traffic
-        self.nacl_webserver.add_entry("Outbound-All",
-            cidr=ec2.AclCidr.any_ipv4(),
-            rule_number=100,
-            traffic=ec2.AclTraffic.all_traffic(),
-            direction=ec2.TrafficDirection.EGRESS
-            )
+        # self.nacl_webserver.add_entry("Outbound-All",
+        #     cidr=ec2.AclCidr.any_ipv4(),
+        #     rule_number=100,
+        #     traffic=ec2.AclTraffic.all_traffic(),
+        #     direction=ec2.TrafficDirection.EGRESS
+        #     )
         
         
         # # # # # # # # # # # #
@@ -151,11 +159,11 @@ class CdkVpcTestStack(Stack):
         # # # # # # # # # # # #
         
         # Create NACL
-        self.nacl_adminserver = ec2.NetworkAcl(self, 'nacl-adminserver', 
-            network_acl_name='nacl-adminserver',
-            vpc=self.vpc_adminserv,
-            subnet_selection=ec2.SubnetSelection(subnet_type=ec2.SubnetType.PUBLIC)
-            )
+        # self.nacl_adminserver = ec2.NetworkAcl(self, 'nacl-adminserver', 
+        #     network_acl_name='nacl-adminserver',
+        #     vpc=self.vpc_adminserv,
+        #     subnet_selection=ec2.SubnetSelection(subnet_type=ec2.SubnetType.PUBLIC)
+        #     )
         
 
             #    ||
@@ -164,20 +172,20 @@ class CdkVpcTestStack(Stack):
             #    \/
             
         # Allow NACL Inbound Ephemeral traffic for Windows Server 2022.
-        self.nacl_adminserver.add_entry("Inbound-Ephemeral",
-            cidr=ec2.AclCidr.any_ipv4(),
-            rule_number=90,
-            traffic=ec2.AclTraffic.tcp_port_range(49152, 65535),
-            direction=ec2.TrafficDirection.INGRESS
-            )
+        # self.nacl_adminserver.add_entry("Inbound-Ephemeral",
+        #     cidr=ec2.AclCidr.any_ipv4(),
+        #     rule_number=90,
+        #     traffic=ec2.AclTraffic.tcp_port_range(49152, 65535),
+        #     direction=ec2.TrafficDirection.INGRESS
+        #     )
         
         # Allow NACL Inbound RDP traffic from only my IP
-        self.nacl_adminserver.add_entry("Inbound-RDP",
-            cidr=ec2.AclCidr.ipv4("143.178.129.147/32"),
-            rule_number=100,
-            traffic=ec2.AclTraffic.tcp_port(3389),
-            direction=ec2.TrafficDirection.INGRESS
-            )
+        # self.nacl_adminserver.add_entry("Inbound-RDP",
+        #     cidr=ec2.AclCidr.ipv4("143.178.129.147/32"),
+        #     rule_number=100,
+        #     traffic=ec2.AclTraffic.tcp_port(3389),
+        #     direction=ec2.TrafficDirection.INGRESS
+        #     )
 
         
             #    /\
@@ -186,12 +194,12 @@ class CdkVpcTestStack(Stack):
             #    ||
 
         # Allow NACL Outbound traffic
-        self.nacl_adminserver.add_entry("Outbound-All",
-            cidr=ec2.AclCidr.any_ipv4(),
-            rule_number=100,
-            traffic=ec2.AclTraffic.all_traffic(),
-            direction=ec2.TrafficDirection.EGRESS
-            )
+        # self.nacl_adminserver.add_entry("Outbound-All",
+        #     cidr=ec2.AclCidr.any_ipv4(),
+        #     rule_number=100,
+        #     traffic=ec2.AclTraffic.all_traffic(),
+        #     direction=ec2.TrafficDirection.EGRESS
+        #     )
 
         
         # # # # # # # # #
@@ -219,22 +227,35 @@ class CdkVpcTestStack(Stack):
             description="Allow HTTP traffic from anywhere",
         )
 
+        # Allow SG inbound SSH traffic from anywhere
+        self.sg_webserver.add_ingress_rule(
+            peer=ec2.Peer.ipv4("0.0.0.0/0"),
+            connection=ec2.Port.tcp(22),
+            description="Allow SSH traffic from anywhere",
+        )
+
 
         # Import User Data for Webserver
         with open("./cdk_vpc_test/user_data_webs.sh") as f:
             self.user_data_webs = f.read()
         
+        # Refer to existing Keypair Web Server
+        self.keypair_webserver = ec2.KeyPair.from_key_pair_name(self, "keypair-webserver",
+            key_pair_name="kp-web-server",
+            )
+
         # Create Webserver instance
-        # self.instance_webserver = ec2.Instance(self, "instance-webserver",
-        #     instance_name="instance-webserver",
-        #     vpc=self.vpc_webserv,
-        #     vpc_subnets=ec2.SubnetSelection(subnet_type=ec2.SubnetType.PUBLIC),
-            # private_ip_address="10.0.1.4"
-        #     security_group=self.sg_webserver,
-        #     instance_type=ec2.InstanceType.of(ec2.InstanceClass.T2, ec2.InstanceSize.MICRO),
-        #     machine_image=ec2.AmazonLinuxImage(generation=ec2.AmazonLinuxGeneration.AMAZON_LINUX_2023),
-        #     user_data=ec2.UserData.custom(self.user_data_webs),
-        #     )
+        self.instance_webserver = ec2.Instance(self, "instance-webserver",
+            instance_name="instance-webserver",
+            vpc=self.vpc_webserv,
+            vpc_subnets=ec2.SubnetSelection(subnet_type=ec2.SubnetType.PUBLIC),
+            private_ip_address="10.0.1.4",
+            key_pair=self.keypair_webserver,
+            security_group=self.sg_webserver,
+            instance_type=ec2.InstanceType.of(ec2.InstanceClass.T2, ec2.InstanceSize.MICRO),
+            machine_image=ec2.AmazonLinuxImage(generation=ec2.AmazonLinuxGeneration.AMAZON_LINUX_2023),
+            user_data=ec2.UserData.custom(self.user_data_webs),
+            )
 
 
         # # # # # # # # # #
@@ -263,19 +284,19 @@ class CdkVpcTestStack(Stack):
         )
 
 
-        # Refer to existing Admin Server keypair
+        # Refer to existing Keypair Admin Server
         self.keypair_adminserver = ec2.KeyPair.from_key_pair_name(self, "keypair-adminserver",
-            key_pair_name="windowspem",
+            key_pair_name="kp-admin-server",
             )
 
         # Create Adminserver instance
-        # self.instance_adminserver = ec2.Instance(self,"instance-adminserver",
-        #     instance_name="instance-adminserver",
-        #     vpc=self.vpc_adminserv,
-        #     vpc_subnets=ec2.SubnetSelection(subnet_type=ec2.SubnetType.PUBLIC),
-        #     private_ip_address="10.0.2.4",
-        #     key_pair=self.keypair_adminserver,
-        #     security_group=self.sg_adminserver,
-        #     instance_type=ec2.InstanceType.of(ec2.InstanceClass.T2, ec2.InstanceSize.MICRO),
-        #     machine_image=ec2.WindowsImage(ec2.WindowsVersion.WINDOWS_SERVER_2022_ENGLISH_FULL_BASE)
-        #     )
+        self.instance_adminserver = ec2.Instance(self,"instance-adminserver",
+            instance_name="instance-adminserver",
+            vpc=self.vpc_adminserv,
+            vpc_subnets=ec2.SubnetSelection(subnet_type=ec2.SubnetType.PUBLIC),
+            private_ip_address="10.0.2.4",
+            key_pair=self.keypair_adminserver,
+            security_group=self.sg_adminserver,
+            instance_type=ec2.InstanceType.of(ec2.InstanceClass.T2, ec2.InstanceSize.MICRO),
+            machine_image=ec2.WindowsImage(ec2.WindowsVersion.WINDOWS_SERVER_2022_ENGLISH_FULL_BASE)
+            )
