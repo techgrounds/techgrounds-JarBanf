@@ -30,27 +30,35 @@ This checklist is based on the Deliverables in the chapter [Epics & User Stories
 - 🍔 A 10-minute presentation / demonstration of my progress on app V1.0.
 
 ### V1.0, deadline --> 02 Feb '24
-- 🚧 1. IaC code for the network and all components.
+- 🍔 1. IaC code for the network and all components.
     - 🍔 VPC Webserver
     - 🍔 VPC Adminserver
-    - 🚧 VPC Peering
+    - 🍔 VPC Peering
     - 🍔 NACLs
 - 🚧 2. IaC code for a web server and all supplies.
     - ➖ Key Pair ?
     - 🍔 Security Group
-    - 🍔 Security Group rules
+    - 🚧 Security Group rules
         - 🍔 Allow incoming "HTTP" traffic
+        - ➖ Allow connection from Admin server
     - 🍔 User data as a file
     - 🍔 Instance
-    - 🍔 NACL rules update
+    - 🚧 NACL rules update
+        - 🍔 Allow incoming "HTTP" traffic
+        - 🍔 Allow ephemeral traffic
+        - ➖ Allow connection from Admin server
     - ➖ Database
-- ➖ 3. IaC code for a management server with all the necessities.
-    - ➖ Key Pair ?
+- 🚧 3. IaC code for a management server with all the necessities.
+    - 🍔 Key Pair Manual
     - 🍔 Security Group
-    - ➖ Security Group rules
-        - ➖ Allow incomming "RDP" traffic
+    - 🍔 Security Group rules
+        - 🍔 Allow incomming "RDP" traffic from my IP
     - 🍔 Instance
-    - ➖ NACL rules update
+    - 🍔 NACL rules update
+        - 🍔 Allow incomming "RDP" trafficfrom my IP
+        - 🍔 Allow ephemeral traffic
+        - 🍔 Allow outbound
+    - ➖ Connection from private IP
     - ➖ Connection with Webserver
 - ➖ 4. IaC code for a script storage solution.
 - ➖ 5. IaC code for encryption facilities.

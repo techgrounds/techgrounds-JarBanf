@@ -6,6 +6,7 @@ Sorted by latest to oldest.
 
 ## Table of Contents
 - Week 4
+    - [Wed 31 Jan '24](#wed31jan)
     - [Tue 30 Jan '24](#tue30jan)
         - [ [Solved] `httpd` not installing when NACL is deployed first](#httpd-not-installing-when-nacl-is-deployed-first)
     - [Mon 29 Jan '24](#mon29jan)
@@ -44,6 +45,23 @@ Sorted by latest to oldest.
     - [Mon 08 Jan '24](#mon08jan)
         - [Watched an introduction video about Jira.](#watched-an-introduction-video-about-jira)
 - [Log template](#log-template)  
+<br>
+
+*back to [top](#top)*  
+<br>
+
+## ✏️ 📄 <a id="wed31jan">Wed 31 Jan '24</a>
+### Daily Report
+- ...
+
+### Obstacles
+- ...
+
+### Solutions
+- ...
+
+### Learnings
+- ...  
 <br>
 
 *back to [top](#top)*  
