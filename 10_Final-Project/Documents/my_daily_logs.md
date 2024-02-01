@@ -55,16 +55,10 @@ Sorted by latest to oldest.
 ### Daily Report
 - EBS root volume for Admin Server encrypted
 - EBS attached volume for Admin Server encrypted
-- EBS rot volume for Web Server encrypted
-
-### Obstacles
-- ...
-
-### Solutions
-- ...
-
-### Learnings
-- ...  
+- EBS root volume for Web Server encrypted
+- Create Backup plan
+- Selected Web server and Admin server as resources to backup
+- I still need to test if the backup works.  
 <br>
 
 *back to [top](#top)*  

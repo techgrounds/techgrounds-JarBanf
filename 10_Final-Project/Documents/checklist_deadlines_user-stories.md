@@ -66,8 +66,10 @@ This checklist is based on the Deliverables in the chapter [Epics & User Stories
     - 🍔 Admin server root volume encrypted
     - 🍔 Admin server attached volume encrypted
     - ➖ anything else??
-- ➖ 6. IaC code for backup facilities.
-    - ➖ Data lifecycle manager for ec2 instances??
+- 🚧 6. IaC code for backup facilities.
+    - 🍔 Backup plan
+    - 🚧 Back up Web server
+    - 🚧 Back up Admin server
 - ➖ 7. Documentation for using the application.
 - ➖ 8. Configuration for an MVP deployment.
 
