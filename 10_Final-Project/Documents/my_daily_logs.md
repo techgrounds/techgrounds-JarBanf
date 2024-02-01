@@ -6,6 +6,7 @@ Sorted by latest to oldest.
 
 ## Table of Contents
 - Week 4
+    - [Thu 01 Feb '24](#thu01feb)
     - [Wed 31 Jan '24](#wed31jan)
     - [Tue 30 Jan '24](#tue30jan)
         - [ [Solved] `httpd` not installing when NACL is deployed first](#httpd-not-installing-when-nacl-is-deployed-first)
@@ -50,9 +51,11 @@ Sorted by latest to oldest.
 *back to [top](#top)*  
 <br>
 
-## ✏️ 📄 <a id="wed31jan">Wed 31 Jan '24</a>
+## ✏️ 📄 <a id="thu01feb">Thu 01 Feb '24</a>
 ### Daily Report
-- ...
+- EBS root volume for Admin Server encrypted
+- EBS attached volume for Admin Server encrypted
+- EBS rot volume for Web Server encrypted
 
 ### Obstacles
 - ...
@@ -62,6 +65,14 @@ Sorted by latest to oldest.
 
 ### Learnings
 - ...  
+<br>
+
+*back to [top](#top)*  
+<br>
+
+## ✏️ 📄 <a id="wed31jan">Wed 31 Jan '24</a>
+### Daily Report
+- RDP from my own IP to Admin Server instance succesful. Also NACL rules are well defined.  
 <br>
 
 *back to [top](#top)*  

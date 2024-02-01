@@ -254,6 +254,12 @@ class CdkVpcTestStack(Stack):
             security_group=self.sg_webserver,
             instance_type=ec2.InstanceType.of(ec2.InstanceClass.T2, ec2.InstanceSize.MICRO),
             machine_image=ec2.AmazonLinuxImage(generation=ec2.AmazonLinuxGeneration.AMAZON_LINUX_2023),
+            block_devices=[ec2.BlockDevice(
+                device_name="/dev/xvda",
+                volume=ec2.BlockDeviceVolume.ebs(
+                    volume_size=8,
+                    encrypted=True,
+                ))],
             user_data=ec2.UserData.custom(self.user_data_webs),
             )
 
@@ -298,5 +304,18 @@ class CdkVpcTestStack(Stack):
             key_pair=self.keypair_adminserver,
             security_group=self.sg_adminserver,
             instance_type=ec2.InstanceType.of(ec2.InstanceClass.T2, ec2.InstanceSize.MICRO),
-            machine_image=ec2.WindowsImage(ec2.WindowsVersion.WINDOWS_SERVER_2022_ENGLISH_FULL_BASE)
+            machine_image=ec2.WindowsImage(ec2.WindowsVersion.WINDOWS_SERVER_2022_ENGLISH_FULL_BASE),
+            block_devices=[ec2.BlockDevice(
+                device_name="/dev/sda1",
+                volume=ec2.BlockDeviceVolume.ebs(
+                    volume_size=30,
+                    encrypted=True,
+                )
+            ), ec2.BlockDevice(
+                device_name="/dev/sdf",
+                volume=ec2.BlockDeviceVolume.ebs(
+                    volume_size=16,
+                    encrypted=True,
+                )
+            )]
             )
