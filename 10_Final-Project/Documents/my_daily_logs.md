@@ -6,6 +6,7 @@ Sorted by latest to oldest.
 
 ## Table of Contents
 - Week 4
+    - [Fri 02 Feb '24](#fri02feb)
     - [Thu 01 Feb '24](#thu01feb)
     - [Wed 31 Jan '24](#wed31jan)
     - [Tue 30 Jan '24](#tue30jan)
@@ -46,6 +47,23 @@ Sorted by latest to oldest.
     - [Mon 08 Jan '24](#mon08jan)
         - [Watched an introduction video about Jira.](#watched-an-introduction-video-about-jira)
 - [Log template](#log-template)  
+<br>
+
+*back to [top](#top)*  
+<br>
+
+## ✏️ 📄 <a id="fri02feb">Fri 02 Feb '24</a>
+### Daily Report
+- PLANNED: test backups
+
+### Obstacles
+- ...
+
+### Solutions
+- ...
+
+### Learnings
+- ...  
 <br>
 
 *back to [top](#top)*  
