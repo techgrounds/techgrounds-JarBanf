@@ -2,6 +2,10 @@ from constructs import Construct
 from aws_cdk import (
     Stack,
     aws_ec2 as ec2,
+    CfnOutput,
+    aws_backup as backup,
+    Duration,
+    aws_events as events
 )
 
 
@@ -136,6 +140,14 @@ class CdkVpcTestStack(Stack):
         #     traffic=ec2.AclTraffic.tcp_port(22),
         #     direction=ec2.TrafficDirection.INGRESS
         #     )
+
+        # Allow NACL Inbound ICMP (ping) traffic from anywhere
+        # self.nacl_webserver.add_entry("Inbound-ICMP",
+        #     cidr=ec2.AclCidr.any_ipv4(),
+        #     rule_number=120,
+        #     traffic=ec2.AclTraffic.all_traffic(),
+        #     direction=ec2.TrafficDirection.INGRESS
+        #     )
         
 
             #    /\
@@ -234,6 +246,13 @@ class CdkVpcTestStack(Stack):
             description="Allow SSH traffic from anywhere",
         )
 
+        # Allow SG inbound ICMP (ping) traffic from anywhere
+        self.sg_webserver.add_ingress_rule(
+            peer=ec2.Peer.ipv4("0.0.0.0/0"),
+            connection=ec2.Port.all_icmp(),
+            description="Allow ICMP traffic from anywhere",
+        )
+
 
         # Import User Data for Webserver
         with open("./cdk_vpc_test/user_data_webs.sh") as f:
@@ -289,6 +308,13 @@ class CdkVpcTestStack(Stack):
             description="Allow RDP from only my IP",
         )
 
+        # Allow SG inbound ICMP (ping) traffic from anywhere
+        self.sg_adminserver.add_ingress_rule(
+            peer=ec2.Peer.ipv4("0.0.0.0/0"),
+            connection=ec2.Port.all_icmp(),
+            description="Allow ICMP traffic from anywhere",
+        )
+
 
         # Refer to existing Keypair Admin Server
         self.keypair_adminserver = ec2.KeyPair.from_key_pair_name(self, "keypair-adminserver",
@@ -318,4 +344,58 @@ class CdkVpcTestStack(Stack):
                     encrypted=True,
                 )
             )]
+            )
+        
+        # Output
+        CfnOutput(self,
+                  "Webserver Private IP",
+                  value=self.instance_webserver.instance_private_ip,
+                  export_name="webserver-private-ip")
+        
+        CfnOutput(self,
+                  "Webserver Public IP",
+                  value=self.instance_webserver.instance_public_ip,
+                  export_name="webserver-public-ip")
+        
+        CfnOutput(self,
+                  "Adminserver Private IP",
+                  value=self.instance_adminserver.instance_private_ip,
+                  export_name="adminserver-private-ip")
+        
+        CfnOutput(self,
+                  "Adminserver Public IP",
+                  value=self.instance_adminserver.instance_public_ip,
+                  export_name="adminserver-public-ip")
+
+
+        # # # # # # # #
+        #             #
+        #   BACKUP    #
+        #             #
+        # # # # # # # #
+
+        # Create Backup plan
+        self.backup_plan = backup.BackupPlan(self, "backup-plan",
+            backup_plan_name="7-day-Backup-plan",
+            backup_plan_rules=[backup.BackupPlanRule(
+                rule_name="Daily-Retention-7days",
+                delete_after=Duration.days(7),
+                schedule_expression=events.Schedule.cron(hour="1", minute="00", ) # 01:00 UTC -> 02:00 Dutch winter time / 03:00 Dutch summer time
+            )]
+            )
+        
+        # Select Webserver as a resource to backup
+        self.backup_plan.add_selection("add-webserver", 
+            backup_selection_name="backup-webserver",
+            resources=[
+                backup.BackupResource.from_ec2_instance(self.instance_webserver)
+                ]
+            )
+        
+        # Select Adminserver as a resource to backup
+        self.backup_plan.add_selection("add-adminserver", 
+            backup_selection_name="backup-adminserver",
+            resources=[
+                backup.BackupResource.from_ec2_instance(self.instance_adminserver)
+                ]
             )

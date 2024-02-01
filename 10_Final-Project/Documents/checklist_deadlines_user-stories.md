@@ -43,8 +43,6 @@ This checklist is based on the Deliverables in the chapter [Epics & User Stories
         - ➖ Allow incoming traffic from Admin server
     - 🍔 User data as a file
     - 🍔 Instance
-    - 🍔 EBS volume
-        - 🍔 Root volume encrypted
     - 🚧 NACL rules update
         - 🍔 Allow incoming "HTTP" traffic
         - 🍔 Allow ephemeral traffic
@@ -56,16 +54,18 @@ This checklist is based on the Deliverables in the chapter [Epics & User Stories
     - 🍔 Security Group rules
         - 🍔 Allow incomming "RDP" traffic from my IP
     - 🍔 Instance
-    - 🍔 EBS volume
-        - 🍔 Root volume encrypted
-        - 🍔 Attached volume encrypted
+    - 🍔 EBS attached volume
     - 🍔 NACL rules update
         - 🍔 Allow incomming "RDP" traffic from my IP
         - 🍔 Allow ephemeral traffic
         - 🍔 Allow outbound
     - ➖ Connection with Webserver
 - ➖ 4. IaC code for a script storage solution.
-- ➖ 5. IaC code for encryption facilities.
+- 🚧 5. IaC code for encryption facilities.
+    - 🍔 Web server root volume encrypted
+    - 🍔 Admin server root volume encrypted
+    - 🍔 Admin server attached volume encrypted
+    - ➖ anything else??
 - ➖ 6. IaC code for backup facilities.
     - ➖ Data lifecycle manager for ec2 instances??
 - ➖ 7. Documentation for using the application.
