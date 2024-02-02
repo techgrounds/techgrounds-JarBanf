@@ -379,8 +379,12 @@ class CdkVpcTestStack(Stack):
             backup_plan_name="7-day-Backup-plan",
             backup_plan_rules=[backup.BackupPlanRule(
                 rule_name="Daily-Retention-7days",
+                start_window=Duration.hours(1),
+                completion_window=Duration.hours(2),
                 delete_after=Duration.days(7),
-                schedule_expression=events.Schedule.cron(hour="1", minute="00", ) # 01:00 UTC -> 02:00 Dutch winter time / 03:00 Dutch summer time
+                schedule_expression=events.Schedule.cron(
+                    hour="9", 
+                    minute="08", ) # 01:00 UTC -> 02:00 Dutch winter time / 03:00 Dutch summer time
             )]
             )
         

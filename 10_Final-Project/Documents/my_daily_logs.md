@@ -7,6 +7,7 @@ Sorted by latest to oldest.
 ## Table of Contents
 - Week 4
     - [Fri 02 Feb '24](#fri02feb)
+        - [ [SOLVED] Can not restore backup because I don't have the authorization to do so.](#can-not-restore-backup-because-i-dont-have-the-authorization-to-do-so)
     - [Thu 01 Feb '24](#thu01feb)
     - [Wed 31 Jan '24](#wed31jan)
     - [Tue 30 Jan '24](#tue30jan)
@@ -54,16 +55,34 @@ Sorted by latest to oldest.
 
 ## ✏️ 📄 <a id="fri02feb">Fri 02 Feb '24</a>
 ### Daily Report
-- PLANNED: test backups
+- Backup of my servers work. I also managed to restore a backup. So Backup = Done!
 
 ### Obstacles
-- ...
+- Can not restore backup because I don't have the authorization to do so.
 
 ### Solutions
-- ...
+- #### Can not restore backup because I don't have the authorization to do so.
+    - Sources:
+        - [EC2 Instance Restore: "You are not authorized to perform this operation"](https://repost.aws/questions/QUHiD7geQrR6mKhUzhWyMZLQ/ec2-instance-restore-you-are-not-authorized-to-perform-this-operation)
+    - The error message i get:
+        `You are not authorized to perform this operation. Please consult the permissions associated with your AWS Backup role(s), and refer to the AWS Backup documentation for more details. User: arn:aws:sts::908959576754:assumed-role/AWSServiceRoleForBackup/AWSBackup-AWSServiceRoleForBackup is not authorized to perform: iam:PassRole on resource: arn:aws:iam::908959576754:role/CdkVpcTestStack-instancewebserverInstanceRole6FB4F7-hqnAwNWH4BLo because no identity-based policy allows the iam:PassRole action. Encoded authorization failure message: Slxg7-xAy-leso4qPxgQOXgi1MFaUR_YwaXFMLEnhwPQ6Nsn8zTYjMgGdbJ-m1oOdMzSakw8ks3tJAqkEXbUFuMyYCPdu5_Id1uWDt18NNnGpS2NigLy_C4QohEqPMDKMt6z77qj-rNKwso71hb0WRVEpZosX7AJOzhG7dMNlsvxlyQ2wgimjZdjbHY3zVrUmL2atq2qykipsF_x59zlbRqDIEPWmzZmt-q3-RGg34vghPD8BHFlmA6LVpCH6_sdy35It4-JtLGZP1k07hMJnVlYat7kGKSldSc5I2nhs1NoA5cdlFVU6pB3E_faTKUgc2HFpHuwPRZ8PaYCTuaqv_Dnl6FbTD4vT-21ge-VCDOEqwx1shc0Z1HPPLPBWbOE1hsRHxxBM-85jxLbCoDNN3B5E-fPfxV9wnaFe_E0dutocYR6_rRaVz1uJPciI_K7sf-gHiLz53DudTLFaLNk58MY1Atkf_7jdugc5TaOBMzcDPfJ3wAQY_mGDDTrw4SMeMKZM1iEYSJTzc6Nd9w0gMF3YlZ71j6vgi5oW5Rfi9lan5W1GkX4Sv7wa8CIjXLLQtaWm9Up-SobG1KevfKEK6zv`
+    - Solution:
+        I needed to add the following policy to the `AWSBackupDefaultServiceRole`.
+        ```json
+        {
+            "Version": "2012-10-17",
+            "Statement": [
+                {
+                    "Action": "iam:PassRole",
+                    "Resource": "arn:aws:iam::account_id_here:role/*",
+                    "Effect": "Allow"
+                }
+            ]
+        }
+        ```
 
 ### Learnings
-- ...  
+- Ik begrijp wat meer wat voor invloed "Roles" heeft op services.  
 <br>
 
 *back to [top](#top)*  

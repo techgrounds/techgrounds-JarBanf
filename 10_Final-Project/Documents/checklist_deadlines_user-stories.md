@@ -65,11 +65,12 @@ This checklist is based on the Deliverables in the chapter [Epics & User Stories
     - 🍔 Web server root volume encrypted
     - 🍔 Admin server root volume encrypted
     - 🍔 Admin server attached volume encrypted
+    - 🍔 Backup vault
     - ➖ anything else??
-- 🚧 6. IaC code for backup facilities.
+- 🍔 6. IaC code for backup facilities.
     - 🍔 Backup plan
-    - 🚧 Back up Web server
-    - 🚧 Back up Admin server
+    - 🍔 Back up Web server
+    - 🍔 Back up Admin server
 - ➖ 7. Documentation for using the application.
 - ➖ 8. Configuration for an MVP deployment.
 
