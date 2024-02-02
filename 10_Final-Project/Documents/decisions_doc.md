@@ -134,6 +134,7 @@ An overview of all services that will be used.
     - I will not be implementing a RDS database in my design. The admin has knowledge on setting up and maintaining a database. So I will setup a EC2-instance as a database server.
 
 ### Management & Governance
+- 🟥 CloudFormation: Create and Manage Resources with Templates
 - 🟥 ~~CloudTrail: Track User Activity and API Usage~~.  
     - I will NOT be implementing this service in to the infrastructure (yet).  
     It is best practice to use this service, but seen that it is not defined in the necessary requirements, I will not dedicate time and energy on it (yet). It is not a priority right now.
@@ -149,6 +150,7 @@ An overview of all services that will be used.
 - 🟥 Key Management Service: Securely Generate and Manage AWS Encryption Keys
 
 ### Storage
+- 🟩 AWS Backup: Centrally manage and automate backups across AWS services
 - 🟩 S3: Scalable Storage in the Cloud  
 <br>
 
