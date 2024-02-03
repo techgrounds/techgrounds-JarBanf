@@ -6,7 +6,7 @@ from aws_cdk import (
     aws_backup as backup,
     Duration,
     aws_events as events
-)
+    )
 
 
 class CdkVpcTestStack(Stack):
@@ -34,7 +34,9 @@ class CdkVpcTestStack(Stack):
                     subnet_type=ec2.SubnetType.PUBLIC,
                     name='Webserver',
                     cidr_mask=28
-                )])
+                    )
+                ]
+            )
 
 
 
@@ -56,7 +58,9 @@ class CdkVpcTestStack(Stack):
                     subnet_type=ec2.SubnetType.PUBLIC,
                     name='Adminserver',
                     cidr_mask=28
-                )])
+                    )
+                ]
+            )
         
 
 
@@ -121,7 +125,8 @@ class CdkVpcTestStack(Stack):
             #   \\//
             #    \/
 
-        # Allow NACL Inbound Ephemeral traffic for Linux kernels. Needed to install httpd.
+        # Allow NACL Inbound Ephemeral traffic for Linux kernels. 
+        #   Needed to install httpd.
         self.nacl_webserver.add_entry("Inbound-Ephemeral",
             cidr=ec2.AclCidr.any_ipv4(),
             rule_number=90,
@@ -145,7 +150,8 @@ class CdkVpcTestStack(Stack):
             direction=ec2.TrafficDirection.INGRESS
             )
 
-        # Allow NACL Inbound ICMP (ping) traffic from anywhere
+        # Allow NACL Inbound All traffic from anywhere
+        #   for troubleshooting purposes
         # self.nacl_webserver.add_entry("Inbound-ICMP",
         #     cidr=ec2.AclCidr.any_ipv4(),
         #     rule_number=120,
@@ -245,21 +251,22 @@ class CdkVpcTestStack(Stack):
             peer=ec2.Peer.ipv4("0.0.0.0/0"),
             connection=ec2.Port.tcp(80),
             description="Allow HTTP traffic from anywhere",
-        )
+            )
 
         # Allow SG inbound SSH traffic from admin server
         self.sg_webserver.add_ingress_rule(
             peer=ec2.Peer.ipv4("10.0.2.4/32"),
             connection=ec2.Port.tcp(22),
             description="Allow SSH traffic from admin server",
-        )
+            )
 
         # Allow SG inbound ICMP (ping) traffic from anywhere
+        #   for troubleshooting purposes
         # self.sg_webserver.add_ingress_rule(
         #     peer=ec2.Peer.ipv4("0.0.0.0/0"),
         #     connection=ec2.Port.all_icmp(),
         #     description="Allow ICMP traffic from anywhere",
-        # )
+        #     )
 
 
         # Import User Data for Webserver
@@ -286,7 +293,8 @@ class CdkVpcTestStack(Stack):
                 volume=ec2.BlockDeviceVolume.ebs(
                     volume_size=8,
                     encrypted=True,
-                ))],
+                    )
+                )],
             user_data=ec2.UserData.custom(self.user_data_webs),
             )
 
@@ -316,14 +324,14 @@ class CdkVpcTestStack(Stack):
             peer=ec2.Peer.ipv4("143.178.129.147/32"),
             connection=ec2.Port.tcp(3389),
             description="Allow RDP from only my IP",
-        )
+            )
 
         # Allow SG inbound ICMP (ping) traffic from anywhere
         self.sg_adminserver.add_ingress_rule(
             peer=ec2.Peer.ipv4("0.0.0.0/0"),
             connection=ec2.Port.all_icmp(),
             description="Allow ICMP traffic from anywhere",
-        )
+            )
 
 
         # Refer to existing Keypair Admin Server
@@ -346,36 +354,36 @@ class CdkVpcTestStack(Stack):
                 volume=ec2.BlockDeviceVolume.ebs(
                     volume_size=30,
                     encrypted=True,
-                )
-            ), ec2.BlockDevice(
+                    )
+                ), ec2.BlockDevice(
                 device_name="/dev/sdf",
                 volume=ec2.BlockDeviceVolume.ebs(
                     volume_size=16,
                     encrypted=True,
-                )
-            )]
+                    )
+                )]
             )
         
         # Output
-        CfnOutput(self,
-                  "Webserver Private IP",
-                  value=self.instance_webserver.instance_private_ip,
-                  export_name="webserver-private-ip")
+        CfnOutput(self, "Webserver Private IP",
+            value=self.instance_webserver.instance_private_ip,
+            export_name="webserver-private-ip"
+            )
         
-        CfnOutput(self,
-                  "Webserver Public IP",
-                  value=self.instance_webserver.instance_public_ip,
-                  export_name="webserver-public-ip")
+        CfnOutput(self, "Webserver Public IP",
+            value=self.instance_webserver.instance_public_ip,
+            export_name="webserver-public-ip"
+            )
         
-        CfnOutput(self,
-                  "Adminserver Private IP",
-                  value=self.instance_adminserver.instance_private_ip,
-                  export_name="adminserver-private-ip")
+        CfnOutput(self, "Adminserver Private IP",
+            value=self.instance_adminserver.instance_private_ip,
+            export_name="adminserver-private-ip"
+            )
         
-        CfnOutput(self,
-                  "Adminserver Public IP",
-                  value=self.instance_adminserver.instance_public_ip,
-                  export_name="adminserver-public-ip")
+        CfnOutput(self, "Adminserver Public IP",
+            value=self.instance_adminserver.instance_public_ip,
+            export_name="adminserver-public-ip"
+            )
 
 
 
@@ -397,7 +405,7 @@ class CdkVpcTestStack(Stack):
         #         schedule_expression=events.Schedule.cron(
         #             hour="1", 
         #             minute="0", ) # 01:00 UTC -> 02:00 Dutch winter time / 03:00 Dutch summer time
-        #     )]
+        #         )]
         #     )
         
         # Select Webserver as a resource to backup
