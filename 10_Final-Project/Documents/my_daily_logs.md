@@ -6,6 +6,7 @@ Sorted by latest to oldest.
 
 ## Table of Contents
 - Week 4
+    - [Sat 03 Feb '24](#sat03feb)
     - [Fri 02 Feb '24](#fri02feb)
         - [ [SOLVED] Can not restore backup because I don't have the authorization to do so.](#can-not-restore-backup-because-i-dont-have-the-authorization-to-do-so)
     - [Thu 01 Feb '24](#thu01feb)
@@ -48,6 +49,24 @@ Sorted by latest to oldest.
     - [Mon 08 Jan '24](#mon08jan)
         - [Watched an introduction video about Jira.](#watched-an-introduction-video-about-jira)
 - [Log template](#log-template)  
+<br>
+
+*back to [top](#top)*  
+<br>
+
+## ✏️ 📄 <a id="sat03feb">Sat 03 Feb '24</a>
+### Daily Report
+- Succesfully SSH-ed into webserver from adminserver via private IP address.
+- Security Groups and NACLs are also set up properly.
+
+### Obstacles
+- ...
+
+### Solutions
+- ...
+
+### Learnings
+- ...  
 <br>
 
 *back to [top](#top)*  

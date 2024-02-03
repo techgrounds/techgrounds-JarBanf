@@ -15,11 +15,12 @@ class CdkVpcTestStack(Stack):
         super().__init__(scope, construct_id, **kwargs)
 
 
-        # # # # # # # # # # #
-        #                   #
-        #   VPC WEBSERVER   #
-        #                   #
-        # # # # # # # # # # #
+        #  ██    ██ ██████   ██████     ██     ██ ███████ ██████  
+        #  ██    ██ ██   ██ ██          ██     ██ ██      ██   ██ 
+        #  ██    ██ ██████  ██          ██  █  ██ █████   ██████  
+        #   ██  ██  ██      ██          ██ ███ ██ ██      ██   ██ 
+        #    ████   ██       ██████      ███ ███  ███████ ██████
+
         
         # Create VPC & Subnet
         self.vpc_webserv = ec2.Vpc(self, 'vpc-webserver',
@@ -37,11 +38,11 @@ class CdkVpcTestStack(Stack):
             )
 
 
-        # # # # # # # # # # # #
-        #                     #
-        #   VPC ADMINSERVER   #
-        #                     #
-        # # # # # # # # # # # #
+        #  ██    ██ ██████   ██████      █████  ██████  ███    ███ ██ ███    ██ 
+        #  ██    ██ ██   ██ ██          ██   ██ ██   ██ ████  ████ ██ ████   ██ 
+        #  ██    ██ ██████  ██          ███████ ██   ██ ██ ████ ██ ██ ██ ██  ██ 
+        #   ██  ██  ██      ██          ██   ██ ██   ██ ██  ██  ██ ██ ██  ██ ██ 
+        #    ████   ██       ██████     ██   ██ ██████  ██      ██ ██ ██   ████
 
         # Create VPC & Subnet
         self.vpc_adminserv = ec2.Vpc(self, 'vpc-adminserver',
@@ -59,11 +60,11 @@ class CdkVpcTestStack(Stack):
             )
         
 
-        # # # # # # # # # #
-        #                 #
-        #   VPC PEERING   #
-        #                 #
-        # # # # # # # # # #
+        #  ██████  ███████ ███████ ██████  ██ ███    ██  ██████  
+        #  ██   ██ ██      ██      ██   ██ ██ ████   ██ ██       
+        #  ██████  █████   █████   ██████  ██ ██ ██  ██ ██   ███ 
+        #  ██      ██      ██      ██   ██ ██ ██  ██ ██ ██    ██ 
+        #  ██      ███████ ███████ ██   ██ ██ ██   ████  ██████
         
         # Create VPC Peering service
         self.vpc_peering = ec2.CfnVPCPeeringConnection(self,"vpc-peering",
@@ -98,18 +99,18 @@ class CdkVpcTestStack(Stack):
             )
 
 
-        # # # # # # # # # # #
-        #                   #
-        #   NACL WEBSERVER  #
-        #                   #
-        # # # # # # # # # # # 
+        #  ███    ██  █████   ██████ ██          ██     ██ ███████ ██████  
+        #  ████   ██ ██   ██ ██      ██          ██     ██ ██      ██   ██ 
+        #  ██ ██  ██ ███████ ██      ██          ██  █  ██ █████   ██████  
+        #  ██  ██ ██ ██   ██ ██      ██          ██ ███ ██ ██      ██   ██ 
+        #  ██   ████ ██   ██  ██████ ███████      ███ ███  ███████ ██████                                                             
         
         # Create NACL
-        # self.nacl_webserver = ec2.NetworkAcl(self, 'nacl-webserver', 
-        #     network_acl_name='nacl-webserver',
-        #     vpc=self.vpc_webserv,
-        #     subnet_selection=ec2.SubnetSelection(subnet_type=ec2.SubnetType.PUBLIC)
-        #     )
+        self.nacl_webserver = ec2.NetworkAcl(self, 'nacl-webserver', 
+            network_acl_name='nacl-webserver',
+            vpc=self.vpc_webserv,
+            subnet_selection=ec2.SubnetSelection(subnet_type=ec2.SubnetType.PUBLIC)
+            )
         
 
             #    ||
@@ -118,28 +119,28 @@ class CdkVpcTestStack(Stack):
             #    \/
 
         # Allow NACL Inbound Ephemeral traffic for Linux kernels. Needed to install httpd.
-        # self.nacl_webserver.add_entry("Inbound-Ephemeral",
-        #     cidr=ec2.AclCidr.any_ipv4(),
-        #     rule_number=90,
-        #     traffic=ec2.AclTraffic.tcp_port_range(32768, 60999),
-        #     direction=ec2.TrafficDirection.INGRESS
-        #     )
+        self.nacl_webserver.add_entry("Inbound-Ephemeral",
+            cidr=ec2.AclCidr.any_ipv4(),
+            rule_number=90,
+            traffic=ec2.AclTraffic.tcp_port_range(32768, 60999),
+            direction=ec2.TrafficDirection.INGRESS
+            )
         
         # Allow NACL Inbound HTTP traffic from anywhere
-        # self.nacl_webserver.add_entry("Inbound-HTTP",
-        #     cidr=ec2.AclCidr.any_ipv4(),
-        #     rule_number=100,
-        #     traffic=ec2.AclTraffic.tcp_port(80),
-        #     direction=ec2.TrafficDirection.INGRESS
-        #     )
+        self.nacl_webserver.add_entry("Inbound-HTTP",
+            cidr=ec2.AclCidr.any_ipv4(),
+            rule_number=100,
+            traffic=ec2.AclTraffic.tcp_port(80),
+            direction=ec2.TrafficDirection.INGRESS
+            )
         
-        # Allow NACL Inbound SSH traffic from anywhere
-        # self.nacl_webserver.add_entry("Inbound-SSH",
-        #     cidr=ec2.AclCidr.any_ipv4(),
-        #     rule_number=110,
-        #     traffic=ec2.AclTraffic.tcp_port(22),
-        #     direction=ec2.TrafficDirection.INGRESS
-        #     )
+        # Allow NACL Inbound SSH traffic from admin server
+        self.nacl_webserver.add_entry("Inbound-SSH",
+            cidr=ec2.AclCidr.ipv4("10.0.2.4/32"),
+            rule_number=110,
+            traffic=ec2.AclTraffic.tcp_port(22),
+            direction=ec2.TrafficDirection.INGRESS
+            )
 
         # Allow NACL Inbound ICMP (ping) traffic from anywhere
         # self.nacl_webserver.add_entry("Inbound-ICMP",
@@ -156,26 +157,26 @@ class CdkVpcTestStack(Stack):
             #    ||
             
         # Allow NACL Outbound all traffic
-        # self.nacl_webserver.add_entry("Outbound-All",
-        #     cidr=ec2.AclCidr.any_ipv4(),
-        #     rule_number=100,
-        #     traffic=ec2.AclTraffic.all_traffic(),
-        #     direction=ec2.TrafficDirection.EGRESS
-        #     )
+        self.nacl_webserver.add_entry("Outbound-All",
+            cidr=ec2.AclCidr.any_ipv4(),
+            rule_number=100,
+            traffic=ec2.AclTraffic.all_traffic(),
+            direction=ec2.TrafficDirection.EGRESS
+            )
         
         
-        # # # # # # # # # # # #
-        #                     #
-        #   NACL ADMINSERVER  #
-        #                     #
-        # # # # # # # # # # # #
+        #  ███    ██  █████   ██████ ██           █████  ██████  ███    ███ 
+        #  ████   ██ ██   ██ ██      ██          ██   ██ ██   ██ ████  ████ 
+        #  ██ ██  ██ ███████ ██      ██          ███████ ██   ██ ██ ████ ██ 
+        #  ██  ██ ██ ██   ██ ██      ██          ██   ██ ██   ██ ██  ██  ██
+        #  ██   ████ ██   ██  ██████ ███████     ██   ██ ██████  ██      ██
         
         # Create NACL
-        # self.nacl_adminserver = ec2.NetworkAcl(self, 'nacl-adminserver', 
-        #     network_acl_name='nacl-adminserver',
-        #     vpc=self.vpc_adminserv,
-        #     subnet_selection=ec2.SubnetSelection(subnet_type=ec2.SubnetType.PUBLIC)
-        #     )
+        self.nacl_adminserver = ec2.NetworkAcl(self, 'nacl-adminserver', 
+            network_acl_name='nacl-adminserver',
+            vpc=self.vpc_adminserv,
+            subnet_selection=ec2.SubnetSelection(subnet_type=ec2.SubnetType.PUBLIC)
+            )
         
 
             #    ||
@@ -184,20 +185,20 @@ class CdkVpcTestStack(Stack):
             #    \/
             
         # Allow NACL Inbound Ephemeral traffic for Windows Server 2022.
-        # self.nacl_adminserver.add_entry("Inbound-Ephemeral",
-        #     cidr=ec2.AclCidr.any_ipv4(),
-        #     rule_number=90,
-        #     traffic=ec2.AclTraffic.tcp_port_range(49152, 65535),
-        #     direction=ec2.TrafficDirection.INGRESS
-        #     )
+        self.nacl_adminserver.add_entry("Inbound-Ephemeral",
+            cidr=ec2.AclCidr.any_ipv4(),
+            rule_number=90,
+            traffic=ec2.AclTraffic.tcp_port_range(49152, 65535),
+            direction=ec2.TrafficDirection.INGRESS
+            )
         
         # Allow NACL Inbound RDP traffic from only my IP
-        # self.nacl_adminserver.add_entry("Inbound-RDP",
-        #     cidr=ec2.AclCidr.ipv4("143.178.129.147/32"),
-        #     rule_number=100,
-        #     traffic=ec2.AclTraffic.tcp_port(3389),
-        #     direction=ec2.TrafficDirection.INGRESS
-        #     )
+        self.nacl_adminserver.add_entry("Inbound-RDP",
+            cidr=ec2.AclCidr.ipv4("143.178.129.147/32"),
+            rule_number=100,
+            traffic=ec2.AclTraffic.tcp_port(3389),
+            direction=ec2.TrafficDirection.INGRESS
+            )
 
         
             #    /\
@@ -206,19 +207,19 @@ class CdkVpcTestStack(Stack):
             #    ||
 
         # Allow NACL Outbound traffic
-        # self.nacl_adminserver.add_entry("Outbound-All",
-        #     cidr=ec2.AclCidr.any_ipv4(),
-        #     rule_number=100,
-        #     traffic=ec2.AclTraffic.all_traffic(),
-        #     direction=ec2.TrafficDirection.EGRESS
-        #     )
+        self.nacl_adminserver.add_entry("Outbound-All",
+            cidr=ec2.AclCidr.any_ipv4(),
+            rule_number=100,
+            traffic=ec2.AclTraffic.all_traffic(),
+            direction=ec2.TrafficDirection.EGRESS
+            )
 
         
-        # # # # # # # # #
-        #               #
-        #   WEBSERVER   #
-        #               #
-        # # # # # # # # #
+        #  ██     ██ ███████ ██████      ███████ ███████ ██████  ██    ██ 
+        #  ██     ██ ██      ██   ██     ██      ██      ██   ██ ██    ██ 
+        #  ██  █  ██ █████   ██████      ███████ █████   ██████  ██    ██ 
+        #  ██ ███ ██ ██      ██   ██          ██ ██      ██   ██  ██  ██  
+        #   ███ ███  ███████ ██████      ███████ ███████ ██   ██   ████
 
         # Create Security Group
         self.sg_webserver = ec2.SecurityGroup(self, "sg-webserver",
@@ -239,19 +240,19 @@ class CdkVpcTestStack(Stack):
             description="Allow HTTP traffic from anywhere",
         )
 
-        # Allow SG inbound SSH traffic from anywhere
+        # Allow SG inbound SSH traffic from admin server
         self.sg_webserver.add_ingress_rule(
-            peer=ec2.Peer.ipv4("0.0.0.0/0"),
+            peer=ec2.Peer.ipv4("10.0.2.4/32"),
             connection=ec2.Port.tcp(22),
-            description="Allow SSH traffic from anywhere",
+            description="Allow SSH traffic from admin server",
         )
 
         # Allow SG inbound ICMP (ping) traffic from anywhere
-        self.sg_webserver.add_ingress_rule(
-            peer=ec2.Peer.ipv4("0.0.0.0/0"),
-            connection=ec2.Port.all_icmp(),
-            description="Allow ICMP traffic from anywhere",
-        )
+        # self.sg_webserver.add_ingress_rule(
+        #     peer=ec2.Peer.ipv4("0.0.0.0/0"),
+        #     connection=ec2.Port.all_icmp(),
+        #     description="Allow ICMP traffic from anywhere",
+        # )
 
 
         # Import User Data for Webserver
@@ -283,11 +284,11 @@ class CdkVpcTestStack(Stack):
             )
 
 
-        # # # # # # # # # #
-        #                 #
-        #   ADMINSERVER   #
-        #                 #
-        # # # # # # # # # #
+        #   █████  ██████  ███    ███     ███████ ███████ ██████  ██    ██ 
+        #  ██   ██ ██   ██ ████  ████     ██      ██      ██   ██ ██    ██ 
+        #  ███████ ██   ██ ██ ████ ██     ███████ █████   ██████  ██    ██ 
+        #  ██   ██ ██   ██ ██  ██  ██          ██ ██      ██   ██  ██  ██  
+        #  ██   ██ ██████  ██      ██     ███████ ███████ ██   ██   ████
 
         # Create Security Group
         self.sg_adminserver = ec2.SecurityGroup(self, "sg-adminserver",
@@ -368,38 +369,38 @@ class CdkVpcTestStack(Stack):
                   export_name="adminserver-public-ip")
 
 
-        # # # # # # # #
-        #             #
-        #   BACKUP    #
-        #             #
-        # # # # # # # #
+        #  ██████   █████   ██████ ██   ██ ██    ██ ██████  
+        #  ██   ██ ██   ██ ██      ██  ██  ██    ██ ██   ██ 
+        #  ██████  ███████ ██      █████   ██    ██ ██████  
+        #  ██   ██ ██   ██ ██      ██  ██  ██    ██ ██      
+        #  ██████  ██   ██  ██████ ██   ██  ██████  ██
 
         # Create Backup plan
-        self.backup_plan = backup.BackupPlan(self, "backup-plan",
-            backup_plan_name="7-day-Backup-plan",
-            backup_plan_rules=[backup.BackupPlanRule(
-                rule_name="Daily-Retention-7days",
-                start_window=Duration.hours(1),
-                completion_window=Duration.hours(2),
-                delete_after=Duration.days(7),
-                schedule_expression=events.Schedule.cron(
-                    hour="1", 
-                    minute="0", ) # 01:00 UTC -> 02:00 Dutch winter time / 03:00 Dutch summer time
-            )]
-            )
+        # self.backup_plan = backup.BackupPlan(self, "backup-plan",
+        #     backup_plan_name="7-day-Backup-plan",
+        #     backup_plan_rules=[backup.BackupPlanRule(
+        #         rule_name="Daily-Retention-7days",
+        #         start_window=Duration.hours(1),
+        #         completion_window=Duration.hours(2),
+        #         delete_after=Duration.days(7),
+        #         schedule_expression=events.Schedule.cron(
+        #             hour="1", 
+        #             minute="0", ) # 01:00 UTC -> 02:00 Dutch winter time / 03:00 Dutch summer time
+        #     )]
+        #     )
         
         # Select Webserver as a resource to backup
-        self.backup_plan.add_selection("add-webserver", 
-            backup_selection_name="backup-webserver",
-            resources=[
-                backup.BackupResource.from_ec2_instance(self.instance_webserver)
-                ]
-            )
+        # self.backup_plan.add_selection("add-webserver", 
+        #     backup_selection_name="backup-webserver",
+        #     resources=[
+        #         backup.BackupResource.from_ec2_instance(self.instance_webserver)
+        #         ]
+        #     )
         
         # Select Adminserver as a resource to backup
-        self.backup_plan.add_selection("add-adminserver", 
-            backup_selection_name="backup-adminserver",
-            resources=[
-                backup.BackupResource.from_ec2_instance(self.instance_adminserver)
-                ]
-            )
+        # self.backup_plan.add_selection("add-adminserver", 
+        #     backup_selection_name="backup-adminserver",
+        #     resources=[
+        #         backup.BackupResource.from_ec2_instance(self.instance_adminserver)
+        #         ]
+        #     )

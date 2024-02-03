@@ -38,17 +38,17 @@ This checklist is based on the Deliverables in the chapter [Epics & User Stories
 - 🚧 2. IaC code for a web server and all supplies.
     - 🍔 Key Pair Manual
     - 🍔 Security Group
-    - 🚧 Security Group rules
+    - 🍔 Security Group rules
         - 🍔 Allow incoming "HTTP" traffic
-        - ➖ Allow incoming traffic from Admin server
+        - 🍔 Allow incoming traffic from Admin server
     - 🍔 User data as a file
     - 🍔 Instance
-    - 🚧 NACL rules update
+    - 🍔 NACL rules update
         - 🍔 Allow incoming "HTTP" traffic
         - 🍔 Allow ephemeral traffic
-        - ➖ Allow incoming traffic from Admin server
+        - 🍔 Allow incoming traffic from Admin server
     - ➖ Database
-- 🚧 3. IaC code for a management server with all the necessities.
+- 🍔 3. IaC code for a management server with all the necessities.
     - 🍔 Key Pair Manual
     - 🍔 Security Group
     - 🍔 Security Group rules
@@ -59,14 +59,13 @@ This checklist is based on the Deliverables in the chapter [Epics & User Stories
         - 🍔 Allow incomming "RDP" traffic from my IP
         - 🍔 Allow ephemeral traffic
         - 🍔 Allow outbound
-    - ➖ Connection with Webserver
+    - 🍔 Connection with Webserver
 - ➖ 4. IaC code for a script storage solution.
-- 🚧 5. IaC code for encryption facilities.
+- 🍔 5. IaC code for encryption facilities.
     - 🍔 Web server root volume encrypted
     - 🍔 Admin server root volume encrypted
     - 🍔 Admin server attached volume encrypted
     - 🍔 Backup vault
-    - ➖ anything else??
 - 🍔 6. IaC code for backup facilities.
     - 🍔 Backup plan
     - 🍔 Back up Web server
