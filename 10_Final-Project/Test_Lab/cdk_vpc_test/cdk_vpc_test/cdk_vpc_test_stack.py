@@ -15,6 +15,7 @@ class CdkVpcTestStack(Stack):
         super().__init__(scope, construct_id, **kwargs)
 
 
+
         #  ██    ██ ██████   ██████     ██     ██ ███████ ██████  
         #  ██    ██ ██   ██ ██          ██     ██ ██      ██   ██ 
         #  ██    ██ ██████  ██          ██  █  ██ █████   ██████  
@@ -33,9 +34,8 @@ class CdkVpcTestStack(Stack):
                     subnet_type=ec2.SubnetType.PUBLIC,
                     name='Webserver',
                     cidr_mask=28
-                )
-            ]
-            )
+                )])
+
 
 
         #  ██    ██ ██████   ██████      █████  ██████  ███    ███ ██ ███    ██ 
@@ -43,6 +43,7 @@ class CdkVpcTestStack(Stack):
         #  ██    ██ ██████  ██          ███████ ██   ██ ██ ████ ██ ██ ██ ██  ██ 
         #   ██  ██  ██      ██          ██   ██ ██   ██ ██  ██  ██ ██ ██  ██ ██ 
         #    ████   ██       ██████     ██   ██ ██████  ██      ██ ██ ██   ████
+
 
         # Create VPC & Subnet
         self.vpc_adminserv = ec2.Vpc(self, 'vpc-adminserver',
@@ -55,10 +56,9 @@ class CdkVpcTestStack(Stack):
                     subnet_type=ec2.SubnetType.PUBLIC,
                     name='Adminserver',
                     cidr_mask=28
-                )
-            ]
-            )
+                )])
         
+
 
         #  ██████  ███████ ███████ ██████  ██ ███    ██  ██████  
         #  ██   ██ ██      ██      ██   ██ ██ ████   ██ ██       
@@ -66,6 +66,7 @@ class CdkVpcTestStack(Stack):
         #  ██      ██      ██      ██   ██ ██ ██  ██ ██ ██    ██ 
         #  ██      ███████ ███████ ██   ██ ██ ██   ████  ██████
         
+
         # Create VPC Peering service
         self.vpc_peering = ec2.CfnVPCPeeringConnection(self,"vpc-peering",
             peer_vpc_id=self.vpc_webserv.vpc_id,
@@ -99,12 +100,14 @@ class CdkVpcTestStack(Stack):
             )
 
 
+
         #  ███    ██  █████   ██████ ██          ██     ██ ███████ ██████  
         #  ████   ██ ██   ██ ██      ██          ██     ██ ██      ██   ██ 
         #  ██ ██  ██ ███████ ██      ██          ██  █  ██ █████   ██████  
         #  ██  ██ ██ ██   ██ ██      ██          ██ ███ ██ ██      ██   ██ 
         #  ██   ████ ██   ██  ██████ ███████      ███ ███  ███████ ██████                                                             
         
+
         # Create NACL
         self.nacl_webserver = ec2.NetworkAcl(self, 'nacl-webserver', 
             network_acl_name='nacl-webserver',
@@ -165,12 +168,14 @@ class CdkVpcTestStack(Stack):
             )
         
         
+
         #  ███    ██  █████   ██████ ██           █████  ██████  ███    ███ 
         #  ████   ██ ██   ██ ██      ██          ██   ██ ██   ██ ████  ████ 
         #  ██ ██  ██ ███████ ██      ██          ███████ ██   ██ ██ ████ ██ 
         #  ██  ██ ██ ██   ██ ██      ██          ██   ██ ██   ██ ██  ██  ██
         #  ██   ████ ██   ██  ██████ ███████     ██   ██ ██████  ██      ██
         
+
         # Create NACL
         self.nacl_adminserver = ec2.NetworkAcl(self, 'nacl-adminserver', 
             network_acl_name='nacl-adminserver',
@@ -215,11 +220,13 @@ class CdkVpcTestStack(Stack):
             )
 
         
+
         #  ██     ██ ███████ ██████      ███████ ███████ ██████  ██    ██ 
         #  ██     ██ ██      ██   ██     ██      ██      ██   ██ ██    ██ 
         #  ██  █  ██ █████   ██████      ███████ █████   ██████  ██    ██ 
         #  ██ ███ ██ ██      ██   ██          ██ ██      ██   ██  ██  ██  
         #   ███ ███  ███████ ██████      ███████ ███████ ██   ██   ████
+
 
         # Create Security Group
         self.sg_webserver = ec2.SecurityGroup(self, "sg-webserver",
@@ -284,11 +291,13 @@ class CdkVpcTestStack(Stack):
             )
 
 
+
         #   █████  ██████  ███    ███     ███████ ███████ ██████  ██    ██ 
         #  ██   ██ ██   ██ ████  ████     ██      ██      ██   ██ ██    ██ 
         #  ███████ ██   ██ ██ ████ ██     ███████ █████   ██████  ██    ██ 
         #  ██   ██ ██   ██ ██  ██  ██          ██ ██      ██   ██  ██  ██  
         #  ██   ██ ██████  ██      ██     ███████ ███████ ██   ██   ████
+
 
         # Create Security Group
         self.sg_adminserver = ec2.SecurityGroup(self, "sg-adminserver",
@@ -369,11 +378,13 @@ class CdkVpcTestStack(Stack):
                   export_name="adminserver-public-ip")
 
 
+
         #  ██████   █████   ██████ ██   ██ ██    ██ ██████  
         #  ██   ██ ██   ██ ██      ██  ██  ██    ██ ██   ██ 
         #  ██████  ███████ ██      █████   ██    ██ ██████  
         #  ██   ██ ██   ██ ██      ██  ██  ██    ██ ██      
         #  ██████  ██   ██  ██████ ██   ██  ██████  ██
+
 
         # Create Backup plan
         # self.backup_plan = backup.BackupPlan(self, "backup-plan",
