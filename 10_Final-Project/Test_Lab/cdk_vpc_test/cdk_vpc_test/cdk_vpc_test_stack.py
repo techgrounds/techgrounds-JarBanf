@@ -5,8 +5,12 @@ from aws_cdk import (
     CfnOutput,
     aws_backup as backup,
     Duration,
-    aws_events as events
+    aws_events as events,
+    aws_s3 as s3,
+    RemovalPolicy,
+    aws_s3_deployment as s3deploy
     )
+from zipfile import ZipFile
 
 
 class CdkVpcTestStack(Stack):
@@ -279,24 +283,24 @@ class CdkVpcTestStack(Stack):
             )
 
         # Create Webserver instance
-        self.instance_webserver = ec2.Instance(self, "instance-webserver",
-            instance_name="instance-webserver",
-            vpc=self.vpc_webserv,
-            vpc_subnets=ec2.SubnetSelection(subnet_type=ec2.SubnetType.PUBLIC),
-            private_ip_address="10.0.1.4",
-            key_pair=self.keypair_webserver,
-            security_group=self.sg_webserver,
-            instance_type=ec2.InstanceType.of(ec2.InstanceClass.T2, ec2.InstanceSize.MICRO),
-            machine_image=ec2.AmazonLinuxImage(generation=ec2.AmazonLinuxGeneration.AMAZON_LINUX_2023),
-            block_devices=[ec2.BlockDevice(
-                device_name="/dev/xvda",
-                volume=ec2.BlockDeviceVolume.ebs(
-                    volume_size=8,
-                    encrypted=True,
-                    )
-                )],
-            user_data=ec2.UserData.custom(self.user_data_webs),
-            )
+        # self.instance_webserver = ec2.Instance(self, "instance-webserver",
+        #     instance_name="instance-webserver",
+        #     vpc=self.vpc_webserv,
+        #     vpc_subnets=ec2.SubnetSelection(subnet_type=ec2.SubnetType.PUBLIC),
+        #     private_ip_address="10.0.1.4",
+        #     key_pair=self.keypair_webserver,
+        #     security_group=self.sg_webserver,
+        #     instance_type=ec2.InstanceType.of(ec2.InstanceClass.T2, ec2.InstanceSize.MICRO),
+        #     machine_image=ec2.AmazonLinuxImage(generation=ec2.AmazonLinuxGeneration.AMAZON_LINUX_2023),
+        #     block_devices=[ec2.BlockDevice(
+        #         device_name="/dev/xvda",
+        #         volume=ec2.BlockDeviceVolume.ebs(
+        #             volume_size=8,
+        #             encrypted=True,
+        #             )
+        #         )],
+        #     user_data=ec2.UserData.custom(self.user_data_webs),
+        #     )
 
 
 
@@ -340,50 +344,50 @@ class CdkVpcTestStack(Stack):
             )
 
         # Create Adminserver instance
-        self.instance_adminserver = ec2.Instance(self,"instance-adminserver",
-            instance_name="instance-adminserver",
-            vpc=self.vpc_adminserv,
-            vpc_subnets=ec2.SubnetSelection(subnet_type=ec2.SubnetType.PUBLIC),
-            private_ip_address="10.0.2.4",
-            key_pair=self.keypair_adminserver,
-            security_group=self.sg_adminserver,
-            instance_type=ec2.InstanceType.of(ec2.InstanceClass.T2, ec2.InstanceSize.MICRO),
-            machine_image=ec2.WindowsImage(ec2.WindowsVersion.WINDOWS_SERVER_2022_ENGLISH_FULL_BASE),
-            block_devices=[ec2.BlockDevice(
-                device_name="/dev/sda1",
-                volume=ec2.BlockDeviceVolume.ebs(
-                    volume_size=30,
-                    encrypted=True,
-                    )
-                ), ec2.BlockDevice(
-                device_name="/dev/sdf",
-                volume=ec2.BlockDeviceVolume.ebs(
-                    volume_size=16,
-                    encrypted=True,
-                    )
-                )]
-            )
+        # self.instance_adminserver = ec2.Instance(self,"instance-adminserver",
+        #     instance_name="instance-adminserver",
+        #     vpc=self.vpc_adminserv,
+        #     vpc_subnets=ec2.SubnetSelection(subnet_type=ec2.SubnetType.PUBLIC),
+        #     private_ip_address="10.0.2.4",
+        #     key_pair=self.keypair_adminserver,
+        #     security_group=self.sg_adminserver,
+        #     instance_type=ec2.InstanceType.of(ec2.InstanceClass.T2, ec2.InstanceSize.MICRO),
+        #     machine_image=ec2.WindowsImage(ec2.WindowsVersion.WINDOWS_SERVER_2022_ENGLISH_FULL_BASE),
+        #     block_devices=[ec2.BlockDevice(
+        #         device_name="/dev/sda1",
+        #         volume=ec2.BlockDeviceVolume.ebs(
+        #             volume_size=30,
+        #             encrypted=True,
+        #             )
+        #         ), ec2.BlockDevice(
+        #         device_name="/dev/sdf",
+        #         volume=ec2.BlockDeviceVolume.ebs(
+        #             volume_size=16,
+        #             encrypted=True,
+        #             )
+        #         )]
+        #     )
         
         # Output
-        CfnOutput(self, "Webserver Private IP",
-            value=self.instance_webserver.instance_private_ip,
-            export_name="webserver-private-ip"
-            )
+        # CfnOutput(self, "Webserver Private IP",
+        #     value=self.instance_webserver.instance_private_ip,
+        #     export_name="webserver-private-ip"
+        #     )
         
-        CfnOutput(self, "Webserver Public IP",
-            value=self.instance_webserver.instance_public_ip,
-            export_name="webserver-public-ip"
-            )
+        # CfnOutput(self, "Webserver Public IP",
+        #     value=self.instance_webserver.instance_public_ip,
+        #     export_name="webserver-public-ip"
+        #     )
         
-        CfnOutput(self, "Adminserver Private IP",
-            value=self.instance_adminserver.instance_private_ip,
-            export_name="adminserver-private-ip"
-            )
+        # CfnOutput(self, "Adminserver Private IP",
+        #     value=self.instance_adminserver.instance_private_ip,
+        #     export_name="adminserver-private-ip"
+        #     )
         
-        CfnOutput(self, "Adminserver Public IP",
-            value=self.instance_adminserver.instance_public_ip,
-            export_name="adminserver-public-ip"
-            )
+        # CfnOutput(self, "Adminserver Public IP",
+        #     value=self.instance_adminserver.instance_public_ip,
+        #     export_name="adminserver-public-ip"
+        #     )
 
 
 
@@ -423,3 +427,46 @@ class CdkVpcTestStack(Stack):
         #         backup.BackupResource.from_ec2_instance(self.instance_adminserver)
         #         ]
         #     )
+
+
+
+        # ██████  ██    ██  ██████ ██   ██ ███████ ████████ 
+        # ██   ██ ██    ██ ██      ██  ██  ██         ██    
+        # ██████  ██    ██ ██      █████   █████      ██    
+        # ██   ██ ██    ██ ██      ██  ██  ██         ██    
+        # ██████   ██████   ██████ ██   ██ ███████    ██ 
+
+
+        # Below is the code to create an S3 bucket and automatically
+        # upload the important scripts to this bucket.
+
+        # If for some reason this script is being executed after an
+        # initial execute, there is probably no need to upload the scripts
+        # againt to S3. In that case, comment out the code below.
+        # If there is indeed a reason to re-upload the scripts to S3,
+        # be sure to update the directories in the code below to the
+        # current situation.
+
+        # Create S3 Bucket for Scripts
+        self.script_bucket = s3.Bucket(self, "script-bucket",
+            removal_policy=RemovalPolicy.DESTROY, # for testing, auto-delete bucket when "CDK-destroy"-ing
+            )
+
+        # Create .zip file of the important scripts
+        self.zip_file = "scripts_for_s3.zip"
+        with ZipFile(self.zip_file, "w") as zip_object:
+            zip_object.write("./cdk_vpc_test/cdk_vpc_test_stack.py")
+            zip_object.write("./cdk_vpc_test/user_data_webs.sh")
+            zip_object.write("app.py")
+
+        # Upload the .zip file to S3 bucket
+        s3deploy.BucketDeployment(self, "upload-scripts",
+            sources=[s3deploy.Source.asset(self.zip_file)],
+            destination_bucket=self.script_bucket
+            )
+        
+        # Output the name of the created S3 bucket
+        CfnOutput(self, "Script Bucket Name",
+            value=self.script_bucket.bucket_name,
+            export_name="script-bucket-name"
+            )

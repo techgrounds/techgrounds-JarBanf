@@ -60,12 +60,15 @@ This checklist is based on the Deliverables in the chapter [Epics & User Stories
         - 🍔 Allow ephemeral traffic
         - 🍔 Allow outbound
     - 🍔 Connection with Webserver
-- ➖ 4. IaC code for a script storage solution.
+- 🍔 4. IaC code for a script storage solution.
+    - 🍔 S3 Bucket
+    - 🍔 Upload scripts automatically
 - 🍔 5. IaC code for encryption facilities.
     - 🍔 Web server root volume encrypted
     - 🍔 Admin server root volume encrypted
     - 🍔 Admin server attached volume encrypted
     - 🍔 Backup vault
+    - 🍔 S3 script bucket
 - 🍔 6. IaC code for backup facilities.
     - 🍔 Backup plan
     - 🍔 Back up Web server
