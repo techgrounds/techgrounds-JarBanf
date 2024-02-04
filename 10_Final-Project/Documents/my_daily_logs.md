@@ -7,6 +7,7 @@ Sorted by latest to oldest.
 ## Table of Contents
 - Week 4
     - [Sat 03 Feb '24](#sat03feb)
+        - [ [SOLVED] Can't upload whole project directory to S3, I get errors.](#cant-upload-whole-project-directory-to-s3-i-get-errors)
     - [Fri 02 Feb '24](#fri02feb)
         - [ [SOLVED] Can not restore backup because I don't have the authorization to do so.](#can-not-restore-backup-because-i-dont-have-the-authorization-to-do-so)
     - [Thu 01 Feb '24](#thu01feb)
@@ -58,12 +59,41 @@ Sorted by latest to oldest.
 ### Daily Report
 - Succesfully SSH-ed into webserver from adminserver via private IP address.
 - Security Groups and NACLs are also set up properly.
+- S3 bucket create
+- Scripts automatically uploads to S3 Bucket
 
 ### Obstacles
-- ...
+- Can't upload whole project directory to S3, I get errors.
 
 ### Solutions
-- ...
+- #### Can't upload whole project directory to S3, I get errors.
+    - Sources:
+        - [How to create a zip file using Python?](https://www.tutorialspoint.com/How-to-create-a-zip-file-using-Python)
+    - Solution:
+        - First I select the important script files that are worth uploading to S3.
+        - I then create a .zip file of these scripts.
+        - And then upload the .zip file to the S3 bucket.
+
+        Working code:
+        ```py
+        # Create S3 Bucket for Scripts
+        self.script_bucket = s3.Bucket(self, "script-bucket",
+            removal_policy=RemovalPolicy.DESTROY, # for testing, auto-delete bucket when "CDK-destroy"-ing
+            )
+
+        # Create .zip file of the important scripts
+        self.zip_file = "scripts_for_s3.zip"
+        with ZipFile(self.zip_file, "w") as zip_object:
+            zip_object.write("./cdk_vpc_test/cdk_vpc_test_stack.py")
+            zip_object.write("./cdk_vpc_test/user_data_webs.sh")
+            zip_object.write("app.py")
+
+        # Upload the .zip file to S3 bucket
+        s3deploy.BucketDeployment(self, "upload-scripts",
+            sources=[s3deploy.Source.asset(self.zip_file)],
+            destination_bucket=self.script_bucket
+            )
+        ```
 
 ### Learnings
 - ...  
