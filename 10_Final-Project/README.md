@@ -47,7 +47,7 @@ To go to my Test Lab, [click here](/10_Final-Project/Test_Lab/).
 <br>
 
 ## <a id="mvp10">MVP v1.0</a> <sup>🅱️eta</sup>
-Minimum Viable Product version 1.0  
+My working code for Minimum Viable Product version 1.0.  
 
 To view MVP v1.0, [click here](/10_Final-Project/MVP_v1dot0/).  
 <br>
