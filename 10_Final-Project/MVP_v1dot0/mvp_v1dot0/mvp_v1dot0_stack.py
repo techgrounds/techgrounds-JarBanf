@@ -9,11 +9,11 @@ from aws_cdk import (
     aws_s3 as s3,                   # to create S3 bucket
     RemovalPolicy,                  # to set removal policy of S3 bucket (for testing)
     aws_s3_deployment as s3deploy   # for uploading scripts S3 bucket
-    )
+)
 from zipfile import ZipFile         # for creating .zip file before uploading to S3 bucket
 
 
-class CdkVpcTestStack(Stack):
+class MvpV1Dot0Stack(Stack):
 
     def __init__(self, scope: Construct, construct_id: str, **kwargs) -> None:
         super().__init__(scope, construct_id, **kwargs)
@@ -25,7 +25,7 @@ class CdkVpcTestStack(Stack):
          #█  ██  ██      ██          ██ ███ ██ ██      ██   ██ 
           #███   ██       ██████      ███ ███  ███████ ██████
 
-
+    
         # Create VPC & Subnet
         self.vpc_webserv = ec2.Vpc(self, 'vpc-webserver',
             ip_addresses=ec2.IpAddresses.cidr('10.0.1.0/24'),
@@ -40,7 +40,7 @@ class CdkVpcTestStack(Stack):
                     )
                 ]
             )
-
+        
 
 
         #█    ██ ██████   ██████      █████  ██████  ███    ███ ██ ███    ██ 
@@ -109,7 +109,7 @@ class CdkVpcTestStack(Stack):
             destination_cidr_block="10.0.1.0/24",
             vpc_peering_connection_id=self.vpc_peering.ref
             )
-
+        
 
 
         #██    ██  █████   ██████ ██          ██     ██ ███████ ██████  
@@ -180,7 +180,7 @@ class CdkVpcTestStack(Stack):
             direction=ec2.TrafficDirection.EGRESS
             )
         
-        
+
 
         #██    ██  █████   ██████ ██           █████  ██████  ███    ███ 
         #███   ██ ██   ██ ██      ██          ██   ██ ██   ██ ████  ████ 
@@ -231,8 +231,8 @@ class CdkVpcTestStack(Stack):
             traffic=ec2.AclTraffic.all_traffic(),
             direction=ec2.TrafficDirection.EGRESS
             )
-
         
+
 
         #█     ██ ███████ ██████      ███████ ███████ ██████  ██    ██ 
         #█     ██ ██      ██   ██     ██      ██      ██   ██ ██    ██ 
@@ -277,7 +277,7 @@ class CdkVpcTestStack(Stack):
 
 
         # Import User Data for Webserver
-        with open("./cdk_vpc_test/user_data_webs.sh") as f:
+        with open("./mvp_v1dot0/user_data_webs.sh") as f:
             self.user_data_webs = f.read()  # read User Data script and save to variable
         
         # Refer to existing Keypair Web Server
@@ -326,7 +326,7 @@ class CdkVpcTestStack(Stack):
             value=self.instance_webserver.instance_private_dns_name,
             export_name="webserver-private-dns-name"
             )
-
+        
 
 
          #████  ██████  ███    ███     ███████ ███████ ██████  ██    ██ 
@@ -409,9 +409,9 @@ class CdkVpcTestStack(Stack):
             value=self.instance_adminserver.instance_private_ip,
             export_name="adminserver-private-ip"
             )
-
-
-
+        
+        
+        
         #█████   █████   ██████ ██   ██ ██    ██ ██████  
         #█   ██ ██   ██ ██      ██  ██  ██    ██ ██   ██ 
         #█████  ███████ ██      █████   ██    ██ ██████  
@@ -448,7 +448,7 @@ class CdkVpcTestStack(Stack):
                 backup.BackupResource.from_ec2_instance(self.instance_adminserver)
                 ]
             )
-
+        
 
 
         #█████  ██    ██  ██████ ██   ██ ███████ ████████ 
@@ -476,8 +476,8 @@ class CdkVpcTestStack(Stack):
         # Create .zip file of the important scripts
         self.zip_file = "scripts_for_s3.zip" # define filename, directory will be the same as "app.py"
         with ZipFile(self.zip_file, "w") as zip_object:
-            zip_object.write("./cdk_vpc_test/cdk_vpc_test_stack.py")    # this current script
-            zip_object.write("./cdk_vpc_test/user_data_webs.sh")        # the user data script for webserver
+            zip_object.write("./mvp_v1dot0/mvp_v1dot0_stack.py")    # this current script
+            zip_object.write("./mvp_v1dot0/user_data_webs.sh")        # the user data script for webserver
             zip_object.write("app.py")                                  # the app.py script
 
         # Upload the .zip file to S3 bucket
