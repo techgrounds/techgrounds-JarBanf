@@ -5,6 +5,12 @@ Sorted by latest to oldest.
 <br>
 
 ## Table of Contents
+- Week 5
+    - [Mon 05 Feb '24](#mon05feb)
+
+- From now on working on v1.1
+- v1.0 DONE! (database feature missing, no biggie)  
+
 - Week 4
     - [Sat 03 Feb '24](#sat03feb)
         - [ [SOLVED] Can't upload whole project directory to S3, I get errors.](#cant-upload-whole-project-directory-to-s3-i-get-errors)
@@ -50,6 +56,25 @@ Sorted by latest to oldest.
     - [Mon 08 Jan '24](#mon08jan)
         - [Watched an introduction video about Jira.](#watched-an-introduction-video-about-jira)
 - [Log template](#log-template)  
+<br>
+
+*back to [top](#top)*  
+<br>
+
+## ✏️ 📄 <a id="mon05feb">Mon 05 Feb '24</a>
+### Daily Report
+- MVP v1.0 is done and repository is tagged in GitHub! 
+- Database is still missing, but that is no hard requirement.
+- I didn't have time to draft a document for using the application. I will do this for v1.1
+
+### Obstacles
+- ...
+
+### Solutions
+- ...
+
+### Learnings
+- ...  
 <br>
 
 *back to [top](#top)*  

@@ -2,7 +2,10 @@
 This document contains technical and practical information about my application.  
 Diagrams, (N)SG rules, deployment visualization, and more, are listed here.
 
-## Network
+## v1.1
+
+## v1.0
+### Network
 
 - Region: Europe (Frankfurt) --> eu-central-1  
     - VPC: 10.0.0.0/8

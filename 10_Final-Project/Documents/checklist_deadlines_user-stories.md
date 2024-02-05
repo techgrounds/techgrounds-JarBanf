@@ -80,9 +80,18 @@ This checklist is based on the Deliverables in the chapter [Epics & User Stories
 - ➖ A 10-minute presentation / demonstration of my progress on app V1.1.
 
 ### V1.1, deadline --> 23 Feb '24
-- ➖ 1. TBA
-- ➖ 2. TBA
-- ➖ 3. TBA
+- ➖ 0. Database feature from v1.0
+- ➖ 1. Webserver in private subnet
+    - ➖ Proxy
+    - ➖ ...
+    - ➖ ...
+- ➖ 2. HTTPS active
+    - ➖ TLS 1.2 or higher
+- ➖ 3. Webserver healthcheck
+    - ➖ automatic restore
+- ➖ 4. Loadbalancer webserver
+- ➖ 99. Documentation for using the application.
+- ➖ 99. Configuration for an MVP deployment.
 
 ### Final Presentation --> 23 Feb '24
 - ➖ More info TBA.  
@@ -135,9 +144,13 @@ Here are the user stories for the epic V1.1.
 
 |  | User Story | Description | Deliverable |
 | - | - | - | - |
-| 1 | TBA | - | - |
-| 2 | TBA | - | - |
-| 3 | TBA | - | - |
+| 1 | ... | The web server must no longer be "naked" on the internet. The customer would prefer to see a proxy intervene. The server will also no longer need to have a public IP address. | IaC code |
+| 2 | ... | If a user connects to the load balancer via HTTP, this connection should be automatically upgraded to HTTPS. | IaC code |
+| 3 | ... | The connection must be secured with at least TLS 1.2 or higher. | IaC code |
+| 3 | ... | The web server must undergo a health check on a regular basis. If the web server fails this health check, the server should be automatically restored. | IaC code |
+| 3 | ... | If the web server comes under persistent load, a temporary additional server should be started. | IaC code |
+| 4 | As a customer I want to know how I can use the application. | Make sure the customer can understand how to use the application. Make sure it is clear what the customer must configure before the deployment can start and which arguments the program needs. | Documentation for using the application. |
+| 5 | As a customer, I want to be able to deploy an MVP for testing. | The customer wants to test your architecture internally before using the code in production. Ensure that configuration is available that allows the customer to deploy an MVP. | Configuration for an MVP deployment. |
 <br>
 
 *back to [top](#top)*  
