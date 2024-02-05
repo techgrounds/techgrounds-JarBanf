@@ -1,5 +1,22 @@
 
-# Welcome to your CDK Python project!
+# Minimum Viable Product version 1.0
+Welcome to my MVP v1.0.  
+<br>
+
+![Architecture Diagram v1.0](/10_Final-Project/MVP_v1dot0/includes/diagram_v1dot0.drawio.png)
+*v1.0 architecture diagram*  
+<br>
+
+The [app.py](/10_Final-Project/MVP_v1dot0/app.py) file in the current directory is the "main" for this application.  
+The directory [mvp_v1dot0](/10_Final-Project/MVP_v1dot0/mvp_v1dot0/) is the Python module directory. In here you will find the [mvp_v1dot0_stack.py](/10_Final-Project/MVP_v1dot0/mvp_v1dot0/mvp_v1dot0_stack.py) file which is the CDK stack used for the application.
+
+I haven't had the time to write a document for using this application. I will for sure do this for v1.1. But feel free to browse trough the working code.  
+<br>
+
+#####################################  
+<br>
+
+## Standard text from Sample App
 
 You should explore the contents of this project. It demonstrates a CDK app with an instance of a stack (`mvp_v1dot0_stack`)
 which contains an Amazon SQS queue that is subscribed to an Amazon SNS topic.
