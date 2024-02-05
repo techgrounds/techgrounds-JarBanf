@@ -49,13 +49,13 @@ To go to my Test Lab, [click here](/10_Final-Project/Test_Lab/).
 ## <a id="mvp10">MVP v1.0</a> <sup>🅱️eta</sup>
 Minimum Viable Product version 1.0  
 
-To view MVP v1.0, [click here](/10_Final-Project/MVP_v1.0/).  
+To view MVP v1.0, [click here](/10_Final-Project/MVP_v1dot0/).  
 <br>
 
 ## <a id="mvp11">MVP v1.1</a> 🏁 🏁 🏁
 Minimum Viable Product version 1.1  
 
-To view MVP v1.1, [click here](/10_Final-Project/MVP_v1.1/).  
+To view MVP v1.1, [click here](/10_Final-Project/MVP_v1dot1/).  
 <br>
 
 *back to [top](#top)*  
