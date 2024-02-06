@@ -90,6 +90,8 @@ This checklist is based on the Deliverables in the chapter [Epics & User Stories
 - ➖ 3. Webserver healthcheck
     - ➖ automatic restore
 - ➖ 4. Loadbalancer webserver
+- ➖ 5. Autoscaling 
+    - ➖ Amazon Data Lifecycle Manager for automation of snapshots and AMI management.
 - ➖ 99. Documentation for using the application.
 - ➖ 99. Configuration for an MVP deployment.
 

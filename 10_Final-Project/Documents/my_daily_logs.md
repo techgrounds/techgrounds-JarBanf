@@ -6,6 +6,8 @@ Sorted by latest to oldest.
 
 ## Table of Contents
 - Week 5
+    - [Wed 07 Feb '24](#wed07feb)
+    - [Tue 06 Feb '24](#tue06feb)
     - [Mon 05 Feb '24](#mon05feb)
 
 - From now on working on v1.1
@@ -61,11 +63,9 @@ Sorted by latest to oldest.
 *back to [top](#top)*  
 <br>
 
-## ✏️ 📄 <a id="mon05feb">Mon 05 Feb '24</a>
+## ✏️ 📄 <a id="wed07feb">Wed 07 Feb '24</a>
 ### Daily Report
-- MVP v1.0 is done and repository is tagged in GitHub! 
-- Database is still missing, but that is no hard requirement.
-- I didn't have time to draft a document for using the application. I will do this for v1.1
+- ...
 
 ### Obstacles
 - ...
@@ -75,6 +75,25 @@ Sorted by latest to oldest.
 
 ### Learnings
 - ...  
+<br>
+
+*back to [top](#top)*  
+<br>
+
+## ✏️ 📄 <a id="tue06feb">Tue 06 Feb '24</a>
+### Daily Report
+- Figuring out the codes for Load Balancers and Autoscaling.  
+<br>
+
+*back to [top](#top)*  
+<br>
+
+## ✏️ 📄 <a id="mon05feb">Mon 05 Feb '24</a>
+### Daily Report
+- MVP v1.0 is done and repository is tagged in GitHub! 
+- Database is still missing, but that is no hard requirement.
+- I didn't have time to draft a document for using the application. I will do this for v1.1
+- Reading up on Reverse Proxy  
 <br>
 
 *back to [top](#top)*  

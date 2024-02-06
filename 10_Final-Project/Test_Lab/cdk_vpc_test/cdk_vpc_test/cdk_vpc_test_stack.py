@@ -8,7 +8,9 @@ from aws_cdk import (
     aws_events as events,           # to schedule Backup time
     aws_s3 as s3,                   # to create S3 bucket
     RemovalPolicy,                  # to set removal policy of S3 bucket (for testing)
-    aws_s3_deployment as s3deploy   # for uploading scripts S3 bucket
+    aws_s3_deployment as s3deploy,   # for uploading scripts S3 bucket
+    aws_autoscaling as autoscaling,
+    aws_elasticloadbalancingv2 as elbv2
     )
 from zipfile import ZipFile         # for creating .zip file before uploading to S3 bucket
 
@@ -27,19 +29,25 @@ class CdkVpcTestStack(Stack):
 
 
         # Create VPC & Subnet
-        # self.vpc_webserv = ec2.Vpc(self, 'vpc-webserver',
-        #     ip_addresses=ec2.IpAddresses.cidr('10.0.1.0/24'),
-        #     vpc_name='vpc-webserver',
-        #     nat_gateways=0,                             # no gateway needed
-        #     availability_zones=["eu-central-1a"],       # define AZ
-        #     subnet_configuration=[
-        #         ec2.SubnetConfiguration(
-        #             subnet_type=ec2.SubnetType.PUBLIC,  # create public subnet
-        #             name='Webserver',                   # for webserver
-        #             cidr_mask=28                        # 16 IP addresses
-        #             )
-        #         ]
-        #     )
+        self.vpc_webserv = ec2.Vpc(self, 'vpc-webserver',
+            ip_addresses=ec2.IpAddresses.cidr('10.0.1.0/24'),
+            vpc_name='vpc-webserver',
+            nat_gateways=0,                             # no gateway needed
+            max_azs=2,                                  # use all 3 AZ's
+            # availability_zones=["eu-central-1a"],       # define AZ
+            subnet_configuration=[
+                ec2.SubnetConfiguration(
+                    subnet_type=ec2.SubnetType.PUBLIC,  # create public subnet
+                    name='Public',                      # subnet group name
+                    cidr_mask=28                        # 16 IP addresses
+                    ),
+                ec2.SubnetConfiguration(
+                    subnet_type=ec2.SubnetType.PRIVATE_WITH_EGRESS,  # create private subnet and a "loose" internet gateway
+                    name='Webserver',                   # subnet group name
+                    cidr_mask=28                        # 16 IP addresses
+                    )
+                ]
+            )
 
 
 
@@ -241,11 +249,11 @@ class CdkVpcTestStack(Stack):
          #██ ███  ███████ ██████      ███████ ███████ ██   ██   ████
 
 
-        # Create Security Group
-        # self.sg_webserver = ec2.SecurityGroup(self, "sg-webserver",
-        #     vpc=self.vpc_webserv,
-        #     description="SG Webserver"
-        #     )
+        # Create Security Group for Web server
+        self.sg_webserver = ec2.SecurityGroup(self, "sg-webserver",
+            vpc=self.vpc_webserv,
+            description="SG Webserver"
+            )
 
 
             #    ||
@@ -277,15 +285,15 @@ class CdkVpcTestStack(Stack):
 
 
         # Import User Data for Webserver
-        # with open("./cdk_vpc_test/user_data_webs.sh") as f:
-        #     self.user_data_webs = f.read()  # read User Data script and save to variable
+        with open("./cdk_vpc_test/user_data_webs.sh") as f:
+            self.user_data_webs = f.read()  # read User Data script and save to variable
         
         # Refer to existing Keypair Web Server
         # Make sure a keypair with the same name "kp-web-server" is created first via Console
-        # self.keypair_webserver = ec2.KeyPair.from_key_pair_name(self, "keypair-webserver",
-        #     key_pair_name="kp-web-server",
-        #     )
-
+        self.keypair_webserver = ec2.KeyPair.from_key_pair_name(self, "keypair-webserver",
+            key_pair_name="kp-web-server",
+            )
+        
         # Create Webserver instance
         # self.instance_webserver = ec2.Instance(self, "instance-webserver",
         #     instance_name="instance-webserver",
@@ -490,4 +498,60 @@ class CdkVpcTestStack(Stack):
         # CfnOutput(self, "Script Bucket Name",
         #     value=self.script_bucket.bucket_name,
         #     export_name="script-bucket-name"
+        #     )
+
+
+
+        # Create Autoscaling group
+        # self.auto_scaling_group = autoscaling.AutoScalingGroup(self, "asg",
+        #     vpc=self.vpc_webserv,
+        #     vpc_subnets=ec2.SubnetSelection(
+        #         subnet_type=ec2.SubnetType.PRIVATE_WITH_EGRESS),
+        #     security_group=self.sg_webserver,
+        #     instance_type=ec2.InstanceType.of(
+        #         ec2.InstanceClass.T2, ec2.InstanceSize.MICRO),  # choose instance type
+        #     machine_image=ec2.AmazonLinuxImage(
+        #         generation=ec2.AmazonLinuxGeneration.AMAZON_LINUX_2023),    # choose AMI
+        #     user_data=ec2.UserData.custom(self.user_data_webs), # refer to imported User Data. See code above
+        #     desired_capacity=1,
+        #     min_capacity=1,
+        #     max_capacity=3
+        #     )
+        
+        # Create Security Group for Application Load Balancer
+        # self.sg_alb = ec2.SecurityGroup(self, "sg-alb",
+        #     vpc=self.vpc_webserv,
+        #     description="SG ALB"
+        #     )
+        
+        # Allow SG inbound HTTP traffic from anywhere
+        # self.sg_alb.add_ingress_rule(
+        #     peer=ec2.Peer.ipv4("0.0.0.0/0"),
+        #     connection=ec2.Port.tcp(80),            # HTTP port
+        #     description="Allow HTTP traffic from anywhere",
+        #     )
+        
+        # Create Application Load balancer
+        # self.app_load_balancer = elbv2.ApplicationLoadBalancer(self, "app-load-balancer",
+        #     load_balancer_name="load-balancer",
+        #     vpc=self.vpc_webserv,
+        #     internet_facing=True,
+        #     security_group=self.sg_alb,
+        #     vpc_subnets=ec2.SubnetSelection(subnet_type=ec2.SubnetType.PUBLIC)
+        #     )
+
+        # Create Target Group for ALB
+        # self.target_group = elbv2.ApplicationTargetGroup(self, "target-group",
+        #     vpc=self.vpc_webserv,
+        #     port=80,
+        #     targets=[self.auto_scaling_group],
+        #     health_check=elbv2.HealthCheck(
+        #         enabled=True,
+        #         )
+        #     )
+
+        # Add listener to the ALB
+        # self.alb_listener = self.app_load_balancer.add_listener("ws_listener",
+        #     port=80,
+        #     default_target_groups=[self.target_group]
         #     )
