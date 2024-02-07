@@ -32,9 +32,8 @@ class CdkVpcTestStack(Stack):
         self.vpc_webserv = ec2.Vpc(self, 'vpc-webserver',
             ip_addresses=ec2.IpAddresses.cidr('10.0.1.0/24'),
             vpc_name='vpc-webserver',
-            nat_gateways=0,                             # no gateway needed
-            max_azs=2,                                  # use all 3 AZ's
-            # availability_zones=["eu-central-1a"],       # define AZ
+            nat_gateways=1,                             # s
+            max_azs=3,                                  # use all 3 AZ's
             subnet_configuration=[
                 ec2.SubnetConfiguration(
                     subnet_type=ec2.SubnetType.PUBLIC,  # create public subnet
@@ -42,8 +41,8 @@ class CdkVpcTestStack(Stack):
                     cidr_mask=28                        # 16 IP addresses
                     ),
                 ec2.SubnetConfiguration(
-                    subnet_type=ec2.SubnetType.PRIVATE_WITH_EGRESS,  # create private subnet and a "loose" internet gateway
-                    name='Webserver',                   # subnet group name
+                    subnet_type=ec2.SubnetType.PRIVATE_WITH_EGRESS,  # create public subnet
+                    name='Private',                     # subnet group name
                     cidr_mask=28                        # 16 IP addresses
                     )
                 ]
@@ -502,56 +501,68 @@ class CdkVpcTestStack(Stack):
 
 
 
+        #██████ ██      ██████                 █████  ███████ 
+        #█      ██      ██   ██               ██   ██ ██      
+        #████   ██      ██████      █████     ███████ ███████ 
+        #█      ██      ██   ██               ██   ██      ██ 
+        #██████ ███████ ██████                ██   ██ ███████
+
+
+        # Create Launch Template
+        self.launch_template_ws = ec2.LaunchTemplate(self, "ws-launch-template",
+            launch_template_name="ws-launch-template",
+            security_group=self.sg_webserver,
+            # associate_public_ip_address=False,
+            instance_type=ec2.InstanceType.of(ec2.InstanceClass.T2, ec2.InstanceSize.MICRO),
+            machine_image=ec2.AmazonLinuxImage(generation=ec2.AmazonLinuxGeneration.AMAZON_LINUX_2023),
+            block_devices=[ec2.BlockDevice(
+                device_name="/dev/xvda",                       
+                volume=ec2.BlockDeviceVolume.ebs(
+                    volume_size=8,                              
+                    encrypted=True,                            
+                    )
+                )],
+            user_data=ec2.UserData.custom(self.user_data_webs),
+            )
+
         # Create Autoscaling group
-        # self.auto_scaling_group = autoscaling.AutoScalingGroup(self, "asg",
-        #     vpc=self.vpc_webserv,
-        #     vpc_subnets=ec2.SubnetSelection(
-        #         subnet_type=ec2.SubnetType.PRIVATE_WITH_EGRESS),
-        #     security_group=self.sg_webserver,
-        #     instance_type=ec2.InstanceType.of(
-        #         ec2.InstanceClass.T2, ec2.InstanceSize.MICRO),  # choose instance type
-        #     machine_image=ec2.AmazonLinuxImage(
-        #         generation=ec2.AmazonLinuxGeneration.AMAZON_LINUX_2023),    # choose AMI
-        #     user_data=ec2.UserData.custom(self.user_data_webs), # refer to imported User Data. See code above
-        #     desired_capacity=1,
-        #     min_capacity=1,
-        #     max_capacity=3
-        #     )
-        
-        # Create Security Group for Application Load Balancer
-        # self.sg_alb = ec2.SecurityGroup(self, "sg-alb",
-        #     vpc=self.vpc_webserv,
-        #     description="SG ALB"
-        #     )
-        
-        # Allow SG inbound HTTP traffic from anywhere
-        # self.sg_alb.add_ingress_rule(
-        #     peer=ec2.Peer.ipv4("0.0.0.0/0"),
-        #     connection=ec2.Port.tcp(80),            # HTTP port
-        #     description="Allow HTTP traffic from anywhere",
-        #     )
+        self.auto_scaling_group = autoscaling.AutoScalingGroup(self, "asg",
+            vpc=self.vpc_webserv,
+            vpc_subnets=ec2.SubnetSelection(subnet_type=ec2.SubnetType.PRIVATE_WITH_EGRESS),
+            launch_template=self.launch_template_ws,
+            desired_capacity=1,
+            min_capacity=1,
+            max_capacity=3,
+            # health_check=elbv2.HealthCheck(
+            #     enabled=True
+            # )
+            )
+
+        # Set Scale Policy
+        self.scale_policy = self.auto_scaling_group.scale_on_cpu_utilization("scale-policy",
+            target_utilization_percent=75,
+            )
         
         # Create Application Load balancer
-        # self.app_load_balancer = elbv2.ApplicationLoadBalancer(self, "app-load-balancer",
-        #     load_balancer_name="load-balancer",
-        #     vpc=self.vpc_webserv,
-        #     internet_facing=True,
-        #     security_group=self.sg_alb,
-        #     vpc_subnets=ec2.SubnetSelection(subnet_type=ec2.SubnetType.PUBLIC)
-        #     )
+        self.app_load_balancer = elbv2.ApplicationLoadBalancer(self, "app-load-balancer",
+            load_balancer_name="load-balancer",
+            vpc=self.vpc_webserv,
+            internet_facing=True,
+            )
 
         # Create Target Group for ALB
-        # self.target_group = elbv2.ApplicationTargetGroup(self, "target-group",
-        #     vpc=self.vpc_webserv,
-        #     port=80,
-        #     targets=[self.auto_scaling_group],
-        #     health_check=elbv2.HealthCheck(
-        #         enabled=True,
-        #         )
-        #     )
+        self.target_group = elbv2.ApplicationTargetGroup(self, "target-group",
+            vpc=self.vpc_webserv,
+            port=80,
+            # target_type=elbv2.TargetType.INSTANCE,
+            targets=[self.auto_scaling_group],
+            # health_check=elbv2.HealthCheck(
+            #     enabled=True,
+            #     )
+            )
 
-        # Add listener to the ALB
-        # self.alb_listener = self.app_load_balancer.add_listener("ws_listener",
-        #     port=80,
-        #     default_target_groups=[self.target_group]
-        #     )
+        # Add listener to the ALB for port 80
+        self.alb_listener = self.app_load_balancer.add_listener("ws_listener",
+            port=80,
+            default_target_groups=[self.target_group]
+            )

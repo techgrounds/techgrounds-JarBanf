@@ -63,7 +63,7 @@ Sorted by latest to oldest.
 *back to [top](#top)*  
 <br>
 
-## ✏️ 📄 <a id="wed07feb">Wed 07 Feb '24</a>
+## ✏️ 📄 <a id="thu08feb">Thu 08 Feb '24</a>
 ### Daily Report
 - ...
 
@@ -75,6 +75,18 @@ Sorted by latest to oldest.
 
 ### Learnings
 - ...  
+<br>
+
+*back to [top](#top)*  
+<br>
+
+## ✏️ 📄 <a id="wed07feb">Wed 07 Feb '24</a>
+### Daily Report
+- My loadbalancer and autoscaling are working in 2 different setups:
+    - Setup 1: Webservers in public subnet with public IP so linux can download apache webserver.
+    - Setup 2: Webservers in private subnet with NAT gateway so linux can download apache webserver.
+
+- NAT gateway is expensive. So there is another way to setup webserver without public IP and also without NAT gateway. I am thinking to use an AMI that already has all the configuration on it. So there is no need for the webserver to access the internet to download anything.  
 <br>
 
 *back to [top](#top)*  
