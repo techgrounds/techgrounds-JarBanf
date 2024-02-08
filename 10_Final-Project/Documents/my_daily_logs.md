@@ -7,7 +7,7 @@ Sorted by latest to oldest.
 ## Table of Contents
 - Week 5
     - [Thu 08 Feb '24](#thu08feb)
-        - [ [SOLVED] Traffic between ALB and backend EC2 Instance encrypted via HTTPS using self-signed certificate.](#traffic-between-alb-and-backend-ec2-instance-encrypted-via-https)
+        - [ [SOLVED] Traffic between ALB and backend EC2 Instance encrypted via HTTPS using self-signed certificate.](#traffic-between-alb-and-backend-ec2-instance-encrypted-via-https-using-self-signed-certificate)
         - [ [SOLVED] Traffic between ALB and internet clients also encrypted via HTTPS using self-signed certificate.](#traffic-between-alb-and-internet-clients-also-encrypted-via-https-using-self-signed-certificate)
     - [Wed 07 Feb '24](#wed07feb)
     - [Tue 06 Feb '24](#tue06feb)
