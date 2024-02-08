@@ -81,19 +81,29 @@ This checklist is based on the Deliverables in the chapter [Epics & User Stories
 
 ### V1.1, deadline --> 23 Feb '24
 - ➖ 0. Database feature from v1.0
-- ➖ 1. Webserver in private subnet
-    - ➖ Proxy
-    - ➖ ...
-    - ➖ ...
-- ➖ 2. HTTPS active
-    - ➖ TLS 1.2 or higher
-- ➖ 3. Webserver healthcheck
-    - ➖ automatic restore
-- ➖ 4. Loadbalancer webserver
-- ➖ 5. Autoscaling 
-    - ➖ Amazon Data Lifecycle Manager for automation of snapshots and AMI management.
-- ➖ 99. Documentation for using the application.
-- ➖ 99. Configuration for an MVP deployment.
+- ➖ 1. Webserver not "naked" anymore -> no public IP address
+- 🚧 2. HTTPS
+    - 🍔 TLS 1.2 or higher
+    - ➖ automatic HTTP upgrade to HTTPS
+    - 🍔 Self signed certificate
+        - 🍔 for the connection between load balancer and webservers
+        - 🍔 for the connectiom between clients and load balancer
+- 🚧 3. Autoscaling
+    - 🚧 Launch Template
+    - 🍔 Scaling policy
+    - 🍔 Max 3 webservers
+- 🚧 4. Loadbalancer
+    - 🍔 Loadbalancer itself
+    - 🚧 Target Group
+    - 🍔 Listeners
+        - 🍔 port 80
+        - 🍔 port 443
+- 🍔 5. Healthchecks
+    - 🍔 Auto Scaling -> EC2: always enabled.
+    - 🍔 Auto Scaling -> ELB: monitors whether intances are available to handle requests. When ir reports an unhealthy instance, EC2 Auto Scaling can replace it on its next periodic check.
+    - 🍔 Target Group: If the target type is instance or ip, health checks are always enabled and cannot be disabled.
+- ➖ 6. Documentation for using the application.
+- ➖ 7. Configuration for an MVP deployment.
 
 ### Final Presentation --> 23 Feb '24
 - ➖ More info TBA.  

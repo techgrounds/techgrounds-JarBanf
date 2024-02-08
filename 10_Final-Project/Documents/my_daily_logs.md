@@ -6,6 +6,9 @@ Sorted by latest to oldest.
 
 ## Table of Contents
 - Week 5
+    - [Thu 08 Feb '24](#thu08feb)
+        - [ [SOLVED] Traffic between ALB and backend EC2 Instance encrypted via HTTPS using self-signed certificate.](#traffic-between-alb-and-backend-ec2-instance-encrypted-via-https)
+        - [ [SOLVED] Traffic between ALB and internet clients also encrypted via HTTPS using self-signed certificate.](#traffic-between-alb-and-internet-clients-also-encrypted-via-https-using-self-signed-certificate)
     - [Wed 07 Feb '24](#wed07feb)
     - [Tue 06 Feb '24](#tue06feb)
     - [Mon 05 Feb '24](#mon05feb)
@@ -65,13 +68,78 @@ Sorted by latest to oldest.
 
 ## ✏️ 📄 <a id="thu08feb">Thu 08 Feb '24</a>
 ### Daily Report
-- ...
+- Traffic between ALB and backend EC2 Instance is encrypted via HTTPS using self-signed certificate.
+- Traffic between ALB and internet clients can also be encrypted via HTTPS using self-signed certificate.
 
 ### Obstacles
-- ...
+- Traffic between ALB and backend EC2 Instance encrypted via HTTPS using self-signed certificate.
+- Traffic between ALB and internet clients also encrypted via HTTPS using self-signed certificate.
 
 ### Solutions
-- ...
+- #### Traffic between ALB and backend EC2 Instance encrypted via HTTPS using self-signed certificate.
+    - Sources:
+        - [Traffic between ALB and backend EC2 Instance needs to be encrypted](https://repost.aws/questions/QU97HoG_YMQxO1LXTj76ui-w/traffic-between-alb-and-backend-ec2-instance-needs-to-be-encrypted)
+        - [Securing Apache HTTPD](https://docs.fedoraproject.org/en-US/quick-docs/getting-started-with-apache-http-server/#_securing_apache_httpd)
+    - Solution:
+        - Add the following to the user data:  
+            ```bash
+            # Enable TLS/SSL support, mod_ssl also automatically creates a self-signed certificate.
+            sudo dnf install mod_ssl -y
+            # Fully restart Apache
+            sudo systemctl restart httpd.service
+            ```
+        - Change port in Target group from 80 (HTTP) to 443 (HTTPS):   
+            ```py
+            # Create Target Group for ALB
+            self.target_group = elbv2.ApplicationTargetGroup(self, "target-group",
+            vpc=self.vpc_webserv,
+            port=443,
+            targets=[self.auto_scaling_group],
+            )
+            ```
+        - I tested it out and it works with all the instances spinning up via Auto Scaling.
+- #### Traffic between ALB and internet clients also encrypted via HTTPS using self-signed certificate.
+    - Sources:
+        - [TLS on AWS LB Using Self Signed Certificate](https://www.youtube.com/watch?v=45dmwFAZF9g)
+    - Solution: Spin up a linux server. On this server I will create a self-signed certificate. This certificate information I will then import in AWS Certificate Manager via the console.
+        - Spin up linux server.
+        - Generate .key file:  
+            ```bash
+            openssl genrsa -out keyfile.key 4096
+            ```
+        
+        - Generate CSR(Certificate Signing Request) file using keyfile.key:
+            ```bash
+            openssl req -new -key keyfile.key -out csrfile.csr
+            ```
+
+        - Fill in information requested. Values have to valid input (for example: common name has to end with top-level-domain like ".com"), but does not have to be existing. No password input needed.
+        - Self-sign the .csr file:
+            ```bash
+            openssl x509 -in csrfile.csr -out cert.crt -req -signkey keyfile.key -days 365
+            ```
+        - Copy contents of cert.crt and paste in AWS Certificate Manager in "Certificate body".
+            ```bash
+            cat cert.crt
+            ```
+        - Copy contents of keyfile.key and paste in AWS Certificate Manager in "Certificate private key".
+        - Go ahead and Create Certificate. Copy the ARN of the certificate I just created so I can refer to it in CDK.
+        - In CDK, import certificate and add it to the listener.
+            ```py
+            # Import self signed certificate from console
+            self.certificate_ss_imp = cm.Certificate.from_certificate_arn(self, "certificate-ss-imp",
+                certificate_arn="arn:aws:acm:eu-central-1:908959576754:certificate/3b2179b4-0384-4855-be19-1fb8b84213f3"
+                )
+            
+            # Add listener to the ALB for port 443
+            self.https_listener = self.load_balancer_ws.add_listener("https_listener",
+                port=443,
+                ssl_policy=elbv2.SslPolicy.RECOMMENDED_TLS,
+                certificates=[self.certificate_ss_imp],
+                default_target_groups=[self.target_group]
+                )
+            ```
+        - I tested it and it works! I can connect to load balancer using HTTPS.
 
 ### Learnings
 - ...  

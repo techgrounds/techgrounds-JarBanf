@@ -11,3 +11,7 @@ sudo unzip lab-app.zip -d /var/www/html/
 sudo systemctl start httpd
 # configure the Apache web server to start at each system boot
 sudo systemctl enable httpd
+# Enable TLS/SSL support, mod_ssl also automatically creates a self-signed certificate.
+sudo dnf install mod_ssl -y
+# Fully restart Apache
+sudo systemctl restart httpd.service
