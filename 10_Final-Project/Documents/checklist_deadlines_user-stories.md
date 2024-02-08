@@ -17,14 +17,15 @@ Description under construction...
 ## Checklist
 This checklist is based on the Deliverables in the chapter [Epics & User Stories](#epics--user-stories) below.
 
-➖ *= yet to start doing*  
-🚧 *= under construction*  
-🍔 *= (well-)DONE!*
+🐂 *= yet to start doing*  
+🔥 *= under construction*  
+🍔 *= (well-)DONE!*  
+❌ *= failed to do*
 
 ### Exploration, deadline --> 12 Jan '24
 - 🍔 1. A point-by-point description of all requirements.  
-- 🚧 2. A point-by-point overview of all assumptions.
-- 🚧 3. An overview of all services that will be used.  
+- 🔥 2. A point-by-point overview of all assumptions.
+- 🔥 3. An overview of all services that will be used.  
 
 ### Presentation V1.0 progress --> 26 Jan '24
 - 🍔 A 10-minute presentation / demonstration of my progress on app V1.0.
@@ -35,7 +36,7 @@ This checklist is based on the Deliverables in the chapter [Epics & User Stories
     - 🍔 VPC Adminserver
     - 🍔 VPC Peering
     - 🍔 NACLs
-- 🚧 2. IaC code for a web server and all supplies.
+- 🔥 2. IaC code for a web server and all supplies.
     - 🍔 Key Pair Manual
     - 🍔 Security Group
     - 🍔 Security Group rules
@@ -47,7 +48,7 @@ This checklist is based on the Deliverables in the chapter [Epics & User Stories
         - 🍔 Allow incoming "HTTP" traffic
         - 🍔 Allow ephemeral traffic
         - 🍔 Allow incoming traffic from Admin server
-    - ➖ Database
+    - ❌ Database
 - 🍔 3. IaC code for a management server with all the necessities.
     - 🍔 Key Pair Manual
     - 🍔 Security Group
@@ -73,28 +74,28 @@ This checklist is based on the Deliverables in the chapter [Epics & User Stories
     - 🍔 Backup plan
     - 🍔 Back up Web server
     - 🍔 Back up Admin server
-- ➖ 7. Documentation for using the application.
-- ➖ 8. Configuration for an MVP deployment.
+- ❌ 7. Documentation for using the application.
+- ❌ 8. Configuration for an MVP deployment.
 
 ### Presentation V1.1 progress --> 09 Feb '24
-- ➖ A 10-minute presentation / demonstration of my progress on app V1.1.
+- 🐂 A 10-minute presentation / demonstration of my progress on app V1.1.
 
 ### V1.1, deadline --> 23 Feb '24
-- ➖ 0. Database feature from v1.0
-- ➖ 1. Webserver not "naked" anymore -> no public IP address
-- 🚧 2. HTTPS
+- 🐂 0. Database feature from v1.0
+- 🐂 1. Webserver not "naked" anymore -> no public IP address
+- 🍔 2. HTTPS
     - 🍔 TLS 1.2 or higher
-    - ➖ automatic HTTP upgrade to HTTPS
+    - 🍔 Automatic HTTP redirect to HTTPS
     - 🍔 Self signed certificate
         - 🍔 for the connection between load balancer and webservers
         - 🍔 for the connectiom between clients and load balancer
-- 🚧 3. Autoscaling
-    - 🚧 Launch Template
+- 🔥 3. Autoscaling
+    - 🔥 Launch Template
     - 🍔 Scaling policy
     - 🍔 Max 3 webservers
-- 🚧 4. Loadbalancer
+- 🔥 4. Loadbalancer
     - 🍔 Loadbalancer itself
-    - 🚧 Target Group
+    - 🔥 Target Group
     - 🍔 Listeners
         - 🍔 port 80
         - 🍔 port 443
@@ -102,11 +103,11 @@ This checklist is based on the Deliverables in the chapter [Epics & User Stories
     - 🍔 Auto Scaling -> EC2: always enabled.
     - 🍔 Auto Scaling -> ELB: monitors whether intances are available to handle requests. When ir reports an unhealthy instance, EC2 Auto Scaling can replace it on its next periodic check.
     - 🍔 Target Group: If the target type is instance or ip, health checks are always enabled and cannot be disabled.
-- ➖ 6. Documentation for using the application.
-- ➖ 7. Configuration for an MVP deployment.
+- 🐂 6. Documentation for using the application.
+- 🐂 7. Configuration for an MVP deployment.
 
 ### Final Presentation --> 23 Feb '24
-- ➖ More info TBA.  
+- 🐂 More info TBA.  
 <br>
 
 *back to [top](#top)*  

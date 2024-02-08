@@ -9,6 +9,7 @@ Sorted by latest to oldest.
     - [Thu 08 Feb '24](#thu08feb)
         - [ [SOLVED] Traffic between ALB and backend EC2 Instance encrypted via HTTPS using self-signed certificate.](#traffic-between-alb-and-backend-ec2-instance-encrypted-via-https-using-self-signed-certificate)
         - [ [SOLVED] Traffic between ALB and internet clients also encrypted via HTTPS using self-signed certificate.](#traffic-between-alb-and-internet-clients-also-encrypted-via-https-using-self-signed-certificate)
+        - [ [SOLVED] Traffic from client to ALB via HTTP automatically redirected to HTTPS.](#traffic-from-client-to-alb-via-http-automatically-redirected-to-https)
     - [Wed 07 Feb '24](#wed07feb)
     - [Tue 06 Feb '24](#tue06feb)
     - [Mon 05 Feb '24](#mon05feb)
@@ -70,10 +71,12 @@ Sorted by latest to oldest.
 ### Daily Report
 - Traffic between ALB and backend EC2 Instance is encrypted via HTTPS using self-signed certificate.
 - Traffic between ALB and internet clients can also be encrypted via HTTPS using self-signed certificate.
+- Traffic from client to ALB via HTTP is automatically redirected to HTTPS.
 
 ### Obstacles
 - Traffic between ALB and backend EC2 Instance encrypted via HTTPS using self-signed certificate.
 - Traffic between ALB and internet clients also encrypted via HTTPS using self-signed certificate.
+- Traffic from client to ALB via HTTP automatically redirected to HTTPS.
 
 ### Solutions
 - #### Traffic between ALB and backend EC2 Instance encrypted via HTTPS using self-signed certificate.
@@ -98,6 +101,7 @@ Sorted by latest to oldest.
             )
             ```
         - I tested it out and it works with all the instances spinning up via Auto Scaling.
+
 - #### Traffic between ALB and internet clients also encrypted via HTTPS using self-signed certificate.
     - Sources:
         - [TLS on AWS LB Using Self Signed Certificate](https://www.youtube.com/watch?v=45dmwFAZF9g)
@@ -141,8 +145,26 @@ Sorted by latest to oldest.
             ```
         - I tested it and it works! I can connect to load balancer using HTTPS.
 
+- #### Traffic from client to ALB via HTTP automatically redirected to HTTPS.
+    - Sources:
+        - ChatGPT
+        - [ApplicationLoadBalancer](https://docs.aws.amazon.com/cdk/api/v2/python/aws_cdk.aws_elasticloadbalancingv2/ApplicationLoadBalancer.html)
+        - [ListenerAction](https://docs.aws.amazon.com/cdk/api/v2/python/aws_cdk.aws_elasticloadbalancingv2/ListenerAction.html#aws_cdk.aws_elasticloadbalancingv2.ListenerAction)
+    - Solution:
+        - Add redirect on listener port 80:
+            ```py
+            # Add listener to the ALB for port 80 and redirect traffic to port 443
+            self.http_listener = self.load_balancer_ws.add_listener("http_listener",
+                port=80,
+                default_action=elbv2.ListenerAction.redirect(
+                    port="443",
+                    protocol="HTTPS",
+                    )
+                )
+            ```
+
 ### Learnings
-- ...  
+- What is needed to setup HTTPS and also create self signed certificates.  
 <br>
 
 *back to [top](#top)*  

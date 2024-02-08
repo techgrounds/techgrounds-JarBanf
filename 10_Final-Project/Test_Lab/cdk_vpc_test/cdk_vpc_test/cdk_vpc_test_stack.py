@@ -307,27 +307,27 @@ class CdkVpcTestStack(Stack):
             )
         
         # Create Webserver instance
-        self.instance_webserver = ec2.Instance(self, "instance-webserver",
-            instance_name="instance-webserver",
-            vpc=self.vpc_webserv,                               # VPC Webserver
-            vpc_subnets=ec2.SubnetSelection(
-                subnet_type=ec2.SubnetType.PUBLIC),             # Public subnet in VPC Webserver
-            private_ip_address="10.0.1.4",                      # Give it a static IP address
-            key_pair=self.keypair_webserver,                    # refer to keypair. Code above.
-            security_group=self.sg_webserver,                   # refer to the SG for Webserver
-            instance_type=ec2.InstanceType.of(
-                ec2.InstanceClass.T2, ec2.InstanceSize.MICRO),  # choose instance type
-            machine_image=ec2.AmazonLinuxImage(
-                generation=ec2.AmazonLinuxGeneration.AMAZON_LINUX_2023),    # choose AMI
-            block_devices=[ec2.BlockDevice(
-                device_name="/dev/xvda",                        # Root EBS for Linux is always "xvda"
-                volume=ec2.BlockDeviceVolume.ebs(
-                    volume_size=8,                              # 8 GB
-                    encrypted=True,                             # activate encryption on root EBS
-                    )
-                )],
-            # user_data=ec2.UserData.custom(self.user_data_webs), # refer to imported User Data. See code above
-            )
+        # self.instance_webserver = ec2.Instance(self, "instance-webserver",
+        #     instance_name="instance-webserver",
+        #     vpc=self.vpc_webserv,                               # VPC Webserver
+        #     vpc_subnets=ec2.SubnetSelection(
+        #         subnet_type=ec2.SubnetType.PUBLIC),             # Public subnet in VPC Webserver
+        #     private_ip_address="10.0.1.4",                      # Give it a static IP address
+        #     key_pair=self.keypair_webserver,                    # refer to keypair. Code above.
+        #     security_group=self.sg_webserver,                   # refer to the SG for Webserver
+        #     instance_type=ec2.InstanceType.of(
+        #         ec2.InstanceClass.T2, ec2.InstanceSize.MICRO),  # choose instance type
+        #     machine_image=ec2.AmazonLinuxImage(
+        #         generation=ec2.AmazonLinuxGeneration.AMAZON_LINUX_2023),    # choose AMI
+        #     block_devices=[ec2.BlockDevice(
+        #         device_name="/dev/xvda",                        # Root EBS for Linux is always "xvda"
+        #         volume=ec2.BlockDeviceVolume.ebs(
+        #             volume_size=8,                              # 8 GB
+        #             encrypted=True,                             # activate encryption on root EBS
+        #             )
+        #         )],
+        #     user_data=ec2.UserData.custom(self.user_data_webs), # refer to imported User Data. See code above
+        #     )
         
         # Output the Web server public IP
         # CfnOutput(self, "Webserver Public IP",
@@ -570,12 +570,6 @@ class CdkVpcTestStack(Stack):
             targets=[self.auto_scaling_group],
             )
 
-        # Add listener to the ALB for port 80
-        # self.http_listener = self.load_balancer_ws.add_listener("http_listener",
-        #     port=80,
-        #     default_target_groups=[self.target_group]
-        #     )
-
         # Import self signed certificate from console
         self.certificate_ss_imp = cm.Certificate.from_certificate_arn(self, "certificate-ss-imp",
             certificate_arn="arn:aws:acm:eu-central-1:908959576754:certificate/3b2179b4-0384-4855-be19-1fb8b84213f3"
@@ -587,4 +581,13 @@ class CdkVpcTestStack(Stack):
             ssl_policy=elbv2.SslPolicy.RECOMMENDED_TLS,
             certificates=[self.certificate_ss_imp],
             default_target_groups=[self.target_group]
+            )
+
+        # Add listener to the ALB for port 80 and redirect traffic to port 443
+        self.http_listener = self.load_balancer_ws.add_listener("http_listener",
+            port=80,
+            default_action=elbv2.ListenerAction.redirect(
+                port="443",
+                protocol="HTTPS",
+                )
             )
