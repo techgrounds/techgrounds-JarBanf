@@ -6,6 +6,7 @@ Sorted by latest to oldest.
 
 ## Table of Contents
 - Week 5
+    - [Fri 09 Feb '24](#fri09feb)
     - [Thu 08 Feb '24](#thu08feb)
         - [ [SOLVED] Traffic between ALB and backend EC2 Instance encrypted via HTTPS using self-signed certificate.](#traffic-between-alb-and-backend-ec2-instance-encrypted-via-https-using-self-signed-certificate)
         - [ [SOLVED] Traffic between ALB and internet clients also encrypted via HTTPS using self-signed certificate.](#traffic-between-alb-and-internet-clients-also-encrypted-via-https-using-self-signed-certificate)
@@ -62,6 +63,14 @@ Sorted by latest to oldest.
     - [Mon 08 Jan '24](#mon08jan)
         - [Watched an introduction video about Jira.](#watched-an-introduction-video-about-jira)
 - [Log template](#log-template)  
+<br>
+
+*back to [top](#top)*  
+<br>
+
+## ✏️ 📄 <a id="fri09-feb">Fri 09 Feb '24</a>
+### Daily Report
+- Gave my progresion presentation. According to the learning coach I'm 90% done with my project. This is nice to hear.  
 <br>
 
 *back to [top](#top)*  

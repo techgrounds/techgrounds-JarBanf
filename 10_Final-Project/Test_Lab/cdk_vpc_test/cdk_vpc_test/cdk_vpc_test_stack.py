@@ -445,34 +445,34 @@ class CdkVpcTestStack(Stack):
 
 
         # Create Backup plan
-        self.backup_plan = backup.BackupPlan(self, "backup-plan",
-            backup_plan_name="7-day-Backup-plan",
-            backup_plan_rules=[backup.BackupPlanRule(
-                rule_name="Daily-Retention-7days",
-                start_window=Duration.hours(1),             # start within 1 hour of scheduled start
-                completion_window=Duration.hours(2),        # complete backup within 2 hours of backup start
-                delete_after=Duration.days(7),              # retain backups for 7 days
-                schedule_expression=events.Schedule.cron(
-                    hour="11",       # Daily backup at 01:00 UTC -->
-                    minute="00", )   # --> 02:00 Dutch winter time / 03:00 Dutch summer time
-                )]
-            )
+        # self.backup_plan = backup.BackupPlan(self, "backup-plan",
+        #     backup_plan_name="7-day-Backup-plan",
+        #     backup_plan_rules=[backup.BackupPlanRule(
+        #         rule_name="Daily-Retention-7days",
+        #         start_window=Duration.hours(1),             # start within 1 hour of scheduled start
+        #         completion_window=Duration.hours(2),        # complete backup within 2 hours of backup start
+        #         delete_after=Duration.days(7),              # retain backups for 7 days
+        #         schedule_expression=events.Schedule.cron(
+        #             hour="1",       # Daily backup at 01:00 UTC -->
+        #             minute="0", )   # --> 02:00 Dutch winter time / 03:00 Dutch summer time
+        #         )]
+        #     )
         
-        # Select Webserver as a resource to backup
-        self.backup_plan.add_selection("add-webserver", 
-            backup_selection_name="backup-webserver",
-            resources=[
-                backup.BackupResource.from_ec2_instance(self.instance_webserver)
-                ]
-            )
+        # # Select Webserver as a resource to backup
+        # self.backup_plan.add_selection("add-webserver", 
+        #     backup_selection_name="backup-webserver",
+        #     resources=[
+        #         backup.BackupResource.from_ec2_instance(self.instance_webserver)
+        #         ]
+        #     )
         
-        # Select Adminserver as a resource to backup
-        self.backup_plan.add_selection("add-adminserver", 
-            backup_selection_name="backup-adminserver",
-            resources=[
-                backup.BackupResource.from_ec2_instance(self.instance_adminserver)
-                ]
-            )
+        # # Select Adminserver as a resource to backup
+        # self.backup_plan.add_selection("add-adminserver", 
+        #     backup_selection_name="backup-adminserver",
+        #     resources=[
+        #         backup.BackupResource.from_ec2_instance(self.instance_adminserver)
+        #         ]
+        #     )
 
 
 
@@ -494,28 +494,28 @@ class CdkVpcTestStack(Stack):
         # current situation.
 
         # Create S3 Bucket for Scripts
-        self.script_bucket = s3.Bucket(self, "script-bucket",
-            # removal_policy=RemovalPolicy.DESTROY, # for testing, auto-delete bucket when "CDK-destroy"-ing
-            )
+        # self.script_bucket = s3.Bucket(self, "script-bucket",
+        #     # removal_policy=RemovalPolicy.DESTROY, # for testing, auto-delete bucket when "CDK-destroy"-ing
+        #     )
 
-        # Create .zip file of the important scripts
-        self.zip_file = "scripts_for_s3.zip" # define filename, directory will be the same as "app.py"
-        with ZipFile(self.zip_file, "w") as zip_object:
-            zip_object.write("./cdk_vpc_test/cdk_vpc_test_stack.py")    # this current script
-            zip_object.write("./cdk_vpc_test/user_data_webs.sh")        # the user data script for webserver
-            zip_object.write("app.py")                                  # the app.py script
+        # # Create .zip file of the important scripts
+        # self.zip_file = "scripts_for_s3.zip" # define filename, directory will be the same as "app.py"
+        # with ZipFile(self.zip_file, "w") as zip_object:
+        #     zip_object.write("./cdk_vpc_test/cdk_vpc_test_stack.py")    # this current script
+        #     zip_object.write("./cdk_vpc_test/user_data_webs.sh")        # the user data script for webserver
+        #     zip_object.write("app.py")                                  # the app.py script
 
-        # Upload the .zip file to S3 bucket
-        s3deploy.BucketDeployment(self, "upload-scripts",
-            sources=[s3deploy.Source.asset(self.zip_file)], # define source .zip file
-            destination_bucket=self.script_bucket           # refer to S3 script bucket
-            )
+        # # Upload the .zip file to S3 bucket
+        # s3deploy.BucketDeployment(self, "upload-scripts",
+        #     sources=[s3deploy.Source.asset(self.zip_file)], # define source .zip file
+        #     destination_bucket=self.script_bucket           # refer to S3 script bucket
+        #     )
         
-        # Output the name of the created S3 bucket
-        CfnOutput(self, "Script Bucket Name",
-            value=self.script_bucket.bucket_name,
-            export_name="script-bucket-name"
-            )
+        # # Output the name of the created S3 bucket
+        # CfnOutput(self, "Script Bucket Name",
+        #     value=self.script_bucket.bucket_name,
+        #     export_name="script-bucket-name"
+        #     )
 
 
 

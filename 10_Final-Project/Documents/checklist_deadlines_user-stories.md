@@ -78,7 +78,7 @@ This checklist is based on the Deliverables in the chapter [Epics & User Stories
 - ❌ 8. Configuration for an MVP deployment.
 
 ### Presentation V1.1 progress --> 09 Feb '24
-- 🐂 A 10-minute presentation / demonstration of my progress on app V1.1.
+- 🍔 A 10-minute presentation / demonstration of my progress on app V1.1.
 
 ### V1.1, deadline --> 23 Feb '24
 - 🐂 0. Database feature from v1.0
