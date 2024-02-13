@@ -543,13 +543,18 @@ class CdkVpcTestStack(Stack):
         #██████ ███████ ██████                ██   ██ ███████
 
 
+        # - - - - - - - - SECURITY GROUP - - - - - - - - - -
+
         # Create Security Group for Auto Scaling Web servers
         self.sg_as_webserver = ec2.SecurityGroup(self, "sg-as-webserver",
             vpc=self.vpc_webserv,
             description="SG AS Webserver"
             )
         
-        # # Create Launch Template
+
+        # - - - - - - - - AUTO SCALING - - - - - - - - - -
+
+        # Create Launch Template
         self.launch_template_ws = ec2.LaunchTemplate(self, "ws-launch-template",
             launch_template_name="ws-launch-template",
             role=self.role_webserv,
@@ -584,6 +589,9 @@ class CdkVpcTestStack(Stack):
             target_utilization_percent=75,
             )
         
+
+        # - - - - - - - - APPLICATION LOAD BALANCER - - - - - - - - - -
+
         # Create Application Load balancer
         self.load_balancer_ws = elbv2.ApplicationLoadBalancer(self, "load-balancer-ws",
             load_balancer_name="load-balancer-ws",
