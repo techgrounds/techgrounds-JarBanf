@@ -1,3 +1,10 @@
+#█ ███    ███ ██████   ██████  ██████  ████████ ███████ 
+#█ ████  ████ ██   ██ ██    ██ ██   ██    ██    ██      
+#█ ██ ████ ██ ██████  ██    ██ ██████     ██    ███████ 
+#█ ██  ██  ██ ██      ██    ██ ██   ██    ██         ██ 
+#█ ██      ██ ██       ██████  ██   ██    ██    ███████ 
+
+
 from constructs import Construct    # needed for CDK
 from aws_cdk import (
     Stack,                          # needed for CDK
@@ -8,12 +15,29 @@ from aws_cdk import (
     aws_events as events,           # to schedule Backup time
     aws_s3 as s3,                   # to create S3 bucket
     RemovalPolicy,                  # to set removal policy of S3 bucket (for testing)
-    aws_s3_deployment as s3deploy,   # for uploading scripts S3 bucket
+    aws_s3_deployment as s3deploy,  # for uploading scripts S3 bucket
     aws_autoscaling as autoscaling,
     aws_elasticloadbalancingv2 as elbv2,
     aws_certificatemanager as cm,
+    aws_iam as iam,
     )
 from zipfile import ZipFile         # for creating .zip file before uploading to S3 bucket
+
+
+
+ #█████  ██████  ███    ██ ███████ ██  ██████  
+#█      ██    ██ ████   ██ ██      ██ ██       
+#█      ██    ██ ██ ██  ██ █████   ██ ██   ███ 
+#█      ██    ██ ██  ██ ██ ██      ██ ██    ██ 
+ #█████  ██████  ██   ████ ██      ██  ██████
+
+
+# What is the home/office IP address of the Administrator that will be accessing the Admin Server?
+ip_address_administrator="143.178.129.147/32"
+
+# What is the certificate ARN for the Application Load Balancer?
+certificate_arn_alb="arn:aws:acm:eu-central-1:908959576754:certificate/3b2179b4-0384-4855-be19-1fb8b84213f3"
+
 
 
 class CdkVpcTestStack(Stack):
@@ -33,7 +57,7 @@ class CdkVpcTestStack(Stack):
         self.vpc_webserv = ec2.Vpc(self, 'vpc-webserver',
             ip_addresses=ec2.IpAddresses.cidr('10.0.1.0/24'),
             vpc_name='vpc-webserver',
-            nat_gateways=0,                             # 
+            nat_gateways=1,                             # 
             max_azs=3,                                  # use all 3 AZ's
             subnet_configuration=[
                 ec2.SubnetConfiguration(
@@ -43,10 +67,15 @@ class CdkVpcTestStack(Stack):
                     ),
                 ec2.SubnetConfiguration(
                     subnet_type=ec2.SubnetType.PRIVATE_ISOLATED,    # create public subnet
-                    name='Private',                                  # subnet group name
+                    name='Private',                                 # subnet group name
                     cidr_mask=28                                    # 16 IP addresses
                     )
                 ]
+            )
+
+        # Add S3 endpoint
+        self.vpc_webserv.add_gateway_endpoint("S3-endpoint",
+            service=ec2.GatewayVpcEndpointAwsService.S3
             )
 
 
@@ -91,7 +120,7 @@ class CdkVpcTestStack(Stack):
 
         # Connect VPC Peering service to Route Table from Webserver
         # Get Subnet Webserver
-        self.subnet_webserver = self.vpc_webserv.public_subnets[0]
+        self.subnet_webserver = self.vpc_webserv.isolated_subnets[0]
 
         # Get Route Table Webserver
         self.rt_sub_webserv = self.subnet_webserver.route_table
@@ -120,11 +149,11 @@ class CdkVpcTestStack(Stack):
 
 
 
-        #██    ██  █████   ██████ ██          ██     ██ ███████ ██████  
-        #███   ██ ██   ██ ██      ██          ██     ██ ██      ██   ██ 
-        #█ ██  ██ ███████ ██      ██          ██  █  ██ █████   ██████  
-        #█  ██ ██ ██   ██ ██      ██          ██ ███ ██ ██      ██   ██ 
-        #█   ████ ██   ██  ██████ ███████      ███ ███  ███████ ██████                                                             
+        #██    ██  █████   ██████ ██          ██████  ██    ██     ██     ██ ███████ ██████  
+        #███   ██ ██   ██ ██      ██          ██   ██ ██    ██     ██     ██ ██      ██   ██ 
+        #█ ██  ██ ███████ ██      ██          ██████  ██    ██     ██  █  ██ █████   ██████  
+        #█  ██ ██ ██   ██ ██      ██          ██      ██    ██     ██ ███ ██ ██      ██   ██ 
+        #█   ████ ██   ██  ██████ ███████     ██       ██████       ███ ███  ███████ ██████                                                            
         
 
         # Create NACL
@@ -190,11 +219,28 @@ class CdkVpcTestStack(Stack):
         
         
 
-        #██    ██  █████   ██████ ██           █████  ██████  ███    ███ 
-        #███   ██ ██   ██ ██      ██          ██   ██ ██   ██ ████  ████ 
-        #█ ██  ██ ███████ ██      ██          ███████ ██   ██ ██ ████ ██ 
-        #█  ██ ██ ██   ██ ██      ██          ██   ██ ██   ██ ██  ██  ██
-        #█   ████ ██   ██  ██████ ███████     ██   ██ ██████  ██      ██
+        #██    ██  █████   ██████ ██          ██████  ██████      ██     ██ ███████ ██████  
+        #███   ██ ██   ██ ██      ██          ██   ██ ██   ██     ██     ██ ██      ██   ██ 
+        #█ ██  ██ ███████ ██      ██          ██████  ██████      ██  █  ██ █████   ██████  
+        #█  ██ ██ ██   ██ ██      ██          ██      ██   ██     ██ ███ ██ ██      ██   ██ 
+        #█   ████ ██   ██  ██████ ███████     ██      ██   ██      ███ ███  ███████ ██████
+
+
+
+
+
+
+
+
+
+
+
+
+        #██    ██  █████   ██████ ██          ██████  ██    ██      █████  ██████  ███    ███ 
+        #███   ██ ██   ██ ██      ██          ██   ██ ██    ██     ██   ██ ██   ██ ████  ████ 
+        #█ ██  ██ ███████ ██      ██          ██████  ██    ██     ███████ ██   ██ ██ ████ ██ 
+        #█  ██ ██ ██   ██ ██      ██          ██      ██    ██     ██   ██ ██   ██ ██  ██  ██ 
+        #█   ████ ██   ██  ██████ ███████     ██       ██████      ██   ██ ██████  ██      ██
         
 
         # Create NACL
@@ -249,10 +295,12 @@ class CdkVpcTestStack(Stack):
          #██ ███  ███████ ██████      ███████ ███████ ██   ██   ████
 
 
+        # - - - - - - - - SECURITY GROUP & RULES - - - - - - - - - -
+        
         # Create Security Group for Private Web server
-        self.sg_webserver = ec2.SecurityGroup(self, "sg-private-webserver",
+        self.sg_admin_webserver = ec2.SecurityGroup(self, "sg-admin-webserver",
             vpc=self.vpc_webserv,
-            description="SG Private Webserver"
+            description="SG Admin Webserver"
             )
 
 
@@ -262,64 +310,101 @@ class CdkVpcTestStack(Stack):
             #    \/
         
         # Allow SG inbound HTTP traffic from admin server
-        self.sg_webserver.add_ingress_rule(
+        self.sg_admin_webserver.add_ingress_rule(
             peer=ec2.Peer.ipv4("10.0.2.4/32"),      # Static IP of Admin Server
             connection=ec2.Port.tcp(80),            # HTTP port
             description="Allow HTTP traffic from admin server",
             )
         
-        # Allow SG inbound SSH traffic from admin server
-        self.sg_webserver.add_ingress_rule(
-            peer=ec2.Peer.ipv4("10.0.2.4/32"),    # Static IP of Admin Server
-            connection=ec2.Port.tcp(22),          # SSH port
-            description="Allow SSH traffic from admin server",
-            )
-        
-
         # Allow SG inbound HTTPS traffic from admin server
-        #   for troubleshooting purposes
-        self.sg_webserver.add_ingress_rule(
+        self.sg_admin_webserver.add_ingress_rule(
             peer=ec2.Peer.ipv4("10.0.2.4/32"),      # Static IP of Admin Server
             connection=ec2.Port.tcp(443),           # HTTPS port
             description="Allow HTTPS traffic from admin server",
             )
         
+        # Allow SG inbound SSH traffic from admin server
+        self.sg_admin_webserver.add_ingress_rule(
+            peer=ec2.Peer.ipv4("10.0.2.4/32"),    # Static IP of Admin Server
+            connection=ec2.Port.tcp(22),          # SSH port
+            description="Allow SSH traffic from admin server",
+            )
+        
+        # - - - - - - - - FOR TESTING PURPOSES ONLY - - - - - - - - - -
+        # - - - - comment out when deploying in production - - - - - - - - - -
+        
+        # Allow SG inbound HTTP traffic from anywhere                   
+        # self.sg_admin_webserver.add_ingress_rule(                           
+        #     peer=ec2.Peer.any_ipv4(),                                 
+        #     connection=ec2.Port.tcp(80),                              
+        #     description="Allow HTTP traffic from anywhere",          
+        #     )                                                        
+                                                                        
+        # Allow SG inbound HTTPS traffic from anywhere
+        # self.sg_admin_webserver.add_ingress_rule(
+        #     peer=ec2.Peer.any_ipv4(),      
+        #     connection=ec2.Port.tcp(443),            
+        #     description="Allow HTTPS traffic from anywhere",
+        #     )
+        
         # Allow SG inbound SSH traffic from anywhere
-        #   for troubleshooting purposes
-        # self.sg_webserver.add_ingress_rule(
-        #     peer=ec2.Peer.any_ipv4(),               # any ip
-        #     connection=ec2.Port.tcp(22),            # SSH port
+        # self.sg_admin_webserver.add_ingress_rule(
+        #     peer=ec2.Peer.any_ipv4(),
+        #     connection=ec2.Port.tcp(22),               
         #     description="Allow SSH traffic from anywhere",
         #     )
 
         # Allow SG inbound ICMP (ping) traffic from anywhere
-        #   for troubleshooting purposes
-        # self.sg_webserver.add_ingress_rule(
+        # sself.sg_admin_webserver.add_ingress_rule(
         #     peer=ec2.Peer.ipv4("0.0.0.0/0"),
         #     connection=ec2.Port.all_icmp(),
         #     description="Allow ICMP traffic from anywhere",
         #     )
 
 
+        # - - - - - - - - S3 BUCKET & WEB CONTENT - - - - - - - - - - 
+        
+        # Create S3 Bucket for Website
+        self.website_bucket = s3.Bucket(self, "website-bucket",
+            bucket_name="cdkbucket-forwebserver-121212",
+            )
+    
+        # Upload a the lab zipfiles to the S3 bucket
+        self.deploy_website = s3deploy.BucketDeployment(self, "deploy-website",
+            sources=[s3deploy.Source.asset(path="./cdk_vpc_test/lab-app.zip")],
+            destination_bucket=self.website_bucket,
+        )
+        
+        
+        # - - - - - - - - CREATE WEBSERVER INSTANCE FOR ADMIN - - - - - - - - - -
+        
+        # Create Role for webserver instance
+        self.role_webserv = iam.Role(self, "role-webserv",
+            assumed_by=iam.ServicePrincipal("ec2.amazonaws.com")
+        )
+
+        # Allow Role to access S3 bucket.
+        self.role_webserv.add_managed_policy(iam.ManagedPolicy.from_aws_managed_policy_name("AmazonS3ReadOnlyAccess"))
+
         # Import User Data for Webserver
         with open("./cdk_vpc_test/user_data_webs.sh") as f:
             self.user_data_webs = f.read()  # read User Data script and save to variable
         
-        # Refer to existing Keypair Web Server
-        # Make sure a keypair with the same name "kp-web-server" is created first via Console
-        self.keypair_webserver = ec2.KeyPair.from_key_pair_name(self, "keypair-webserver",
-            key_pair_name="kp-web-server",
+        # Create Keypair Web Server
+        self.keypair_webserver = ec2.KeyPair(self, "keypair-pr-webserver",
+            key_pair_name="kp-pr-webserver",
             )
         
         # Create Webserver instance
-        self.instance_webserver = ec2.Instance(self, "instance-webserver",
-            instance_name="instance-webserver",
+        self.instance_webserver = ec2.Instance(self, "admin-webserver",
+            role=self.role_webserv,
+            instance_name="admin-webserver",
             vpc=self.vpc_webserv,                               # VPC Webserver
             vpc_subnets=ec2.SubnetSelection(
-                subnet_type=ec2.SubnetType.PUBLIC),             # Public subnet in VPC Webserver
-            private_ip_address="10.0.1.4",                      # Give it a static IP address
+                subnet_type=ec2.SubnetType.PRIVATE_ISOLATED),   # Private subnet in VPC Webserver
+            private_ip_address="10.0.1.52",                     # Give it a static IP address
             key_pair=self.keypair_webserver,                    # refer to keypair. Code above.
-            security_group=self.sg_webserver,                   # refer to the SG for Webserver
+            security_group=self.sg_admin_webserver,                   # refer to the SG for Webserver
             instance_type=ec2.InstanceType.of(
                 ec2.InstanceClass.T2, ec2.InstanceSize.MICRO),  # choose instance type
             machine_image=ec2.AmazonLinuxImage(
@@ -333,24 +418,6 @@ class CdkVpcTestStack(Stack):
                 )],
             user_data=ec2.UserData.custom(self.user_data_webs), # refer to imported User Data. See code above
             )
-        
-        # Output the Private Web server public IP
-        CfnOutput(self, "Private Webserver Public IP",
-            value=self.instance_webserver.instance_public_ip,
-            export_name="private-webserver-public-ip"
-            )
-        
-        # Output the Private Web server private IP
-        CfnOutput(self, "Private Webserver Private IP",
-            value=self.instance_webserver.instance_private_ip,
-            export_name="private-webserver-private-ip"
-            )
-        
-        # Output the Private Web server private DNS name, needed for SSH-ing from Admin server
-        CfnOutput(self, "Private Webserver Private DNS name",
-            value=self.instance_webserver.instance_private_dns_name,
-            export_name="private-webserver-private-dns-name"
-            )
 
 
 
@@ -361,6 +428,8 @@ class CdkVpcTestStack(Stack):
         #█   ██ ██████  ██      ██     ███████ ███████ ██   ██   ████
 
 
+        # - - - - - - - - SECURITY GROUP & RULES - - - - - - - - - -
+        
         # Create Security Group for the Admin server
         self.sg_adminserver = ec2.SecurityGroup(self, "sg-adminserver",
             vpc=self.vpc_adminserv,         # VPC for the Admin server
@@ -375,13 +444,15 @@ class CdkVpcTestStack(Stack):
         
         # Allow SG inbound RDP traffic from only my IP
         self.sg_adminserver.add_ingress_rule(
-            peer=ec2.Peer.ipv4("143.178.129.147/32"),   # change this to your home/office public IP
-            connection=ec2.Port.tcp(3389),              # RDP port
+            peer=ec2.Peer.ipv4(ip_address_administrator),   # refer to admin home/office IP address
+            connection=ec2.Port.tcp(3389),                  # RDP port
             description="Allow RDP from only my IP",
             )
-
+        
+        # - - - - - - - - FOR TESTING PURPOSES ONLY - - - - - - - - - -
+        # - - - - comment out when deploying in production - - - - - - - - - -
+        
         # Allow SG inbound ICMP (ping) traffic from anywhere
-        #   for troubleshooting purposes
         # self.sg_adminserver.add_ingress_rule(
         #     peer=ec2.Peer.ipv4("0.0.0.0/0"),
         #     connection=ec2.Port.all_icmp(),
@@ -389,10 +460,11 @@ class CdkVpcTestStack(Stack):
         #     )
 
 
-        # Refer to existing Keypair Admin Server
-        # Make sure a keypair with the same name "kp-admin-server" is created first via Console.
-        self.keypair_adminserver = ec2.KeyPair.from_key_pair_name(self, "keypair-adminserver",
-            key_pair_name="kp-admin-server",     
+        # - - - - - - - - CREATE ADMIN SERVER - - - - - - - - - -
+
+        # Create Keypair Admin Server
+        self.keypair_adminserver = ec2.KeyPair(self, "keypair-adminserver",
+            key_pair_name="kp-adminserver",     
             )
 
         # Create Adminserver instance
@@ -421,18 +493,6 @@ class CdkVpcTestStack(Stack):
                     encrypted=True,                             # activate encryption on attached EBS
                     )
                 )]
-            )
-        
-        # # Output the Admin server public IP
-        CfnOutput(self, "Adminserver Public IP",
-            value=self.instance_adminserver.instance_public_ip,
-            export_name="adminserver-public-ip"
-            )
-        
-        # Output the Admin server private IP
-        CfnOutput(self, "Adminserver Private IP",
-            value=self.instance_adminserver.instance_private_ip,
-            export_name="adminserver-private-ip"
             )
 
 
@@ -476,6 +536,101 @@ class CdkVpcTestStack(Stack):
 
 
 
+        #██████ ██      ██████                 █████  ███████ 
+        #█      ██      ██   ██               ██   ██ ██      
+        #████   ██      ██████      █████     ███████ ███████ 
+        #█      ██      ██   ██               ██   ██      ██ 
+        #██████ ███████ ██████                ██   ██ ███████
+
+
+        # Create Security Group for Auto Scaling Web servers
+        self.sg_as_webserver = ec2.SecurityGroup(self, "sg-as-webserver",
+            vpc=self.vpc_webserv,
+            description="SG AS Webserver"
+            )
+        
+        # # Create Launch Template
+        self.launch_template_ws = ec2.LaunchTemplate(self, "ws-launch-template",
+            launch_template_name="ws-launch-template",
+            role=self.role_webserv,
+            security_group=self.sg_as_webserver,
+            instance_type=ec2.InstanceType.of(ec2.InstanceClass.T2, ec2.InstanceSize.MICRO),
+            machine_image=ec2.AmazonLinuxImage(generation=ec2.AmazonLinuxGeneration.AMAZON_LINUX_2023),
+            block_devices=[ec2.BlockDevice(
+                device_name="/dev/xvda",                       
+                volume=ec2.BlockDeviceVolume.ebs(
+                    volume_size=8,                              
+                    encrypted=True,                            
+                    )
+                )],
+            user_data=ec2.UserData.custom(self.user_data_webs),
+            )
+
+        # Create Autoscaling group
+        self.auto_scaling_group = autoscaling.AutoScalingGroup(self, "asg",
+            vpc=self.vpc_webserv,
+            vpc_subnets=ec2.SubnetSelection(subnet_type=ec2.SubnetType.PRIVATE_ISOLATED),
+            launch_template=self.launch_template_ws,
+            desired_capacity=1,
+            min_capacity=1,
+            max_capacity=3,
+            health_check=autoscaling.HealthCheck.elb(
+                grace=Duration.minutes(5)
+                )
+            )
+
+        # Set Scale Policy
+        self.scale_policy = self.auto_scaling_group.scale_on_cpu_utilization("scale-policy",
+            target_utilization_percent=75,
+            )
+        
+        # Create Application Load balancer
+        self.load_balancer_ws = elbv2.ApplicationLoadBalancer(self, "load-balancer-ws",
+            load_balancer_name="load-balancer-ws",
+            vpc=self.vpc_webserv,
+            internet_facing=True,
+            )
+
+        # Create Target Group for ALB
+        self.target_group = elbv2.ApplicationTargetGroup(self, "target-group",
+            vpc=self.vpc_webserv,
+            port=443,
+            targets=[self.auto_scaling_group],
+            )
+
+        # Import self signed certificate from console
+        self.certificate_ss_imp = cm.Certificate.from_certificate_arn(self, "certificate-ss-imp",
+            certificate_arn=certificate_arn_alb
+            )
+        
+        # Add listener to the ALB for port 443
+        self.https_listener = self.load_balancer_ws.add_listener("https_listener",
+            port=443,
+            ssl_policy=elbv2.SslPolicy.RECOMMENDED_TLS,
+            certificates=[self.certificate_ss_imp],
+            default_target_groups=[self.target_group]
+            )
+
+        # Add listener to the ALB for port 80 and redirect traffic to port 443
+        self.http_listener = self.load_balancer_ws.add_listener("http_listener",
+            port=80,
+            default_action=elbv2.ListenerAction.redirect(
+                port="443",
+                protocol="HTTPS",
+                )
+            )
+
+
+        # - - - - - - - - OUTPUT USEFUL LOAD BALANCER VALUES - - - - - - - - - -
+
+        # Output the load balancer public DNS
+        CfnOutput(self, "Load Balancer Public DNS",
+            value=self.load_balancer_ws.load_balancer_dns_name,
+            export_name="load-balancer-public-dns"
+            )
+
+
+
         #█████  ██    ██  ██████ ██   ██ ███████ ████████ 
         #█   ██ ██    ██ ██      ██  ██  ██         ██    
         #█████  ██    ██ ██      █████   █████      ██    
@@ -516,89 +671,3 @@ class CdkVpcTestStack(Stack):
         #     value=self.script_bucket.bucket_name,
         #     export_name="script-bucket-name"
         #     )
-
-
-
-        #██████ ██      ██████                 █████  ███████ 
-        #█      ██      ██   ██               ██   ██ ██      
-        #████   ██      ██████      █████     ███████ ███████ 
-        #█      ██      ██   ██               ██   ██      ██ 
-        #██████ ███████ ██████                ██   ██ ███████
-
-
-        # Create Security Group for Auto Scaling Web servers
-        self.sg_as_webserver = ec2.SecurityGroup(self, "sg-as-webserver",
-            vpc=self.vpc_webserv,
-            description="SG AS Webserver"
-            )
-        
-        # Create Launch Template
-        self.launch_template_ws = ec2.LaunchTemplate(self, "ws-launch-template",
-            launch_template_name="ws-launch-template",
-            security_group=self.sg_as_webserver,
-            # associate_public_ip_address=False,
-            instance_type=ec2.InstanceType.of(ec2.InstanceClass.T2, ec2.InstanceSize.MICRO),
-            machine_image=ec2.AmazonLinuxImage(generation=ec2.AmazonLinuxGeneration.AMAZON_LINUX_2023),
-            block_devices=[ec2.BlockDevice(
-                device_name="/dev/xvda",                       
-                volume=ec2.BlockDeviceVolume.ebs(
-                    volume_size=8,                              
-                    encrypted=True,                            
-                    )
-                )],
-            user_data=ec2.UserData.custom(self.user_data_webs),
-            )
-
-        # Create Autoscaling group
-        self.auto_scaling_group = autoscaling.AutoScalingGroup(self, "asg",
-            vpc=self.vpc_webserv,
-            vpc_subnets=ec2.SubnetSelection(subnet_type=ec2.SubnetType.PUBLIC),
-            launch_template=self.launch_template_ws,
-            desired_capacity=1,
-            min_capacity=1,
-            max_capacity=3,
-            health_check=autoscaling.HealthCheck.elb(
-                grace=Duration.minutes(5)
-                )
-            )
-
-        # Set Scale Policy
-        self.scale_policy = self.auto_scaling_group.scale_on_cpu_utilization("scale-policy",
-            target_utilization_percent=75,
-            )
-        
-        # Create Application Load balancer
-        self.load_balancer_ws = elbv2.ApplicationLoadBalancer(self, "load-balancer-ws",
-            load_balancer_name="load-balancer-ws",
-            vpc=self.vpc_webserv,
-            internet_facing=True,
-            )
-
-        # Create Target Group for ALB
-        self.target_group = elbv2.ApplicationTargetGroup(self, "target-group",
-            vpc=self.vpc_webserv,
-            port=443,
-            targets=[self.auto_scaling_group],
-            )
-
-        # Import self signed certificate from console
-        self.certificate_ss_imp = cm.Certificate.from_certificate_arn(self, "certificate-ss-imp",
-            certificate_arn="arn:aws:acm:eu-central-1:908959576754:certificate/3b2179b4-0384-4855-be19-1fb8b84213f3"
-            )
-        
-        # Add listener to the ALB for port 443
-        self.https_listener = self.load_balancer_ws.add_listener("https_listener",
-            port=443,
-            ssl_policy=elbv2.SslPolicy.RECOMMENDED_TLS,
-            certificates=[self.certificate_ss_imp],
-            default_target_groups=[self.target_group]
-            )
-
-        # Add listener to the ALB for port 80 and redirect traffic to port 443
-        self.http_listener = self.load_balancer_ws.add_listener("http_listener",
-            port=80,
-            default_action=elbv2.ListenerAction.redirect(
-                port="443",
-                protocol="HTTPS",
-                )
-            )
