@@ -5,6 +5,10 @@ Sorted by latest to oldest.
 <br>
 
 ## Table of Contents
+- Week 6
+    - [Wed 14 Feb '14](#wed14feb)
+        - [ [SOLVED] NACLs keeps blocking my traffic to/from loadbalancer](#nacls-keeps-blocking-my-traffic-tofrom-loadbalancer)
+        - [ [SOLVED] “Warning: Remote Host Identification Has Changed”](#warning-remote-host-identification-has-changed)
 - Week 5
     - [Fri 09 Feb '24](#fri09feb)
     - [Thu 08 Feb '24](#thu08feb)
@@ -63,6 +67,34 @@ Sorted by latest to oldest.
     - [Mon 08 Jan '24](#mon08jan)
         - [Watched an introduction video about Jira.](#watched-an-introduction-video-about-jira)
 - [Log template](#log-template)  
+<br>
+
+*back to [top](#top)*  
+<br>
+
+## ✏️ 📄 <a id="wed14feb">Wed 14 Feb '14</a>
+### Daily Report
+- Updating my NACLs to the current situation.
+
+### Obstacles
+- NACLs keeps blocking my traffic to/from loadbalancer.
+- “Warning: Remote Host Identification Has Changed”.
+
+### Solutions
+- #### NACLs keeps blocking my traffic to/from loadbalancer.
+    - Sources:
+        - [Network ACLs for load balancers in a VPC](https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-security-groups.html#elb-vpc-nacl)
+    - Solution:
+        - Allow the correct inbound and outbound ports
+
+- #### “Warning: Remote Host Identification Has Changed”.
+    - Sources:
+        - [How To Fix the “Warning: Remote Host Identification Has Changed” Error](https://kinsta.com/knowledgebase/warning-remote-host-identification-has-changed/)
+    - Solution:
+        - Remove old key from known_hosts file. 
+
+### Learnings
+- ...  
 <br>
 
 *back to [top](#top)*  

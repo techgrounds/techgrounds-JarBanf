@@ -156,63 +156,87 @@ class CdkVpcTestStack(Stack):
         #█   ████ ██   ██  ██████ ███████     ██       ██████       ███ ███  ███████ ██████                                                            
         
 
+        # - - - - - - - - NACL WEBSERVER PUBLIC SUBNET & RULES - - - - - - - - - -
+        
         # Create NACL
-        # self.nacl_webserver = ec2.NetworkAcl(self, 'nacl-webserver', 
-        #     network_acl_name='nacl-webserver',
-        #     vpc=self.vpc_webserv,
-        #     subnet_selection=ec2.SubnetSelection(subnet_type=ec2.SubnetType.PUBLIC)
-        #     )
+        self.nacl_webserver = ec2.NetworkAcl(self, 'nacl-webserver-pulic', 
+            network_acl_name='nacl-webserver-public',
+            vpc=self.vpc_webserv,
+            subnet_selection=ec2.SubnetSelection(subnet_type=ec2.SubnetType.PUBLIC)
+            )
         
+        # - - - - - - - - INBOUND TRAFFIC - - - - - - - - - -
+            #    ||
+            #    ||
+            #   \\//
+            #    \/
 
-        #     #    ||
-        #     #    ||
-        #     #   \\//
-        #     #    \/
+        # Allow all inbound HTTP traffic on the load balancer listener port
+        self.nacl_webserver.add_entry("Inbound-HTTP",
+            cidr=ec2.AclCidr.any_ipv4(),
+            rule_number=100,
+            traffic=ec2.AclTraffic.tcp_port(80),        # HTTP port
+            direction=ec2.TrafficDirection.INGRESS
+            )
 
-        # # Allow NACL Inbound Ephemeral traffic for Linux kernels. 
-        # #   Needed to install httpd.
-        # self.nacl_webserver.add_entry("Inbound-Ephemeral",
-        #     cidr=ec2.AclCidr.any_ipv4(),
-        #     rule_number=90,
-        #     traffic=ec2.AclTraffic.tcp_port_range(32768, 60999),    # Linux ephemeral ports
-        #     direction=ec2.TrafficDirection.INGRESS
-        #     )
+        # Allow all inbound HTTPS traffic on the load balancer listener port
+        self.nacl_webserver.add_entry("Inbound-HTTPS",
+            cidr=ec2.AclCidr.any_ipv4(),
+            rule_number=110,
+            traffic=ec2.AclTraffic.tcp_port(443),       # HTTPS port
+            direction=ec2.TrafficDirection.INGRESS
+            )
         
-        # # Allow NACL Inbound HTTP traffic from anywhere
-        # self.nacl_webserver.add_entry("Inbound-HTTP",
-        #     cidr=ec2.AclCidr.any_ipv4(),
-        #     rule_number=100,
-        #     traffic=ec2.AclTraffic.tcp_port(80),        # HTTP port
-        #     direction=ec2.TrafficDirection.INGRESS
-        #     )
+        # Allow inbound traffic from the VPC CIDR on the ephemeral ports
+        self.nacl_webserver.add_entry("Inbound-Ephemeral",
+            cidr=ec2.AclCidr.ipv4("10.0.1.0/24"),
+            rule_number=120,
+            traffic=ec2.AclTraffic.tcp_port_range(1024, 65535),    # ephemeral ports
+            direction=ec2.TrafficDirection.INGRESS
+            )
         
-        # # Allow NACL Inbound SSH traffic from admin server
-        # self.nacl_webserver.add_entry("Inbound-SSH",
-        #     cidr=ec2.AclCidr.ipv4("10.0.2.4/32"),       # Static IP of Admin Server
-        #     rule_number=110,
-        #     traffic=ec2.AclTraffic.tcp_port(22),        # SSH port
-        #     direction=ec2.TrafficDirection.INGRESS
-        #     )
-
+        # - - - - - - - - FOR TESTING PURPOSES ONLY - - - - - - - - - -
+        # - - - - comment out when deploying in production - - - - - - - - - -
+        
         # Allow NACL Inbound All traffic from anywhere
         #   for troubleshooting purposes
         # self.nacl_webserver.add_entry("Inbound-ALL",
         #     cidr=ec2.AclCidr.any_ipv4(),
-        #     rule_number=120,
+        #     rule_number=200,
         #     traffic=ec2.AclTraffic.all_traffic(),
         #     direction=ec2.TrafficDirection.INGRESS
         #     )
         
 
+        # - - - - - - - - OUTBOUND TRAFFIC - - - - - - - - - -
             #    /\
             #   //\\
             #    ||
             #    ||
             
+        # Allow all outbound traffic on the instance-listener/health-check port
+        self.nacl_webserver.add_entry("Outbound-HTTPS/health-check",
+            cidr=ec2.AclCidr.ipv4("10.0.1.0/24"),
+            rule_number=110,
+            traffic=ec2.AclTraffic.tcp_port(443),       # HTTPS/health-check port
+            direction=ec2.TrafficDirection.EGRESS
+            )
+        
+        # Allow all outbound traffic on the ephemeral ports
+        self.nacl_webserver.add_entry("Outbound-Ephemeral",
+            cidr=ec2.AclCidr.any_ipv4(),
+            rule_number=120,
+            traffic=ec2.AclTraffic.tcp_port_range(1024, 65535),    # ephemeral ports
+            direction=ec2.TrafficDirection.EGRESS
+            )
+        
+        # - - - - - - - - FOR TESTING PURPOSES ONLY - - - - - - - - - -
+        # - - - - comment out when deploying in production - - - - - - - - - -
+        
         # Allow NACL Outbound all traffic
         # self.nacl_webserver.add_entry("Outbound-All",
         #     cidr=ec2.AclCidr.any_ipv4(),
-        #     rule_number=100,
+        #     rule_number=200,
         #     traffic=ec2.AclTraffic.all_traffic(),
         #     direction=ec2.TrafficDirection.EGRESS
         #     )
@@ -226,13 +250,101 @@ class CdkVpcTestStack(Stack):
         #█   ████ ██   ██  ██████ ███████     ██      ██   ██      ███ ███  ███████ ██████
 
 
+        # - - - - - - - - NACL WEBSERVER PRIVATE SUBNET & RULES - - - - - - - - - -
+
+        # Create NACL
+        self.nacl_webserver_pr = ec2.NetworkAcl(self, 'nacl-webserver-private', 
+            network_acl_name='nacl-webserver-private',
+            vpc=self.vpc_webserv,
+            subnet_selection=ec2.SubnetSelection(subnet_type=ec2.SubnetType.PRIVATE_ISOLATED)
+            )
 
 
+        # - - - - - - - - INBOUND TRAFFIC - - - - - - - - - -
+            #    ||
+            #    ||
+            #   \\//
+            #    \/
+
+        # Allow inbound SSH traffic from admin server
+        self.nacl_webserver_pr.add_entry("Inbound-SSH",
+            cidr=ec2.AclCidr.ipv4("10.0.2.4/32"),       # Static IP of Admin Server
+            rule_number=100,
+            traffic=ec2.AclTraffic.tcp_port(22),        # SSH port
+            direction=ec2.TrafficDirection.INGRESS
+            )
+        
+        # Allow inbound HTTP traffic from VPC 1 & 2
+        self.nacl_webserver_pr.add_entry("Inbound-HTTP",
+            cidr=ec2.AclCidr.ipv4("10.0.0.0/16"),
+            rule_number=105,
+            traffic=ec2.AclTraffic.tcp_port(80),        # HTTP port
+            direction=ec2.TrafficDirection.INGRESS
+            )
+        
+        # Allow inbound HTTPS traffic from VPC 1 & 2
+        self.nacl_webserver_pr.add_entry("Inbound-HTTPS",
+            cidr=ec2.AclCidr.ipv4("10.0.0.0/16"),
+            rule_number=110,
+            traffic=ec2.AclTraffic.tcp_port(443),       # HTTPS port
+            direction=ec2.TrafficDirection.INGRESS
+            )
+        
+        # Allow inbound traffic from the VPC CIDR on the ephemeral ports
+        #   Needed for webservers to install packages.
+        self.nacl_webserver_pr.add_entry("Inbound-Ephemeral",
+            cidr=ec2.AclCidr.any_ipv4(),
+            rule_number=120,
+            traffic=ec2.AclTraffic.tcp_port_range(32768, 60999),    # Linux ephemeral ports
+            direction=ec2.TrafficDirection.INGRESS
+            )
+
+        # - - - - - - - - FOR TESTING PURPOSES ONLY - - - - - - - - - -
+        # - - - - comment out when deploying in production - - - - - - - - - -
+        
+        # Allow NACL Inbound All traffic from anywhere
+        #   for troubleshooting purposes
+        # self.nacl_webserver_pr.add_entry("Inbound-ALL",
+        #     cidr=ec2.AclCidr.any_ipv4(),
+        #     rule_number=200,
+        #     traffic=ec2.AclTraffic.all_traffic(),
+        #     direction=ec2.TrafficDirection.INGRESS
+        #     )
 
 
+        # - - - - - - - - OUTBOUND TRAFFIC - - - - - - - - - -
+            #    /\
+            #   //\\
+            #    ||
+            #    ||
+        
+        # Allow all outbound traffic on HTTPS port
+        #   Needed for webservers to install packages.
+        self.nacl_webserver_pr.add_entry("Outbound-HTTPS",
+            cidr=ec2.AclCidr.any_ipv4(),
+            rule_number=110,
+            traffic=ec2.AclTraffic.tcp_port(443),   # https port
+            direction=ec2.TrafficDirection.EGRESS
+            )
+        
+        # Allow all outbound traffic on the ephemeral ports
+        self.nacl_webserver_pr.add_entry("Outbound-Ephemeral",
+            cidr=ec2.AclCidr.any_ipv4(),
+            rule_number=120,
+            traffic=ec2.AclTraffic.tcp_port_range(1024, 65535),    # ephemeral ports
+            direction=ec2.TrafficDirection.EGRESS
+            )
+        
+        # - - - - - - - - FOR TESTING PURPOSES ONLY - - - - - - - - - -
+        # - - - - comment out when deploying in production - - - - - - - - - -
 
-
-
+        # Allow NACL Outbound all traffic
+        # self.nacl_webserver_pr.add_entry("Outbound-All",
+        #     cidr=ec2.AclCidr.any_ipv4(),
+        #     rule_number=200,
+        #     traffic=ec2.AclTraffic.all_traffic(),
+        #     direction=ec2.TrafficDirection.EGRESS
+        #     )
 
 
 
@@ -244,44 +356,92 @@ class CdkVpcTestStack(Stack):
         
 
         # Create NACL
-        # self.nacl_adminserver = ec2.NetworkAcl(self, 'nacl-adminserver', 
-        #     network_acl_name='nacl-adminserver',
-        #     vpc=self.vpc_adminserv,
-        #     subnet_selection=ec2.SubnetSelection(subnet_type=ec2.SubnetType.PUBLIC)
-        #     )
+        self.nacl_adminserver = ec2.NetworkAcl(self, 'nacl-adminserver-public', 
+            network_acl_name='nacl-adminserver-public',
+            vpc=self.vpc_adminserv,
+            subnet_selection=ec2.SubnetSelection(subnet_type=ec2.SubnetType.PUBLIC)
+            )
         
-
+        # - - - - - - - - INBOUND TRAFFIC - - - - - - - - - -
             #    ||
             #    ||
             #   \\//
             #    \/
             
         # Allow NACL Inbound Ephemeral traffic for Windows Server 2022.
-        # self.nacl_adminserver.add_entry("Inbound-Ephemeral",
-        #     cidr=ec2.AclCidr.any_ipv4(),
-        #     rule_number=90,
-        #     traffic=ec2.AclTraffic.tcp_port_range(49152, 65535),    # Windows ephemeral ports
-        #     direction=ec2.TrafficDirection.INGRESS
-        #     )
+        self.nacl_adminserver.add_entry("Inbound-Ephemeral",
+            cidr=ec2.AclCidr.any_ipv4(),
+            rule_number=90,
+            traffic=ec2.AclTraffic.tcp_port_range(49152, 65535),    # Windows ephemeral ports
+            direction=ec2.TrafficDirection.INGRESS
+            )
         
         # Allow NACL Inbound RDP traffic from only my IP
-        # self.nacl_adminserver.add_entry("Inbound-RDP",
-        #     cidr=ec2.AclCidr.ipv4("143.178.129.147/32"),    # change this to your home/office public IP
-        #     rule_number=100,
-        #     traffic=ec2.AclTraffic.tcp_port(3389),          # RDP port
+        self.nacl_adminserver.add_entry("Inbound-RDP",
+            cidr=ec2.AclCidr.ipv4("143.178.129.147/32"),    # change this to your home/office public IP
+            rule_number=100,
+            traffic=ec2.AclTraffic.tcp_port(3389),          # RDP port
+            direction=ec2.TrafficDirection.INGRESS
+            )
+        
+        # - - - - - - - - FOR TESTING PURPOSES ONLY - - - - - - - - - -
+        # - - - - comment out when deploying in production - - - - - - - - - -
+        
+        # Allow NACL Inbound All traffic from anywhere
+        #   for troubleshooting purposes
+        # self.nacl_adminserver.add_entry("Inbound-ALL",
+        #     cidr=ec2.AclCidr.any_ipv4(),
+        #     rule_number=200,
+        #     traffic=ec2.AclTraffic.all_traffic(),
         #     direction=ec2.TrafficDirection.INGRESS
         #     )
 
         
+        # - - - - - - - - OUTBOUND TRAFFIC - - - - - - - - - -
             #    /\
             #   //\\
             #    ||
             #    ||
 
+        # Allow outbound SSH traffic to Admin Webserver
+        self.nacl_adminserver.add_entry("Outbound-SSH",
+            cidr=ec2.AclCidr.ipv4("10.0.1.52/32"),
+            rule_number=90,
+            traffic=ec2.AclTraffic.tcp_port(22),    # ssh port
+            direction=ec2.TrafficDirection.EGRESS
+            )
+        
+        # Allow all outbound traffic on HTTP port
+        self.nacl_adminserver.add_entry("Outbound-HTTP",
+            cidr=ec2.AclCidr.any_ipv4(),
+            rule_number=100,
+            traffic=ec2.AclTraffic.tcp_port(80),   # http port
+            direction=ec2.TrafficDirection.EGRESS
+            )
+        
+        # Allow all outbound traffic on HTTPS port
+        self.nacl_adminserver.add_entry("Outbound-HTTPS",
+            cidr=ec2.AclCidr.any_ipv4(),
+            rule_number=110,
+            traffic=ec2.AclTraffic.tcp_port(443),   # https port
+            direction=ec2.TrafficDirection.EGRESS
+            )
+        
+        # Allow all outbound traffic on the ephemeral ports
+        self.nacl_adminserver.add_entry("Outbound-Ephemeral",
+            cidr=ec2.AclCidr.any_ipv4(),
+            rule_number=120,
+            traffic=ec2.AclTraffic.tcp_port_range(1024, 65535),    # ephemeral ports
+            direction=ec2.TrafficDirection.EGRESS
+            )
+
+        # - - - - - - - - FOR TESTING PURPOSES ONLY - - - - - - - - - -
+        # - - - - comment out when deploying in production - - - - - - - - - -
+        
         # Allow NACL Outbound All traffic
         # self.nacl_adminserver.add_entry("Outbound-All",
         #     cidr=ec2.AclCidr.any_ipv4(),
-        #     rule_number=100,
+        #     rule_number=200,
         #     traffic=ec2.AclTraffic.all_traffic(),
         #     direction=ec2.TrafficDirection.EGRESS
         #     )
@@ -303,7 +463,7 @@ class CdkVpcTestStack(Stack):
             description="SG Admin Webserver"
             )
 
-
+        # - - - - - - - - INBOUND TRAFFIC - - - - - - - - - -
             #    ||
             #    ||
             #   \\//
@@ -390,7 +550,7 @@ class CdkVpcTestStack(Stack):
         with open("./cdk_vpc_test/user_data_webs.sh") as f:
             self.user_data_webs = f.read()  # read User Data script and save to variable
         
-        # Create Keypair Web Server
+        # Create Keypair Web Server -> Private Key in Parameter Store
         self.keypair_webserver = ec2.KeyPair(self, "keypair-pr-webserver",
             key_pair_name="kp-pr-webserver",
             )
@@ -404,7 +564,7 @@ class CdkVpcTestStack(Stack):
                 subnet_type=ec2.SubnetType.PRIVATE_ISOLATED),   # Private subnet in VPC Webserver
             private_ip_address="10.0.1.52",                     # Give it a static IP address
             key_pair=self.keypair_webserver,                    # refer to keypair. Code above.
-            security_group=self.sg_admin_webserver,                   # refer to the SG for Webserver
+            security_group=self.sg_admin_webserver,             # refer to the SG for Webserver
             instance_type=ec2.InstanceType.of(
                 ec2.InstanceClass.T2, ec2.InstanceSize.MICRO),  # choose instance type
             machine_image=ec2.AmazonLinuxImage(
@@ -437,6 +597,7 @@ class CdkVpcTestStack(Stack):
             )
         
 
+        # - - - - - - - - INBOUND TRAFFIC - - - - - - - - - -
             #    ||
             #    ||
             #   \\//
@@ -462,7 +623,7 @@ class CdkVpcTestStack(Stack):
 
         # - - - - - - - - CREATE ADMIN SERVER - - - - - - - - - -
 
-        # Create Keypair Admin Server
+        # Create Keypair Admin Server -> Private Key in Parameter Store
         self.keypair_adminserver = ec2.KeyPair(self, "keypair-adminserver",
             key_pair_name="kp-adminserver",     
             )
@@ -626,15 +787,6 @@ class CdkVpcTestStack(Stack):
                 port="443",
                 protocol="HTTPS",
                 )
-            )
-
-
-        # - - - - - - - - OUTPUT USEFUL LOAD BALANCER VALUES - - - - - - - - - -
-
-        # Output the load balancer public DNS
-        CfnOutput(self, "Load Balancer Public DNS",
-            value=self.load_balancer_ws.load_balancer_dns_name,
-            export_name="load-balancer-public-dns"
             )
 
 
