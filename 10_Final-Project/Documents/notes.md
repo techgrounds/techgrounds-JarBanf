@@ -1,3 +1,7 @@
+# Notes
+My digital scribbles.
+
+<ins>NOT optimized to be actively viewed as a .md file</ins>
 
 ## VPC console choices
 - vpc only

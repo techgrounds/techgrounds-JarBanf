@@ -1,5 +1,6 @@
 # <a id="top">Checklist, Deadlines, and Epics & User Stories</a> ✅ 📌 📄
-Description under construction...
+An overview of my up-to-date checklist/to-do-list, deadlines, and user stories. This document helps me to keep an overview of what I still need to do.
+
 ## Table of Contents
 - [Checklist](#checklist)
     - [Exploration, deadline --> 12 Jan '24](#exploration-deadline----12-jan-24)
@@ -36,7 +37,7 @@ This checklist is based on the Deliverables in the chapter [Epics & User Stories
     - 🍔 VPC Adminserver
     - 🍔 VPC Peering
     - 🍔 NACLs
-- 🔥 2. IaC code for a web server and all supplies.
+- ❌ 2. IaC code for a web server and all supplies.
     - 🍔 Key Pair Manual
     - 🍔 Security Group
     - 🍔 Security Group rules
@@ -80,22 +81,22 @@ This checklist is based on the Deliverables in the chapter [Epics & User Stories
 ### Presentation V1.1 progress --> 09 Feb '24
 - 🍔 A 10-minute presentation / demonstration of my progress on app V1.1.
 
-### V1.1, deadline --> 23 Feb '24
+### V1.1, deadline --> 22 Feb '24
 - 🐂 0. Database feature from v1.0
-- 🐂 1. Webserver not "naked" anymore -> no public IP address
+- 🍔 1. Webserver not "naked" anymore -> no public IP address
 - 🍔 2. HTTPS
     - 🍔 TLS 1.2 or higher
     - 🍔 Automatic HTTP redirect to HTTPS
     - 🍔 Self signed certificate
         - 🍔 for the connection between load balancer and webservers
         - 🍔 for the connectiom between clients and load balancer
-- 🔥 3. Autoscaling
-    - 🔥 Launch Template
+- 🍔 3. Autoscaling
+    - 🍔 Launch Template
     - 🍔 Scaling policy
     - 🍔 Max 3 webservers
-- 🔥 4. Loadbalancer
+- 🍔 4. Loadbalancer
     - 🍔 Loadbalancer itself
-    - 🔥 Target Group
+    - 🍔 Target Group
     - 🍔 Listeners
         - 🍔 port 80
         - 🍔 port 443
@@ -103,11 +104,12 @@ This checklist is based on the Deliverables in the chapter [Epics & User Stories
     - 🍔 Auto Scaling -> EC2: always enabled.
     - 🍔 Auto Scaling -> ELB: monitors whether intances are available to handle requests. When ir reports an unhealthy instance, EC2 Auto Scaling can replace it on its next periodic check.
     - 🍔 Target Group: If the target type is instance or ip, health checks are always enabled and cannot be disabled.
-- 🐂 6. Documentation for using the application.
-- 🐂 7. Configuration for an MVP deployment.
+- 🔥 6. Keep NACLs up-to-date.
+- 🐂 7. Documentation for using the application.
+- 🐂 8. Configuration for an MVP deployment.
 
-### Final Presentation --> 23 Feb '24
-- 🐂 More info TBA.  
+### Final Presentation --> 22 Feb '24
+- 🐂 A 30-minute presentation of my v1.1 delivery.  
 <br>
 
 *back to [top](#top)*  
@@ -160,10 +162,10 @@ Here are the user stories for the epic V1.1.
 | 1 | ... | The web server must no longer be "naked" on the internet. The customer would prefer to see a proxy intervene. The server will also no longer need to have a public IP address. | IaC code |
 | 2 | ... | If a user connects to the load balancer via HTTP, this connection should be automatically upgraded to HTTPS. | IaC code |
 | 3 | ... | The connection must be secured with at least TLS 1.2 or higher. | IaC code |
-| 3 | ... | The web server must undergo a health check on a regular basis. If the web server fails this health check, the server should be automatically restored. | IaC code |
-| 3 | ... | If the web server comes under persistent load, a temporary additional server should be started. | IaC code |
-| 4 | As a customer I want to know how I can use the application. | Make sure the customer can understand how to use the application. Make sure it is clear what the customer must configure before the deployment can start and which arguments the program needs. | Documentation for using the application. |
-| 5 | As a customer, I want to be able to deploy an MVP for testing. | The customer wants to test your architecture internally before using the code in production. Ensure that configuration is available that allows the customer to deploy an MVP. | Configuration for an MVP deployment. |
+| 4 | ... | The web server must undergo a health check on a regular basis. If the web server fails this health check, the server should be automatically restored. | IaC code |
+| 5 | ... | If the web server comes under persistent load, a temporary additional server should be started. | IaC code |
+| 6 | As a customer I want to know how I can use the application. | Make sure the customer can understand how to use the application. Make sure it is clear what the customer must configure before the deployment can start and which arguments the program needs. | Documentation for using the application. |
+| 7 | As a customer, I want to be able to deploy an MVP for testing. | The customer wants to test your architecture internally before using the code in production. Ensure that configuration is available that allows the customer to deploy an MVP. | Configuration for an MVP deployment. |
 <br>
 
 *back to [top](#top)*  

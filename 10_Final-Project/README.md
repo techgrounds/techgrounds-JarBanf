@@ -1,5 +1,11 @@
 # <a id="top">Final Project</a>
-Description under construction...    
+In recent months I have learned a lot about the cloud and applied this knowledge to relatively small assignments. This will now all come together in this final project in which I improve and automate an existing architecture.
+
+My assignment is to help a company with the transition to the cloud. The company had its infrastructure analyzed by a previous team. A diagram has been made based on the current situation.
+
+I will build the Infrastructure as Code app to bring this design to the cloud. This will be done using the AWS Cloud Development Kit for Python.
+
+During the project I will work on solutions while dealing with company policies, end-user demands, colleague demands, and the time pressure of a large project in a limited time.  
 <br>
 
 ## Table of Contents
@@ -9,12 +15,12 @@ Description under construction...
     - [Decisions Document](#decisiondoc)
     - [Design Document](#designdoc)
 - [Test Lab](#testlab)
-- [MVP v1.0](#mvp10)
-- [MVP v1.1](#mvp11)  
+- [Minimum Viable Product v1.0](#mvp10)
+- [Minimum Viable Product v1.1](#mvp11)  
 <br>
 
 ## <a id="cde">Checklist, Deadlines, and Epics & User Stories</a> ✅ 📌 📄
-Description under construction...
+An overview of my up-to-date checklist/to-do-list, deadlines, and user stories. This document helps me to keep an overview of what I still need to do.
 
 To view this document, [click here](/10_Final-Project/Documents/checklist_deadlines_user-stories.md).  
 <br>
@@ -46,14 +52,14 @@ Here I will be testing out my design and IaC before releasing a MVP.
 To go to my Test Lab, [click here](/10_Final-Project/Test_Lab/).  
 <br>
 
-## <a id="mvp10">MVP v1.0</a> <sup>🅱️eta</sup>
+## <a id="mvp10">Minimum Viable Product v1.0</a> <sup>🅱️eta</sup>
 My working code for Minimum Viable Product version 1.0.  
 
 To view MVP v1.0, [click here](/10_Final-Project/MVP_v1dot0/).  
 <br>
 
-## <a id="mvp11">MVP v1.1</a> 🏁 🏁 🏁
-Minimum Viable Product version 1.1  
+## <a id="mvp11">Minimum Viable Product v1.1</a> 🏁 🏁 🏁
+Minimum Viable Product version 1.1.  
 
 To view MVP v1.1, [click here](/10_Final-Project/MVP_v1dot1/).  
 <br>

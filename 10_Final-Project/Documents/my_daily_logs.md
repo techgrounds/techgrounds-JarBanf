@@ -94,7 +94,7 @@ Sorted by latest to oldest.
         - Remove old key from known_hosts file. 
 
 ### Learnings
-- ...  
+- NACLs help provide a security layer which controls and efficiently manages the traffic that moves around in the subnets. It is important to configure them correctly. I have to be able to know exactly which ports, protocols and destination are used.   
 <br>
 
 *back to [top](#top)*  
