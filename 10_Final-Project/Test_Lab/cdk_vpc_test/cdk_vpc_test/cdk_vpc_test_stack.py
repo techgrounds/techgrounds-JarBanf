@@ -9,12 +9,10 @@ from constructs import Construct    # needed for CDK
 from aws_cdk import (
     Stack,                          # needed for CDK
     aws_ec2 as ec2,                 # for creating the network
-    CfnOutput,                      # for outputing values of the stack
     aws_backup as backup,           # for creating backup plan
     Duration,                       # for configuring backup rule
     aws_events as events,           # to schedule Backup time
     aws_s3 as s3,                   # to create S3 bucket
-    RemovalPolicy,                  # to set removal policy of S3 bucket (for testing)
     aws_s3_deployment as s3deploy,  # for uploading scripts S3 bucket
     aws_autoscaling as autoscaling,
     aws_elasticloadbalancingv2 as elbv2,
@@ -159,7 +157,7 @@ class CdkVpcTestStack(Stack):
         # - - - - - - - - NACL WEBSERVER PUBLIC SUBNET & RULES - - - - - - - - - -
         
         # Create NACL
-        self.nacl_webserver = ec2.NetworkAcl(self, 'nacl-webserver-pulic', 
+        self.nacl_webserver_pu = ec2.NetworkAcl(self, 'nacl-webserver-pulic', 
             network_acl_name='nacl-webserver-public',
             vpc=self.vpc_webserv,
             subnet_selection=ec2.SubnetSelection(subnet_type=ec2.SubnetType.PUBLIC)
@@ -172,7 +170,7 @@ class CdkVpcTestStack(Stack):
             #    \/
 
         # Allow all inbound HTTP traffic on the load balancer listener port
-        self.nacl_webserver.add_entry("Inbound-HTTP",
+        self.nacl_webserver_pu.add_entry("Inbound-HTTP",
             cidr=ec2.AclCidr.any_ipv4(),
             rule_number=100,
             traffic=ec2.AclTraffic.tcp_port(80),        # HTTP port
@@ -180,7 +178,7 @@ class CdkVpcTestStack(Stack):
             )
 
         # Allow all inbound HTTPS traffic on the load balancer listener port
-        self.nacl_webserver.add_entry("Inbound-HTTPS",
+        self.nacl_webserver_pu.add_entry("Inbound-HTTPS",
             cidr=ec2.AclCidr.any_ipv4(),
             rule_number=110,
             traffic=ec2.AclTraffic.tcp_port(443),       # HTTPS port
@@ -188,7 +186,7 @@ class CdkVpcTestStack(Stack):
             )
         
         # Allow inbound traffic from the VPC CIDR on the ephemeral ports
-        self.nacl_webserver.add_entry("Inbound-Ephemeral",
+        self.nacl_webserver_pu.add_entry("Inbound-Ephemeral",
             cidr=ec2.AclCidr.ipv4("10.0.1.0/24"),
             rule_number=120,
             traffic=ec2.AclTraffic.tcp_port_range(1024, 65535),    # ephemeral ports
@@ -200,7 +198,7 @@ class CdkVpcTestStack(Stack):
         
         # Allow NACL Inbound All traffic from anywhere
         #   for troubleshooting purposes
-        # self.nacl_webserver.add_entry("Inbound-ALL",
+        # self.nacl_webserver_pu.add_entry("Inbound-ALL",
         #     cidr=ec2.AclCidr.any_ipv4(),
         #     rule_number=200,
         #     traffic=ec2.AclTraffic.all_traffic(),
@@ -215,7 +213,7 @@ class CdkVpcTestStack(Stack):
             #    ||
             
         # Allow all outbound traffic on the instance-listener/health-check port
-        self.nacl_webserver.add_entry("Outbound-HTTPS/health-check",
+        self.nacl_webserver_pu.add_entry("Outbound-HTTPS/health-check",
             cidr=ec2.AclCidr.ipv4("10.0.1.0/24"),
             rule_number=110,
             traffic=ec2.AclTraffic.tcp_port(443),       # HTTPS/health-check port
@@ -223,7 +221,7 @@ class CdkVpcTestStack(Stack):
             )
         
         # Allow all outbound traffic on the ephemeral ports
-        self.nacl_webserver.add_entry("Outbound-Ephemeral",
+        self.nacl_webserver_pu.add_entry("Outbound-Ephemeral",
             cidr=ec2.AclCidr.any_ipv4(),
             rule_number=120,
             traffic=ec2.AclTraffic.tcp_port_range(1024, 65535),    # ephemeral ports
@@ -234,7 +232,7 @@ class CdkVpcTestStack(Stack):
         # - - - - comment out when deploying in production - - - - - - - - - -
         
         # Allow NACL Outbound all traffic
-        # self.nacl_webserver.add_entry("Outbound-All",
+        # self.nacl_webserver_pu.add_entry("Outbound-All",
         #     cidr=ec2.AclCidr.any_ipv4(),
         #     rule_number=200,
         #     traffic=ec2.AclTraffic.all_traffic(),
@@ -629,71 +627,32 @@ class CdkVpcTestStack(Stack):
             )
 
         # Create Adminserver instance
-        # self.instance_adminserver = ec2.Instance(self,"instance-adminserver",
-        #     instance_name="instance-adminserver",
-        #     vpc=self.vpc_adminserv,                             # VPC Admin server
-        #     vpc_subnets=ec2.SubnetSelection(                    
-        #         subnet_type=ec2.SubnetType.PUBLIC),             # Public subnet in VPC Admin server
-        #     private_ip_address="10.0.2.4",                      # Give it a static IP address
-        #     key_pair=self.keypair_adminserver,                  # refer to keypair. Code above.
-        #     security_group=self.sg_adminserver,                 # refer to the SG for Admin server
-        #     instance_type=ec2.InstanceType.of(
-        #         ec2.InstanceClass.T2, ec2.InstanceSize.MICRO),  # choose instance type
-        #     machine_image=ec2.WindowsImage(
-        #         ec2.WindowsVersion.WINDOWS_SERVER_2022_ENGLISH_FULL_BASE),  # choose AMI
-        #     block_devices=[ec2.BlockDevice(
-        #         device_name="/dev/sda1",                        # Root EBS for Windows is always "sda1"
-        #         volume=ec2.BlockDeviceVolume.ebs(
-        #             volume_size=30,                             # 30 GB
-        #             encrypted=True,                             # activate encryption on root EBS
-        #             )
-        #         ), ec2.BlockDevice(
-        #         device_name="/dev/sdf",                         # define volume name
-        #         volume=ec2.BlockDeviceVolume.ebs(
-        #             volume_size=256,                            # 256 GB
-        #             encrypted=True,                             # activate encryption on attached EBS
-        #             )
-        #         )]
-        #     )
-
-
-
-        #█████   █████   ██████ ██   ██ ██    ██ ██████  
-        #█   ██ ██   ██ ██      ██  ██  ██    ██ ██   ██ 
-        #█████  ███████ ██      █████   ██    ██ ██████  
-        #█   ██ ██   ██ ██      ██  ██  ██    ██ ██      
-        #█████  ██   ██  ██████ ██   ██  ██████  ██
-
-
-        # Create Backup plan
-        # self.backup_plan = backup.BackupPlan(self, "backup-plan",
-        #     backup_plan_name="7-day-Backup-plan",
-        #     backup_plan_rules=[backup.BackupPlanRule(
-        #         rule_name="Daily-Retention-7days",
-        #         start_window=Duration.hours(1),             # start within 1 hour of scheduled start
-        #         completion_window=Duration.hours(2),        # complete backup within 2 hours of backup start
-        #         delete_after=Duration.days(7),              # retain backups for 7 days
-        #         schedule_expression=events.Schedule.cron(
-        #             hour="1",       # Daily backup at 01:00 UTC -->
-        #             minute="0", )   # --> 02:00 Dutch winter time / 03:00 Dutch summer time
-        #         )]
-        #     )
-        
-        # # Select Webserver as a resource to backup
-        # self.backup_plan.add_selection("add-webserver", 
-        #     backup_selection_name="backup-webserver",
-        #     resources=[
-        #         backup.BackupResource.from_ec2_instance(self.instance_webserver)
-        #         ]
-        #     )
-        
-        # # Select Adminserver as a resource to backup
-        # self.backup_plan.add_selection("add-adminserver", 
-        #     backup_selection_name="backup-adminserver",
-        #     resources=[
-        #         backup.BackupResource.from_ec2_instance(self.instance_adminserver)
-        #         ]
-        #     )
+        self.instance_adminserver = ec2.Instance(self,"adminserver",
+            instance_name="adminserver",
+            vpc=self.vpc_adminserv,                             # VPC Admin server
+            vpc_subnets=ec2.SubnetSelection(                    
+                subnet_type=ec2.SubnetType.PUBLIC),             # Public subnet in VPC Admin server
+            private_ip_address="10.0.2.4",                      # Give it a static IP address
+            key_pair=self.keypair_adminserver,                  # refer to keypair. Code above.
+            security_group=self.sg_adminserver,                 # refer to the SG for Admin server
+            instance_type=ec2.InstanceType.of(
+                ec2.InstanceClass.T2, ec2.InstanceSize.MICRO),  # choose instance type
+            machine_image=ec2.WindowsImage(
+                ec2.WindowsVersion.WINDOWS_SERVER_2022_ENGLISH_FULL_BASE),  # choose AMI
+            block_devices=[ec2.BlockDevice(
+                device_name="/dev/sda1",                        # Root EBS for Windows is always "sda1"
+                volume=ec2.BlockDeviceVolume.ebs(
+                    volume_size=30,                             # 30 GB
+                    encrypted=True,                             # activate encryption on root EBS
+                    )
+                ), ec2.BlockDevice(
+                device_name="/dev/sdf",                         # define volume name
+                volume=ec2.BlockDeviceVolume.ebs(
+                    volume_size=256,                            # 256 GB
+                    encrypted=True,                             # activate encryption on attached EBS
+                    )
+                )]
+            )
 
 
 
@@ -791,6 +750,50 @@ class CdkVpcTestStack(Stack):
 
 
 
+        #█████   █████   ██████ ██   ██ ██    ██ ██████  
+        #█   ██ ██   ██ ██      ██  ██  ██    ██ ██   ██ 
+        #█████  ███████ ██      █████   ██    ██ ██████  
+        #█   ██ ██   ██ ██      ██  ██  ██    ██ ██      
+        #█████  ██   ██  ██████ ██   ██  ██████  ██
+
+
+        # - - - - - - - - BACKUP PLAN - - - - - - - - - -
+        
+        # Create Backup plan
+        self.backup_plan = backup.BackupPlan(self, "backup-plan",
+            backup_plan_name="7-day-Backup-plan",
+            backup_plan_rules=[backup.BackupPlanRule(
+                rule_name="Daily-Retention-7days",
+                start_window=Duration.hours(1),             # start within 1 hour of scheduled start
+                completion_window=Duration.hours(2),        # complete backup within 2 hours of backup start
+                delete_after=Duration.days(7),              # retain backups for 7 days
+                schedule_expression=events.Schedule.cron(
+                    hour="1",       # Daily backup at 01:00 UTC -->
+                    minute="0", )   # --> 02:00 Dutch winter time / 03:00 Dutch summer time
+                )]
+            )
+        
+
+        # - - - - - - - - RESOURCES TO BACKUP - - - - - - - - - -
+
+        # Select Webserver as a resource to backup
+        self.backup_plan.add_selection("add-webserver", 
+            backup_selection_name="backup-webserver",
+            resources=[
+                backup.BackupResource.from_ec2_instance(self.instance_webserver)
+                ]
+            )
+        
+        # Select Adminserver as a resource to backup
+        self.backup_plan.add_selection("add-adminserver", 
+            backup_selection_name="backup-adminserver",
+            resources=[
+                backup.BackupResource.from_ec2_instance(self.instance_adminserver)
+                ]
+            )
+        
+        
+        
         #█████  ██    ██  ██████ ██   ██ ███████ ████████ 
         #█   ██ ██    ██ ██      ██  ██  ██         ██    
         #█████  ██    ██ ██      █████   █████      ██    
@@ -809,25 +812,18 @@ class CdkVpcTestStack(Stack):
         # current situation.
 
         # Create S3 Bucket for Scripts
-        # self.script_bucket = s3.Bucket(self, "script-bucket",
-        #     # removal_policy=RemovalPolicy.DESTROY, # for testing, auto-delete bucket when "CDK-destroy"-ing
-        #     )
+        self.script_bucket = s3.Bucket(self, "script-bucket",
+            )
 
-        # # Create .zip file of the important scripts
-        # self.zip_file = "scripts_for_s3.zip" # define filename, directory will be the same as "app.py"
-        # with ZipFile(self.zip_file, "w") as zip_object:
-        #     zip_object.write("./cdk_vpc_test/cdk_vpc_test_stack.py")    # this current script
-        #     zip_object.write("./cdk_vpc_test/user_data_webs.sh")        # the user data script for webserver
-        #     zip_object.write("app.py")                                  # the app.py script
+        # Create .zip file of the important scripts
+        self.zip_file = "scripts_for_s3.zip" # define filename, directory will be the same as "app.py"
+        with ZipFile(self.zip_file, "w") as zip_object:
+            zip_object.write("./cdk_vpc_test/cdk_vpc_test_stack.py")    # this current script
+            zip_object.write("./cdk_vpc_test/user_data_webs.sh")        # the user data script for webserver
+            zip_object.write("app.py")                                  # the app.py script
 
-        # # Upload the .zip file to S3 bucket
-        # s3deploy.BucketDeployment(self, "upload-scripts",
-        #     sources=[s3deploy.Source.asset(self.zip_file)], # define source .zip file
-        #     destination_bucket=self.script_bucket           # refer to S3 script bucket
-        #     )
-        
-        # # Output the name of the created S3 bucket
-        # CfnOutput(self, "Script Bucket Name",
-        #     value=self.script_bucket.bucket_name,
-        #     export_name="script-bucket-name"
-        #     )
+        # Upload the .zip file to S3 bucket
+        s3deploy.BucketDeployment(self, "upload-scripts",
+            sources=[s3deploy.Source.asset(self.zip_file)], # define source .zip file
+            destination_bucket=self.script_bucket           # refer to S3 script bucket
+            )
