@@ -37,9 +37,16 @@ A description of the new requirements.
 <br>
 
 ### <a id="newser">New Services</a> 🟧 🟩 🟥
-An overview of the new services that will be used.
+An overview of the new services that will be added in this version.
 
-#### ...
+#### Database
+- 🟦 RDS: Managed Relational Database Service.
+
+#### Management & Governance
+- 🟥 Systems Manager -> Parameter Store: provides secure, hierarchical storage for configuration data management and secrets management.
+
+#### Security, Identity, & Compliance
+- 🟥 Certificate Manager: Provision, Manage, and Deploy SSL/TLS Certificates.
 
 <br>
 
@@ -173,23 +180,13 @@ An overview of all services that will be used.
 #### Compute
 - 🟧 EC2: Virtual servers in the cloud.
 
-#### Database
-- 🟦 ~~RDS: Managed Relational Database Service~~.
-    - I will not be implementing a RDS database in my design. The admin has knowledge on setting up and maintaining a database. So I will setup a EC2-instance as a database server.
-
 #### Management & Governance
 - 🟥 CloudFormation: Create and Manage Resources with Templates
-- 🟥 ~~CloudTrail: Track User Activity and API Usage~~.  
-    - I will NOT be implementing this service in to the infrastructure (yet).  
-    It is best practice to use this service, but seen that it is not defined in the necessary requirements, I will not dedicate time and energy on it (yet). It is not a priority right now.
 
 #### Networking & Content Delivery
 - 🟪 VPC: Isolated Cloud Resources.
 
 #### Security, Identity, & Compliance
-- 🟥 ~~Certificate Manager: Provision, Manage, and Deploy SSL/TLS Certificates.~~
-    - I will NOT be implementing this service in to the infrastructure (yet).  
-    Ideally, I will need to apply for an official SSL certificate to be able to provide encrypted connection to the website. Seen that this is not in the necessary requirements, I will not dedicate time and energy on it (yet). It is not a priority right now.
 - 🟥 IAM: Manage access to AWS resources.
 - 🟥 Key Management Service: Securely Generate and Manage AWS Encryption Keys
 
