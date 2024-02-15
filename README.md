@@ -10,7 +10,7 @@ During this time I also obtained my [AWS Certified Cloud Practitioner certificat
 <br>
 
 ### Final Project
-The knowledge and experience I gained will now all come together in my final project in which I improve and automate an existing architecture using the AWS Cloud Development Kit for Python.  
+The knowledge and experience I gained will now all come together in my final project in which I improve and automate an existing architecture using the AWS CDK IaC for Python.  
 [View my final project.](/10_Final-Project/)  
 <br>
 
