@@ -6,6 +6,7 @@ Sorted by latest to oldest.
 
 ## Table of Contents
 - Week 6
+    - [Fri 16 Feb '14](#fri16feb)
     - [Wed 14 Feb '14](#wed14feb)
         - [ [SOLVED] NACLs keeps blocking my traffic to/from loadbalancer](#nacls-keeps-blocking-my-traffic-tofrom-loadbalancer)
         - [ [SOLVED] “Warning: Remote Host Identification Has Changed”](#warning-remote-host-identification-has-changed)
@@ -67,6 +68,15 @@ Sorted by latest to oldest.
     - [Mon 08 Jan '24](#mon08jan)
         - [Watched an introduction video about Jira.](#watched-an-introduction-video-about-jira)
 - [Log template](#log-template)  
+<br>
+
+*back to [top](#top)*  
+<br>
+
+## ✏️ 📄 <a id="fri16feb">Fri 16 Feb '24</a>
+### Daily Report
+- Started working on the RDS database.
+- Managed to create a database. Took almost 18 minutes to deploy.  
 <br>
 
 *back to [top](#top)*  

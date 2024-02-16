@@ -82,7 +82,7 @@ This checklist is based on the Deliverables in the chapter [Epics & User Stories
 - 🍔 A 10-minute presentation / demonstration of my progress on app V1.1.
 
 ### V1.1, deadline --> 22 Feb '24
-- 🐂 0. Database feature from v1.0
+- 🔥 0. Database feature from v1.0
 - 🍔 1. Webserver not "naked" anymore -> no public IP address
 - 🍔 2. HTTPS
     - 🍔 TLS 1.2 or higher
