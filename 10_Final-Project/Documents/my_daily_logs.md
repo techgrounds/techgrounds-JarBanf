@@ -120,10 +120,7 @@ Sorted by latest to oldest.
             mysql -h cdkvpcteststack-databasewebserver14fd81e3-9szt0qt33ueo.coxnyfceatsl.eu-central-1.rds.amazonaws.com -u admin -p
             ```
         - Get password from AWS Secrets Manager and enter it.
-        - Connected!!! :)
-
-### Learnings
-- ...  
+        - Connected!!! :)    
 <br>
 
 *back to [top](#top)*  
