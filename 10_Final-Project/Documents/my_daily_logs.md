@@ -6,6 +6,7 @@ Sorted by latest to oldest.
 
 ## Table of Contents
 - Week 6
+    - [Sat 17 Feb '14](#sat17feb)
     - [Fri 16 Feb '14](#fri16feb)
     - [Wed 14 Feb '14](#wed14feb)
         - [ [SOLVED] NACLs keeps blocking my traffic to/from loadbalancer](#nacls-keeps-blocking-my-traffic-tofrom-loadbalancer)
@@ -73,9 +74,64 @@ Sorted by latest to oldest.
 *back to [top](#top)*  
 <br>
 
+## ✏️ 📄 <a id="sat17feb">Sat 17 Feb '14</a>
+### Daily Report
+- Database up and running in public subnet. Still need to test it in a private subnet.
+- I succesfully connected to RDS MySQL database using AWS Linux 2023 instance.
+
+### Obstacles
+- Connecting to RDS MySQL using AWS Linux 2023 instance.
+
+### Solutions
+- #### Connecting to RDS MySQL using AWS Linux 2023 instance.
+    - Sources:
+        - [Installing MySQL 8 server & client on Amazon Linux 2023](https://linux.how2shout.com/installing-mysql-8-server-client-on-amazon-linux-2023/)
+    - Solution:
+        - Download MySQL Yum repository
+            ```bash
+            wget https://dev.mysql.com/get/mysql80-community-release-el9-3.noarch.rpm
+            ```
+        - Install MySQL Yum repository
+            ```bash
+            sudo dnf install mysql80-community-release-el9-3.noarch.rpm -y
+            ```
+        - Update Al2023 Packages
+            ```bash
+            sudo dnf update -y
+            ```
+        - Install MySQL 8 on Amazon Linux 2023
+            ```bash
+            sudo dnf install mysql-community-server -y
+            ```
+        - Start the service of MySQL
+            ```bash
+            sudo systemctl start mysqld
+            ```
+        - Enable it to activate automatically with the  system boot or crash
+            ```bash
+            sudo systemctl enable mysqld
+            ```
+        - Check the service status
+            ```bash
+            sudo systemctl status mysqld
+            ```
+        - Connect to the RDS instance: (`mysql -h <RDS_ENDPOINT> -u <USERNAME> -p`)
+            ```bash
+            mysql -h cdkvpcteststack-databasewebserver14fd81e3-9szt0qt33ueo.coxnyfceatsl.eu-central-1.rds.amazonaws.com -u admin -p
+            ```
+        - Get password from AWS Secrets Manager and enter it.
+        - Connected!!! :)
+
+### Learnings
+- ...  
+<br>
+
+*back to [top](#top)*  
+<br>
+
 ## ✏️ 📄 <a id="fri16feb">Fri 16 Feb '24</a>
 ### Daily Report
-- Started working on the RDS database.
+- Started working on the RDS MySQL database.
 - Managed to create a database. Took almost 18 minutes to deploy.  
 <br>
 

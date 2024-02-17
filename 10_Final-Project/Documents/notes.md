@@ -63,3 +63,22 @@ sudo unzip lab-app.zip -d /var/www/html/
 sudo systemctl start httpd
 # configure the Apache web server to start at each system boot
 sudo systemctl enable httpd
+
+# Download MySQL Yum repository
+wget https://dev.mysql.com/get/mysql80-community-release-el9-3.noarch.rpm
+# Install MySQL Yum repository
+sudo dnf install mysql80-community-release-el9-3.noarch.rpm -y
+# Update Al2023 Packages
+sudo dnf update -y
+# Install MySQL 8 on Amazon Linux 2023
+sudo dnf install mysql-community-server -y
+# Start the service of MySQL
+sudo systemctl start mysqld
+# Enable it to activate automatically with the system boot or crash
+sudo systemctl enable mysqld
+
+
+## Command to connect to RDS MySQL Database
+
+# mysql -h <RDS_ENDPOINT> -u <USERNAME> -p
+mysql -h cdkvpcteststack-databasewebserver14fd81e3-1pujlbjjorwt.coxnyfceatsl.eu-central-1.rds.amazonaws.com -u admin -p

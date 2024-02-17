@@ -47,6 +47,7 @@ An overview of the new services that will be added in this version.
 
 #### Security, Identity, & Compliance
 - 🟥 Certificate Manager: Provision, Manage, and Deploy SSL/TLS Certificates.
+- 🟥 AWS Secrets Manager: Easily rotate, manage and retrieve secrets throughout their lifecycle.  
 
 <br>
 

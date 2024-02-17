@@ -83,6 +83,11 @@ This checklist is based on the Deliverables in the chapter [Epics & User Stories
 
 ### V1.1, deadline --> 22 Feb '24
 - 🔥 0. Database feature from v1.0
+    - 🍔 Security group
+    - 🔥 MySQL Instance
+    - 🍔 Security group rules
+        - 🍔 Allow traffic on MySQL port
+    - 🍔 Configure webserver to connect to database 
 - 🍔 1. Webserver not "naked" anymore -> no public IP address
 - 🍔 2. HTTPS
     - 🍔 TLS 1.2 or higher
@@ -105,7 +110,7 @@ This checklist is based on the Deliverables in the chapter [Epics & User Stories
     - 🍔 Auto Scaling -> ELB: monitors whether intances are available to handle requests. When ir reports an unhealthy instance, EC2 Auto Scaling can replace it on its next periodic check.
     - 🍔 Target Group: If the target type is instance or ip, health checks are always enabled and cannot be disabled.
 - 🔥 6. Keep NACLs up-to-date.
-- 🐂 7. Documentation for using the application.
+- 🔥 7. Documentation for using the application.
 - 🐂 8. Configuration for an MVP deployment.
 
 ### Final Presentation --> 22 Feb '24

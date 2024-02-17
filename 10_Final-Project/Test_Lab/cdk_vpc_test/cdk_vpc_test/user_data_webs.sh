@@ -1,4 +1,6 @@
 #!/bin/bash
+
+# WEBSERVER
 # perform a quick software update on instance
 sudo dnf update -y
 # install the latest versions of Apache web server and PHP packages for AL2023
@@ -13,3 +15,17 @@ sudo systemctl enable httpd
 sudo dnf install mod_ssl -y
 # Fully restart Apache
 sudo systemctl restart httpd.service
+
+# MYSQL (CLIENT)
+# Download MySQL Yum repository
+wget https://dev.mysql.com/get/mysql80-community-release-el9-3.noarch.rpm
+# Install MySQL Yum repository
+sudo dnf install mysql80-community-release-el9-3.noarch.rpm -y
+# Update Al2023 Packages
+sudo dnf update -y
+# Install MySQL 8 on Amazon Linux 2023
+sudo dnf install mysql-community-server -y
+# Start the service of MySQL
+sudo systemctl start mysqld
+# Enable it to activate automatically with the system boot or crash
+sudo systemctl enable mysqld

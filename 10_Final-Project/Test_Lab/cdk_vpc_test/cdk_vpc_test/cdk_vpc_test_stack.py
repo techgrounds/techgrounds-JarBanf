@@ -57,7 +57,7 @@ class CdkVpcTestStack(Stack):
         self.vpc_webserv = ec2.Vpc(self, 'vpc-webserver',
             ip_addresses=ec2.IpAddresses.cidr('10.0.1.0/24'),
             vpc_name='vpc-webserver',
-            nat_gateways=1,                             # 
+            nat_gateways=0,                             # 
             max_azs=3,                                  # use all 3 AZ's
             subnet_configuration=[
                 ec2.SubnetConfiguration(
@@ -525,15 +525,15 @@ class CdkVpcTestStack(Stack):
         # - - - - - - - - S3 BUCKET & WEB CONTENT - - - - - - - - - - 
         
         # Create S3 Bucket for Website
-        # self.website_bucket = s3.Bucket(self, "website-bucket",
-        #     bucket_name="cdkbucket-forwebserver-121212",
-        #     )
+        self.website_bucket = s3.Bucket(self, "website-bucket",
+            bucket_name="cdkbucket-forwebserver-121212",
+            )
     
-        # # Upload a the lab zipfiles to the S3 bucket
-        # self.deploy_website = s3deploy.BucketDeployment(self, "deploy-website",
-        #     sources=[s3deploy.Source.asset(path="./cdk_vpc_test/lab-app.zip")],
-        #     destination_bucket=self.website_bucket,
-        # )
+        # Upload a the lab zipfiles to the S3 bucket
+        self.deploy_website = s3deploy.BucketDeployment(self, "deploy-website",
+            sources=[s3deploy.Source.asset(path="./cdk_vpc_test/lab-app.zip")],
+            destination_bucket=self.website_bucket,
+        )
         
         
         # - - - - - - - - CREATE WEBSERVER INSTANCE FOR ADMIN - - - - - - - - - -
@@ -550,12 +550,12 @@ class CdkVpcTestStack(Stack):
         with open("./cdk_vpc_test/user_data_webs.sh") as f:
             self.user_data_webs = f.read()  # read User Data script and save to variable
         
-        # Create Keypair Web Server -> Private Key in Parameter Store
-        self.keypair_webserver = ec2.KeyPair(self, "keypair-pr-webserver",
-            key_pair_name="kp-pr-webserver",
-            )
+        # # Create Keypair Web Server -> Private Key in Parameter Store
+        # self.keypair_webserver = ec2.KeyPair(self, "keypair-pr-webserver",
+        #     key_pair_name="kp-pr-webserver",
+        #     )
         
-        # Create Webserver instance
+        # # Create Webserver instance
         # self.instance_webserver = ec2.Instance(self, "admin-webserver",
         #     role=self.role_webserv,
         #     instance_name="admin-webserver",
@@ -624,11 +624,11 @@ class CdkVpcTestStack(Stack):
         # - - - - - - - - CREATE ADMIN SERVER - - - - - - - - - -
 
         # Create Keypair Admin Server -> Private Key in Parameter Store
-        self.keypair_adminserver = ec2.KeyPair(self, "keypair-adminserver",
-            key_pair_name="kp-adminserver",     
-            )
+        # self.keypair_adminserver = ec2.KeyPair(self, "keypair-adminserver",
+        #     key_pair_name="kp-adminserver",     
+        #     )
 
-        # Create Adminserver instance
+        # # Create Adminserver instance
         # self.instance_adminserver = ec2.Instance(self,"adminserver",
         #     instance_name="adminserver",
         #     vpc=self.vpc_adminserv,                             # VPC Admin server
@@ -759,11 +759,83 @@ class CdkVpcTestStack(Stack):
         #█████  ██   ██    ██    ██   ██ ██████  ██   ██ ███████ ███████
 
 
+        # - - - - - - - - SECURITY GROUP - - - - - - - - - -
+
+        # Create Security Group for database
+        self.sg_database = ec2.SecurityGroup(self, "sg-database",
+            vpc=self.vpc_webserv,
+            description="SG Database"
+            )
+
+
+        # - - - - - - - - INBOUND TRAFFIC - - - - - - - - - -
+            #    ||
+            #    ||
+            #   \\//
+            #    \/
+        
+        # Allow inbound traffic from the VPC CIDR on the MySQL port
+        self.sg_database.add_ingress_rule(
+            peer=ec2.Peer.ipv4("10.0.1.0/24"),          # VPC CIDR
+            connection=ec2.Port.tcp(3306),              # MySQL port
+            description="Allow MySQL from VPC",
+            )
+        
+
+        # - - - - - - - - TEST WEBSERVER FOR DATABASE - - - - - - - - 
+        # - - - - comment out when deploying in production - - - - - - - - - -
+        self.sg_test_webserver = ec2.SecurityGroup(self, "sg-test-webserver",
+            vpc=self.vpc_webserv,
+            description="SG Test Webserver"
+            )
+        self.sg_test_webserver.add_ingress_rule(
+            peer=ec2.Peer.any_ipv4(), 
+            connection=ec2.Port.tcp(80),  
+            description="Allow HTTP traffic from anywhere",
+            )
+        self.sg_test_webserver.add_ingress_rule(
+            peer=ec2.Peer.any_ipv4(), 
+            connection=ec2.Port.tcp(443),  
+            description="Allow HTTPS traffic from anywhere",
+            )
+        self.sg_test_webserver.add_ingress_rule(
+            peer=ec2.Peer.any_ipv4(), 
+            connection=ec2.Port.tcp(22),  
+            description="Allow SSH traffic from anywhere",
+            )
+        self.keypair_testwebserver = ec2.KeyPair(self, "keypair-test-webserver",
+            key_pair_name="kp-test-webserver",
+            )
+        self.instance_webserver = ec2.Instance(self, "test-webserver",
+            role=self.role_webserv,
+            instance_name="test-webserver",
+            vpc=self.vpc_webserv,                               
+            vpc_subnets=ec2.SubnetSelection(
+                subnet_type=ec2.SubnetType.PUBLIC),  
+            key_pair=self.keypair_testwebserver,                    
+            security_group=self.sg_test_webserver,             
+            instance_type=ec2.InstanceType.of(
+                ec2.InstanceClass.T2, ec2.InstanceSize.MICRO),  
+            machine_image=ec2.AmazonLinuxImage(
+                generation=ec2.AmazonLinuxGeneration.AMAZON_LINUX_2023),    
+            block_devices=[ec2.BlockDevice(
+                device_name="/dev/xvda",                        
+                volume=ec2.BlockDeviceVolume.ebs(
+                    volume_size=8,                              
+                    encrypted=True,                             
+                    )
+                )],
+            user_data=ec2.UserData.custom(self.user_data_webs), 
+            )
+        
+
+        # - - - - - - - - DATABASE - - - - - - - - - -
+
         # Create RDS database
         self.database = rds.DatabaseInstance(self, "database-webserver",
-            # database_name="database-webserver",
             vpc=self.vpc_webserv,
-            vpc_subnets=ec2.SubnetSelection(subnet_type=ec2.SubnetType.PUBLIC),
+            vpc_subnets=ec2.SubnetSelection(subnet_type=ec2.SubnetType.PRIVATE_ISOLATED),
+            security_groups=[self.sg_database],
             multi_az=True,
             engine=rds.DatabaseInstanceEngine.MYSQL,
             allocated_storage=20,
@@ -774,7 +846,6 @@ class CdkVpcTestStack(Stack):
             removal_policy=RemovalPolicy.DESTROY,
             deletion_protection=False,
             )
-
 
 
 
