@@ -7,6 +7,7 @@ Sorted by latest to oldest.
 ## Table of Contents
 - Week 6
     - [Sat 17 Feb '14](#sat17feb)
+        - [ [SOLVED] Connecting to RDS MySQL using AWS Linux 2023 instance](#connecting-to-rds-mysql-using-aws-linux-2023-instance)
     - [Fri 16 Feb '14](#fri16feb)
     - [Wed 14 Feb '14](#wed14feb)
         - [ [SOLVED] NACLs keeps blocking my traffic to/from loadbalancer](#nacls-keeps-blocking-my-traffic-tofrom-loadbalancer)
