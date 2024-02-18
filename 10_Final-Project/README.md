@@ -13,7 +13,7 @@ During the project I will work on solutions while dealing with company policies,
     - [Checklist, Deadlines, and Epics & User Stories](#cde)
     - [My Daily Logs](#mdl)
     - [Decisions Document](#decisiondoc)
-    - [Design Document](#designdoc)
+    - [Design Document v1.1](#designdoc)
 - [Test Lab](#testlab)
 - [Minimum Viable Product v1.0](#mvp10)
 - [Minimum Viable Product v1.1](#mvp11)  
