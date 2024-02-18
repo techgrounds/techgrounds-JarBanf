@@ -1,11 +1,17 @@
-# Design Document 📘 👷 🔨
+# <a id="top">Design Document</a> 📘 👷 🔨
 This document contains technical and practical information about my application.  
 Diagrams, (N)SG rules, deployment visualization, and more, are listed here.
+
+## Table of Contents
 
 ## v1.1
 Under Construction.
 
 ### Estimated Monthly Costs
+<br>
+
+*back to [top](#top)*  
+<br>
 
 ### Security Groups
 #### Webserver
@@ -19,6 +25,10 @@ Under Construction.
 | Type | Port | Source | Destination |
 | - | - | - | - |
 | All Traffic | All | 0.0.0.0/0 | Allow all outbound traffic by default |
+<br>
+
+*back to [top](#top)*  
+<br>
 
 #### Admin Webserver
 ##### Inbound
@@ -31,6 +41,10 @@ Under Construction.
 | Type | Port | Source | Destination |
 | - | - | - | - |
 | - | - | - | - |
+<br>
+
+*back to [top](#top)*  
+<br>
 
 #### Application Load Balancer
 ##### Inbound
@@ -43,6 +57,10 @@ Under Construction.
 | Type | Port | Source | Destination |
 | - | - | - | - |
 | - | - | - | - |
+<br>
+
+*back to [top](#top)*  
+<br>
 
 #### Auto Scaling Webservers
 ##### Inbound
@@ -55,6 +73,10 @@ Under Construction.
 | Type | Port | Source | Destination |
 | - | - | - | - |
 | - | - | - | - |
+<br>
+
+*back to [top](#top)*  
+<br>
 
 #### RDS MySQL Database
 ##### Inbound
@@ -67,9 +89,16 @@ Under Construction.
 | Type | Port | Source | Destination |
 | - | - | - | - |
 | - | - | - | - |
+<br>
 
+*back to [top](#top)*  
+<br>
 
 ### NACL
+<br>
+
+*back to [top](#top)*  
+<br>
 
 ### RDS MySQL Database
 - **Command to connect to database**: `mysql -h <RDS_ENDPOINT> -u <USERNAME> -p`
@@ -81,3 +110,7 @@ Under Construction.
 - **Encryption**: Enabled
 - **Maintenance window**: Region Frankfurt (eu-central-1) -> a 30-minute window between 21:00 - 5:00 <ins>UTC</ins>
 - **Backup window**: Region Frankfurt (eu-central-1) -> a 30-minute window between 20:00 - 4:00 <ins>UTC</ins>
+<br>
+
+*back to [top](#top)*  
+<br>
