@@ -303,7 +303,7 @@ class CdkVpcTestStack(Stack):
         self.nacl_webserver_pr.add_entry("Inbound-Ephemeral",
             cidr=ec2.AclCidr.any_ipv4(),
             rule_number=120,
-            traffic=ec2.AclTraffic.tcp_port_range(32768, 65535),    # Linux ephemeral ports 32768, 60999
+            traffic=ec2.AclTraffic.tcp_port_range(32768, 65535),    # ephemeral ports 32768, 60999
             direction=ec2.TrafficDirection.INGRESS
             )
 
@@ -312,12 +312,12 @@ class CdkVpcTestStack(Stack):
         
         # Allow NACL Inbound All traffic from anywhere
         #   for troubleshooting purposes
-        self.nacl_webserver_pr.add_entry("Inbound-ALL",
-            cidr=ec2.AclCidr.any_ipv4(),
-            rule_number=50,
-            traffic=ec2.AclTraffic.all_traffic(),
-            direction=ec2.TrafficDirection.INGRESS
-            )
+        # self.nacl_webserver_pr.add_entry("Inbound-ALL",
+        #     cidr=ec2.AclCidr.any_ipv4(),
+        #     rule_number=50,
+        #     traffic=ec2.AclTraffic.all_traffic(),
+        #     direction=ec2.TrafficDirection.INGRESS
+        #     )
 
 
         # - - - - - - - - OUTBOUND TRAFFIC - - - - - - - - - -
@@ -573,28 +573,28 @@ class CdkVpcTestStack(Stack):
             )
         
         # Create Webserver instance
-        self.instance_webserver = ec2.Instance(self, "admin-webserver",
-            role=self.role_webserv,
-            instance_name="admin-webserver",
-            vpc=self.vpc_webserv,                               # VPC Webserver
-            vpc_subnets=ec2.SubnetSelection(
-                subnet_type=ec2.SubnetType.PRIVATE_WITH_EGRESS),   # Private subnet in VPC Webserver
-            private_ip_address="10.0.1.52",                     # Give it a static IP address
-            key_pair=self.keypair_webserver,                    # refer to keypair. Code above.
-            security_group=self.sg_admin_webserver,             # refer to the SG for Webserver
-            instance_type=ec2.InstanceType.of(
-                ec2.InstanceClass.T2, ec2.InstanceSize.MICRO),  # choose instance type
-            machine_image=ec2.AmazonLinuxImage(
-                generation=ec2.AmazonLinuxGeneration.AMAZON_LINUX_2023),    # choose AMI
-            block_devices=[ec2.BlockDevice(
-                device_name="/dev/xvda",                        # Root EBS for Linux is always "xvda"
-                volume=ec2.BlockDeviceVolume.ebs(
-                    volume_size=8,                              # 8 GB
-                    encrypted=True,                             # activate encryption on root EBS
-                    )
-                )],
-            user_data=ec2.UserData.custom(self.user_data_webs), # refer to imported User Data. See code above
-            )
+        # self.instance_webserver = ec2.Instance(self, "admin-webserver",
+        #     role=self.role_webserv,
+        #     instance_name="admin-webserver",
+        #     vpc=self.vpc_webserv,                               # VPC Webserver
+        #     vpc_subnets=ec2.SubnetSelection(
+        #         subnet_type=ec2.SubnetType.PRIVATE_WITH_EGRESS),   # Private subnet in VPC Webserver
+        #     private_ip_address="10.0.1.52",                     # Give it a static IP address
+        #     key_pair=self.keypair_webserver,                    # refer to keypair. Code above.
+        #     security_group=self.sg_admin_webserver,             # refer to the SG for Webserver
+        #     instance_type=ec2.InstanceType.of(
+        #         ec2.InstanceClass.T2, ec2.InstanceSize.MICRO),  # choose instance type
+        #     machine_image=ec2.AmazonLinuxImage(
+        #         generation=ec2.AmazonLinuxGeneration.AMAZON_LINUX_2023),    # choose AMI
+        #     block_devices=[ec2.BlockDevice(
+        #         device_name="/dev/xvda",                        # Root EBS for Linux is always "xvda"
+        #         volume=ec2.BlockDeviceVolume.ebs(
+        #             volume_size=8,                              # 8 GB
+        #             encrypted=True,                             # activate encryption on root EBS
+        #             )
+        #         )],
+        #     user_data=ec2.UserData.custom(self.user_data_webs), # refer to imported User Data. See code above
+        #     )
 
 
 

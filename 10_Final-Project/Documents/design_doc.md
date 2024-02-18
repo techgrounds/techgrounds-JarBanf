@@ -21,9 +21,53 @@ Under Construction.
 | All Traffic | All | 0.0.0.0/0 | Allow all outbound traffic by default |
 
 #### Admin Webserver
+##### Inbound
+| Type | Port | Source | Description |
+| - | - | - | - |
+| - | - | - | - |
+| - | - | - | - |
+
+##### Outbound 
+| Type | Port | Source | Destination |
+| - | - | - | - |
+| - | - | - | - |
+
 #### Application Load Balancer
+##### Inbound
+| Type | Port | Source | Description |
+| - | - | - | - |
+| - | - | - | - |
+| - | - | - | - |
+
+##### Outbound 
+| Type | Port | Source | Destination |
+| - | - | - | - |
+| - | - | - | - |
+
 #### Auto Scaling Webservers
+##### Inbound
+| Type | Port | Source | Description |
+| - | - | - | - |
+| - | - | - | - |
+| - | - | - | - |
+
+##### Outbound 
+| Type | Port | Source | Destination |
+| - | - | - | - |
+| - | - | - | - |
+
 #### RDS MySQL Database
+##### Inbound
+| Type | Port | Source | Description |
+| - | - | - | - |
+| - | - | - | - |
+| - | - | - | - |
+
+##### Outbound 
+| Type | Port | Source | Destination |
+| - | - | - | - |
+| - | - | - | - |
+
 
 ### NACL
 
