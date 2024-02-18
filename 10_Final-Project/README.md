@@ -39,11 +39,11 @@ This serves as the basis for my design documentation.
 To view the Decisions Document, [click here](/10_Final-Project/Documents/decisions_doc.md).  
 <br>
 
-## <a id="designdoc">Design Document</a> 📘 👷 🔨
+## <a id="designdoc">Design Document v1.1</a> 📘 👷 🔨
 This document contains technical and practical information about my application.  
 Diagrams, (N)SG rules, deployment visualization, and more, are listed here.  
 
-To view the Design Document, [click here](/10_Final-Project/Documents/design_doc.md).  
+To view the Design Document v1.1, [click here](/10_Final-Project/Documents/design_doc_v1dot1.md).  
 <br>
 
 ## <a id="testlab">Test Lab</a> 🚧 ⚠️ 💥
