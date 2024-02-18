@@ -79,16 +79,7 @@ Sorted by latest to oldest.
 ## ✏️ 📄 <a id="sun18feb">Sun 18 Feb '24</a>
 ### Daily Report
 - Database is in private subnet. The webserver that also is in private subnet succesfully connects to database.
-- Still need to update NACL for private subnet though.
-
-### Obstacles
-- ...
-
-### Solutions
-- ...
-
-### Learnings
-- ...  
+- NACLs updated.  
 <br>
 
 *back to [top](#top)*  

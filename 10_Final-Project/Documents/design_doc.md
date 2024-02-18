@@ -25,26 +25,17 @@ Under Construction.
 | Type | Port | Source | Destination |
 | - | - | - | - |
 | All Traffic | All | 0.0.0.0/0 | Allow all outbound traffic by default |
-<br>
-
-*back to [top](#top)*  
-<br>
 
 #### Admin Webserver
 ##### Inbound
 | Type | Port | Source | Description |
 | - | - | - | - |
-| - | - | - | - |
-| - | - | - | - |
+| RDP | 3389 | Admin home/office IP | Allow RDP from Admin home/office IP |
 
 ##### Outbound 
 | Type | Port | Source | Destination |
 | - | - | - | - |
-| - | - | - | - |
-<br>
-
-*back to [top](#top)*  
-<br>
+| All Traffic | All | 0.0.0.0/0 | Allow all outbound traffic by default |
 
 #### Application Load Balancer
 ##### Inbound
@@ -56,11 +47,7 @@ Under Construction.
 ##### Outbound 
 | Type | Port | Source | Destination |
 | - | - | - | - |
-| - | - | - | - |
-<br>
-
-*back to [top](#top)*  
-<br>
+| All Traffic | All | 0.0.0.0/0 | Allow all outbound traffic by default |
 
 #### Auto Scaling Webservers
 ##### Inbound
@@ -72,27 +59,18 @@ Under Construction.
 ##### Outbound 
 | Type | Port | Source | Destination |
 | - | - | - | - |
-| - | - | - | - |
-<br>
-
-*back to [top](#top)*  
-<br>
+| All Traffic | All | 0.0.0.0/0 | Allow all outbound traffic by default |
 
 #### RDS MySQL Database
 ##### Inbound
 | Type | Port | Source | Description |
 | - | - | - | - |
-| - | - | - | - |
-| - | - | - | - |
+| MYSQL/Aurora | 3306 | 10.0.1.0/24 | Allow MySQL from VPC |
 
 ##### Outbound 
 | Type | Port | Source | Destination |
 | - | - | - | - |
-| - | - | - | - |
-<br>
-
-*back to [top](#top)*  
-<br>
+| All Traffic | All | 0.0.0.0/0 | Allow all outbound traffic by default |
 
 ### NACL
 <br>
