@@ -6,6 +6,7 @@ Sorted by latest to oldest.
 
 ## Table of Contents
 - Week 6
+    - [Sun 18 Feb '24](#sun18feb)
     - [Sat 17 Feb '14](#sat17feb)
         - [ [SOLVED] Connecting to RDS MySQL using AWS Linux 2023 instance](#connecting-to-rds-mysql-using-aws-linux-2023-instance)
     - [Fri 16 Feb '14](#fri16feb)
@@ -70,6 +71,24 @@ Sorted by latest to oldest.
     - [Mon 08 Jan '24](#mon08jan)
         - [Watched an introduction video about Jira.](#watched-an-introduction-video-about-jira)
 - [Log template](#log-template)  
+<br>
+
+*back to [top](#top)*  
+<br>
+
+## ✏️ 📄 <a id="sun18feb">Sun 18 Feb '24</a>
+### Daily Report
+- Database is in private subnet. The webserver that also is in private subnet succesfully connects to database.
+- Still need to update NACL for private subnet though.
+
+### Obstacles
+- ...
+
+### Solutions
+- ...
+
+### Learnings
+- ...  
 <br>
 
 *back to [top](#top)*  

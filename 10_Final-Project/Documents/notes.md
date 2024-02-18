@@ -81,4 +81,4 @@ sudo systemctl enable mysqld
 ## Command to connect to RDS MySQL Database
 
 # mysql -h <RDS_ENDPOINT> -u <USERNAME> -p
-mysql -h cdkvpcteststack-databasewebserver14fd81e3-1pujlbjjorwt.coxnyfceatsl.eu-central-1.rds.amazonaws.com -u admin -p
+mysql -h cdkvpcteststack-databasewebserver14fd81e3-uhpi9t8vphvv.coxnyfceatsl.eu-central-1.rds.amazonaws.com -u admin -p
