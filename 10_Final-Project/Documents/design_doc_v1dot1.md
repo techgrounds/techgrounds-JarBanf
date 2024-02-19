@@ -80,49 +80,42 @@ Diagrams, (N)SG rules, deployment visualization, and more, are listed here.
 <br>
 
 #### Admin Server
-##### Inbound
 | Type | Port | Source | Description |
 | - | - | - | - |
+| **Inbound** |  |  |  |
 | RDP | 3389 | Admin home/office IP | Allow RDP from Admin home/office IP |
-
-##### Outbound 
-| Type | Port | Destination | Description |
-| - | - | - | - |
+|  |  |  |  |
+| **Outbound** |  |  |  |
 | All Traffic | All | 0.0.0.0/0 | Allow all outbound traffic by default |
+<br>
 
 #### Application Load Balancer
-##### Inbound
 | Type | Port | Source | Description |
 | - | - | - | - |
+| **Inbound** |  |  |  |
 | - | - | - | - |
-| - | - | - | - |
-
-##### Outbound 
-| Type | Port | Destination | Description |
-| - | - | - | - |
+|  |  |  |  |
+| **Outbound** |  |  |  |
 | All Traffic | All | 0.0.0.0/0 | Allow all outbound traffic by default |
+<br>
 
 #### Auto Scaling Webservers
-##### Inbound
 | Type | Port | Source | Description |
 | - | - | - | - |
+| **Inbound** |  |  |  |
 | - | - | - | - |
-| - | - | - | - |
-
-##### Outbound 
-| Type | Port | Destination | Description |
-| - | - | - | - |
+|  |  |  |  |
+| **Outbound** |  |  |  |
 | All Traffic | All | 0.0.0.0/0 | Allow all outbound traffic by default |
+<br>
 
 #### RDS MySQL Database
-##### Inbound
 | Type | Port | Source | Description |
 | - | - | - | - |
+| **Inbound** |  |  |  |
 | MYSQL/Aurora | 3306 | 10.0.1.0/24 | Allow MySQL from VPC |
-
-##### Outbound 
-| Type | Port | Destination | Description |
-| - | - | - | - |
+|  |  |  |  |
+| **Outbound** |  |  |  |
 | All Traffic | All | 0.0.0.0/0 | Allow all outbound traffic by default |
 <br>
 
