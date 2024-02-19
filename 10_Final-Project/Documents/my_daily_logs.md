@@ -5,6 +5,8 @@ Sorted by latest to oldest.
 <br>
 
 ## Table of Contents
+- Week 7
+
 - Week 6
     - [Sun 18 Feb '24](#sun18feb)
     - [Sat 17 Feb '14](#sat17feb)
@@ -71,6 +73,23 @@ Sorted by latest to oldest.
     - [Mon 08 Jan '24](#mon08jan)
         - [Watched an introduction video about Jira.](#watched-an-introduction-video-about-jira)
 - [Log template](#log-template)  
+<br>
+
+*back to [top](#top)*  
+<br>
+
+## ✏️ 📄 <a id="mon19feb">Mon 19 Feb '24</a>
+### Daily Report
+- Working on Design Document
+
+### Obstacles
+- ...
+
+### Solutions
+- ...
+
+### Learnings
+- ...  
 <br>
 
 *back to [top](#top)*  

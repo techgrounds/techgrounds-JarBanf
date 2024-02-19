@@ -114,7 +114,10 @@ This checklist is based on the Deliverables in the chapter [Epics & User Stories
     - 🍔 Architecture Design
     - 🐂 Estimated monthly costs
     - 🔥 Configurations
-        - 🐂 VPCs
+        - 🍔 VPCs
+            - 🍔 VPC web
+            - 🍔 VPC admin
+            - 🍔 VPC peering
         - 🐂 Admin Webserver
         - 🐂 Admin Server
         - 🐂 Application Load Blancer

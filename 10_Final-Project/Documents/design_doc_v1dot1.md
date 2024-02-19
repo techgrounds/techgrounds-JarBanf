@@ -7,6 +7,9 @@ Diagrams, (N)SG rules, deployment visualization, and more, are listed here.
 - [Architecture Design](#architecture-design)
 - [Estimated Monthly Costs](#estimated-monthly-costs)
 - [Configurations](#configurations)
+    - []()
+    - []()
+    - []()
     - [Security Groups](#security-groups)
         - [Admin Web-Server](#admin-web-server)
         - [Admin Server](#admin-server)
@@ -38,6 +41,31 @@ Diagrams, (N)SG rules, deployment visualization, and more, are listed here.
 <br>
 
 ## Configurations
+### VPC-1 Web
+![VPC-1 Web Resource Map](/10_Final-Project/includes/v1dot1-vpc1-web-resource-map.drawio.png)
+*VPC-1 Web Resource Map*
+
+<br>
+
+*back to [top](#top)*  
+<br>
+
+### VPC-2 Admin
+![VPC-2 Admin Resource Map](/10_Final-Project/includes/v1dot1-vpc2-admin-resource-map.drawio.png)
+*VPC-2 Admin Resource Map*
+<br>
+
+*back to [top](#top)*  
+<br>
+
+### VPC Peering
+![VPC Peering](/10_Final-Project/includes/v1dot1-vpc-peering.drawio.png)
+*VPC Peering*
+<br>
+
+*back to [top](#top)*  
+<br>
+
 ### Security Groups
 #### Admin Web-Server
 ##### Inbound
@@ -102,11 +130,11 @@ Diagrams, (N)SG rules, deployment visualization, and more, are listed here.
 <br>
 
 ### NACLs
-#### VPC Webserver Public Subnets
+#### VPC Web Public Subnets
 ##### Inbound
 ##### Outbound 
 
-#### VPC Webserver Private Subnets
+#### VPC Web Private Subnets
 #### VPC Admin Public Subnets
 <br>
 

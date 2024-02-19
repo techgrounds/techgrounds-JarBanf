@@ -54,9 +54,9 @@ class CdkVpcTestStack(Stack):
 
 
         # Create VPC & Subnet
-        self.vpc_webserv = ec2.Vpc(self, 'vpc-webserver',
+        self.vpc_webserv = ec2.Vpc(self, 'vpc-1-web',
             ip_addresses=ec2.IpAddresses.cidr('10.0.1.0/24'),
-            vpc_name='vpc-webserver',
+            vpc_name='vpc-1-web',
             nat_gateways=1,                             # 
             max_azs=3,                                  # use all 3 AZ's
             subnet_configuration=[
@@ -75,7 +75,8 @@ class CdkVpcTestStack(Stack):
 
         # Add S3 endpoint
         self.vpc_webserv.add_gateway_endpoint("S3-endpoint",
-            service=ec2.GatewayVpcEndpointAwsService.S3
+            service=ec2.GatewayVpcEndpointAwsService.S3,
+            subnets=[ec2.SubnetSelection(subnet_type=ec2.SubnetType.PRIVATE_WITH_EGRESS)]
             )
 
 
@@ -88,15 +89,15 @@ class CdkVpcTestStack(Stack):
 
 
         # Create VPC & Subnet
-        self.vpc_adminserv = ec2.Vpc(self, 'vpc-adminserver',
+        self.vpc_adminserv = ec2.Vpc(self, 'vpc-admin',
             ip_addresses=ec2.IpAddresses.cidr('10.0.2.0/24'),
-            vpc_name='vpc-adminserver',
+            vpc_name='vpc-admin',
             nat_gateways=0,                             # no gateway needed
             availability_zones=["eu-central-1b"],       # define AZ
             subnet_configuration=[
                 ec2.SubnetConfiguration(
                     subnet_type=ec2.SubnetType.PUBLIC,  # create public subnet
-                    name='Adminserver',                 # for webserver
+                    name='Public',                 # for webserver
                     cidr_mask=28                        # 16 IP addresses
                     )
                 ]
@@ -159,76 +160,76 @@ class CdkVpcTestStack(Stack):
         # - - - - - - - - NACL WEBSERVER PUBLIC SUBNET & RULES - - - - - - - - - -
         
         # Create NACL
-        # self.nacl_webserver_pu = ec2.NetworkAcl(self, 'nacl-webserver-pulic', 
-        #     network_acl_name='nacl-webserver-public',
-        #     vpc=self.vpc_webserv,
-        #     subnet_selection=ec2.SubnetSelection(subnet_type=ec2.SubnetType.PUBLIC)
-        #     )
+        self.nacl_webserver_pu = ec2.NetworkAcl(self, 'nacl-webserver-pulic', 
+            network_acl_name='nacl-webserver-public',
+            vpc=self.vpc_webserv,
+            subnet_selection=ec2.SubnetSelection(subnet_type=ec2.SubnetType.PUBLIC)
+            )
         
-        # # - - - - - - - - INBOUND TRAFFIC - - - - - - - - - -
-        #     #    ||
-        #     #    ||
-        #     #   \\//
-        #     #    \/
+        # - - - - - - - - INBOUND TRAFFIC - - - - - - - - - -
+            #    ||
+            #    ||
+            #   \\//
+            #    \/
 
-        # # Allow all inbound HTTP traffic on the load balancer listener port
-        # self.nacl_webserver_pu.add_entry("Inbound-HTTP",
+        # Allow all inbound HTTP traffic on the load balancer listener port
+        self.nacl_webserver_pu.add_entry("Inbound-HTTP",
+            cidr=ec2.AclCidr.any_ipv4(),
+            rule_number=100,
+            traffic=ec2.AclTraffic.tcp_port(80),        # HTTP port
+            direction=ec2.TrafficDirection.INGRESS
+            )
+
+        # Allow all inbound HTTPS traffic on the load balancer listener port
+        self.nacl_webserver_pu.add_entry("Inbound-HTTPS",
+            cidr=ec2.AclCidr.any_ipv4(),
+            rule_number=110,
+            traffic=ec2.AclTraffic.tcp_port(443),       # HTTPS port
+            direction=ec2.TrafficDirection.INGRESS
+            )
+        
+        # Allow inbound traffic from the VPC CIDR on the ephemeral ports
+        self.nacl_webserver_pu.add_entry("Inbound-Ephemeral",
+            cidr=ec2.AclCidr.ipv4("10.0.1.0/24"),
+            rule_number=120,
+            traffic=ec2.AclTraffic.tcp_port_range(1024, 65535),    # ephemeral ports
+            direction=ec2.TrafficDirection.INGRESS
+            )
+        
+        # - - - - - - - - FOR TESTING PURPOSES ONLY - - - - - - - - - -
+        # - - - - comment out when deploying in production - - - - - - - - - -
+        
+        # Allow NACL Inbound All traffic from anywhere
+        #   for troubleshooting purposes
+        # self.nacl_webserver_pu.add_entry("Inbound-ALL",
         #     cidr=ec2.AclCidr.any_ipv4(),
-        #     rule_number=100,
-        #     traffic=ec2.AclTraffic.tcp_port(80),        # HTTP port
+        #     rule_number=50,
+        #     traffic=ec2.AclTraffic.all_traffic(),
         #     direction=ec2.TrafficDirection.INGRESS
         #     )
-
-        # # Allow all inbound HTTPS traffic on the load balancer listener port
-        # self.nacl_webserver_pu.add_entry("Inbound-HTTPS",
-        #     cidr=ec2.AclCidr.any_ipv4(),
-        #     rule_number=110,
-        #     traffic=ec2.AclTraffic.tcp_port(443),       # HTTPS port
-        #     direction=ec2.TrafficDirection.INGRESS
-        #     )
-        
-        # # Allow inbound traffic from the VPC CIDR on the ephemeral ports
-        # self.nacl_webserver_pu.add_entry("Inbound-Ephemeral",
-        #     cidr=ec2.AclCidr.ipv4("10.0.1.0/24"),
-        #     rule_number=120,
-        #     traffic=ec2.AclTraffic.tcp_port_range(1024, 65535),    # ephemeral ports
-        #     direction=ec2.TrafficDirection.INGRESS
-        #     )
-        
-        # # - - - - - - - - FOR TESTING PURPOSES ONLY - - - - - - - - - -
-        # # - - - - comment out when deploying in production - - - - - - - - - -
-        
-        # # Allow NACL Inbound All traffic from anywhere
-        # #   for troubleshooting purposes
-        # # self.nacl_webserver_pu.add_entry("Inbound-ALL",
-        # #     cidr=ec2.AclCidr.any_ipv4(),
-        # #     rule_number=50,
-        # #     traffic=ec2.AclTraffic.all_traffic(),
-        # #     direction=ec2.TrafficDirection.INGRESS
-        # #     )
         
 
-        # # - - - - - - - - OUTBOUND TRAFFIC - - - - - - - - - -
-        #     #    /\
-        #     #   //\\
-        #     #    ||
-        #     #    ||
+        # - - - - - - - - OUTBOUND TRAFFIC - - - - - - - - - -
+            #    /\
+            #   //\\
+            #    ||
+            #    ||
             
-        # # Allow all outbound traffic on the instance-listener/health-check port
-        # self.nacl_webserver_pu.add_entry("Outbound-HTTPS/health-check",
-        #     cidr=ec2.AclCidr.ipv4("10.0.1.0/24"),
-        #     rule_number=110,
-        #     traffic=ec2.AclTraffic.tcp_port(443),       # HTTPS/health-check port
-        #     direction=ec2.TrafficDirection.EGRESS
-        #     )
+        # Allow all outbound traffic on the instance-listener/health-check port
+        self.nacl_webserver_pu.add_entry("Outbound-HTTPS/health-check",
+            cidr=ec2.AclCidr.ipv4("10.0.1.0/24"),
+            rule_number=110,
+            traffic=ec2.AclTraffic.tcp_port(443),       # HTTPS/health-check port
+            direction=ec2.TrafficDirection.EGRESS
+            )
         
-        # # Allow all outbound traffic on the ephemeral ports
-        # self.nacl_webserver_pu.add_entry("Outbound-Ephemeral",
-        #     cidr=ec2.AclCidr.any_ipv4(),
-        #     rule_number=120,
-        #     traffic=ec2.AclTraffic.tcp_port_range(1024, 65535),    # ephemeral ports
-        #     direction=ec2.TrafficDirection.EGRESS
-        #     )
+        # Allow all outbound traffic on the ephemeral ports
+        self.nacl_webserver_pu.add_entry("Outbound-Ephemeral",
+            cidr=ec2.AclCidr.any_ipv4(),
+            rule_number=120,
+            traffic=ec2.AclTraffic.tcp_port_range(1024, 65535),    # ephemeral ports
+            direction=ec2.TrafficDirection.EGRESS
+            )
         
         # - - - - - - - - FOR TESTING PURPOSES ONLY - - - - - - - - - -
         # - - - - comment out when deploying in production - - - - - - - - - -
@@ -475,37 +476,37 @@ class CdkVpcTestStack(Stack):
         # - - - - - - - - SECURITY GROUP & RULES - - - - - - - - - -
         
         # Create Security Group for Private Web server
-        self.sg_admin_webserver = ec2.SecurityGroup(self, "sg-admin-webserver",
-            vpc=self.vpc_webserv,
-            description="SG Admin Webserver"
-            )
+        # self.sg_admin_webserver = ec2.SecurityGroup(self, "sg-admin-webserver",
+        #     vpc=self.vpc_webserv,
+        #     description="SG Admin Webserver"
+        #     )
 
-        # - - - - - - - - INBOUND TRAFFIC - - - - - - - - - -
-            #    ||
-            #    ||
-            #   \\//
-            #    \/
+        # # - - - - - - - - INBOUND TRAFFIC - - - - - - - - - -
+        #     #    ||
+        #     #    ||
+        #     #   \\//
+        #     #    \/
         
-        # Allow SG inbound HTTP traffic from admin server
-        self.sg_admin_webserver.add_ingress_rule(
-            peer=ec2.Peer.ipv4("10.0.2.4/32"),      # Static IP of Admin Server
-            connection=ec2.Port.tcp(80),            # HTTP port
-            description="Allow HTTP traffic from admin server",
-            )
+        # # Allow SG inbound HTTP traffic from admin server
+        # self.sg_admin_webserver.add_ingress_rule(
+        #     peer=ec2.Peer.ipv4("10.0.2.4/32"),      # Static IP of Admin Server
+        #     connection=ec2.Port.tcp(80),            # HTTP port
+        #     description="Allow HTTP traffic from admin server",
+        #     )
         
-        # Allow SG inbound HTTPS traffic from admin server
-        self.sg_admin_webserver.add_ingress_rule(
-            peer=ec2.Peer.ipv4("10.0.2.4/32"),      # Static IP of Admin Server
-            connection=ec2.Port.tcp(443),           # HTTPS port
-            description="Allow HTTPS traffic from admin server",
-            )
+        # # Allow SG inbound HTTPS traffic from admin server
+        # self.sg_admin_webserver.add_ingress_rule(
+        #     peer=ec2.Peer.ipv4("10.0.2.4/32"),      # Static IP of Admin Server
+        #     connection=ec2.Port.tcp(443),           # HTTPS port
+        #     description="Allow HTTPS traffic from admin server",
+        #     )
         
-        # Allow SG inbound SSH traffic from admin server
-        self.sg_admin_webserver.add_ingress_rule(
-            peer=ec2.Peer.ipv4("10.0.2.4/32"),    # Static IP of Admin Server
-            connection=ec2.Port.tcp(22),          # SSH port
-            description="Allow SSH traffic from admin server",
-            )
+        # # Allow SG inbound SSH traffic from admin server
+        # self.sg_admin_webserver.add_ingress_rule(
+        #     peer=ec2.Peer.ipv4("10.0.2.4/32"),    # Static IP of Admin Server
+        #     connection=ec2.Port.tcp(22),          # SSH port
+        #     description="Allow SSH traffic from admin server",
+        #     )
         
         # - - - - - - - - FOR TESTING PURPOSES ONLY - - - - - - - - - -
         # - - - - comment out when deploying in production - - - - - - - - - -
@@ -542,59 +543,59 @@ class CdkVpcTestStack(Stack):
         # - - - - - - - - S3 BUCKET & WEB CONTENT - - - - - - - - - - 
         
         # Create S3 Bucket for Website
-        self.website_bucket = s3.Bucket(self, "website-bucket",
-            bucket_name="cdkbucket-forwebserver-121212",
-            )
+        # self.website_bucket = s3.Bucket(self, "website-bucket",
+        #     bucket_name="cdkbucket-forwebserver-121212",
+        #     )
     
-        # Upload a the lab zipfiles to the S3 bucket
-        self.deploy_website = s3deploy.BucketDeployment(self, "deploy-website",
-            sources=[s3deploy.Source.asset(path="./cdk_vpc_test/lab-app.zip")],
-            destination_bucket=self.website_bucket,
-        )
+        # # Upload a the lab zipfiles to the S3 bucket
+        # self.deploy_website = s3deploy.BucketDeployment(self, "deploy-website",
+        #     sources=[s3deploy.Source.asset(path="./cdk_vpc_test/lab-app.zip")],
+        #     destination_bucket=self.website_bucket,
+        # )
         
         
         # - - - - - - - - CREATE WEBSERVER INSTANCE FOR ADMIN - - - - - - - - - -
         
         # Create Role for webserver instance
-        self.role_webserv = iam.Role(self, "role-webserv",
-            assumed_by=iam.ServicePrincipal("ec2.amazonaws.com")
-        )
+        # self.role_webserv = iam.Role(self, "role-webserv",
+        #     assumed_by=iam.ServicePrincipal("ec2.amazonaws.com")
+        # )
 
-        # Allow Role to access S3 bucket.
-        self.role_webserv.add_managed_policy(iam.ManagedPolicy.from_aws_managed_policy_name("AmazonS3ReadOnlyAccess"))
+        # # Allow Role to access S3 bucket.
+        # self.role_webserv.add_managed_policy(iam.ManagedPolicy.from_aws_managed_policy_name("AmazonS3ReadOnlyAccess"))
 
-        # Import User Data for Webserver
-        with open("./cdk_vpc_test/user_data_webs.sh") as f:
-            self.user_data_webs = f.read()  # read User Data script and save to variable
+        # # Import User Data for Webserver
+        # with open("./cdk_vpc_test/user_data_webs.sh") as f:
+        #     self.user_data_webs = f.read()  # read User Data script and save to variable
         
-        # Create Keypair Web Server -> Private Key in Parameter Store
-        self.keypair_webserver = ec2.KeyPair(self, "keypair-admin-webserver",
-            key_pair_name="kp-admin-webserver",
-            )
+        # # Create Keypair Web Server -> Private Key in Parameter Store
+        # self.keypair_webserver = ec2.KeyPair(self, "keypair-admin-webserver",
+        #     key_pair_name="kp-admin-webserver",
+        #     )
         
-        # Create Webserver instance
-        self.instance_webserver = ec2.Instance(self, "admin-webserver",
-            role=self.role_webserv,
-            instance_name="admin-webserver",
-            vpc=self.vpc_webserv,                               # VPC Webserver
-            vpc_subnets=ec2.SubnetSelection(
-                subnet_type=ec2.SubnetType.PRIVATE_WITH_EGRESS),   # Private subnet in VPC Webserver
-            private_ip_address="10.0.1.52",                     # Give it a static IP address
-            key_pair=self.keypair_webserver,                    # refer to keypair. Code above.
-            security_group=self.sg_admin_webserver,             # refer to the SG for Webserver
-            instance_type=ec2.InstanceType.of(
-                ec2.InstanceClass.T2, ec2.InstanceSize.MICRO),  # choose instance type
-            machine_image=ec2.AmazonLinuxImage(
-                generation=ec2.AmazonLinuxGeneration.AMAZON_LINUX_2023),    # choose AMI
-            block_devices=[ec2.BlockDevice(
-                device_name="/dev/xvda",                        # Root EBS for Linux is always "xvda"
-                volume=ec2.BlockDeviceVolume.ebs(
-                    volume_size=8,                              # 8 GB
-                    encrypted=True,                             # activate encryption on root EBS
-                    )
-                )],
-            user_data=ec2.UserData.custom(self.user_data_webs), # refer to imported User Data. See code above
-            )
+        # # Create Webserver instance
+        # self.instance_webserver = ec2.Instance(self, "admin-webserver",
+        #     role=self.role_webserv,
+        #     instance_name="admin-webserver",
+        #     vpc=self.vpc_webserv,                               # VPC Webserver
+        #     vpc_subnets=ec2.SubnetSelection(
+        #         subnet_type=ec2.SubnetType.PRIVATE_WITH_EGRESS),   # Private subnet in VPC Webserver
+        #     private_ip_address="10.0.1.52",                     # Give it a static IP address
+        #     key_pair=self.keypair_webserver,                    # refer to keypair. Code above.
+        #     security_group=self.sg_admin_webserver,             # refer to the SG for Webserver
+        #     instance_type=ec2.InstanceType.of(
+        #         ec2.InstanceClass.T2, ec2.InstanceSize.MICRO),  # choose instance type
+        #     machine_image=ec2.AmazonLinuxImage(
+        #         generation=ec2.AmazonLinuxGeneration.AMAZON_LINUX_2023),    # choose AMI
+        #     block_devices=[ec2.BlockDevice(
+        #         device_name="/dev/xvda",                        # Root EBS for Linux is always "xvda"
+        #         volume=ec2.BlockDeviceVolume.ebs(
+        #             volume_size=8,                              # 8 GB
+        #             encrypted=True,                             # activate encryption on root EBS
+        #             )
+        #         )],
+        #     user_data=ec2.UserData.custom(self.user_data_webs), # refer to imported User Data. See code above
+        #     )
 
 
 
@@ -608,24 +609,24 @@ class CdkVpcTestStack(Stack):
         # - - - - - - - - SECURITY GROUP & RULES - - - - - - - - - -
         
         # Create Security Group for the Admin server
-        self.sg_adminserver = ec2.SecurityGroup(self, "sg-adminserver",
-            vpc=self.vpc_adminserv,         # VPC for the Admin server
-            description="SG Adminserver"
-            )
+        # self.sg_adminserver = ec2.SecurityGroup(self, "sg-adminserver",
+        #     vpc=self.vpc_adminserv,         # VPC for the Admin server
+        #     description="SG Adminserver"
+        #     )
         
 
-        # - - - - - - - - INBOUND TRAFFIC - - - - - - - - - -
-            #    ||
-            #    ||
-            #   \\//
-            #    \/
+        # # - - - - - - - - INBOUND TRAFFIC - - - - - - - - - -
+        #     #    ||
+        #     #    ||
+        #     #   \\//
+        #     #    \/
         
-        # Allow SG inbound RDP traffic from only my IP
-        self.sg_adminserver.add_ingress_rule(
-            peer=ec2.Peer.ipv4(ip_address_administrator),   # refer to admin home/office IP address
-            connection=ec2.Port.tcp(3389),                  # RDP port
-            description="Allow RDP from only my IP",
-            )
+        # # Allow SG inbound RDP traffic from only my IP
+        # self.sg_adminserver.add_ingress_rule(
+        #     peer=ec2.Peer.ipv4(ip_address_administrator),   # refer to admin home/office IP address
+        #     connection=ec2.Port.tcp(3389),                  # RDP port
+        #     description="Allow RDP from only my IP",
+        #     )
         
         # - - - - - - - - FOR TESTING PURPOSES ONLY - - - - - - - - - -
         # - - - - comment out when deploying in production - - - - - - - - - -
@@ -641,37 +642,37 @@ class CdkVpcTestStack(Stack):
         # - - - - - - - - CREATE ADMIN SERVER - - - - - - - - - -
 
         # Create Keypair Admin Server -> Private Key in Parameter Store
-        self.keypair_adminserver = ec2.KeyPair(self, "keypair-adminserver",
-            key_pair_name="kp-adminserver",     
-            )
+        # self.keypair_adminserver = ec2.KeyPair(self, "keypair-adminserver",
+        #     key_pair_name="kp-adminserver",     
+        #     )
 
-        # Create Adminserver instance
-        self.instance_adminserver = ec2.Instance(self,"adminserver",
-            instance_name="adminserver",
-            vpc=self.vpc_adminserv,                             # VPC Admin server
-            vpc_subnets=ec2.SubnetSelection(                    
-                subnet_type=ec2.SubnetType.PUBLIC),             # Public subnet in VPC Admin server
-            private_ip_address="10.0.2.4",                      # Give it a static IP address
-            key_pair=self.keypair_adminserver,                  # refer to keypair. Code above.
-            security_group=self.sg_adminserver,                 # refer to the SG for Admin server
-            instance_type=ec2.InstanceType.of(
-                ec2.InstanceClass.T2, ec2.InstanceSize.MICRO),  # choose instance type
-            machine_image=ec2.WindowsImage(
-                ec2.WindowsVersion.WINDOWS_SERVER_2022_ENGLISH_FULL_BASE),  # choose AMI
-            block_devices=[ec2.BlockDevice(
-                device_name="/dev/sda1",                        # Root EBS for Windows is always "sda1"
-                volume=ec2.BlockDeviceVolume.ebs(
-                    volume_size=30,                             # 30 GB
-                    encrypted=True,                             # activate encryption on root EBS
-                    )
-                ), ec2.BlockDevice(
-                device_name="/dev/sdf",                         # define volume name
-                volume=ec2.BlockDeviceVolume.ebs(
-                    volume_size=256,                            # 256 GB
-                    encrypted=True,                             # activate encryption on attached EBS
-                    )
-                )]
-            )
+        # # Create Adminserver instance
+        # self.instance_adminserver = ec2.Instance(self,"adminserver",
+        #     instance_name="adminserver",
+        #     vpc=self.vpc_adminserv,                             # VPC Admin server
+        #     vpc_subnets=ec2.SubnetSelection(                    
+        #         subnet_type=ec2.SubnetType.PUBLIC),             # Public subnet in VPC Admin server
+        #     private_ip_address="10.0.2.4",                      # Give it a static IP address
+        #     key_pair=self.keypair_adminserver,                  # refer to keypair. Code above.
+        #     security_group=self.sg_adminserver,                 # refer to the SG for Admin server
+        #     instance_type=ec2.InstanceType.of(
+        #         ec2.InstanceClass.T2, ec2.InstanceSize.MICRO),  # choose instance type
+        #     machine_image=ec2.WindowsImage(
+        #         ec2.WindowsVersion.WINDOWS_SERVER_2022_ENGLISH_FULL_BASE),  # choose AMI
+        #     block_devices=[ec2.BlockDevice(
+        #         device_name="/dev/sda1",                        # Root EBS for Windows is always "sda1"
+        #         volume=ec2.BlockDeviceVolume.ebs(
+        #             volume_size=30,                             # 30 GB
+        #             encrypted=True,                             # activate encryption on root EBS
+        #             )
+        #         ), ec2.BlockDevice(
+        #         device_name="/dev/sdf",                         # define volume name
+        #         volume=ec2.BlockDeviceVolume.ebs(
+        #             volume_size=256,                            # 256 GB
+        #             encrypted=True,                             # activate encryption on attached EBS
+        #             )
+        #         )]
+        #     )
 
 
 
@@ -779,90 +780,90 @@ class CdkVpcTestStack(Stack):
         # - - - - - - - - SECURITY GROUP - - - - - - - - - -
 
         # Create Security Group for database
-        self.sg_database = ec2.SecurityGroup(self, "sg-database",
-            vpc=self.vpc_webserv,
-            description="SG Database"
-            )
+        # self.sg_database = ec2.SecurityGroup(self, "sg-database",
+        #     vpc=self.vpc_webserv,
+        #     description="SG Database"
+        #     )
 
 
-        # - - - - - - - - INBOUND TRAFFIC - - - - - - - - - -
-            #    ||
-            #    ||
-            #   \\//
-            #    \/
+        # # - - - - - - - - INBOUND TRAFFIC - - - - - - - - - -
+        #     #    ||
+        #     #    ||
+        #     #   \\//
+        #     #    \/
         
-        # Allow inbound traffic from the VPC CIDR on the MySQL port
-        self.sg_database.add_ingress_rule(
-            peer=ec2.Peer.ipv4("10.0.1.0/24"),          # VPC CIDR
-            connection=ec2.Port.tcp(3306),              # MySQL port
-            description="Allow MySQL from VPC",
-            )
+        # # Allow inbound traffic from the VPC CIDR on the MySQL port
+        # self.sg_database.add_ingress_rule(
+        #     peer=ec2.Peer.ipv4("10.0.1.0/24"),          # VPC CIDR
+        #     connection=ec2.Port.tcp(3306),              # MySQL port
+        #     description="Allow MySQL from VPC",
+        #     )
         
 
         # - - - - - - - - TEST WEBSERVER FOR DATABASE - - - - - - - - 
         # - - - - comment out when deploying in production - - - - - - - - - -
-        self.sg_test_webserver = ec2.SecurityGroup(self, "sg-test-webserver",
-            vpc=self.vpc_webserv,
-            description="SG Test Webserver"
-            )
-        self.sg_test_webserver.add_ingress_rule(
-            peer=ec2.Peer.any_ipv4(), 
-            connection=ec2.Port.tcp(80),  
-            description="Allow HTTP traffic from anywhere",
-            )
-        self.sg_test_webserver.add_ingress_rule(
-            peer=ec2.Peer.any_ipv4(), 
-            connection=ec2.Port.tcp(443),  
-            description="Allow HTTPS traffic from anywhere",
-            )
-        self.sg_test_webserver.add_ingress_rule(
-            peer=ec2.Peer.any_ipv4(), 
-            connection=ec2.Port.tcp(22),  
-            description="Allow SSH traffic from anywhere",
-            )
-        self.keypair_testwebserver = ec2.KeyPair(self, "keypair-test-webserver",
-            key_pair_name="kp-test-webserver",
-            )
-        self.instance_webserver = ec2.Instance(self, "test-webserver",
-            role=self.role_webserv,
-            instance_name="test-webserver",
-            vpc=self.vpc_webserv,                               
-            vpc_subnets=ec2.SubnetSelection(
-                subnet_type=ec2.SubnetType.PUBLIC),  
-            key_pair=self.keypair_testwebserver,                    
-            security_group=self.sg_test_webserver,             
-            instance_type=ec2.InstanceType.of(
-                ec2.InstanceClass.T2, ec2.InstanceSize.MICRO),  
-            machine_image=ec2.AmazonLinuxImage(
-                generation=ec2.AmazonLinuxGeneration.AMAZON_LINUX_2023),    
-            block_devices=[ec2.BlockDevice(
-                device_name="/dev/xvda",                        
-                volume=ec2.BlockDeviceVolume.ebs(
-                    volume_size=8,                              
-                    encrypted=True,                             
-                    )
-                )],
-            user_data=ec2.UserData.custom(self.user_data_webs), 
-            )
+        # self.sg_test_webserver = ec2.SecurityGroup(self, "sg-test-webserver",
+        #     vpc=self.vpc_webserv,
+        #     description="SG Test Webserver"
+        #     )
+        # self.sg_test_webserver.add_ingress_rule(
+        #     peer=ec2.Peer.any_ipv4(), 
+        #     connection=ec2.Port.tcp(80),  
+        #     description="Allow HTTP traffic from anywhere",
+        #     )
+        # self.sg_test_webserver.add_ingress_rule(
+        #     peer=ec2.Peer.any_ipv4(), 
+        #     connection=ec2.Port.tcp(443),  
+        #     description="Allow HTTPS traffic from anywhere",
+        #     )
+        # self.sg_test_webserver.add_ingress_rule(
+        #     peer=ec2.Peer.any_ipv4(), 
+        #     connection=ec2.Port.tcp(22),  
+        #     description="Allow SSH traffic from anywhere",
+        #     )
+        # self.keypair_testwebserver = ec2.KeyPair(self, "keypair-test-webserver",
+        #     key_pair_name="kp-test-webserver",
+        #     )
+        # self.instance_webserver = ec2.Instance(self, "test-webserver",
+        #     role=self.role_webserv,
+        #     instance_name="test-webserver",
+        #     vpc=self.vpc_webserv,                               
+        #     vpc_subnets=ec2.SubnetSelection(
+        #         subnet_type=ec2.SubnetType.PUBLIC),  
+        #     key_pair=self.keypair_testwebserver,                    
+        #     security_group=self.sg_test_webserver,             
+        #     instance_type=ec2.InstanceType.of(
+        #         ec2.InstanceClass.T2, ec2.InstanceSize.MICRO),  
+        #     machine_image=ec2.AmazonLinuxImage(
+        #         generation=ec2.AmazonLinuxGeneration.AMAZON_LINUX_2023),    
+        #     block_devices=[ec2.BlockDevice(
+        #         device_name="/dev/xvda",                        
+        #         volume=ec2.BlockDeviceVolume.ebs(
+        #             volume_size=8,                              
+        #             encrypted=True,                             
+        #             )
+        #         )],
+        #     user_data=ec2.UserData.custom(self.user_data_webs), 
+        #     )
         
 
         # - - - - - - - - DATABASE - - - - - - - - - -
 
         # Create RDS database
-        self.database = rds.DatabaseInstance(self, "database-webserver",
-            vpc=self.vpc_webserv,
-            vpc_subnets=ec2.SubnetSelection(subnet_type=ec2.SubnetType.PRIVATE_WITH_EGRESS),
-            security_groups=[self.sg_database],
-            multi_az=True,
-            engine=rds.DatabaseInstanceEngine.MYSQL,
-            allocated_storage=20,
-            instance_type=ec2.InstanceType.of(ec2.InstanceClass.T3, ec2.InstanceSize.MICRO),
-            iops=1000,
-            storage_encrypted=True,
-            backup_retention=Duration.days(7),
-            removal_policy=RemovalPolicy.DESTROY,
-            deletion_protection=False,
-            )
+        # self.database = rds.DatabaseInstance(self, "database-webserver",
+        #     vpc=self.vpc_webserv,
+        #     vpc_subnets=ec2.SubnetSelection(subnet_type=ec2.SubnetType.PRIVATE_WITH_EGRESS),
+        #     security_groups=[self.sg_database],
+        #     multi_az=True,
+        #     engine=rds.DatabaseInstanceEngine.MYSQL,
+        #     allocated_storage=20,
+        #     instance_type=ec2.InstanceType.of(ec2.InstanceClass.T3, ec2.InstanceSize.MICRO),
+        #     iops=1000,
+        #     storage_encrypted=True,
+        #     backup_retention=Duration.days(7),
+        #     removal_policy=RemovalPolicy.DESTROY,
+        #     deletion_protection=False,
+        #     )
 
 
 
