@@ -17,9 +17,9 @@ Diagrams, (N)SG rules, deployment visualization, and more, are listed here.
         - [Auto Scaling Webservers](#auto-scaling-webservers)
         - [RDS MySQL Database](#rds-mysql-database)
     - [NACLs](#nacls)
-        - [VPC Webserver Public Subnets](#vpc-webserver-public-subnets)
-        - [VPC Webserver Private Subnets](#vpc-webserver-private-subnets)
-        - [VPC Admin Public Subnets](#vpc-admin-public-subnets)
+        - [VPC-1 Web Public Subnets]()
+        - [VPC-1 Web Private Subnets]()
+        - [VPC-2 Admin Public Subnets]()
     - [RDS MySQL Database](#rds-mysql-database-1)
 <br>
 
@@ -113,7 +113,7 @@ Diagrams, (N)SG rules, deployment visualization, and more, are listed here.
 | Type | Port | Source / Destination | Description |
 | - | - | - | - |
 | **Inbound** |  |  |  |
-| MYSQL/Aurora | 3306 | 10.0.1.0/24 | Allow MySQL from VPC |
+| MYSQL/Aurora | 3306 | 10.0.1.0/24 | Allow MySQL from VPC-1 Web |
 |  |  |  |  |
 | **Outbound** |  |  |  |
 | All Traffic | All | 0.0.0.0/0 | Allow all outbound traffic by default |
@@ -123,12 +123,24 @@ Diagrams, (N)SG rules, deployment visualization, and more, are listed here.
 <br>
 
 ### NACLs
-#### VPC Web Public Subnets
-##### Inbound
+#### VPC-1 Web Public Subnets
+| Rule number | Type | Protocol | Port Range | Source / Destination | Allow / Deny |
+| - | - | - | - | - | - |
+| **Inbound** |  |  |  |  |  |
+| 100 | HTTP (80) | TCP (6) | 80 | 0.0.0.0/0 | Allow |
+| 110 | HTTPS (443) | TCP (6) | 443 | 0.0.0.0/0 | Allow |
+| 120 | Custom TCP | TCP (6) | 1024 - 65535 | 10.0.1.0/24 | Allow |
+| * | All traffic | All | All | 0.0.0.0/0 | Deny |
+|  |  |  |  |  |  |
+| **Outbound** |  |  |  |  |  |
+| 110 | HTTPS (443) | TCP (6) | 443 | 10.0.1.0/24 | Allow |
+| 120 | - | TCP (6) | 1024 - 65535 | 0.0.0.0/0 | Allow |
+| * | All traffic | All | All | 0.0.0.0/0 | Deny |
+
 ##### Outbound 
 
-#### VPC Web Private Subnets
-#### VPC Admin Public Subnets
+#### VPC-1 Web Private Subnets
+#### VPC-2 Admin Public Subnets
 <br>
 
 *back to [top](#top)*  
