@@ -20,6 +20,9 @@ Diagrams, (N)SG rules, deployment visualization, and more, are listed here.
         - [VPC-1 Web Public Subnets]()
         - [VPC-1 Web Private Subnets]()
         - [VPC-2 Admin Public Subnets]()
+    - []()
+    - []()
+    - []()
     - [RDS MySQL Database](#rds-mysql-database-1)
 <br>
 
@@ -177,9 +180,37 @@ Diagrams, (N)SG rules, deployment visualization, and more, are listed here.
 
 ### Webserver (for admin)
 
+<br>
+
+*back to [top](#top)*  
+<br>
+
 ### Admin Server
+| - | - |
+| - | - |
+| **VPC** | VPC-1 Web |
+| **Availability Zone** | eu-central-1b |
+| **Private IP** | 10.0.2.4 |
+| **Key Pair name** | "kp-adminserver" |
+| **Private Key**| Stored in Parameter Store |
+| **Instance Type** | t3 large |
+| **AMI** | Microsoft Windows Server 2022 Full Locale English |
+| **Root Storage** | 30 GB |
+| **Attached Storage** | 256 GB |
+| **Encryption** | Enabled (Root & Attached Storage) |
+| - | - |
+| - | - |
+<br>
+
+*back to [top](#top)*  
+<br>
 
 ### Auto Scaling & Application Load Balancer
+
+<br>
+
+*back to [top](#top)*  
+<br>
 
 ### RDS MySQL Database
 | - | - |
@@ -189,6 +220,7 @@ Diagrams, (N)SG rules, deployment visualization, and more, are listed here.
 | **Username** | "admin" |
 | **Password** | Stored in Secrets Manager |
 | **Port** | 3306 |
+| **VPC** | VPC-1 Web |
 | **Availability Zone** | Multi-AZ |
 | **Encryption** | Enabled |
 | **Maintenance window** | Region Frankfurt (eu-central-1) -> a 30-minute window between 21:00 - 5:00 <ins>UTC</ins> |

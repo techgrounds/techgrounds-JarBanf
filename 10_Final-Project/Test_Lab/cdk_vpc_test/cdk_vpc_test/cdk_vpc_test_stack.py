@@ -609,24 +609,24 @@ class CdkVpcTestStack(Stack):
         # - - - - - - - - SECURITY GROUP & RULES - - - - - - - - - -
         
         # Create Security Group for the Admin server
-        # self.sg_adminserver = ec2.SecurityGroup(self, "sg-adminserver",
-        #     vpc=self.vpc_adminserv,         # VPC for the Admin server
-        #     description="SG Adminserver"
-        #     )
+        self.sg_adminserver = ec2.SecurityGroup(self, "sg-adminserver",
+            vpc=self.vpc_adminserv,         # VPC for the Admin server
+            description="SG Adminserver"
+            )
         
 
-        # # - - - - - - - - INBOUND TRAFFIC - - - - - - - - - -
-        #     #    ||
-        #     #    ||
-        #     #   \\//
-        #     #    \/
+        # - - - - - - - - INBOUND TRAFFIC - - - - - - - - - -
+            #    ||
+            #    ||
+            #   \\//
+            #    \/
         
-        # # Allow SG inbound RDP traffic from only my IP
-        # self.sg_adminserver.add_ingress_rule(
-        #     peer=ec2.Peer.ipv4(ip_address_administrator),   # refer to admin home/office IP address
-        #     connection=ec2.Port.tcp(3389),                  # RDP port
-        #     description="Allow RDP from only my IP",
-        #     )
+        # Allow SG inbound RDP traffic from only my IP
+        self.sg_adminserver.add_ingress_rule(
+            peer=ec2.Peer.ipv4(ip_address_administrator),   # refer to admin home/office IP address
+            connection=ec2.Port.tcp(3389),                  # RDP port
+            description="Allow RDP from only my IP",
+            )
         
         # - - - - - - - - FOR TESTING PURPOSES ONLY - - - - - - - - - -
         # - - - - comment out when deploying in production - - - - - - - - - -
@@ -642,37 +642,37 @@ class CdkVpcTestStack(Stack):
         # - - - - - - - - CREATE ADMIN SERVER - - - - - - - - - -
 
         # Create Keypair Admin Server -> Private Key in Parameter Store
-        # self.keypair_adminserver = ec2.KeyPair(self, "keypair-adminserver",
-        #     key_pair_name="kp-adminserver",     
-        #     )
+        self.keypair_adminserver = ec2.KeyPair(self, "keypair-adminserver",
+            key_pair_name="kp-adminserver",     
+            )
 
-        # # Create Adminserver instance
-        # self.instance_adminserver = ec2.Instance(self,"adminserver",
-        #     instance_name="adminserver",
-        #     vpc=self.vpc_adminserv,                             # VPC Admin server
-        #     vpc_subnets=ec2.SubnetSelection(                    
-        #         subnet_type=ec2.SubnetType.PUBLIC),             # Public subnet in VPC Admin server
-        #     private_ip_address="10.0.2.4",                      # Give it a static IP address
-        #     key_pair=self.keypair_adminserver,                  # refer to keypair. Code above.
-        #     security_group=self.sg_adminserver,                 # refer to the SG for Admin server
-        #     instance_type=ec2.InstanceType.of(
-        #         ec2.InstanceClass.T2, ec2.InstanceSize.MICRO),  # choose instance type
-        #     machine_image=ec2.WindowsImage(
-        #         ec2.WindowsVersion.WINDOWS_SERVER_2022_ENGLISH_FULL_BASE),  # choose AMI
-        #     block_devices=[ec2.BlockDevice(
-        #         device_name="/dev/sda1",                        # Root EBS for Windows is always "sda1"
-        #         volume=ec2.BlockDeviceVolume.ebs(
-        #             volume_size=30,                             # 30 GB
-        #             encrypted=True,                             # activate encryption on root EBS
-        #             )
-        #         ), ec2.BlockDevice(
-        #         device_name="/dev/sdf",                         # define volume name
-        #         volume=ec2.BlockDeviceVolume.ebs(
-        #             volume_size=256,                            # 256 GB
-        #             encrypted=True,                             # activate encryption on attached EBS
-        #             )
-        #         )]
-        #     )
+        # Create Adminserver instance
+        self.instance_adminserver = ec2.Instance(self,"adminserver",
+            instance_name="adminserver",
+            vpc=self.vpc_adminserv,                             # VPC Admin server
+            vpc_subnets=ec2.SubnetSelection(                    
+                subnet_type=ec2.SubnetType.PUBLIC),             # Public subnet in VPC Admin server
+            private_ip_address="10.0.2.4",                      # Give it a static IP address
+            key_pair=self.keypair_adminserver,                  # refer to keypair. Code above.
+            security_group=self.sg_adminserver,                 # refer to the SG for Admin server
+            instance_type=ec2.InstanceType.of(
+                ec2.InstanceClass.T3, ec2.InstanceSize.SMALL),  # choose instance type
+            machine_image=ec2.WindowsImage(
+                ec2.WindowsVersion.WINDOWS_SERVER_2022_ENGLISH_FULL_BASE),  # choose AMI
+            block_devices=[ec2.BlockDevice(
+                device_name="/dev/sda1",                        # Root EBS for Windows is always "sda1"
+                volume=ec2.BlockDeviceVolume.ebs(
+                    volume_size=30,                             # 30 GB
+                    encrypted=True,                             # activate encryption on root EBS
+                    )
+                ), ec2.BlockDevice(
+                device_name="/dev/sdf",                         # define volume name
+                volume=ec2.BlockDeviceVolume.ebs(
+                    volume_size=256,                            # 256 GB
+                    encrypted=True,                             # activate encryption on attached EBS
+                    )
+                )]
+            )
 
 
 

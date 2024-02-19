@@ -6,7 +6,7 @@ Sorted by latest to oldest.
 
 ## Table of Contents
 - Week 7
-
+    - [Mon 19 Feb '24](#mon19feb)
 - Week 6
     - [Sun 18 Feb '24](#sun18feb)
     - [Sat 17 Feb '14](#sat17feb)
@@ -80,16 +80,7 @@ Sorted by latest to oldest.
 
 ## ✏️ 📄 <a id="mon19feb">Mon 19 Feb '24</a>
 ### Daily Report
-- Working on Design Document
-
-### Obstacles
-- ...
-
-### Solutions
-- ...
-
-### Learnings
-- ...  
+- Working on Design Document.  
 <br>
 
 *back to [top](#top)*  
