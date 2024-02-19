@@ -134,12 +134,28 @@ Diagrams, (N)SG rules, deployment visualization, and more, are listed here.
 |  |  |  |  |  |  |
 | **Outbound** |  |  |  |  |  |
 | 110 | HTTPS (443) | TCP (6) | 443 | 10.0.1.0/24 | Allow |
-| 120 | - | TCP (6) | 1024 - 65535 | 0.0.0.0/0 | Allow |
+| 120 | Custom TCP | TCP (6) | 1024 - 65535 | 0.0.0.0/0 | Allow |
 | * | All traffic | All | All | 0.0.0.0/0 | Deny |
-
-##### Outbound 
+<br>
 
 #### VPC-1 Web Private Subnets
+| Rule number | Type | Protocol | Port Range | Source / Destination | Allow / Deny |
+| - | - | - | - | - | - |
+| **Inbound** |  |  |  |  |  |
+| 100 | SSH (22) | TCP (6) | 22 | 10.0.2.4/32 | Allow |
+| 105 | HTTP (80) | TCP (6) | 80 | 10.0.0.0/16 | Allow |
+| 110 | HTTPS (443) | TCP (6) | 443 | 10.0.0.0/16 | Allow |
+| 115 | MySQL/Aurora (3306) | TCP (6) | 3306 | 10.0.1.0/24 | Allow |
+| 120 | Custom TCP | TCP (6) | 32768 - 65535 | 0.0.0.0/0 | Allow |
+| * | All traffic | All | All | 0.0.0.0/0 | Deny |
+|  |  |  |  |  |  |
+| **Outbound** |  |  |  |  |  |
+| 100 | HTTP (80) | TCP (6) | 80 | 0.0.0.0/0 | Allow |
+| 110 | HTTPS (443) | TCP (6) | 443 | 0.0.0.0/0 | Allow |
+| 120 | Custom TCP | TCP (6) | 1024 - 65535 | 0.0.0.0/0 | Allow |
+| * | All traffic | All | All | 0.0.0.0/0 | Deny |
+<br>
+
 #### VPC-2 Admin Public Subnets
 <br>
 
