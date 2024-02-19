@@ -68,7 +68,7 @@ Diagrams, (N)SG rules, deployment visualization, and more, are listed here.
 
 ### Security Groups
 #### Admin Web-Server
-| Type | Port | Source | Description |
+| Type | Port | Source / Destination | Description |
 | - | - | - | - |
 | **Inbound** |  |  |  |
 | HTTP | 80 | 10.0.2.4/32 | Allow HTTP traffic from admin server |
@@ -80,7 +80,7 @@ Diagrams, (N)SG rules, deployment visualization, and more, are listed here.
 <br>
 
 #### Admin Server
-| Type | Port | Source | Description |
+| Type | Port | Source / Destination | Description |
 | - | - | - | - |
 | **Inbound** |  |  |  |
 | RDP | 3389 | Admin home/office IP | Allow RDP from Admin home/office IP |
@@ -90,7 +90,7 @@ Diagrams, (N)SG rules, deployment visualization, and more, are listed here.
 <br>
 
 #### Application Load Balancer
-| Type | Port | Source | Description |
+| Type | Port | Source / Destination | Description |
 | - | - | - | - |
 | **Inbound** |  |  |  |
 | - | - | - | - |
@@ -100,7 +100,7 @@ Diagrams, (N)SG rules, deployment visualization, and more, are listed here.
 <br>
 
 #### Auto Scaling Webservers
-| Type | Port | Source | Description |
+| Type | Port | Source / Destination | Description |
 | - | - | - | - |
 | **Inbound** |  |  |  |
 | - | - | - | - |
@@ -110,7 +110,7 @@ Diagrams, (N)SG rules, deployment visualization, and more, are listed here.
 <br>
 
 #### RDS MySQL Database
-| Type | Port | Source | Description |
+| Type | Port | Source / Destination | Description |
 | - | - | - | - |
 | **Inbound** |  |  |  |
 | MYSQL/Aurora | 3306 | 10.0.1.0/24 | Allow MySQL from VPC |
