@@ -7,9 +7,9 @@ Diagrams, (N)SG rules, deployment visualization, and more, are listed here.
 - [Architecture Design](#architecture-design)
 - [Estimated Monthly Costs](#estimated-monthly-costs)
 - [Configurations](#configurations)
-    - []()
-    - []()
-    - []()
+    - [VPC-1 Web](#vpc-1-web)
+    - [VPC-2 Admin](#vpc-2-admin)
+    - [VPC Peering](#vpc-peering)
     - [Security Groups](#security-groups)
         - [Admin Web-Server](#admin-web-server)
         - [Admin Server](#admin-server)
@@ -42,7 +42,7 @@ Diagrams, (N)SG rules, deployment visualization, and more, are listed here.
 
 ## Configurations
 ### VPC-1 Web
-![VPC-1 Web Resource Map](/10_Final-Project/includes/v1dot1-vpc1-web-resource-map.drawio.png)
+![VPC-1 Web Resource Map](/10_Final-Project/includes/v1dot1-vpc1-web-resource-map.drawio.png)  
 *VPC-1 Web Resource Map*
 
 <br>
@@ -51,7 +51,7 @@ Diagrams, (N)SG rules, deployment visualization, and more, are listed here.
 <br>
 
 ### VPC-2 Admin
-![VPC-2 Admin Resource Map](/10_Final-Project/includes/v1dot1-vpc2-admin-resource-map.drawio.png)
+![VPC-2 Admin Resource Map](/10_Final-Project/includes/v1dot1-vpc2-admin-resource-map.drawio.png)  
 *VPC-2 Admin Resource Map*
 <br>
 
