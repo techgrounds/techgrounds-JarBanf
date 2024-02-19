@@ -59,7 +59,7 @@ Diagrams, (N)SG rules, deployment visualization, and more, are listed here.
 <br>
 
 ### VPC Peering
-![VPC Peering](/10_Final-Project/includes/v1dot1-vpc-peering.drawio.png)
+![VPC Peering](/10_Final-Project/includes/v1dot1-vpc-peering.drawio.png)  
 *VPC Peering*
 <br>
 
@@ -68,15 +68,13 @@ Diagrams, (N)SG rules, deployment visualization, and more, are listed here.
 
 ### Security Groups
 #### Admin Web-Server
-##### Inbound
 | Type | Port | Source | Description |
 | - | - | - | - |
+| **Inbound** | - | - | - |
 | HTTP | 80 | 10.0.2.4/32 | Allow HTTP traffic from admin server |
 | HTTPS | 443 | 10.0.2.4/32 | Allow HTTPS traffic from admin server |
 | SSH | 22 | 10.0.2.4/32 | Allow SSH traffic from admin server |
-##### Outbound 
-| Type | Port | Destination | Description |
-| - | - | - | - |
+| **Outbound** | - | - | - |
 | All Traffic | All | 0.0.0.0/0 | Allow all outbound traffic by default |
 
 #### Admin Server
@@ -140,6 +138,12 @@ Diagrams, (N)SG rules, deployment visualization, and more, are listed here.
 
 *back to [top](#top)*  
 <br>
+
+### Webserver (for admin)
+
+### Admin Server
+
+### Auto Scaling & Application Load Balancer
 
 ### RDS MySQL Database
 | - | - |
