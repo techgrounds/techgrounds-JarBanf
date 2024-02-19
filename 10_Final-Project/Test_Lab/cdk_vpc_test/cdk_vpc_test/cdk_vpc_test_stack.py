@@ -476,37 +476,37 @@ class CdkVpcTestStack(Stack):
         # - - - - - - - - SECURITY GROUP & RULES - - - - - - - - - -
         
         # Create Security Group for Private Web server
-        # self.sg_admin_webserver = ec2.SecurityGroup(self, "sg-admin-webserver",
-        #     vpc=self.vpc_webserv,
-        #     description="SG Admin Webserver"
-        #     )
+        self.sg_admin_webserver = ec2.SecurityGroup(self, "sg-admin-webserver",
+            vpc=self.vpc_webserv,
+            description="SG Admin Webserver"
+            )
 
-        # # - - - - - - - - INBOUND TRAFFIC - - - - - - - - - -
-        #     #    ||
-        #     #    ||
-        #     #   \\//
-        #     #    \/
+        # - - - - - - - - INBOUND TRAFFIC - - - - - - - - - -
+            #    ||
+            #    ||
+            #   \\//
+            #    \/
         
-        # # Allow SG inbound HTTP traffic from admin server
-        # self.sg_admin_webserver.add_ingress_rule(
-        #     peer=ec2.Peer.ipv4("10.0.2.4/32"),      # Static IP of Admin Server
-        #     connection=ec2.Port.tcp(80),            # HTTP port
-        #     description="Allow HTTP traffic from admin server",
-        #     )
+        # Allow SG inbound HTTP traffic from admin server
+        self.sg_admin_webserver.add_ingress_rule(
+            peer=ec2.Peer.ipv4("10.0.2.4/32"),      # Static IP of Admin Server
+            connection=ec2.Port.tcp(80),            # HTTP port
+            description="Allow HTTP traffic from admin server",
+            )
         
-        # # Allow SG inbound HTTPS traffic from admin server
-        # self.sg_admin_webserver.add_ingress_rule(
-        #     peer=ec2.Peer.ipv4("10.0.2.4/32"),      # Static IP of Admin Server
-        #     connection=ec2.Port.tcp(443),           # HTTPS port
-        #     description="Allow HTTPS traffic from admin server",
-        #     )
+        # Allow SG inbound HTTPS traffic from admin server
+        self.sg_admin_webserver.add_ingress_rule(
+            peer=ec2.Peer.ipv4("10.0.2.4/32"),      # Static IP of Admin Server
+            connection=ec2.Port.tcp(443),           # HTTPS port
+            description="Allow HTTPS traffic from admin server",
+            )
         
-        # # Allow SG inbound SSH traffic from admin server
-        # self.sg_admin_webserver.add_ingress_rule(
-        #     peer=ec2.Peer.ipv4("10.0.2.4/32"),    # Static IP of Admin Server
-        #     connection=ec2.Port.tcp(22),          # SSH port
-        #     description="Allow SSH traffic from admin server",
-        #     )
+        # Allow SG inbound SSH traffic from admin server
+        self.sg_admin_webserver.add_ingress_rule(
+            peer=ec2.Peer.ipv4("10.0.2.4/32"),    # Static IP of Admin Server
+            connection=ec2.Port.tcp(22),          # SSH port
+            description="Allow SSH traffic from admin server",
+            )
         
         # - - - - - - - - FOR TESTING PURPOSES ONLY - - - - - - - - - -
         # - - - - comment out when deploying in production - - - - - - - - - -
@@ -557,45 +557,45 @@ class CdkVpcTestStack(Stack):
         # - - - - - - - - CREATE WEBSERVER INSTANCE FOR ADMIN - - - - - - - - - -
         
         # Create Role for webserver instance
-        # self.role_webserv = iam.Role(self, "role-webserv",
-        #     assumed_by=iam.ServicePrincipal("ec2.amazonaws.com")
-        # )
+        self.role_webserv = iam.Role(self, "role-webserv",
+            assumed_by=iam.ServicePrincipal("ec2.amazonaws.com")
+        )
 
-        # # Allow Role to access S3 bucket.
-        # self.role_webserv.add_managed_policy(iam.ManagedPolicy.from_aws_managed_policy_name("AmazonS3ReadOnlyAccess"))
+        # Allow Role to access S3 bucket.
+        self.role_webserv.add_managed_policy(iam.ManagedPolicy.from_aws_managed_policy_name("AmazonS3ReadOnlyAccess"))
 
-        # # Import User Data for Webserver
-        # with open("./cdk_vpc_test/user_data_webs.sh") as f:
-        #     self.user_data_webs = f.read()  # read User Data script and save to variable
+        # Import User Data for Webserver
+        with open("./cdk_vpc_test/user_data_webs.sh") as f:
+            self.user_data_webs = f.read()  # read User Data script and save to variable
         
-        # # Create Keypair Web Server -> Private Key in Parameter Store
-        # self.keypair_webserver = ec2.KeyPair(self, "keypair-admin-webserver",
-        #     key_pair_name="kp-admin-webserver",
-        #     )
+        # Create Keypair Web Server -> Private Key in Parameter Store
+        self.keypair_webserver = ec2.KeyPair(self, "keypair-admin-webserver",
+            key_pair_name="kp-admin-webserver",
+            )
         
-        # # Create Webserver instance
-        # self.instance_webserver = ec2.Instance(self, "admin-webserver",
-        #     role=self.role_webserv,
-        #     instance_name="admin-webserver",
-        #     vpc=self.vpc_webserv,                               # VPC Webserver
-        #     vpc_subnets=ec2.SubnetSelection(
-        #         subnet_type=ec2.SubnetType.PRIVATE_WITH_EGRESS),   # Private subnet in VPC Webserver
-        #     private_ip_address="10.0.1.52",                     # Give it a static IP address
-        #     key_pair=self.keypair_webserver,                    # refer to keypair. Code above.
-        #     security_group=self.sg_admin_webserver,             # refer to the SG for Webserver
-        #     instance_type=ec2.InstanceType.of(
-        #         ec2.InstanceClass.T2, ec2.InstanceSize.MICRO),  # choose instance type
-        #     machine_image=ec2.AmazonLinuxImage(
-        #         generation=ec2.AmazonLinuxGeneration.AMAZON_LINUX_2023),    # choose AMI
-        #     block_devices=[ec2.BlockDevice(
-        #         device_name="/dev/xvda",                        # Root EBS for Linux is always "xvda"
-        #         volume=ec2.BlockDeviceVolume.ebs(
-        #             volume_size=8,                              # 8 GB
-        #             encrypted=True,                             # activate encryption on root EBS
-        #             )
-        #         )],
-        #     user_data=ec2.UserData.custom(self.user_data_webs), # refer to imported User Data. See code above
-        #     )
+        # Create Webserver instance
+        self.instance_webserver = ec2.Instance(self, "admin-webserver",
+            role=self.role_webserv,
+            instance_name="admin-webserver",
+            vpc=self.vpc_webserv,                               # VPC Webserver
+            vpc_subnets=ec2.SubnetSelection(
+                subnet_type=ec2.SubnetType.PRIVATE_WITH_EGRESS),   # Private subnet in VPC Webserver
+            private_ip_address="10.0.1.52",                     # Give it a static IP address
+            key_pair=self.keypair_webserver,                    # refer to keypair. Code above.
+            security_group=self.sg_admin_webserver,             # refer to the SG for Webserver
+            instance_type=ec2.InstanceType.of(
+                ec2.InstanceClass.T2, ec2.InstanceSize.MICRO),  # choose instance type
+            machine_image=ec2.AmazonLinuxImage(
+                generation=ec2.AmazonLinuxGeneration.AMAZON_LINUX_2023),    # choose AMI
+            block_devices=[ec2.BlockDevice(
+                device_name="/dev/xvda",                        # Root EBS for Linux is always "xvda"
+                volume=ec2.BlockDeviceVolume.ebs(
+                    volume_size=8,                              # 8 GB
+                    encrypted=True,                             # activate encryption on root EBS
+                    )
+                )],
+            user_data=ec2.UserData.custom(self.user_data_webs), # refer to imported User Data. See code above
+            )
 
 
 
@@ -642,37 +642,37 @@ class CdkVpcTestStack(Stack):
         # - - - - - - - - CREATE ADMIN SERVER - - - - - - - - - -
 
         # Create Keypair Admin Server -> Private Key in Parameter Store
-        self.keypair_adminserver = ec2.KeyPair(self, "keypair-adminserver",
-            key_pair_name="kp-adminserver",     
-            )
+        # self.keypair_adminserver = ec2.KeyPair(self, "keypair-adminserver",
+        #     key_pair_name="kp-adminserver",     
+        #     )
 
         # Create Adminserver instance
-        self.instance_adminserver = ec2.Instance(self,"adminserver",
-            instance_name="adminserver",
-            vpc=self.vpc_adminserv,                             # VPC Admin server
-            vpc_subnets=ec2.SubnetSelection(                    
-                subnet_type=ec2.SubnetType.PUBLIC),             # Public subnet in VPC Admin server
-            private_ip_address="10.0.2.4",                      # Give it a static IP address
-            key_pair=self.keypair_adminserver,                  # refer to keypair. Code above.
-            security_group=self.sg_adminserver,                 # refer to the SG for Admin server
-            instance_type=ec2.InstanceType.of(
-                ec2.InstanceClass.T3, ec2.InstanceSize.SMALL),  # choose instance type
-            machine_image=ec2.WindowsImage(
-                ec2.WindowsVersion.WINDOWS_SERVER_2022_ENGLISH_FULL_BASE),  # choose AMI
-            block_devices=[ec2.BlockDevice(
-                device_name="/dev/sda1",                        # Root EBS for Windows is always "sda1"
-                volume=ec2.BlockDeviceVolume.ebs(
-                    volume_size=30,                             # 30 GB
-                    encrypted=True,                             # activate encryption on root EBS
-                    )
-                ), ec2.BlockDevice(
-                device_name="/dev/sdf",                         # define volume name
-                volume=ec2.BlockDeviceVolume.ebs(
-                    volume_size=256,                            # 256 GB
-                    encrypted=True,                             # activate encryption on attached EBS
-                    )
-                )]
-            )
+        # self.instance_adminserver = ec2.Instance(self,"adminserver",
+        #     instance_name="adminserver",
+        #     vpc=self.vpc_adminserv,                             # VPC Admin server
+        #     vpc_subnets=ec2.SubnetSelection(                    
+        #         subnet_type=ec2.SubnetType.PUBLIC),             # Public subnet in VPC Admin server
+        #     private_ip_address="10.0.2.4",                      # Give it a static IP address
+        #     key_pair=self.keypair_adminserver,                  # refer to keypair. Code above.
+        #     security_group=self.sg_adminserver,                 # refer to the SG for Admin server
+        #     instance_type=ec2.InstanceType.of(
+        #         ec2.InstanceClass.T3, ec2.InstanceSize.SMALL),  # choose instance type
+        #     machine_image=ec2.WindowsImage(
+        #         ec2.WindowsVersion.WINDOWS_SERVER_2022_ENGLISH_FULL_BASE),  # choose AMI
+        #     block_devices=[ec2.BlockDevice(
+        #         device_name="/dev/sda1",                        # Root EBS for Windows is always "sda1"
+        #         volume=ec2.BlockDeviceVolume.ebs(
+        #             volume_size=30,                             # 30 GB
+        #             encrypted=True,                             # activate encryption on root EBS
+        #             )
+        #         ), ec2.BlockDevice(
+        #         device_name="/dev/sdf",                         # define volume name
+        #         volume=ec2.BlockDeviceVolume.ebs(
+        #             volume_size=256,                            # 256 GB
+        #             encrypted=True,                             # activate encryption on attached EBS
+        #             )
+        #         )]
+        #     )
 
 
 
@@ -688,7 +688,7 @@ class CdkVpcTestStack(Stack):
         # Create Security Group for Auto Scaling Web servers
         # self.sg_as_webserver = ec2.SecurityGroup(self, "sg-as-webserver",
         #     vpc=self.vpc_webserv,
-        #     description="SG AS Webserver"
+        #     description="SG AS Webservers"
         #     )
         
 

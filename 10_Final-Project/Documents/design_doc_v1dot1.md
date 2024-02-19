@@ -11,19 +11,25 @@ Diagrams, (N)SG rules, deployment visualization, and more, are listed here.
     - [VPC-2 Admin](#vpc-2-admin)
     - [VPC Peering](#vpc-peering)
     - [Security Groups](#security-groups)
-        - [Admin Web-Server](#admin-web-server)
-        - [Admin Server](#admin-server)
-        - [Application Load Balancer](#application-load-balancer)
-        - [Auto Scaling Webservers](#auto-scaling-webservers)
-        - [RDS MySQL Database](#rds-mysql-database)
+        - [SG Admin Webserver](#sg-admin-webserver)
+        - [SG Adminserver](#sg-adminserver)
+        - [SG AS Webservers (Auto Scaling)](#sg-as-webservers-auto-scaling)
+        - [SG Application Load Balancer](#sg-application-load-balancer)
+        - [SG Database](#sg-database)
     - [NACLs](#nacls)
         - [VPC-1 Web Public Subnets]()
         - [VPC-1 Web Private Subnets]()
-        - [VPC-2 Admin Public Subnets]()
-    - []()
-    - []()
-    - []()
-    - [RDS MySQL Database](#rds-mysql-database-1)
+        - [VPC-2 Admin Public Subnet]()
+    - [Webserver (for admin)](#webserver-for-admin)
+    - [Admin Server](#admin-server)
+    - [Auto Scaling](#auto-scaling)
+    - [Application Load Balancer](#application-load-balancer)
+    - [RDS MySQL Database](#rds-mysql-database)
+    - [Backup](#backup)
+    - [S3 Buckets](#s3-buckets)
+        - [Bucket Webfiles](#bucket-webfiles)
+        - [Bucket Scripts](#bucket-scripts)
+    - [User Data Webserver](#user-data-webserver)
 <br>
 
 *back to [top](#top)*  
@@ -70,7 +76,7 @@ Diagrams, (N)SG rules, deployment visualization, and more, are listed here.
 <br>
 
 ### Security Groups
-#### Admin Web-Server
+#### SG Admin Webserver 
 | Type | Port | Source / Destination | Description |
 | - | - | - | - |
 | **Inbound** |  |  |  |
@@ -82,7 +88,7 @@ Diagrams, (N)SG rules, deployment visualization, and more, are listed here.
 | All Traffic | All | 0.0.0.0/0 | Allow all outbound traffic by default |
 <br>
 
-#### Admin Server
+#### SG Adminserver
 | Type | Port | Source / Destination | Description |
 | - | - | - | - |
 | **Inbound** |  |  |  |
@@ -92,7 +98,7 @@ Diagrams, (N)SG rules, deployment visualization, and more, are listed here.
 | All Traffic | All | 0.0.0.0/0 | Allow all outbound traffic by default |
 <br>
 
-#### Application Load Balancer
+#### SG AS Webservers (Auto Scaling)
 | Type | Port | Source / Destination | Description |
 | - | - | - | - |
 | **Inbound** |  |  |  |
@@ -102,7 +108,7 @@ Diagrams, (N)SG rules, deployment visualization, and more, are listed here.
 | All Traffic | All | 0.0.0.0/0 | Allow all outbound traffic by default |
 <br>
 
-#### Auto Scaling Webservers
+#### SG Application Load Balancer
 | Type | Port | Source / Destination | Description |
 | - | - | - | - |
 | **Inbound** |  |  |  |
@@ -112,7 +118,7 @@ Diagrams, (N)SG rules, deployment visualization, and more, are listed here.
 | All Traffic | All | 0.0.0.0/0 | Allow all outbound traffic by default |
 <br>
 
-#### RDS MySQL Database
+#### SG Database
 | Type | Port | Source / Destination | Description |
 | - | - | - | - |
 | **Inbound** |  |  |  |
@@ -159,7 +165,7 @@ Diagrams, (N)SG rules, deployment visualization, and more, are listed here.
 | * | All traffic | All | All | 0.0.0.0/0 | Deny |
 <br>
 
-#### VPC-2 Admin Public Subnets
+#### VPC-2 Admin Public Subnet
 | Rule number | Type | Protocol | Port Range | Source / Destination | Allow / Deny |
 | - | - | - | - | - | - |
 | **Inbound** |  |  |  |  |  |
@@ -179,7 +185,23 @@ Diagrams, (N)SG rules, deployment visualization, and more, are listed here.
 <br>
 
 ### Webserver (for admin)
-
+| - | - |
+| - | - |
+| **Command to SSH to Webserver** | `ssh -i "kp-admin-webserver.pem" ec2-user@10.0.1.52` |
+| **Key Pair name** | "kp-admin-webserver" |
+| **Private Key**| Stored in Parameter Store |
+| **VPC** | [VPC-1 Web](#vpc-1-web) |
+| **Availability Zone** | eu-central-1a |
+| **Subnet** | Private Subnet 1 |
+| **Private IP** | 10.0.1.52 |
+| **Security Group** | [SG Admin Webserver](#sg-admin-webserver) |
+| **Instance Type** | t2 micro |
+| **AMI** | Amazon Linux 2023 |
+| **Root Storage** | 8 GB |
+| **Encryption** | Enabled |
+| **Webfiles** | [S3 Bucket Webfiles](#bucket-webfiles) |
+| **Installed Packages** | Apache web server, PHP packages, MySQL 8 |
+| **User Data** | [User Data Webserver](#user-data-webserver) |
 <br>
 
 *back to [top](#top)*  
@@ -188,24 +210,32 @@ Diagrams, (N)SG rules, deployment visualization, and more, are listed here.
 ### Admin Server
 | - | - |
 | - | - |
-| **VPC** | VPC-1 Web |
+| **VPC** | [VPC-2 Admin](#vpc-2-admin) |
 | **Availability Zone** | eu-central-1b |
+| **Subnet** | Public Subnet 1 |
+| **Public IP** | Visible in console |
 | **Private IP** | 10.0.2.4 |
 | **Key Pair name** | "kp-adminserver" |
 | **Private Key**| Stored in Parameter Store |
+| **Security Group** | [SG Adminserver](#sg-adminserver) |
 | **Instance Type** | t3 large |
 | **AMI** | Microsoft Windows Server 2022 Full Locale English |
 | **Root Storage** | 30 GB |
 | **Attached Storage** | 256 GB |
 | **Encryption** | Enabled (Root & Attached Storage) |
-| - | - |
-| - | - |
 <br>
 
 *back to [top](#top)*  
 <br>
 
-### Auto Scaling & Application Load Balancer
+### Auto Scaling
+
+<br>
+
+*back to [top](#top)*  
+<br>
+
+### Application Load Balancer
 
 <br>
 
@@ -220,7 +250,7 @@ Diagrams, (N)SG rules, deployment visualization, and more, are listed here.
 | **Username** | "admin" |
 | **Password** | Stored in Secrets Manager |
 | **Port** | 3306 |
-| **VPC** | VPC-1 Web |
+| **VPC** | [VPC-1 Web](#vpc-1-web) |
 | **Availability Zone** | Multi-AZ |
 | **Encryption** | Enabled |
 | **Maintenance window** | Region Frankfurt (eu-central-1) -> a 30-minute window between 21:00 - 5:00 <ins>UTC</ins> |
@@ -229,3 +259,52 @@ Diagrams, (N)SG rules, deployment visualization, and more, are listed here.
 
 *back to [top](#top)*  
 <br>
+
+### Backup
+<br>
+
+*back to [top](#top)*  
+<br>
+
+### S3 Buckets
+#### Bucket Webfiles
+#### Bucket Scripts
+<br>
+
+*back to [top](#top)*  
+<br>
+
+### User Data Webserver
+```bash
+#!/bin/bash
+
+# WEBSERVER
+# perform a quick software update on instance
+sudo dnf update -y
+# install the latest versions of Apache web server and PHP packages for AL2023
+sudo dnf install -y httpd wget php-fpm php-mysqli php-json php php-devel
+# get lab files from local S3 bucket for load testing
+sudo aws s3 cp s3://cdkbucket-forwebserver-121212/ /var/www/html/ --recursive
+# start the Apache web server
+sudo systemctl start httpd
+# configure the Apache web server to start at each system boot
+sudo systemctl enable httpd
+# Enable TLS/SSL support, mod_ssl also automatically creates a self-signed certificate.
+sudo dnf install mod_ssl -y
+# Fully restart Apache
+sudo systemctl restart httpd.service
+
+# MYSQL (CLIENT)
+# Download MySQL Yum repository
+wget https://dev.mysql.com/get/mysql80-community-release-el9-3.noarch.rpm
+# Install MySQL Yum repository
+sudo dnf install mysql80-community-release-el9-3.noarch.rpm -y
+# Update Al2023 Packages
+sudo dnf update -y
+# Install MySQL 8 on Amazon Linux 2023
+sudo dnf install mysql-community-server -y
+# Start the service of MySQL
+sudo systemctl start mysqld
+# Enable it to activate automatically with the system boot or crash
+sudo systemctl enable mysqld
+```

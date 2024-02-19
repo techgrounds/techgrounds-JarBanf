@@ -38,7 +38,7 @@ This checklist is based on the Deliverables in the chapter [Epics & User Stories
     - 🍔 VPC Peering
     - 🍔 NACLs
 - ❌ 2. IaC code for a web server and all supplies.
-    - 🍔 Key Pair Manual
+    - 🍔 Key Pair
     - 🍔 Security Group
     - 🍔 Security Group rules
         - 🍔 Allow incoming "HTTP" traffic
@@ -51,7 +51,7 @@ This checklist is based on the Deliverables in the chapter [Epics & User Stories
         - 🍔 Allow incoming traffic from Admin server
     - ❌ Database
 - 🍔 3. IaC code for a management server with all the necessities.
-    - 🍔 Key Pair Manual
+    - 🍔 Key Pair
     - 🍔 Security Group
     - 🍔 Security Group rules
         - 🍔 Allow incomming "RDP" traffic from my IP
@@ -107,10 +107,10 @@ This checklist is based on the Deliverables in the chapter [Epics & User Stories
         - 🍔 port 443
 - 🍔 5. Healthchecks
     - 🍔 Auto Scaling -> EC2: always enabled.
-    - 🍔 Auto Scaling -> ELB: monitors whether intances are available to handle requests. When ir reports an unhealthy instance, EC2 Auto Scaling can replace it on its next periodic check.
+    - 🍔 Auto Scaling -> ELB: monitors whether intances are available to handle requests. When it reports an unhealthy instance, EC2 Auto Scaling can replace it on its next periodic check.
     - 🍔 Target Group: If the target type is instance or ip, health checks are always enabled and cannot be disabled.
 - 🍔 6. Keep NACLs up-to-date.
-- 🔥 7. Design Documentation for using the application,.
+- 🔥 7. Design Documentation for using the application.
     - 🍔 Architecture Design
     - 🐂 Estimated monthly costs
     - 🔥 Configurations
@@ -120,13 +120,15 @@ This checklist is based on the Deliverables in the chapter [Epics & User Stories
             - 🍔 VPC peering
         - 🔥 Security Groups
         - 🍔 NACLs
-        - 🐂 Admin Webserver
-        - 🐂 Admin Server
-        - 🐂 Application Load Blancer
+        - 🍔 Admin Webserver
+        - 🍔 Admin Server
         - 🐂 Autoscaling
+        - 🐂 Application Load Blancer
         - 🍔 Database
         - 🐂 Backups
-        - 🐂 Bucket for scripts
+        - 🐂 S3 Buckets
+            - 🐂 Webfiles
+            - 🐂 Scripts
 - 🐂 8. Configuration for an MVP deployment.
 
 ### Final Presentation --> 22 Feb '24
