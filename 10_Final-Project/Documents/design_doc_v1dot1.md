@@ -77,6 +77,7 @@ Diagrams, (N)SG rules, deployment visualization, and more, are listed here.
 |  |  |  |  |
 | **Outbound** |  |  |  |
 | All Traffic | All | 0.0.0.0/0 | Allow all outbound traffic by default |
+<br>
 
 #### Admin Server
 ##### Inbound
