@@ -74,6 +74,7 @@ Diagrams, (N)SG rules, deployment visualization, and more, are listed here.
 | HTTP | 80 | 10.0.2.4/32 | Allow HTTP traffic from admin server |
 | HTTPS | 443 | 10.0.2.4/32 | Allow HTTPS traffic from admin server |
 | SSH | 22 | 10.0.2.4/32 | Allow SSH traffic from admin server |
+|  |  |  |  |
 | **Outbound** |  |  |  |
 | All Traffic | All | 0.0.0.0/0 | Allow all outbound traffic by default |
 
