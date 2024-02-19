@@ -157,6 +157,19 @@ Diagrams, (N)SG rules, deployment visualization, and more, are listed here.
 <br>
 
 #### VPC-2 Admin Public Subnets
+| Rule number | Type | Protocol | Port Range | Source / Destination | Allow / Deny |
+| - | - | - | - | - | - |
+| **Inbound** |  |  |  |  |  |
+| 90 | Custom TCP | TCP (6) | 49152 - 65535 | 0.0.0.0/0 | Allow |
+| 100 | RDP (3389) | TCP (6) | 3389 | Admin home/office IP | Allow |
+| * | All traffic | All | All | 0.0.0.0/0 | Deny |
+|  |  |  |  |  |  |
+| **Outbound** |  |  |  |  |  |
+| 90 | SSH (22) | TCP (6) | 22 | 10.0.1.52/32 | Allow |
+| 100 | HTTP (80) | TCP (6) | 80 | 0.0.0.0/0 | Allow |
+| 110 | HTTPS (443) | TCP (6) | 443 | 0.0.0.0/0 | Allow |
+| 120 | Custom TCP | TCP (6) | 1024 - 65535 | 0.0.0.0/0 | Allow |
+| * | All traffic | All | All | 0.0.0.0/0 | Deny |
 <br>
 
 *back to [top](#top)*  
