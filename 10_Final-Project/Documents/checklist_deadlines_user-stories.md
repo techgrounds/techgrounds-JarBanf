@@ -122,7 +122,7 @@ This checklist is based on the Deliverables in the chapter [Epics & User Stories
         - 🍔 NACLs
         - 🍔 Admin Webserver
         - 🍔 Admin Server
-        - 🔥 Autoscaling
+        - 🍔 Autoscaling
         - 🔥 Application Load Blancer
         - 🍔 Database
         - 🐂 Backups
