@@ -217,6 +217,10 @@ Diagrams, SG & NACL rules, deployment visualization, and more, are listed here.
 <br>
 
 ### Webserver (for admin)
+![Webserver (for admin)](/10_Final-Project/includes/v1dot1_Admin_webserver.png)  
+*Webserver (for admin)*
+<br>
+
 | - | - |
 | - | - |
 | **Command to SSH to Webserver** | `ssh -i "kp-admin-webserver.pem" ec2-user@10.0.1.52` |
@@ -240,6 +244,10 @@ Diagrams, SG & NACL rules, deployment visualization, and more, are listed here.
 <br>
 
 ### Admin Server
+![Admin Server](/10_Final-Project/includes/v1dot1_adminserver.png)  
+*Admin Server*
+<br>
+
 | - | - |
 | - | - |
 | **VPC** | [VPC-2 Admin](#vpc-2-admin) |
@@ -337,6 +345,10 @@ Diagrams, SG & NACL rules, deployment visualization, and more, are listed here.
 <br>
 
 ### RDS MySQL Database
+![RDS MySQL Database](/10_Final-Project/includes/v1dot1_databse.png)  
+*RDS MySQL Database*
+<br>
+
 | - | - |
 | - | - |
 | **Command to connect to database** | `mysql -h <RDS_ENDPOINT> -u <USERNAME> -p` |
