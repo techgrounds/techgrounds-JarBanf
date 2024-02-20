@@ -254,8 +254,8 @@ Diagrams, (N)SG rules, deployment visualization, and more, are listed here.
 | **Desired capacity** | 1 |
 | **Minimum capacity** | 1 |
 | **Maximum capacity** | 3 |
-| **Health chech type** | EC2, ELB (if instance fail an ELB health check, the ELB automatically terminates the unhealthy instance and starts up a new instance) |
-| **Health check grace period** | 5 minutes. This amount of time after starting up a new instance, it starts doing health checks |
+| **Health check type** | EC2, ELB (if instance fail an ELB health check, the ELB automatically terminates the unhealthy instance and starts up a new instance) |
+| **Health check grace period** | 5 minutes. This amount of time after starting up a new instance, it starts performing health checks |
 <br>
 
 #### Auto Scaling Policy
@@ -269,7 +269,37 @@ Diagrams, (N)SG rules, deployment visualization, and more, are listed here.
 <br>
 
 ### Application Load Balancer
+| - | - |
+| - | - |
+| **Name** | "load-balancer-ws" |
+| **VPC** | [VPC-1 Web](#vpc-1-web) |
+<br>
 
+#### Target Group
+| - | - |
+| - | - |
+| **VPC** | [VPC-1 Web](#vpc-1-web) |
+| **Port** | 443 |
+| **Targets** | [Auto Scaling Group](#auto-scaling-group) |
+| **Health Check** | Enabled |
+<br>
+
+#### HTTPS Listener
+| - | - |
+| - | - |
+| **Protocol** | HTTPS |
+| **Port** | 443 |
+| **Actions** | Forward traffic to [Target Group](#target-group) |
+| **Certificate** | Certificate in Certificate Manager in console. (For test purposes you need to import a self-signed certificate in Certificate Manager using console.) |
+| **Security policy** | TLS13-1-2-2021-06 |
+<br>
+
+#### HTTP Listener
+| - | - |
+| - | - |
+| **Protocol** | HTTP |
+| **Port** | 80 |
+| **Actions** | Redirect traffic to port 443 |
 <br>
 
 *back to [top](#top)*  

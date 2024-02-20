@@ -123,7 +123,7 @@ This checklist is based on the Deliverables in the chapter [Epics & User Stories
         - 🍔 Admin Webserver
         - 🍔 Admin Server
         - 🍔 Autoscaling
-        - 🔥 Application Load Blancer
+        - 🍔 Application Load Blancer
         - 🍔 Database
         - 🐂 Backups
         - 🐂 S3 Buckets
