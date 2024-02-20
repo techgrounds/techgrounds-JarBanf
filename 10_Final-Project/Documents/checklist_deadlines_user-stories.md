@@ -118,12 +118,12 @@ This checklist is based on the Deliverables in the chapter [Epics & User Stories
             - 🍔 VPC web
             - 🍔 VPC admin
             - 🍔 VPC peering
-        - 🔥 Security Groups
+        - 🍔 Security Groups
         - 🍔 NACLs
         - 🍔 Admin Webserver
         - 🍔 Admin Server
-        - 🐂 Autoscaling
-        - 🐂 Application Load Blancer
+        - 🔥 Autoscaling
+        - 🔥 Application Load Blancer
         - 🍔 Database
         - 🐂 Backups
         - 🐂 S3 Buckets

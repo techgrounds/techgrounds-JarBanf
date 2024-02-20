@@ -102,7 +102,7 @@ Diagrams, (N)SG rules, deployment visualization, and more, are listed here.
 | Type | Port | Source / Destination | Description |
 | - | - | - | - |
 | **Inbound** |  |  |  |
-| - | - | - | - |
+| HTTPS | 443 | Load Balancer | Load balancer to target |
 |  |  |  |  |
 | **Outbound** |  |  |  |
 | All Traffic | All | 0.0.0.0/0 | Allow all outbound traffic by default |
@@ -112,10 +112,11 @@ Diagrams, (N)SG rules, deployment visualization, and more, are listed here.
 | Type | Port | Source / Destination | Description |
 | - | - | - | - |
 | **Inbound** |  |  |  |
-| - | - | - | - |
+| HTTP | 80 | 0.0.0.0/0 | Allow from anyone on port 80 |
+| HTTPS | 443 | 0.0.0.0/0 | Allow from anyone on port 443 |
 |  |  |  |  |
 | **Outbound** |  |  |  |
-| All Traffic | All | 0.0.0.0/0 | Allow all outbound traffic by default |
+| HTTPS | 443 | Auto Scaling Group | Load balancer to target |
 <br>
 
 #### SG Database
@@ -155,7 +156,7 @@ Diagrams, (N)SG rules, deployment visualization, and more, are listed here.
 | 105 | HTTP (80) | TCP (6) | 80 | 10.0.0.0/16 | Allow |
 | 110 | HTTPS (443) | TCP (6) | 443 | 10.0.0.0/16 | Allow |
 | 115 | MySQL/Aurora (3306) | TCP (6) | 3306 | 10.0.1.0/24 | Allow |
-| 120 | Custom TCP | TCP (6) | 32768 - 65535 | 0.0.0.0/0 | Allow |
+| 120 | Custom TCP | TCP (6) | 1024 - 65535 | 0.0.0.0/0 | Allow |
 | * | All traffic | All | All | 0.0.0.0/0 | Deny |
 |  |  |  |  |  |  |
 | **Outbound** |  |  |  |  |  |
@@ -229,7 +230,39 @@ Diagrams, (N)SG rules, deployment visualization, and more, are listed here.
 <br>
 
 ### Auto Scaling
+#### WS Launch Template
+| - | - |
+| - | - |
+| **Launch Template name** | "ws-launch-template" |
+| **Security Group** | [SG AS Webservers (Auto Scaling)](#sg-as-webservers-auto-scaling) |
+| **Instance Type** | t2 micro |
+| **AMI** | Amazon Linux 2023 |
+| **Root Storage** | 8 GB |
+| **Encryption** | Enabled |
+| **Webfiles** | [S3 Bucket Webfiles](#bucket-webfiles) |
+| **Installed Packages** | Apache web server, PHP packages, MySQL 8 |
+| **User Data** | [User Data Webserver](#user-data-webserver) |
+<br>
 
+#### Auto Scaling Group
+| - | - |
+| - | - |
+| **Launch Template** | [WS Launch Template](#ws-launch-template) |
+| **VPC** | [VPC-1 Web](#vpc-1-web) |
+| **Availability Zone** | eu-central-1a, eu-central-1b, eu-central-1c |
+| **Subnet** | All public subnets |
+| **Desired capacity** | 1 |
+| **Minimum capacity** | 1 |
+| **Maximum capacity** | 3 |
+| **Health chech type** | EC2, ELB (if instance fail an ELB health check, the ELB automatically terminates the unhealthy instance and starts up a new instance) |
+| **Health check grace period** | 5 minutes. This amount of time after starting up a new instance, it starts doing health checks |
+<br>
+
+#### Auto Scaling Policy
+| - | - |
+| - | - |
+| **Metric Type** | Average CPU utilization |
+| **Target value** | 75% |
 <br>
 
 *back to [top](#top)*  

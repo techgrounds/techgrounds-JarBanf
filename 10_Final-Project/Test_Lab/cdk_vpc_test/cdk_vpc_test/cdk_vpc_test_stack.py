@@ -57,7 +57,7 @@ class CdkVpcTestStack(Stack):
         self.vpc_webserv = ec2.Vpc(self, 'vpc-1-web',
             ip_addresses=ec2.IpAddresses.cidr('10.0.1.0/24'),
             vpc_name='vpc-1-web',
-            nat_gateways=0,                             # 
+            nat_gateways=1,                             # 
             max_azs=3,                                  # use all 3 AZ's
             subnet_configuration=[
                 ec2.SubnetConfiguration(
@@ -304,7 +304,7 @@ class CdkVpcTestStack(Stack):
         self.nacl_webserver_pr.add_entry("Inbound-Ephemeral",
             cidr=ec2.AclCidr.any_ipv4(),
             rule_number=120,
-            traffic=ec2.AclTraffic.tcp_port_range(32768, 65535),    # ephemeral ports 32768, 60999
+            traffic=ec2.AclTraffic.tcp_port_range(1024, 65535),    # ephemeral ports
             direction=ec2.TrafficDirection.INGRESS
             )
 
@@ -476,10 +476,10 @@ class CdkVpcTestStack(Stack):
         # - - - - - - - - SECURITY GROUP & RULES - - - - - - - - - -
         
         # Create Security Group for Private Web server
-        self.sg_admin_webserver = ec2.SecurityGroup(self, "sg-admin-webserver",
-            vpc=self.vpc_webserv,
-            description="SG Admin Webserver"
-            )
+        # self.sg_admin_webserver = ec2.SecurityGroup(self, "sg-admin-webserver",
+        #     vpc=self.vpc_webserv,
+        #     description="SG Admin Webserver"
+        #     )
 
         # - - - - - - - - INBOUND TRAFFIC - - - - - - - - - -
             #    ||
@@ -488,25 +488,25 @@ class CdkVpcTestStack(Stack):
             #    \/
         
         # Allow SG inbound HTTP traffic from admin server
-        self.sg_admin_webserver.add_ingress_rule(
-            peer=ec2.Peer.ipv4("10.0.2.4/32"),      # Static IP of Admin Server
-            connection=ec2.Port.tcp(80),            # HTTP port
-            description="Allow HTTP traffic from admin server",
-            )
+        # self.sg_admin_webserver.add_ingress_rule(
+        #     peer=ec2.Peer.ipv4("10.0.2.4/32"),      # Static IP of Admin Server
+        #     connection=ec2.Port.tcp(80),            # HTTP port
+        #     description="Allow HTTP traffic from admin server",
+        #     )
         
-        # Allow SG inbound HTTPS traffic from admin server
-        self.sg_admin_webserver.add_ingress_rule(
-            peer=ec2.Peer.ipv4("10.0.2.4/32"),      # Static IP of Admin Server
-            connection=ec2.Port.tcp(443),           # HTTPS port
-            description="Allow HTTPS traffic from admin server",
-            )
+        # # Allow SG inbound HTTPS traffic from admin server
+        # self.sg_admin_webserver.add_ingress_rule(
+        #     peer=ec2.Peer.ipv4("10.0.2.4/32"),      # Static IP of Admin Server
+        #     connection=ec2.Port.tcp(443),           # HTTPS port
+        #     description="Allow HTTPS traffic from admin server",
+        #     )
         
-        # Allow SG inbound SSH traffic from admin server
-        self.sg_admin_webserver.add_ingress_rule(
-            peer=ec2.Peer.ipv4("10.0.2.4/32"),    # Static IP of Admin Server
-            connection=ec2.Port.tcp(22),          # SSH port
-            description="Allow SSH traffic from admin server",
-            )
+        # # Allow SG inbound SSH traffic from admin server
+        # self.sg_admin_webserver.add_ingress_rule(
+        #     peer=ec2.Peer.ipv4("10.0.2.4/32"),    # Static IP of Admin Server
+        #     connection=ec2.Port.tcp(22),          # SSH port
+        #     description="Allow SSH traffic from admin server",
+        #     )
         
         # - - - - - - - - FOR TESTING PURPOSES ONLY - - - - - - - - - -
         # - - - - comment out when deploying in production - - - - - - - - - -
@@ -543,15 +543,15 @@ class CdkVpcTestStack(Stack):
         # - - - - - - - - S3 BUCKET & WEB CONTENT - - - - - - - - - - 
         
         # Create S3 Bucket for Website
-        # self.website_bucket = s3.Bucket(self, "website-bucket",
-        #     bucket_name="cdkbucket-forwebserver-121212",
-        #     )
+        self.website_bucket = s3.Bucket(self, "website-bucket",
+            bucket_name="cdkbucket-forwebserver-121212",
+            )
     
-        # # Upload a the lab zipfiles to the S3 bucket
-        # self.deploy_website = s3deploy.BucketDeployment(self, "deploy-website",
-        #     sources=[s3deploy.Source.asset(path="./cdk_vpc_test/lab-app.zip")],
-        #     destination_bucket=self.website_bucket,
-        # )
+        # Upload a the lab zipfiles to the S3 bucket
+        self.deploy_website = s3deploy.BucketDeployment(self, "deploy-website",
+            sources=[s3deploy.Source.asset(path="./cdk_vpc_test/lab-app.zip")],
+            destination_bucket=self.website_bucket,
+        )
         
         
         # - - - - - - - - CREATE WEBSERVER INSTANCE FOR ADMIN - - - - - - - - - -
@@ -569,33 +569,33 @@ class CdkVpcTestStack(Stack):
             self.user_data_webs = f.read()  # read User Data script and save to variable
         
         # Create Keypair Web Server -> Private Key in Parameter Store
-        self.keypair_webserver = ec2.KeyPair(self, "keypair-admin-webserver",
-            key_pair_name="kp-admin-webserver",
-            )
+        # self.keypair_webserver = ec2.KeyPair(self, "keypair-admin-webserver",
+        #     key_pair_name="kp-admin-webserver",
+        #     )
         
         # Create Webserver instance
-        self.instance_webserver = ec2.Instance(self, "admin-webserver",
-            role=self.role_webserv,
-            instance_name="admin-webserver",
-            vpc=self.vpc_webserv,                               # VPC Webserver
-            vpc_subnets=ec2.SubnetSelection(
-                subnet_type=ec2.SubnetType.PRIVATE_WITH_EGRESS),   # Private subnet in VPC Webserver
-            private_ip_address="10.0.1.52",                     # Give it a static IP address
-            key_pair=self.keypair_webserver,                    # refer to keypair. Code above.
-            security_group=self.sg_admin_webserver,             # refer to the SG for Webserver
-            instance_type=ec2.InstanceType.of(
-                ec2.InstanceClass.T2, ec2.InstanceSize.MICRO),  # choose instance type
-            machine_image=ec2.AmazonLinuxImage(
-                generation=ec2.AmazonLinuxGeneration.AMAZON_LINUX_2023),    # choose AMI
-            block_devices=[ec2.BlockDevice(
-                device_name="/dev/xvda",                        # Root EBS for Linux is always "xvda"
-                volume=ec2.BlockDeviceVolume.ebs(
-                    volume_size=8,                              # 8 GB
-                    encrypted=True,                             # activate encryption on root EBS
-                    )
-                )],
-            user_data=ec2.UserData.custom(self.user_data_webs), # refer to imported User Data. See code above
-            )
+        # self.instance_webserver = ec2.Instance(self, "admin-webserver",
+        #     role=self.role_webserv,
+        #     instance_name="admin-webserver",
+        #     vpc=self.vpc_webserv,                               # VPC Webserver
+        #     vpc_subnets=ec2.SubnetSelection(
+        #         subnet_type=ec2.SubnetType.PRIVATE_WITH_EGRESS),   # Private subnet in VPC Webserver
+        #     private_ip_address="10.0.1.52",                     # Give it a static IP address
+        #     key_pair=self.keypair_webserver,                    # refer to keypair. Code above.
+        #     security_group=self.sg_admin_webserver,             # refer to the SG for Webserver
+        #     instance_type=ec2.InstanceType.of(
+        #         ec2.InstanceClass.T2, ec2.InstanceSize.MICRO),  # choose instance type
+        #     machine_image=ec2.AmazonLinuxImage(
+        #         generation=ec2.AmazonLinuxGeneration.AMAZON_LINUX_2023),    # choose AMI
+        #     block_devices=[ec2.BlockDevice(
+        #         device_name="/dev/xvda",                        # Root EBS for Linux is always "xvda"
+        #         volume=ec2.BlockDeviceVolume.ebs(
+        #             volume_size=8,                              # 8 GB
+        #             encrypted=True,                             # activate encryption on root EBS
+        #             )
+        #         )],
+        #     user_data=ec2.UserData.custom(self.user_data_webs), # refer to imported User Data. See code above
+        #     )
 
 
 
@@ -609,24 +609,24 @@ class CdkVpcTestStack(Stack):
         # - - - - - - - - SECURITY GROUP & RULES - - - - - - - - - -
         
         # Create Security Group for the Admin server
-        self.sg_adminserver = ec2.SecurityGroup(self, "sg-adminserver",
-            vpc=self.vpc_adminserv,         # VPC for the Admin server
-            description="SG Adminserver"
-            )
+        # self.sg_adminserver = ec2.SecurityGroup(self, "sg-adminserver",
+        #     vpc=self.vpc_adminserv,         # VPC for the Admin server
+        #     description="SG Adminserver"
+        #     )
         
 
-        # - - - - - - - - INBOUND TRAFFIC - - - - - - - - - -
-            #    ||
-            #    ||
-            #   \\//
-            #    \/
+        # # - - - - - - - - INBOUND TRAFFIC - - - - - - - - - -
+        #     #    ||
+        #     #    ||
+        #     #   \\//
+        #     #    \/
         
-        # Allow SG inbound RDP traffic from only my IP
-        self.sg_adminserver.add_ingress_rule(
-            peer=ec2.Peer.ipv4(ip_address_administrator),   # refer to admin home/office IP address
-            connection=ec2.Port.tcp(3389),                  # RDP port
-            description="Allow RDP from only my IP",
-            )
+        # # Allow SG inbound RDP traffic from only my IP
+        # self.sg_adminserver.add_ingress_rule(
+        #     peer=ec2.Peer.ipv4(ip_address_administrator),   # refer to admin home/office IP address
+        #     connection=ec2.Port.tcp(3389),                  # RDP port
+        #     description="Allow RDP from only my IP",
+        #     )
         
         # - - - - - - - - FOR TESTING PURPOSES ONLY - - - - - - - - - -
         # - - - - comment out when deploying in production - - - - - - - - - -
@@ -686,87 +686,87 @@ class CdkVpcTestStack(Stack):
         # - - - - - - - - SECURITY GROUP - - - - - - - - - -
 
         # Create Security Group for Auto Scaling Web servers
-        # self.sg_as_webserver = ec2.SecurityGroup(self, "sg-as-webserver",
-        #     vpc=self.vpc_webserv,
-        #     description="SG AS Webservers"
-        #     )
+        self.sg_as_webserver = ec2.SecurityGroup(self, "sg-as-webserver",
+            vpc=self.vpc_webserv,
+            description="SG AS Webservers"
+            )
         
 
         # - - - - - - - - AUTO SCALING - - - - - - - - - -
 
         # Create Launch Template
-        # self.launch_template_ws = ec2.LaunchTemplate(self, "ws-launch-template",
-        #     launch_template_name="ws-launch-template",
-        #     role=self.role_webserv,
-        #     security_group=self.sg_as_webserver,
-        #     instance_type=ec2.InstanceType.of(ec2.InstanceClass.T2, ec2.InstanceSize.MICRO),
-        #     machine_image=ec2.AmazonLinuxImage(generation=ec2.AmazonLinuxGeneration.AMAZON_LINUX_2023),
-        #     block_devices=[ec2.BlockDevice(
-        #         device_name="/dev/xvda",                       
-        #         volume=ec2.BlockDeviceVolume.ebs(
-        #             volume_size=8,                              
-        #             encrypted=True,                            
-        #             )
-        #         )],
-        #     user_data=ec2.UserData.custom(self.user_data_webs),
-        #     )
+        self.launch_template_ws = ec2.LaunchTemplate(self, "ws-launch-template",
+            launch_template_name="ws-launch-template",
+            role=self.role_webserv,
+            security_group=self.sg_as_webserver,
+            instance_type=ec2.InstanceType.of(ec2.InstanceClass.T2, ec2.InstanceSize.MICRO),
+            machine_image=ec2.AmazonLinuxImage(generation=ec2.AmazonLinuxGeneration.AMAZON_LINUX_2023),
+            block_devices=[ec2.BlockDevice(
+                device_name="/dev/xvda",                       
+                volume=ec2.BlockDeviceVolume.ebs(
+                    volume_size=8,                              
+                    encrypted=True,                            
+                    )
+                )],
+            user_data=ec2.UserData.custom(self.user_data_webs),
+            )
 
-        # # Create Autoscaling group
-        # self.auto_scaling_group = autoscaling.AutoScalingGroup(self, "asg",
-        #     vpc=self.vpc_webserv,
-        #     vpc_subnets=ec2.SubnetSelection(subnet_type=ec2.SubnetType.PRIVATE_WITH_EGRESS),
-        #     launch_template=self.launch_template_ws,
-        #     desired_capacity=1,
-        #     min_capacity=1,
-        #     max_capacity=3,
-        #     health_check=autoscaling.HealthCheck.elb(
-        #         grace=Duration.minutes(5)
-        #         )
-        #     )
+        # Create Autoscaling group
+        self.auto_scaling_group = autoscaling.AutoScalingGroup(self, "asg",
+            vpc=self.vpc_webserv,
+            vpc_subnets=ec2.SubnetSelection(subnet_type=ec2.SubnetType.PRIVATE_WITH_EGRESS),
+            launch_template=self.launch_template_ws,
+            desired_capacity=1,
+            min_capacity=1,
+            max_capacity=3,
+            health_check=autoscaling.HealthCheck.elb(
+                grace=Duration.minutes(5)
+                )
+            )
 
-        # # Set Scale Policy
-        # self.scale_policy = self.auto_scaling_group.scale_on_cpu_utilization("scale-policy",
-        #     target_utilization_percent=75,
-        #     )
+        # Set Scale Policy
+        self.scale_policy = self.auto_scaling_group.scale_on_cpu_utilization("scale-policy",
+            target_utilization_percent=75,
+            )
         
 
-        # # - - - - - - - - APPLICATION LOAD BALANCER - - - - - - - - - -
+        # - - - - - - - - APPLICATION LOAD BALANCER - - - - - - - - - -
 
-        # # Create Application Load balancer
-        # self.load_balancer_ws = elbv2.ApplicationLoadBalancer(self, "load-balancer-ws",
-        #     load_balancer_name="load-balancer-ws",
-        #     vpc=self.vpc_webserv,
-        #     internet_facing=True,
-        #     )
+        # Create Application Load balancer
+        self.load_balancer_ws = elbv2.ApplicationLoadBalancer(self, "load-balancer-ws",
+            load_balancer_name="load-balancer-ws",
+            vpc=self.vpc_webserv,
+            internet_facing=True,
+            )
 
-        # # Create Target Group for ALB
-        # self.target_group = elbv2.ApplicationTargetGroup(self, "target-group",
-        #     vpc=self.vpc_webserv,
-        #     port=443,
-        #     targets=[self.auto_scaling_group],
-        #     )
+        # Create Target Group for ALB
+        self.target_group = elbv2.ApplicationTargetGroup(self, "target-group",
+            vpc=self.vpc_webserv,
+            port=443,
+            targets=[self.auto_scaling_group],
+            )
 
-        # # Import self signed certificate from console
-        # self.certificate_ss_imp = cm.Certificate.from_certificate_arn(self, "certificate-ss-imp",
-        #     certificate_arn=certificate_arn_alb
-        #     )
+        # Import self signed certificate from console
+        self.certificate_ss_imp = cm.Certificate.from_certificate_arn(self, "certificate-ss-imp",
+            certificate_arn=certificate_arn_alb
+            )
         
-        # # Add listener to the ALB for port 443
-        # self.https_listener = self.load_balancer_ws.add_listener("https_listener",
-        #     port=443,
-        #     ssl_policy=elbv2.SslPolicy.RECOMMENDED_TLS,
-        #     certificates=[self.certificate_ss_imp],
-        #     default_target_groups=[self.target_group]
-        #     )
+        # Add listener to the ALB for port 443
+        self.https_listener = self.load_balancer_ws.add_listener("https_listener",
+            port=443,
+            ssl_policy=elbv2.SslPolicy.RECOMMENDED_TLS,
+            certificates=[self.certificate_ss_imp],
+            default_target_groups=[self.target_group]
+            )
 
-        # # Add listener to the ALB for port 80 and redirect traffic to port 443
-        # self.http_listener = self.load_balancer_ws.add_listener("http_listener",
-        #     port=80,
-        #     default_action=elbv2.ListenerAction.redirect(
-        #         port="443",
-        #         protocol="HTTPS",
-        #         )
-        #     )
+        # Add listener to the ALB for port 80 and redirect traffic to port 443
+        self.http_listener = self.load_balancer_ws.add_listener("http_listener",
+            port=80,
+            default_action=elbv2.ListenerAction.redirect(
+                port="443",
+                protocol="HTTPS",
+                )
+            )
 
 
 
