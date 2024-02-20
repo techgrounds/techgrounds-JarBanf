@@ -479,7 +479,7 @@ class CdkVpcTestStack(Stack):
         # self.sg_admin_webserver = ec2.SecurityGroup(self, "sg-admin-webserver",
         #     vpc=self.vpc_webserv,
         #     description="SG Admin Webserver"
-        #     )
+            # )
 
         # - - - - - - - - INBOUND TRAFFIC - - - - - - - - - -
             #    ||
@@ -569,9 +569,9 @@ class CdkVpcTestStack(Stack):
             self.user_data_webs = f.read()  # read User Data script and save to variable
         
         # Create Keypair Web Server -> Private Key in Parameter Store
-        # self.keypair_webserver = ec2.KeyPair(self, "keypair-admin-webserver",
-        #     key_pair_name="kp-admin-webserver",
-        #     )
+        self.keypair_webserver = ec2.KeyPair(self, "keypair-admin-webserver",
+            key_pair_name="kp-admin-webserver",
+            )
         
         # Create Webserver instance
         # self.instance_webserver = ec2.Instance(self, "admin-webserver",
@@ -877,23 +877,23 @@ class CdkVpcTestStack(Stack):
         # - - - - - - - - BACKUP PLAN - - - - - - - - - -
         
         # Create Backup plan
-        # self.backup_plan = backup.BackupPlan(self, "backup-plan",
-        #     backup_plan_name="7-day-Backup-plan",
-        #     backup_plan_rules=[backup.BackupPlanRule(
-        #         rule_name="Daily-Retention-7days",
-        #         start_window=Duration.hours(1),             # start within 1 hour of scheduled start
-        #         completion_window=Duration.hours(2),        # complete backup within 2 hours of backup start
-        #         delete_after=Duration.days(7),              # retain backups for 7 days
-        #         schedule_expression=events.Schedule.cron(
-        #             hour="1",       # Daily backup at 01:00 UTC -->
-        #             minute="0", )   # --> 02:00 Dutch winter time / 03:00 Dutch summer time
-        #         )]
-        #     )
+        self.backup_plan = backup.BackupPlan(self, "backup-plan",
+            backup_plan_name="7-day-Backup-plan",
+            backup_plan_rules=[backup.BackupPlanRule(
+                rule_name="Daily-Retention-7days",
+                start_window=Duration.hours(1),             # start within 1 hour of scheduled start
+                completion_window=Duration.hours(2),        # complete backup within 2 hours of backup start
+                delete_after=Duration.days(7),              # retain backups for 7 days
+                schedule_expression=events.Schedule.cron(
+                    hour="1",       # Daily backup at 01:00 UTC -->
+                    minute="0", )   # --> 02:00 Dutch winter time / 03:00 Dutch summer time
+                )]
+            )
         
 
-        # # - - - - - - - - RESOURCES TO BACKUP - - - - - - - - - -
+        # - - - - - - - - RESOURCES TO BACKUP - - - - - - - - - -
 
-        # # Select Webserver as a resource to backup
+        # Select Webserver as a resource to backup
         # self.backup_plan.add_selection("add-webserver", 
         #     backup_selection_name="backup-webserver",
         #     resources=[

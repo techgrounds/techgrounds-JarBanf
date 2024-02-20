@@ -367,6 +367,22 @@ Diagrams, SG & NACL rules, deployment visualization, and more, are listed here.
 <br>
 
 ### Backup
+![Backup](/10_Final-Project/includes/v1dot1_backup.png)  
+*Backup*
+<br>
+
+| - | - |
+| - | - |
+| **Name** | "7-day-Backup-plan" |
+| **Backup frequency** | Everyday at 01:00 (winter time) / 02:00 (summer time) |
+| **Start within** | 1 hour |
+| **Complete within** | 2 hours |
+| **Total retention** period | 1 week |
+|  |  |
+| **Resources to backup** |  |
+| [**Webserver (for admin)**](#webserver-for-admin) | Root storage |
+| [**Admin Server**](#admin-server) | Root & Attached storage |
+| **Encryption** | Enabled |
 <br>
 
 *back to [top](#top)*  
