@@ -269,6 +269,10 @@ Diagrams, SG & NACL rules, deployment visualization, and more, are listed here.
 <br>
 
 ### Auto Scaling
+![Auto Scaling](/10_Final-Project/includes/v1dot1_as.png)  
+*Auto Scaling*
+<br>
+
 #### WS Launch Template
 | - | - |
 | - | - |
@@ -308,6 +312,10 @@ Diagrams, SG & NACL rules, deployment visualization, and more, are listed here.
 <br>
 
 ### Application Load Balancer
+![Application Load Balancer](/10_Final-Project/includes/v1dot1_alb.png)  
+*Application Load Balancer*
+<br>
+
 | - | - |
 | - | - |
 | **Name** | "load-balancer-ws" |
@@ -374,7 +382,7 @@ Diagrams, SG & NACL rules, deployment visualization, and more, are listed here.
 | - | - |
 | - | - |
 | **Name** | "7-day-Backup-plan" |
-| **Backup frequency** | Everyday at 01:00 (winter time) / 02:00 (summer time) |
+| **Backup frequency** | Daily at 01:00 (winter time) / 02:00 (summer time) |
 | **Start within** | 1 hour |
 | **Complete within** | 2 hours |
 | **Total retention** period | 1 week |
@@ -390,7 +398,26 @@ Diagrams, SG & NACL rules, deployment visualization, and more, are listed here.
 
 ### S3 Buckets
 #### Bucket Webfiles
-#### Bucket Scripts
+![Bucket Webfiles](/10_Final-Project/includes/v1dot1_bucket_webfiles.png)  
+*Bucket Webfiles*
+<br>
+
+| - | - |
+| - | - |
+| **Bucket Name** | "cdkbucket-forwebserver-121212" |
+| **Content** | Website files (for autoscaling testing purposes I use load/stress-test files as a placeholder which will automatically uploaded to bucket when app deploys) |
+| **Encryption** | Enabled |
+| **Block all public access** | On |
+
+#### Bucket Post Deployment Scripts
+![Bucket Post Deployment Scripts](/10_Final-Project/includes/v1dot1_bucket_scripts.png)  
+*Bucket Post Deployment Scripts*
+<br>
+
+| - | - |
+| - | - |
+| - | - |
+| - | - |
 <br>
 
 *back to [top](#top)*  

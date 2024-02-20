@@ -686,87 +686,87 @@ class CdkVpcTestStack(Stack):
         # - - - - - - - - SECURITY GROUP - - - - - - - - - -
 
         # Create Security Group for Auto Scaling Web servers
-        self.sg_as_webserver = ec2.SecurityGroup(self, "sg-as-webserver",
-            vpc=self.vpc_webserv,
-            description="SG AS Webservers"
-            )
+        # self.sg_as_webserver = ec2.SecurityGroup(self, "sg-as-webserver",
+        #     vpc=self.vpc_webserv,
+        #     description="SG AS Webservers"
+        #     )
         
 
         # - - - - - - - - AUTO SCALING - - - - - - - - - -
 
         # Create Launch Template
-        self.launch_template_ws = ec2.LaunchTemplate(self, "ws-launch-template",
-            launch_template_name="ws-launch-template",
-            role=self.role_webserv,
-            security_group=self.sg_as_webserver,
-            instance_type=ec2.InstanceType.of(ec2.InstanceClass.T2, ec2.InstanceSize.MICRO),
-            machine_image=ec2.AmazonLinuxImage(generation=ec2.AmazonLinuxGeneration.AMAZON_LINUX_2023),
-            block_devices=[ec2.BlockDevice(
-                device_name="/dev/xvda",                       
-                volume=ec2.BlockDeviceVolume.ebs(
-                    volume_size=8,                              
-                    encrypted=True,                            
-                    )
-                )],
-            user_data=ec2.UserData.custom(self.user_data_webs),
-            )
+        # self.launch_template_ws = ec2.LaunchTemplate(self, "ws-launch-template",
+        #     launch_template_name="ws-launch-template",
+        #     role=self.role_webserv,
+        #     security_group=self.sg_as_webserver,
+        #     instance_type=ec2.InstanceType.of(ec2.InstanceClass.T2, ec2.InstanceSize.MICRO),
+        #     machine_image=ec2.AmazonLinuxImage(generation=ec2.AmazonLinuxGeneration.AMAZON_LINUX_2023),
+        #     block_devices=[ec2.BlockDevice(
+        #         device_name="/dev/xvda",                       
+        #         volume=ec2.BlockDeviceVolume.ebs(
+        #             volume_size=8,                              
+        #             encrypted=True,                            
+        #             )
+        #         )],
+        #     user_data=ec2.UserData.custom(self.user_data_webs),
+        #     )
 
-        # Create Autoscaling group
-        self.auto_scaling_group = autoscaling.AutoScalingGroup(self, "asg",
-            vpc=self.vpc_webserv,
-            vpc_subnets=ec2.SubnetSelection(subnet_type=ec2.SubnetType.PRIVATE_WITH_EGRESS),
-            launch_template=self.launch_template_ws,
-            desired_capacity=1,
-            min_capacity=1,
-            max_capacity=3,
-            health_check=autoscaling.HealthCheck.elb(
-                grace=Duration.minutes(5)
-                )
-            )
+        # # Create Autoscaling group
+        # self.auto_scaling_group = autoscaling.AutoScalingGroup(self, "asg",
+        #     vpc=self.vpc_webserv,
+        #     vpc_subnets=ec2.SubnetSelection(subnet_type=ec2.SubnetType.PRIVATE_WITH_EGRESS),
+        #     launch_template=self.launch_template_ws,
+        #     desired_capacity=1,
+        #     min_capacity=1,
+        #     max_capacity=3,
+        #     health_check=autoscaling.HealthCheck.elb(
+        #         grace=Duration.minutes(5)
+        #         )
+        #     )
 
-        # Set Scale Policy
-        self.scale_policy = self.auto_scaling_group.scale_on_cpu_utilization("scale-policy",
-            target_utilization_percent=75,
-            )
+        # # Set Scale Policy
+        # self.scale_policy = self.auto_scaling_group.scale_on_cpu_utilization("scale-policy",
+        #     target_utilization_percent=75,
+        #     )
         
 
         # - - - - - - - - APPLICATION LOAD BALANCER - - - - - - - - - -
 
         # Create Application Load balancer
-        self.load_balancer_ws = elbv2.ApplicationLoadBalancer(self, "load-balancer-ws",
-            load_balancer_name="load-balancer-ws",
-            vpc=self.vpc_webserv,
-            internet_facing=True,
-            )
+        # self.load_balancer_ws = elbv2.ApplicationLoadBalancer(self, "load-balancer-ws",
+        #     load_balancer_name="load-balancer-ws",
+        #     vpc=self.vpc_webserv,
+        #     internet_facing=True,
+        #     )
 
-        # Create Target Group for ALB
-        self.target_group = elbv2.ApplicationTargetGroup(self, "target-group",
-            vpc=self.vpc_webserv,
-            port=443,
-            targets=[self.auto_scaling_group],
-            )
+        # # Create Target Group for ALB
+        # self.target_group = elbv2.ApplicationTargetGroup(self, "target-group",
+        #     vpc=self.vpc_webserv,
+        #     port=443,
+        #     targets=[self.auto_scaling_group],
+        #     )
 
-        # Import self signed certificate from console
-        self.certificate_ss_imp = cm.Certificate.from_certificate_arn(self, "certificate-ss-imp",
-            certificate_arn=certificate_arn_alb
-            )
+        # # Import self signed certificate from console
+        # self.certificate_ss_imp = cm.Certificate.from_certificate_arn(self, "certificate-ss-imp",
+        #     certificate_arn=certificate_arn_alb
+        #     )
         
-        # Add listener to the ALB for port 443
-        self.https_listener = self.load_balancer_ws.add_listener("https_listener",
-            port=443,
-            ssl_policy=elbv2.SslPolicy.RECOMMENDED_TLS,
-            certificates=[self.certificate_ss_imp],
-            default_target_groups=[self.target_group]
-            )
+        # # Add listener to the ALB for port 443
+        # self.https_listener = self.load_balancer_ws.add_listener("https_listener",
+        #     port=443,
+        #     ssl_policy=elbv2.SslPolicy.RECOMMENDED_TLS,
+        #     certificates=[self.certificate_ss_imp],
+        #     default_target_groups=[self.target_group]
+        #     )
 
-        # Add listener to the ALB for port 80 and redirect traffic to port 443
-        self.http_listener = self.load_balancer_ws.add_listener("http_listener",
-            port=80,
-            default_action=elbv2.ListenerAction.redirect(
-                port="443",
-                protocol="HTTPS",
-                )
-            )
+        # # Add listener to the ALB for port 80 and redirect traffic to port 443
+        # self.http_listener = self.load_balancer_ws.add_listener("http_listener",
+        #     port=80,
+        #     default_action=elbv2.ListenerAction.redirect(
+        #         port="443",
+        #         protocol="HTTPS",
+        #         )
+        #     )
 
 
 
@@ -877,18 +877,18 @@ class CdkVpcTestStack(Stack):
         # - - - - - - - - BACKUP PLAN - - - - - - - - - -
         
         # Create Backup plan
-        self.backup_plan = backup.BackupPlan(self, "backup-plan",
-            backup_plan_name="7-day-Backup-plan",
-            backup_plan_rules=[backup.BackupPlanRule(
-                rule_name="Daily-Retention-7days",
-                start_window=Duration.hours(1),             # start within 1 hour of scheduled start
-                completion_window=Duration.hours(2),        # complete backup within 2 hours of backup start
-                delete_after=Duration.days(7),              # retain backups for 7 days
-                schedule_expression=events.Schedule.cron(
-                    hour="1",       # Daily backup at 01:00 UTC -->
-                    minute="0", )   # --> 02:00 Dutch winter time / 03:00 Dutch summer time
-                )]
-            )
+        # self.backup_plan = backup.BackupPlan(self, "backup-plan",
+        #     backup_plan_name="7-day-Backup-plan",
+        #     backup_plan_rules=[backup.BackupPlanRule(
+        #         rule_name="Daily-Retention-7days",
+        #         start_window=Duration.hours(1),             # start within 1 hour of scheduled start
+        #         completion_window=Duration.hours(2),        # complete backup within 2 hours of backup start
+        #         delete_after=Duration.days(7),              # retain backups for 7 days
+        #         schedule_expression=events.Schedule.cron(
+        #             hour="1",       # Daily backup at 01:00 UTC -->
+        #             minute="0", )   # --> 02:00 Dutch winter time / 03:00 Dutch summer time
+        #         )]
+        #     )
         
 
         # - - - - - - - - RESOURCES TO BACKUP - - - - - - - - - -

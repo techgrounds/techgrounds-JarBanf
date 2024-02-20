@@ -62,9 +62,9 @@ This checklist is based on the Deliverables in the chapter [Epics & User Stories
         - 🍔 Allow ephemeral traffic
         - 🍔 Allow outbound
     - 🍔 Connection with Webserver
-- 🍔 4. IaC code for a script storage solution.
+- ❌ 4. IaC code for a script storage solution.
     - 🍔 S3 Bucket
-    - 🍔 Upload scripts automatically
+    - ❌ Upload scripts automatically
 - 🍔 5. IaC code for encryption facilities.
     - 🍔 Web server root volume encrypted
     - 🍔 Admin server root volume encrypted
@@ -87,7 +87,11 @@ This checklist is based on the Deliverables in the chapter [Epics & User Stories
     - 🍔 MySQL Instance
     - 🍔 Security group rules
         - 🍔 Allow traffic on MySQL port
-    - 🍔 Configure webserver to connect to database 
+    - 🍔 Configure webserver to connect to database
+- 🔥 0.5 Post Deployment Script Storage feature from v1.0
+    - 🍔 S3 Bucket
+    - 🐂 Connection with RDS MySQL database
+    - 🐂 Test script
 - 🍔 1. Webserver not "naked" anymore -> no public IP address
 - 🍔 2. HTTPS
     - 🍔 TLS 1.2 or higher
@@ -125,9 +129,9 @@ This checklist is based on the Deliverables in the chapter [Epics & User Stories
         - 🍔 Autoscaling
         - 🍔 Application Load Blancer
         - 🍔 Database
-        - 🐂 Backups
-        - 🐂 S3 Buckets
-            - 🐂 Webfiles
+        - 🍔 Backups
+        - 🔥 S3 Buckets
+            - 🍔 Webfiles
             - 🐂 Scripts
 - 🐂 8. Configuration for an MVP deployment.
 
