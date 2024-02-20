@@ -2,9 +2,9 @@
 Version 1.1 is currently under construction. Version 1.0 is released and can be viewed [here](/10_Final-Project/MVP_v1dot0/).  
 <br>
 
-## V1.1 Provisional Architecture design
-![v1.1 provisional architecture diagram](/10_Final-Project/MVP_v1dot1/includes/diagram_v1dot1.drawio.png)
-*v1.1 provisional architecture diagram*  
+## v1.1 Architecture design
+![v1.1 Architecture design](/10_Final-Project/MVP_v1dot1/includes/v1dot1_architecture_design.drawio.png)
+*v1.1 Architecture design*  
 <br>
 
 ## Requirements V1.1

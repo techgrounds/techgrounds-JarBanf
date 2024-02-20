@@ -57,7 +57,7 @@ An overview of the new services that will be added in this version.
 ### Architecture Design v1.1
 This is the architecture design based on the requirements for v1.1.
 
-![architecture design v1.1](/10_Final-Project/includes/diagram_v1dot1.drawio.png)  
+![architecture design v1.1](/10_Final-Project/includes/v1dot1_architecture_design.drawio.png)  
 *Architecture designed based on the requirements for v1.1*  
 <br>
 

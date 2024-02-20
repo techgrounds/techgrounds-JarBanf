@@ -1,7 +1,7 @@
 # <a id="top">Design Document v1.1</a> 📘 👷 🔨
 **UNDER CONSTRUCTION**  
 This document contains technical and practical information about my application.  
-Diagrams, (N)SG rules, deployment visualization, and more, are listed here.
+Diagrams, SG & NACL rules, deployment visualization, and more, are listed here.
 
 ## Table of Contents
 - [Architecture Design](#architecture-design)
@@ -36,7 +36,7 @@ Diagrams, (N)SG rules, deployment visualization, and more, are listed here.
 <br>
 
 ## Architecture Design
-![architecture design v1.1](/10_Final-Project/MVP_v1dot1/includes/diagram_v1dot1.drawio.png)  
+![architecture design v1.1](/10_Final-Project/includes/v1dot1_architecture_design.drawio.png)  
 *Architecture design*
 <br>
 
@@ -76,7 +76,11 @@ Diagrams, (N)SG rules, deployment visualization, and more, are listed here.
 <br>
 
 ### Security Groups
-#### SG Admin Webserver 
+#### SG Admin Webserver
+![SG Admin Webserver](/10_Final-Project/includes/v1dot1_SG_admin_webserver.png)  
+*SG Admin Webserver*
+<br>
+
 | Type | Port | Source / Destination | Description |
 | - | - | - | - |
 | **Inbound** |  |  |  |
@@ -89,6 +93,10 @@ Diagrams, (N)SG rules, deployment visualization, and more, are listed here.
 <br>
 
 #### SG Adminserver
+![SG Adminserver](/10_Final-Project/includes/v1dot1_SG_adminserver.png)  
+*SG Adminserver*
+<br>
+
 | Type | Port | Source / Destination | Description |
 | - | - | - | - |
 | **Inbound** |  |  |  |
@@ -99,6 +107,10 @@ Diagrams, (N)SG rules, deployment visualization, and more, are listed here.
 <br>
 
 #### SG AS Webservers (Auto Scaling)
+![SG AS Webservers (Auto Scaling)](/10_Final-Project/includes/v1dot1_SG_as_webservers.png)  
+*SG AS Webservers (Auto Scaling)*
+<br>
+
 | Type | Port | Source / Destination | Description |
 | - | - | - | - |
 | **Inbound** |  |  |  |
@@ -109,6 +121,10 @@ Diagrams, (N)SG rules, deployment visualization, and more, are listed here.
 <br>
 
 #### SG Application Load Balancer
+![SG Application Load Balancer](/10_Final-Project/includes/v1dot1_SG_ALB.png)  
+*SG Application Load Balancer*
+<br>
+
 | Type | Port | Source / Destination | Description |
 | - | - | - | - |
 | **Inbound** |  |  |  |
@@ -120,6 +136,9 @@ Diagrams, (N)SG rules, deployment visualization, and more, are listed here.
 <br>
 
 #### SG Database
+![SG Database](/10_Final-Project/includes/v1dot1_SG_database.png)  
+*SG Database*
+<br>
 | Type | Port | Source / Destination | Description |
 | - | - | - | - |
 | **Inbound** |  |  |  |
@@ -134,6 +153,10 @@ Diagrams, (N)SG rules, deployment visualization, and more, are listed here.
 
 ### NACLs
 #### VPC-1 Web Public Subnets
+![NACL VPC-1 Web Public Subnets](/10_Final-Project/includes/v1dot1_NACL_web_public.png)  
+*NACL VPC-1 Web Public Subnets*
+<br>
+
 | Rule number | Type | Protocol | Port Range | Source / Destination | Allow / Deny |
 | - | - | - | - | - | - |
 | **Inbound** |  |  |  |  |  |
@@ -149,6 +172,10 @@ Diagrams, (N)SG rules, deployment visualization, and more, are listed here.
 <br>
 
 #### VPC-1 Web Private Subnets
+![NACL VPC-1 Web Private Subnets](/10_Final-Project/includes/v1dot1_NACL_web_private.png)  
+*NACL VPC-1 Web Private Subnets*
+<br>
+
 | Rule number | Type | Protocol | Port Range | Source / Destination | Allow / Deny |
 | - | - | - | - | - | - |
 | **Inbound** |  |  |  |  |  |
@@ -167,6 +194,10 @@ Diagrams, (N)SG rules, deployment visualization, and more, are listed here.
 <br>
 
 #### VPC-2 Admin Public Subnet
+![NACL VPC-2 Admin Public Subnet](/10_Final-Project/includes/v1dot1_NACL_admin_public.png)  
+*NACL VPC-2 Admin Public Subnet*
+<br>
+
 | Rule number | Type | Protocol | Port Range | Source / Destination | Allow / Deny |
 | - | - | - | - | - | - |
 | **Inbound** |  |  |  |  |  |

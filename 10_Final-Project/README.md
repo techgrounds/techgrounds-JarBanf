@@ -41,7 +41,7 @@ To view the Decisions Document, [click here](/10_Final-Project/Documents/decisio
 
 ## <a id="designdoc">Design Document v1.1</a> 📘 👷 🔨
 This document contains technical and practical information about my application.  
-Diagrams, (N)SG rules, deployment visualization, and more, are listed here.  
+Diagrams, SG & NACL rules, deployment visualization, and more, are listed here. 
 
 To view the Design Document v1.1, [click here](/10_Final-Project/Documents/design_doc_v1dot1.md).  
 <br>
