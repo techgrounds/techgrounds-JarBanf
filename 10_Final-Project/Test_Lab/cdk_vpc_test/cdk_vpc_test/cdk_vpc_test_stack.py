@@ -89,9 +89,9 @@ class CdkVpcTestStack(Stack):
 
 
         # Create VPC & Subnet
-        self.vpc_adminserv = ec2.Vpc(self, 'vpc-admin',
+        self.vpc_adminserv = ec2.Vpc(self, 'vpc-2-admin',
             ip_addresses=ec2.IpAddresses.cidr('10.0.2.0/24'),
-            vpc_name='vpc-admin',
+            vpc_name='vpc-2-admin',
             nat_gateways=0,                             # no gateway needed
             availability_zones=["eu-central-1b"],       # define AZ
             subnet_configuration=[
@@ -188,9 +188,9 @@ class CdkVpcTestStack(Stack):
             direction=ec2.TrafficDirection.INGRESS
             )
         
-        # Allow inbound traffic from the VPC CIDR on the ephemeral ports
+        # Allow inbound traffic on the ephemeral ports
         self.nacl_webserver_pu.add_entry("Inbound-Ephemeral",
-            cidr=ec2.AclCidr.ipv4("10.0.1.0/24"),
+            cidr=ec2.AclCidr.any_ipv4(),
             rule_number=120,
             traffic=ec2.AclTraffic.tcp_port_range(1024, 65535),    # ephemeral ports
             direction=ec2.TrafficDirection.INGRESS
@@ -215,11 +215,19 @@ class CdkVpcTestStack(Stack):
             #    ||
             #    ||
             
-        # Allow all outbound traffic on the instance-listener/health-check port
+        # Allow all outbound traffic on the HTTP
+        self.nacl_webserver_pu.add_entry("Outbound-HTTP",
+            cidr=ec2.AclCidr.any_ipv4(),
+            rule_number=100,
+            traffic=ec2.AclTraffic.tcp_port(80),       # HTTP port
+            direction=ec2.TrafficDirection.EGRESS
+            )
+        
+        # Allow all outbound traffic on the HTTPS
         self.nacl_webserver_pu.add_entry("Outbound-HTTPS/health-check",
-            cidr=ec2.AclCidr.ipv4("10.0.1.0/24"),
+            cidr=ec2.AclCidr.any_ipv4(),
             rule_number=110,
-            traffic=ec2.AclTraffic.tcp_port(443),       # HTTPS/health-check port
+            traffic=ec2.AclTraffic.tcp_port(443),       # HTTPS port
             direction=ec2.TrafficDirection.EGRESS
             )
         
@@ -780,10 +788,10 @@ class CdkVpcTestStack(Stack):
         # - - - - - - - - SECURITY GROUP - - - - - - - - - -
 
         # Create Security Group for database
-        # self.sg_database = ec2.SecurityGroup(self, "sg-database",
-        #     vpc=self.vpc_webserv,
-        #     description="SG Database"
-        #     )
+        self.sg_database = ec2.SecurityGroup(self, "sg-database",
+            vpc=self.vpc_webserv,
+            description="SG Database"
+            )
 
 
         # # - - - - - - - - INBOUND TRAFFIC - - - - - - - - - -
@@ -793,11 +801,11 @@ class CdkVpcTestStack(Stack):
         #     #    \/
         
         # # Allow inbound traffic from the VPC CIDR on the MySQL port
-        # self.sg_database.add_ingress_rule(
-        #     peer=ec2.Peer.ipv4("10.0.1.0/24"),          # VPC CIDR
-        #     connection=ec2.Port.tcp(3306),              # MySQL port
-        #     description="Allow MySQL from VPC-1 Web",
-        #     )
+        self.sg_database.add_ingress_rule(
+            peer=ec2.Peer.ipv4("10.0.1.0/24"),          # VPC CIDR
+            connection=ec2.Port.tcp(3306),              # MySQL port
+            description="Allow MySQL from VPC-1 Web",
+            )
         
 
         # - - - - - - - - TEST WEBSERVER FOR DATABASE - - - - - - - - 
@@ -850,20 +858,20 @@ class CdkVpcTestStack(Stack):
         # - - - - - - - - DATABASE - - - - - - - - - -
 
         # Create RDS database
-        # self.database = rds.DatabaseInstance(self, "database-webserver",
-        #     vpc=self.vpc_webserv,
-        #     vpc_subnets=ec2.SubnetSelection(subnet_type=ec2.SubnetType.PRIVATE_WITH_EGRESS),
-        #     security_groups=[self.sg_database],
-        #     multi_az=True,
-        #     engine=rds.DatabaseInstanceEngine.MYSQL,
-        #     allocated_storage=20,
-        #     instance_type=ec2.InstanceType.of(ec2.InstanceClass.T3, ec2.InstanceSize.MICRO),
-        #     iops=1000,
-        #     storage_encrypted=True,
-        #     backup_retention=Duration.days(7),
-        #     removal_policy=RemovalPolicy.DESTROY,
-        #     deletion_protection=False,
-        #     )
+        self.database = rds.DatabaseInstance(self, "database-webserver",
+            vpc=self.vpc_webserv,
+            vpc_subnets=ec2.SubnetSelection(subnet_type=ec2.SubnetType.PRIVATE_WITH_EGRESS),
+            security_groups=[self.sg_database],
+            multi_az=True,
+            engine=rds.DatabaseInstanceEngine.MYSQL,
+            allocated_storage=20,
+            instance_type=ec2.InstanceType.of(ec2.InstanceClass.T3, ec2.InstanceSize.MICRO),
+            iops=1000,
+            storage_encrypted=True,
+            backup_retention=Duration.days(7),
+            removal_policy=RemovalPolicy.DESTROY,
+            deletion_protection=False,
+            )
 
 
 
@@ -886,7 +894,7 @@ class CdkVpcTestStack(Stack):
                 delete_after=Duration.days(7),              # retain backups for 7 days
                 schedule_expression=events.Schedule.cron(
                     hour="9",       # Daily backup at 01:00 UTC -->
-                    minute="40", )   # --> 02:00 Dutch winter time / 03:00 Dutch summer time
+                    minute="30", )   # --> 02:00 Dutch winter time / 03:00 Dutch summer time
                 )]
             )
         
@@ -929,8 +937,9 @@ class CdkVpcTestStack(Stack):
         # current situation.
 
         # Create S3 Bucket for Scripts
-        # self.script_bucket = s3.Bucket(self, "script-bucket",
-        #     )
+        self.script_bucket = s3.Bucket(self, "bucket",
+            bucket_name="cdkbucket-pdscripts-3434343434",
+            )
 
         # # Create .zip file of the important scripts
         # self.zip_file = "scripts_for_s3.zip" # define filename, directory will be the same as "app.py"
