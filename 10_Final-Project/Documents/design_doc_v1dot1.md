@@ -46,6 +46,24 @@ Diagrams, SG & NACL rules, deployment visualization, and more, are listed here.
 ## Estimated Monthly Costs
 <br>
 
+| Service | Specs | On-Demand no upfront | Savings Plan 1 year upfront | Savings Plan 3 year upfront |
+| - | - | - | - | - |
+| **NAT Gateway** | amount of NAT gateways: 1 | $ 40,56 | $ 40,56 | $ 40,56 |
+| **Webserver** | linux, t3.micro, 40 hours/week | $ 2,09 | $ 2,09 | $ 2,09 |
+| **Webserver root EBS** | 8GB, 174 hours/month, daily snapshot, 1GB change/snapshot | $ 0,53 | $ 0,53 | $ 0,53 |
+| **Admin server** | windows server, t3.large, 40 hours/week | $ 21,48 | $ 21,48 | $ 21,48 |
+| **Admin server root EBS** | 30GB, 174 hours/month, daily snapshot, 1GB change/snapshot | $ 1,44 | $ 1,44 | $ 1,44 |
+| **Admin server attached EBS** | 256GB, 174 hours/month, daily snapshot, 1GB change/snapshot | $ 10,82 | $ 10,82 | $ 10,82 |
+| **Application Load Balancer** | amount of ALB: 1 | $ 19,95 | $ 19,95 | $ 19,95 |
+| **Auto Scaling Webservers** | linux, t3.micro, 8GB root storage, baseline: 1 instance -> 24 hours, peak: 3 instances -> 8hrs on mon, tue, wed, thu, fri | $ 11,56 | $ 5,58 | $ 5,58 |
+| **RDS MySQL Database** | db.t3.micro, 20GB gp2, multi-az | $ 34,66 | $ 34,66 | $ 34,66 |
+| **S3 storage** | 100GB standard storage, 100000 requests | $ 3,03 | $ 3,03 | $ 3,03 |
+|  |  |  |  |  |
+|  | **total per month** | $ 146,12 | $ 140,14 | $ 140,14 |
+|  | **upfront** | $ 0 | $ 62,20 | $ 118,26 |
+|  |  |  |  |  |
+|  | **total 1 year cost** | $ 1753,44 | $ 1743,88 | $ 1721,10 |
+
 *back to [top](#top)*  
 <br>
 
@@ -166,7 +184,8 @@ Diagrams, SG & NACL rules, deployment visualization, and more, are listed here.
 | * | All traffic | All | All | 0.0.0.0/0 | Deny |
 |  |  |  |  |  |  |
 | **Outbound** |  |  |  |  |  |
-| 110 | HTTPS (443) | TCP (6) | 443 | 10.0.1.0/24 | Allow |
+| 100 | HTTP (80) | TCP (6) | 80 | 0.0.0.0/0 | Allow |
+| 110 | HTTPS (443) | TCP (6) | 443 | 0.0.0.0/0 | Allow |
 | 120 | Custom TCP | TCP (6) | 1024 - 65535 | 0.0.0.0/0 | Allow |
 | * | All traffic | All | All | 0.0.0.0/0 | Deny |
 <br>
@@ -179,8 +198,8 @@ Diagrams, SG & NACL rules, deployment visualization, and more, are listed here.
 | Rule number | Type | Protocol | Port Range | Source / Destination | Allow / Deny |
 | - | - | - | - | - | - |
 | **Inbound** |  |  |  |  |  |
-| 100 | SSH (22) | TCP (6) | 22 | 10.0.2.4/32 | Allow |
-| 105 | HTTP (80) | TCP (6) | 80 | 10.0.0.0/16 | Allow |
+| 90 | SSH (22) | TCP (6) | 22 | 10.0.2.4/32 | Allow |
+| 100 | HTTP (80) | TCP (6) | 80 | 10.0.0.0/16 | Allow |
 | 110 | HTTPS (443) | TCP (6) | 443 | 10.0.0.0/16 | Allow |
 | 115 | MySQL/Aurora (3306) | TCP (6) | 3306 | 10.0.1.0/24 | Allow |
 | 120 | Custom TCP | TCP (6) | 1024 - 65535 | 0.0.0.0/0 | Allow |
@@ -416,8 +435,10 @@ Diagrams, SG & NACL rules, deployment visualization, and more, are listed here.
 
 | - | - |
 | - | - |
-| - | - |
-| - | - |
+| **Bucket Name** | "cdkbucket-pdscripts-3434343434" |
+| **Content** | Post deployment scripts |
+| **Encryption** | Enabled |
+| **Block all public access** | On |
 <br>
 
 *back to [top](#top)*  

@@ -278,7 +278,7 @@ class CdkVpcTestStack(Stack):
         # Allow inbound SSH traffic from admin server
         self.nacl_webserver_pr.add_entry("Inbound-SSH",
             cidr=ec2.AclCidr.ipv4("10.0.2.4/32"),       # Static IP of Admin Server
-            rule_number=100,
+            rule_number=90,
             traffic=ec2.AclTraffic.tcp_port(22),        # SSH port
             direction=ec2.TrafficDirection.INGRESS
             )
@@ -286,7 +286,7 @@ class CdkVpcTestStack(Stack):
         # Allow inbound HTTP traffic from VPC 1 & 2
         self.nacl_webserver_pr.add_entry("Inbound-HTTP",
             cidr=ec2.AclCidr.ipv4("10.0.0.0/16"),
-            rule_number=105,
+            rule_number=100,
             traffic=ec2.AclTraffic.tcp_port(80),        # HTTP port
             direction=ec2.TrafficDirection.INGRESS
             )
@@ -806,53 +806,6 @@ class CdkVpcTestStack(Stack):
             connection=ec2.Port.tcp(3306),              # MySQL port
             description="Allow MySQL from VPC-1 Web",
             )
-        
-
-        # - - - - - - - - TEST WEBSERVER FOR DATABASE - - - - - - - - 
-        # - - - - comment out when deploying in production - - - - - - - - - -
-        # self.sg_test_webserver = ec2.SecurityGroup(self, "sg-test-webserver",
-        #     vpc=self.vpc_webserv,
-        #     description="SG Test Webserver"
-        #     )
-        # self.sg_test_webserver.add_ingress_rule(
-        #     peer=ec2.Peer.any_ipv4(), 
-        #     connection=ec2.Port.tcp(80),  
-        #     description="Allow HTTP traffic from anywhere",
-        #     )
-        # self.sg_test_webserver.add_ingress_rule(
-        #     peer=ec2.Peer.any_ipv4(), 
-        #     connection=ec2.Port.tcp(443),  
-        #     description="Allow HTTPS traffic from anywhere",
-        #     )
-        # self.sg_test_webserver.add_ingress_rule(
-        #     peer=ec2.Peer.any_ipv4(), 
-        #     connection=ec2.Port.tcp(22),  
-        #     description="Allow SSH traffic from anywhere",
-        #     )
-        # self.keypair_testwebserver = ec2.KeyPair(self, "keypair-test-webserver",
-        #     key_pair_name="kp-test-webserver",
-        #     )
-        # self.instance_webserver = ec2.Instance(self, "test-webserver",
-        #     role=self.role_webserv,
-        #     instance_name="test-webserver",
-        #     vpc=self.vpc_webserv,                               
-        #     vpc_subnets=ec2.SubnetSelection(
-        #         subnet_type=ec2.SubnetType.PUBLIC),  
-        #     key_pair=self.keypair_testwebserver,                    
-        #     security_group=self.sg_test_webserver,             
-        #     instance_type=ec2.InstanceType.of(
-        #         ec2.InstanceClass.T2, ec2.InstanceSize.MICRO),  
-        #     machine_image=ec2.AmazonLinuxImage(
-        #         generation=ec2.AmazonLinuxGeneration.AMAZON_LINUX_2023),    
-        #     block_devices=[ec2.BlockDevice(
-        #         device_name="/dev/xvda",                        
-        #         volume=ec2.BlockDeviceVolume.ebs(
-        #             volume_size=8,                              
-        #             encrypted=True,                             
-        #             )
-        #         )],
-        #     user_data=ec2.UserData.custom(self.user_data_webs), 
-        #     )
         
 
         # - - - - - - - - DATABASE - - - - - - - - - -

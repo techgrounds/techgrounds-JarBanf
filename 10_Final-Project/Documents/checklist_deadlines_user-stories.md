@@ -88,10 +88,10 @@ This checklist is based on the Deliverables in the chapter [Epics & User Stories
     - 🍔 Security group rules
         - 🍔 Allow traffic on MySQL port
     - 🍔 Configure webserver to connect to database
-- 🔥 0.5 Post Deployment Script Storage feature from v1.0
+- ❌ 0.5 Post Deployment Script Storage feature from v1.0
     - 🍔 S3 Bucket
-    - 🐂 Connection with RDS MySQL database
-    - 🐂 Test script
+    - ❌ Connection with RDS MySQL database
+    - ❌ Test script
 - 🍔 1. Webserver not "naked" anymore -> no public IP address
 - 🍔 2. HTTPS
     - 🍔 TLS 1.2 or higher
@@ -116,8 +116,8 @@ This checklist is based on the Deliverables in the chapter [Epics & User Stories
 - 🍔 6. Keep NACLs up-to-date.
 - 🔥 7. Design Documentation for using the application.
     - 🍔 Architecture Design
-    - 🐂 Estimated monthly costs
-    - 🔥 Configurations
+    - 🍔 Estimated monthly costs
+    - 🍔 Configurations
         - 🍔 VPCs
             - 🍔 VPC web
             - 🍔 VPC admin
@@ -130,13 +130,13 @@ This checklist is based on the Deliverables in the chapter [Epics & User Stories
         - 🍔 Application Load Blancer
         - 🍔 Database
         - 🍔 Backups
-        - 🔥 S3 Buckets
+        - 🍔 S3 Buckets
             - 🍔 Webfiles
-            - 🐂 Scripts
+            - 🍔 Scripts
 - 🐂 8. Configuration for an MVP deployment.
 
 ### Final Presentation --> 22 Feb '24
-- 🔥 A 30-minute presentation of my v1.1 delivery.  
+- 🍔 A 30-minute presentation of my v1.1 delivery.  
 <br>
 
 *back to [top](#top)*  

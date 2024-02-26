@@ -6,6 +6,8 @@ Sorted by latest to oldest.
 
 ## Table of Contents
 - Week 7
+    - [Fri 23 Feb '24](#fri23feb)
+    - [Thu 22 Feb '24](#thu22feb)
     - [Wed 21 Feb '24](#wed21feb)
     - [Tue 20 Feb '24](#tue20feb)
     - [Mon 19 Feb '24](#mon19feb)
@@ -75,6 +77,22 @@ Sorted by latest to oldest.
     - [Mon 08 Jan '24](#mon08jan)
         - [Watched an introduction video about Jira.](#watched-an-introduction-video-about-jira)
 - [Log template](#log-template)  
+<br>
+
+*back to [top](#top)*  
+<br>
+
+## ✏️ 📄 <a id="fri23feb">Fri 23 Feb '24</a>
+### Daily Report
+- Project is officialy over! I graduated and received my diploma today :). I will still be finalizing the design document and other documentation needed to officialy release v1.1.  
+<br>
+
+*back to [top](#top)*  
+<br>
+
+## ✏️ 📄 <a id="thu22feb">Thu 22 Feb '24</a>
+### Daily Report
+- Presented delivery v1.1. Positive feedbacks.  
 <br>
 
 *back to [top](#top)*  
