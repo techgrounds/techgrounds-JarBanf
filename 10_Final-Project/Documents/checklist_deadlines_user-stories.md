@@ -114,7 +114,7 @@ This checklist is based on the Deliverables in the chapter [Epics & User Stories
     - 🍔 Auto Scaling -> ELB: monitors whether intances are available to handle requests. When it reports an unhealthy instance, EC2 Auto Scaling can replace it on its next periodic check.
     - 🍔 Target Group: If the target type is instance or ip, health checks are always enabled and cannot be disabled.
 - 🍔 6. Keep NACLs up-to-date.
-- 🔥 7. Design Documentation for using the application.
+- 🍔 7. Design Documentation for using the application.
     - 🍔 Architecture Design
     - 🍔 Estimated monthly costs
     - 🍔 Configurations

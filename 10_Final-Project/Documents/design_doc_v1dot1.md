@@ -1,7 +1,6 @@
-# <a id="top">Design Document v1.1</a> 📘 👷 🔨
-**UNDER CONSTRUCTION**  
+# <a id="top">Design Document v1.1</a> 📘 👷 🔨  
 This document contains technical and practical information about my application.  
-Diagrams, SG & NACL rules, deployment visualization, and more, are listed here.
+Architecture Design, Estimated costs, SG & NACL rules, and resource specs are listed here.
 
 ## Table of Contents
 - [Architecture Design](#architecture-design)

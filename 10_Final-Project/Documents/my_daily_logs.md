@@ -5,6 +5,9 @@ Sorted by latest to oldest.
 <br>
 
 ## Table of Contents
+- Project is officialy over!
+- I graduated and received [my Cloud Engineer diploma](/11_GRADUATED!!/) on 23 Feb '24.
+
 - Week 7
     - [Fri 23 Feb '24](#fri23feb)
     - [Thu 22 Feb '24](#thu22feb)
@@ -84,7 +87,7 @@ Sorted by latest to oldest.
 
 ## ✏️ 📄 <a id="fri23feb">Fri 23 Feb '24</a>
 ### Daily Report
-- Project is officialy over! I graduated and received my diploma today :). I will still be finalizing the design document and other documentation needed to officialy release v1.1.  
+- Project is officialy over! I graduated and received [my Cloud Engineer diploma](/11_GRADUATED!!/) today :). I will still be finalizing the design document and other documentation needed to officialy release v1.1.  
 <br>
 
 *back to [top](#top)*  
