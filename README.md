@@ -14,4 +14,10 @@ The knowledge and experience I gained will now all come together in my final pro
 [View my final project.](/10_Final-Project/)  
 <br>
 
+### GRADUATED!! 🎓 📜
+
+I'm super duper happy to obtain [my Cloud Engineer diploma](/11_GRADUATED!!/)!! 😃  
+<br>
+
 On my [GitHub homepage](https://github.com/JarBanf) you can find all my repositories.
+

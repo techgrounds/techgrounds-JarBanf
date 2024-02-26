@@ -1,4 +1,4 @@
-# Graduated!! :neckbeard: 🎓 📜
+# Graduated!! 🎓 📜
 
 ### I'm super duper happy to obtain my Cloud Engineer diploma!! 😃  
 <br>
