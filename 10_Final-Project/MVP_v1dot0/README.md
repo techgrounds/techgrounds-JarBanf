@@ -16,10 +16,9 @@ I haven't had the time to write a document for using this application. I will fo
 #####################################  
 <br>
 
-## Standard text from Sample App
+## Standard text
 
-You should explore the contents of this project. It demonstrates a CDK app with an instance of a stack (`mvp_v1dot0_stack`)
-which contains an Amazon SQS queue that is subscribed to an Amazon SNS topic.
+You should explore the contents of this project. It demonstrates a CDK app with an instance of a stack (`mvp_v1dot0_stack`).
 
 The `cdk.json` file tells the CDK Toolkit how to execute your app.
 

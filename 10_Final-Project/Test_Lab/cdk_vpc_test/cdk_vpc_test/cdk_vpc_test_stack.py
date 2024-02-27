@@ -33,6 +33,8 @@ from zipfile import ZipFile         # for creating .zip file before uploading to
 
 
 # What is the home/office IP address of the Administrator that will be accessing the Admin Server?
+# This IP address will be added to the security group and NACL of the Admin Server.
+# MAKE SURE TO ADD /32 AT THE END OF THE IP ADDRESS!
 ip_address_administrator="143.178.129.147/32"
 
 # What is the certificate ARN for the Application Load Balancer?
@@ -404,7 +406,7 @@ class CdkVpcTestStack(Stack):
         
         # Allow NACL Inbound RDP traffic from only my IP
         self.nacl_adminserver.add_entry("Inbound-RDP",
-            cidr=ec2.AclCidr.ipv4("143.178.129.147/32"),    # change this to your home/office public IP
+            cidr=ec2.AclCidr.ipv4(ip_address_administrator),    # change this to your home/office public IP
             rule_number=100,
             traffic=ec2.AclTraffic.tcp_port(3389),          # RDP port
             direction=ec2.TrafficDirection.INGRESS

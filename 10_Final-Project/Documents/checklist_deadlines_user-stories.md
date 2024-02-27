@@ -133,7 +133,7 @@ This checklist is based on the Deliverables in the chapter [Epics & User Stories
         - 🍔 S3 Buckets
             - 🍔 Webfiles
             - 🍔 Scripts
-- 🐂 8. Configuration for an MVP deployment.
+- 🍔 8. Configuration for an MVP deployment.
 
 ### Final Presentation --> 22 Feb '24
 - 🍔 A 30-minute presentation of my v1.1 delivery.  
