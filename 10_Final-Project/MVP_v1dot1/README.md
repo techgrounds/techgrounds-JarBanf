@@ -5,7 +5,7 @@ I will be adding the application to this directory soon!
 For now you can view the working application code [here](/10_Final-Project/Test_Lab/cdk_vpc_test/).**  
 +++++++++++++++++++++++++++++
 
-This is MVP v1.1. Here you will find the AWS CDK application made using Python. 
+This is MVP v1.1. Here you will find the AWS CDK application made with Python. 
 <br>
 
 ## Architecture Design
