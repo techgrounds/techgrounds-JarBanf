@@ -22,6 +22,10 @@ This is MVP v1.1. Here you will find the AWS CDK application made using Python.
     - [Install AWS CDK Toolkit](#install-aws-cdk-toolkit)
     - [Install Python (and Python package installer (pip))](#install-python-and-python-package-installer-pip)
 - [Preconfigurations](#preconfigurations)
+    - [Certificate for SSL/TLS](#certificate-for-ssltls)
+    - [AWS Account number](#aws-account-number)
+    - [AWS Region](#aws-region)
+    - [Home/Office IP address](#homeoffice-ip-address)
 - [Explore project directory](#explore-project-directory)
 - [Deploy the applicaton](#deploy-the-application)
 - [Destroy the application](#destroy-the-application)  
@@ -92,7 +96,7 @@ Follow [this guide](https://cdkworkshop.com/15-prerequisites/200-account.html) t
 - Request or import a certificate for SSL/TLS using AWS Certificate Manager.
 - get the ARN of the certificate.  
 
-### Account number
+### AWS Account number
 - Get the account number from the AWS console.
 
 ### AWS Region
