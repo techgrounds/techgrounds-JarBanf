@@ -526,21 +526,21 @@ class MvpV1Dot1Stack(Stack):
         #     description="Allow HTTP traffic from anywhere",          
         #     )                                                        
                                                                         
-        # # Allow SG inbound HTTPS traffic from anywhere
+        # Allow SG inbound HTTPS traffic from anywhere
         # self.sg_admin_webserver.add_ingress_rule(
         #     peer=ec2.Peer.any_ipv4(),      
         #     connection=ec2.Port.tcp(443),            
         #     description="Allow HTTPS traffic from anywhere",
         #     )
         
-        # # Allow SG inbound SSH traffic from anywhere
+        # Allow SG inbound SSH traffic from anywhere
         # self.sg_admin_webserver.add_ingress_rule(
         #     peer=ec2.Peer.any_ipv4(),
         #     connection=ec2.Port.tcp(22),               
         #     description="Allow SSH traffic from anywhere",
         #     )
 
-        # # Allow SG inbound ICMP (ping) traffic from anywhere
+        # Allow SG inbound ICMP (ping) traffic from anywhere
         # self.sg_admin_webserver.add_ingress_rule(
         #     peer=ec2.Peer.ipv4("0.0.0.0/0"),
         #     connection=ec2.Port.all_icmp(),
@@ -794,13 +794,13 @@ class MvpV1Dot1Stack(Stack):
             )
 
 
-        # # - - - - - - - - INBOUND TRAFFIC - - - - - - - - - -
-        #     #    ||
-        #     #    ||
-        #     #   \\//
-        #     #    \/
+        # - - - - - - - - INBOUND TRAFFIC - - - - - - - - - -
+            #    ||
+            #    ||
+            #   \\//
+            #    \/
         
-        # # Allow inbound traffic from the VPC CIDR on the MySQL port
+        # Allow inbound traffic from the VPC CIDR on the MySQL port
         self.sg_database.add_ingress_rule(
             peer=ec2.Peer.ipv4("10.0.1.0/24"),          # VPC CIDR
             connection=ec2.Port.tcp(3306),              # MySQL port
@@ -855,7 +855,7 @@ class MvpV1Dot1Stack(Stack):
                 delete_after=Duration.days(7),              # retain backups for 7 days
                 schedule_expression=events.Schedule.cron(
                     hour="1",           # Daily backup at 01:00 UTC -->
-                    minute="0", )      # --> 02:00 Dutch winter time / 03:00 Dutch summer time
+                    minute="0", )       # --> 02:00 Dutch winter time / 03:00 Dutch summer time
                 )]
             )
         
@@ -870,7 +870,7 @@ class MvpV1Dot1Stack(Stack):
                 ]
             )
         
-        # # Select Adminserver as a resource to backup
+        # Select Adminserver as a resource to backup
         self.backup_plan.add_selection("add-adminserver", 
             backup_selection_name="backup-adminserver",
             resources=[
