@@ -5,21 +5,21 @@
 #█ ██      ██ ██       ██████  ██   ██    ██    ███████ 
 
 
-from constructs import Construct         
+from constructs import Construct
 from aws_cdk import (
-    Stack,                          
-    aws_ec2 as ec2,                        
-    aws_backup as backup,             
-    Duration,             
-    aws_events as events,               
-    aws_s3 as s3,                           
-    aws_s3_deployment as s3deploy,          
+    Stack,
+    aws_ec2 as ec2,
+    aws_s3 as s3,
+    aws_s3_deployment as s3deploy,
+    aws_iam as iam,
     aws_autoscaling as autoscaling,
+    Duration,
     aws_elasticloadbalancingv2 as elbv2,
     aws_certificatemanager as cm,
-    aws_iam as iam,
     aws_rds as rds,
     RemovalPolicy,
+    aws_backup as backup,
+    aws_events as events,
     )
 
 
@@ -40,13 +40,12 @@ ip_address_administrator="143.178.129.147/32"
 certificate_arn_alb="arn:aws:acm:eu-central-1:908959576754:certificate/3b2179b4-0384-4855-be19-1fb8b84213f3"
 
 
-
-class CdkVpcTestStack(Stack):
+class MvpV1Dot1Stack(Stack):
 
     def __init__(self, scope: Construct, construct_id: str, **kwargs) -> None:
         super().__init__(scope, construct_id, **kwargs)
 
-
+        
         #█    ██ ██████   ██████     ██     ██ ███████ ██████  
         #█    ██ ██   ██ ██          ██     ██ ██      ██   ██ 
         #█    ██ ██████  ██          ██  █  ██ █████   ██████  
@@ -79,7 +78,7 @@ class CdkVpcTestStack(Stack):
             service=ec2.GatewayVpcEndpointAwsService.S3,
             subnets=[ec2.SubnetSelection(subnet_type=ec2.SubnetType.PRIVATE_WITH_EGRESS)]
             )
-
+        
 
 
         #█    ██ ██████   ██████      █████  ██████  ███    ███ ██ ███    ██ 
@@ -148,7 +147,7 @@ class CdkVpcTestStack(Stack):
             destination_cidr_block="10.0.1.0/24",
             vpc_peering_connection_id=self.vpc_peering.ref
             )
-
+        
 
 
         #██    ██  █████   ██████ ██          ██████  ██    ██     ██     ██ ███████ ██████  
@@ -250,8 +249,8 @@ class CdkVpcTestStack(Stack):
         #     traffic=ec2.AclTraffic.all_traffic(),
         #     direction=ec2.TrafficDirection.EGRESS
         #     )
-        
-        
+
+
 
         #██    ██  █████   ██████ ██          ██████  ██████      ██     ██ ███████ ██████  
         #███   ██ ██   ██ ██      ██          ██   ██ ██   ██     ██     ██ ██      ██   ██ 
@@ -372,7 +371,7 @@ class CdkVpcTestStack(Stack):
             # traffic=ec2.AclTraffic.all_traffic(),
             # direction=ec2.TrafficDirection.EGRESS
             # )
-
+        
 
 
         #██    ██  █████   ██████ ██          ██████  ██    ██      █████  ██████  ███    ███ 
@@ -473,7 +472,7 @@ class CdkVpcTestStack(Stack):
         #     direction=ec2.TrafficDirection.EGRESS
         #     )
 
-        
+
 
         #█     ██ ███████ ██████      ███████ ███████ ██████  ██    ██ 
         #█     ██ ██      ██   ██     ██      ██      ██   ██ ██    ██ 
@@ -558,7 +557,7 @@ class CdkVpcTestStack(Stack):
     
         # Upload a the lab zipfiles to the S3 bucket
         self.deploy_website = s3deploy.BucketDeployment(self, "deploy-website",
-            sources=[s3deploy.Source.asset(path="./cdk_vpc_test/lab-app.zip")],
+            sources=[s3deploy.Source.asset(path="./mvp_v1dot1/lab-app.zip")],
             destination_bucket=self.website_bucket,
         )
         
@@ -574,7 +573,7 @@ class CdkVpcTestStack(Stack):
         self.role_webserv.add_managed_policy(iam.ManagedPolicy.from_aws_managed_policy_name("AmazonS3ReadOnlyAccess"))
 
         # Import User Data for Webserver
-        with open("./cdk_vpc_test/user_data_webs.sh") as f:
+        with open("./mvp_v1dot1/user_data_webs.sh") as f:
             self.user_data_webs = f.read()  # read User Data script and save to variable
         
         # Create Keypair Web Server -> Private Key in Parameter Store
@@ -605,7 +604,7 @@ class CdkVpcTestStack(Stack):
                 )],
             user_data=ec2.UserData.custom(self.user_data_webs), # refer to imported User Data. See code above
             )
-
+        
 
 
          #████  ██████  ███    ███     ███████ ███████ ██████  ██    ██ 
@@ -665,7 +664,7 @@ class CdkVpcTestStack(Stack):
             key_pair=self.keypair_adminserver,                  # refer to keypair. Code above.
             security_group=self.sg_adminserver,                 # refer to the SG for Admin server
             instance_type=ec2.InstanceType.of(
-                ec2.InstanceClass.T3, ec2.InstanceSize.SMALL),  # choose instance type
+                ec2.InstanceClass.T3, ec2.InstanceSize.LARGE),  # choose instance type
             machine_image=ec2.WindowsImage(
                 ec2.WindowsVersion.WINDOWS_SERVER_2022_ENGLISH_FULL_BASE),  # choose AMI
             block_devices=[ec2.BlockDevice(
@@ -682,7 +681,7 @@ class CdkVpcTestStack(Stack):
                     )
                 )]
             )
-
+        
 
 
         #██████ ██      ██████                 █████  ███████ 
@@ -776,7 +775,7 @@ class CdkVpcTestStack(Stack):
                 protocol="HTTPS",
                 )
             )
-
+        
 
 
         #█████   █████  ████████  █████  ██████   █████  ███████ ███████ 
@@ -834,7 +833,7 @@ class CdkVpcTestStack(Stack):
         self.script_bucket = s3.Bucket(self, "bucket",
             bucket_name="cdkbucket-pdscripts-3434343434",
             )
-
+        
 
 
         #█████   █████   ██████ ██   ██ ██    ██ ██████  

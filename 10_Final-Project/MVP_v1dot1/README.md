@@ -1,10 +1,4 @@
 # <a id="top">Minimum Viable Product version 1.1</a>
-+++++++++++++++++++++++++++++  
-**Version 1.1 application is ready!   
-I will be adding the application to this directory soon!  
-For now you can view the working application code [here](/10_Final-Project/Test_Lab/cdk_vpc_test/).**  
-+++++++++++++++++++++++++++++
-
 This is MVP v1.1. Here you will find the AWS CDK application made with Python. 
 <br>
 
@@ -146,8 +140,8 @@ Follow [this guide](https://cdkworkshop.com/15-prerequisites/200-account.html) t
     - Line 21: `account='<your account number>'`
     - Line 24: `region='<your region name>'`
 - Open the `mvp_v1dot1/mvp_v1dot1_stack.py` file and update the following lines with your own values:
-    - Line 38: `ip_address_administrator="<your ip address>/32"`
-    - Line 41: `certificate_arn_alb="<your certificate arn>"`
+    - Line 37: `ip_address_administrator="<your ip address>/32"`
+    - Line 40: `certificate_arn_alb="<your certificate arn>"`
 - Synthesize a template from application code by running the following command:
     ```bash
     cdk synth
